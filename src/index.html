@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Assignment</title>
+    <base href="/">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" onkeypress="
+    "rel="stylesheet"/>
+
+    <script src="http://code.jquery.com/jquery-3.3.1.js"
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous">
+    </script>
+
+  </head>
+  <body>
+    <input id="jobName">
+    <button id="jobSearch" onclick="searchJob()">search</button>
+    <ul id="jobs">
+
+    </ul>
+
+    <script>
+
+      function searchJob() {
+        var input = $("#jobName").val();
+        var url = "https://jobs.github.com/positions.json?description=" +
+         input +
+          "&location=seattle";
+
+        var jobsList = $("#jobs");
+        $.get(
+          url,
+          {},
+          function(response) {
+            var jobs = response;
+            for (var i = 0; i < jobs.length; i++) {
+              var jobsLi = $("<li>");
+              var jobName = jobs[i].title;
+              jobsLi.append(jobName);
+              jobsList.prepend(jobsLi)
+            }
+          }
+        ,
+        "jsonp");
+      }
+
+    </script>
+
+    <h1>Assignment2 Link here:</h1>
+    <a href="./assets/index.html">
+      ./assets/index.html
+    </a>
+    <h1>The followings are for coming assignments:</h1>
+    <app-root></app-root>
+  </body>
+</html>
