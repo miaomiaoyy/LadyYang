@@ -1,5 +1,13 @@
+.contain-fluid {
+  padding-top:10px;
+  padding-bottom: 10px;
+}
+
+.user-login {
+  padding-top:10px;
+}
 body {
-  padding-top: 70px;
+  padding-top: 50px;
   padding-bottom: 70px;
 }
 input.form-control {
@@ -10,14 +18,14 @@ input.form-control {
   margin-bottom: 2em;
 }
 
-a:hover{
-  text-decoration: none;
-}
+/*a:hover{*/
+  /*text-decoration: none;*/
+/*}*/
 
-.cl-container-padding {
-  padding-top: 5%;
-  padding-bottom: 10%;
-}
+/*.cl-container-padding {*/
+  /*padding-top: 5%;*/
+  /*padding-bottom: 10%;*/
+/*}*/
 
 .cl-blue-navbar{
   background-color: #337ab7;

@@ -1,21 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="viewport" content="initial-scale=1.25, user-scalable=no">
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../css/style.css" rel="stylesheet"/>
-  </head>
-  <body>
-    <div class="container">
-      <h1>Login</h1>
-      <input type="text" class="form-control" placeholder="username"/>
-      <input type="password" class="form-control" placeholder="password"/>
-      <a class="btn btn-primary btn-block" href="profile.html">Login</a>
-      <a class="btn btn-success btn-block" href="register.html">Register</a>
-    </div>
-  </body>
-</html>
+<head>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="login.component.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="container">
+  <!--<img class="src=https://myslu.slu.edu/res/images/cas-padlock-icon.png">-->
+  <h1>Login</h1>
+
+  <input ngModel = "username"
+         id="Name"
+         class="form-control"
+         placeholder="Username"
+         required autofocus/>
+
+
+  <input ngModel = "password"
+         id="Password"
+         class="form-control"
+         placeholder="Password"
+         required autofocus/>
+
+  <button class="btn btn-primary btn-block" type="submit" (click)="login(username,password)"> Login</button>
+  <button class="btn btn-success btn-block" (click)="register()"> Register</button>
+</div>
+</body>
+
+
