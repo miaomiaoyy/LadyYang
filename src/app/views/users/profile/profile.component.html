@@ -1,3 +1,42 @@
-<p>
-  profile works!
-</p>
+<nav class="navbar navbar-fixed-top cl-blue-navbar">
+  <div class="container-fluid">
+    <a class="cl-text-white navbar-brand cl-text-bold" href="#">
+      Profile
+    </a>
+
+    <a href="profile.html" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
+      <span class="glyphicon glyphicon-ok"></span>
+    </a>
+  </div>
+</nav>
+
+
+<h1>Profile</h1>
+<div class="form-group">
+
+  <label for="username">Username</label>
+  <input [(ngModel)]="user.username" type="text" class="form-control"id="username"  />
+
+  <label for="email">Email</label>
+  <input [(ngModel)]="user.password" type="password" class="form-control"id="email" />
+
+  <label for="first-name">FirstName</label>
+  <input [(ngModel)]="user.firstName" type="text" class="form-control" id="first-name"/>
+
+  <label for="last-name">LastName</label>
+  <input [(ngModel)]="user.lastName"type="text" class="form-control" id="last-name"/>
+
+<br>
+
+
+  <a class="btn btn-primary btn-block" href="../website/website-list.html">Websites</a>
+  <a class="btn btn-danger  btn-block" href="login.html">Logout</a>
+</div>
+
+<nav class="navbar navbar-fixed-bottom cl-blue-navbar">
+  <div class="container-fluid">
+    <a href="profile.html" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
+      <span class="glyphicon glyphicon-user"></span>
+    </a>
+  </div>
+</nav>
