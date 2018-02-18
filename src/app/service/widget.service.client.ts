@@ -1,6 +1,7 @@
 
 import {Injectable} from '@angular/core';
 import { Widget } from '../models/widget.model.client';
+import {AlertService} from './alert.service.client';
 
 @Injectable()
 export  class WidgetService {
@@ -13,7 +14,7 @@ export  class WidgetService {
     new Widget('123', 'HTML', '321', '2', '<p>blalbla</p>' ),
     new Widget('123', 'YOUTUBE', '321', '2', 'text', '100%', 'https://youtube.com/token' ),
   ];
-
+  alertService: AlertService;
   createWidget(pageId, widget) {
     this.widgets.push(widget);
   }
@@ -46,7 +47,9 @@ export  class WidgetService {
   }
 
 
-  deleteWidget(widgetId){}
+  deleteWidget(widgetId){
+    alert(this.alertService.success('delete Successful', true));
+  }
   findWidgetsByPageId(pageId){}
   findWidgetsById(pageId){}
 

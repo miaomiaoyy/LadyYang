@@ -1,10 +1,11 @@
 import { Website } from '../models/website.model.client';
 import {Injectable} from '@angular/core';
+import {AlertService} from './alert.service.client';
 
 
 @Injectable()
 export class WebsiteService {
-
+  alertService: AlertService;
   websites: Website[] = [
     new Website('321', 'Facebook', '123', 'test' ),
     new Website('111', 'Facebook1', '123', 'test' ),
@@ -62,6 +63,7 @@ export class WebsiteService {
       if (this.websites[i]._id === websiteId) {
         const j = +i;
         this.websites.splice(j, 1);
+        alert(this.alertService.success('delete Successful', true));
       }
     }
   }

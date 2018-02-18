@@ -1,14 +1,16 @@
 import { User } from '../models/user.model.client';
 import {Injectable} from '@angular/core';
+import {AlertService} from './alert.service.client';
 
 @Injectable()
 export class UserService {
   users: User[] = [
     new User('123', 'alice', 'qq', 'Alice', 'Pitt'),
     new User('234', 'bob', 'qq', 'Bob', 'Delon'),
-    new User('345', 'charlie', 'qq', 'Charlie', 'Joseph')
+    new User('345', 'charlie', 'qq', 'Charlie', 'Joseph'),
+    new User('666', 'yang', '224', 'Yang', 'Yuan')
   ];
-
+  alertService: AlertService;
   createUser(user: User) {
     this.users.push(new User(user._id, user.username, user.password, user.firstName, user.lastName));
   }
@@ -40,6 +42,7 @@ export class UserService {
       if (this.users[i]._id === userId) {
         const j = +i;
         this.users.splice(j, 1);
+        alert(this.alertService.success('delete Successful', true));
       }
     }
   }

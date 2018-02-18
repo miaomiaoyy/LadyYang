@@ -1,6 +1,8 @@
 
 import { Page } from '../models/page.model.client';
 import {Injectable} from '@angular/core';
+import {AlertService} from './alert.service.client';
+
 
 
 @Injectable()
@@ -10,12 +12,13 @@ export class PageService {
     new Page('321', 'page321', '321', 'test page 321'),
     new Page('111', 'page111', '111', 'test page 111' ),
     new Page('222', 'page222', '222', 'test page 222' ),
-    new Page('333', 'page3', '333', 'test page 333' ),
+    new Page('333', 'page333', '333', 'test page 333' ),
     new Page('432', 'page432', '432', 'test page 432' ),
     new Page('234', 'page234', '234', 'test page 234' ),
   ];
+  alertService: AlertService;
 
-  createWebsite(websiteId: String, page: Page) {
+  createPage(websiteId: String, page: Page) {
 
     const new_page = {
       _id: (new Date()).getTime() + '',
@@ -58,11 +61,12 @@ export class PageService {
     }
   }
 
-  deleteWebsite(pageId: String) {
+  deletePage(pageId: String) {
     for (const i in this.pages) {
       if (this.pages[i]._id === pageId) {
         const j = +i;
         this.pages.splice(j, 1);
+        alert(this.alertService.success('delete Successful', true));
       }
     }
   }

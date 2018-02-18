@@ -27,6 +27,4 @@ export class ProfileComponent implements OnInit {
       this.user = this.userService.findUserById(params['userId']);
     });
   }
-
-
 }

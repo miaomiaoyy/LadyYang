@@ -1,13 +1,14 @@
 .contain-fluid {
   padding-top:10px;
   padding-bottom: 10px;
+  padding-top: 50px;
 }
 
 .user-login {
   padding-top:10px;
 }
 body {
-  padding-top: 50px;
+  padding-top: 70px;
   padding-bottom: 70px;
 }
 input.form-control {
@@ -18,17 +19,27 @@ input.form-control {
   margin-bottom: 2em;
 }
 
-/*a:hover{*/
-/*text-decoration: none;*/
-/*}*/
+.form-group{
+  padding-top: 50px;
+}
 
-/*.cl-container-padding {*/
-/*padding-top: 5%;*/
-/*padding-bottom: 10%;*/
-/*}*/
+
+/*.cl-update-padding{*/
+  /*padding-top: 70px;*/
+  /*border-bottom: 70px;*/
+ /*}*/
+a:hover{
+text-decoration: none;
+}
+
+.cl-container-padding {
+padding-top: 1%;
+padding-bottom: 10%;
+}
 
 .cl-blue-navbar{
   background-color: #337ab7;
+  /*padding-top: 50px;*/
 }
 
 .cl-text-white{
@@ -41,6 +52,7 @@ input.form-control {
 
 .cl-text-bold{
   font-weight: bold;
+
 }
 
 .cl-icon-padding {
@@ -108,4 +120,14 @@ input.form-control {
   width: 85%;
   z-index: 100;
   position: relative;
+}
+
+.cl-font-size {
+  font-size: 20px;
+}
+
+
+.cl-update-padding {
+  margin-top: 20px;
+  margin-left: 0px;
 }
