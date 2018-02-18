@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {WidgetService} from '../../../../service/widget.service.client';
+import {ActivatedRoute, Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-widget-image',
@@ -7,9 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WidgetImageComponent implements OnInit {
 
-  constructor() { }
+  userId: String;
+  websiteId: String;
+  pageId: String;
+  widgetId: String;
 
-  ngOnInit() {
+  constructor(private widgetService: WidgetService,
+              private activatedRoute: ActivatedRoute,
+              private router: Router) {
   }
 
+  ngOnInit() {
+    this.activatedRoute.params.subscribe(
+      (params: any) => {
+        this.widgetId = params['wgid'];
+        this.pageId = params['pid'];
+        this.userId = params['uid'];
+        this.websiteId = params['wid'];
+      }
+    );
+
+    this.widgetService.findWidgetsById(this.widgetId);
+  }
 }

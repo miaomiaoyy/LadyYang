@@ -15,7 +15,6 @@ export class WebsiteEditComponent implements OnInit {
   name = String;
   developerId: String;
 
-
   constructor(private websiteService: WebsiteService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {

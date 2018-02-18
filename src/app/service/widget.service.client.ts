@@ -47,11 +47,20 @@ export  class WidgetService {
   }
 
 
-  deleteWidget(widgetId){
+  deleteWidget(widgetId) {
     alert(this.alertService.success('delete Successful', true));
   }
-  findWidgetsByPageId(pageId){}
-  findWidgetsById(pageId){}
+  findWidgetsByPageId(pageId) {
+    return this.widgets.find(function (widget) {
+      return widget.pageId === pageId;
+    });
+  }
 
-
+  findWidgetsById(widgetId) {
+    return this.widgets.find(function (widget) {
+      return widget._id === widgetId;
+    });
+  }
 }
+
+

@@ -21,10 +21,10 @@
 
 <form (ngSubmit) = "login()" #f="ngForm">
   <label>Username</label>
-  <input   placeholder="username" name="username" type="text" class="form-control" ngModel required #username="ngModel"/>
+  <input placeholder="username" name="username" type="text" class="form-control" ngModel required #username="ngModel"/>
 
   <label>Password</label>
-  <input   placeholder="password" name="password" type="text" class="form-control" ngModel required #password="ngModel"/>
+  <input placeholder="password" name="password" type="text" class="form-control" ngModel required #password="ngModel"/>
 
   <span class="help-block" *ngIf="!username.valid && username.touched">
         Please enter username!

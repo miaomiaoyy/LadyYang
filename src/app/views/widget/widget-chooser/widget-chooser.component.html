@@ -1,3 +1,45 @@
-<p>
-  widget-chooser works!
-</p>
+<nav class="navbar navbar-fixed-top navbar-light bg-secondary">
+  <a class="navbar-brand" routerLink="/user/{{userId}}/website/{{websiteId}}/page/{{pageId}}/widget">
+    <span class="glyphicon glyphicon-chevron-left text-dark"></span>
+  </a>
+  <div class="navbar-brand font-weight-bold">
+    Choose Widget
+  </div>
+</nav>
+<div class="container-fluid cl-body-padding">
+  <div class="extra-padding">
+    <a class="btn extra-left-padding" (click)="createWidgetController('HEADER')">Header</a>
+  </div>
+  <div class="extra-padding">
+    <a class="extra-left-padding" routerLink="./">Label</a>
+  </div>
+  <div class="extra-padding">
+    <a class="extra-left-padding" routerLink="./">HTML</a>
+  </div>
+  <div class="extra-padding">
+    <a class="extra-left-padding" routerLink="./">Text Input</a>
+  </div>
+  <div class="extra-padding">
+    <a class="extra-left-padding" routerLink="./">Link</a>
+  </div>
+  <div class="extra-padding">
+    <a class="extra-left-padding" routerLink="./">Button</a>
+  </div>
+  <div class="extra-padding">
+    <a class="btn extra-left-padding" (click)="createWidgetController('IMAGE')">Image</a>
+  </div>
+  <div class="extra-padding">
+    <a class="btn extra-left-padding" (click)="createWidgetController('YOUTUBE')">YouTube</a>
+  </div>
+  <div class="extra-padding">
+    <a class="extra-left-padding" routerLink="./">Data Table</a>
+  </div>
+  <div class="extra-padding">
+    <a class="extra-left-padding" routerLink="./">Repeater</a>
+  </div>
+</div>
+<nav class="navbar navbar-fixed-bottom navbar-light bg-secondary">
+  <a class="btn navbar-brand pull-right" routerLink="/user/{{userId}}">
+    <span class="glyphicon glyphicon-user text-primary"></span>
+  </a>
+</nav>
