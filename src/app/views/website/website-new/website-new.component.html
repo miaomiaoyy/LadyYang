@@ -1,16 +1,15 @@
 
-<body>
 <nav class="navbar navbar-fixed-top cl-blue-navbar">
   <div class="row">
     <div class="col-xs-4 hidden-xs">
       <div class="container-fluid">
         <p class="navbar-text pull-left">
-          <a href="website-list.html" class="navbar-link cl-text-white">
+          <a routerLink=".." class="navbar-link cl-text-white">
             <span class="glyphicon glyphicon-chevron-left"></span>
           </a>
         </p>
         <a class="cl-text-white navbar-brand cl-text-bold" href="#">
-          Websites
+          Website
         </a>
         <a href="#" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
           <span class="glyphicon glyphicon-plus"></span>
@@ -22,7 +21,7 @@
         <a class="cl-text-white navbar-brand cl-text-bold" href="#">
           New Websites
         </a>
-        <a href="website-list.html" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
+        <a routerLink=".." class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding" (click)="createWebsiteController()">
           <span class="glyphicon glyphicon-ok"></span>
         </a>
       </div>
@@ -30,40 +29,64 @@
   </div>
 </nav>
 
+<!--<div class="col-xs-4">-->
+  <!--<div class="list-group cl-list-group-borderless" *ngFor="let website of websites">-->
+    <!--<a class="list-group-item cl-list-item-borderless" routerLink="./{{website._id}}/page">{{website.name}}</a>-->
+
+    <!--<a routerLink="./{{website._id}}">-->
+      <!--<li class="list-group-item cl-list-item-borderless pull-right">-->
+        <!--<a routerLink="./{{website._id}}"><span class="glyphicon glyphicon-cog pull-right"></span></a>-->
+      <!--</li>-->
+    <!--</a>-->
+  <!--</div>-->
+<!--</div>-->
+
 <div class="contain-fluid">
   <div class="col-xs-4 hidden-xs">
     <ul class="list-group cl-list-group-borderless">
-      <li class="list-group-item cl-list-item-borderless">
-        <a href="website-edit.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>
-        <a href="page-list.html">Blogging App</a>
-      </li>
-      <li class="list-group-item cl-list-item-borderless">
-        <a href="website-edit.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>
-        <a href="page-list.html">Address Book App</a>
-      </li>
-      <li class="list-group-item cl-list-item-borderless">
-        <a href="website-edit.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>
-        <a href="page-list.html">Script Testing App</a>
-      </li>
-      <li class="list-group-item cl-list-item-borderless">
-        <a href="website-edit.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>
-        <a href="page-list.html">Blogger</a>
+      <li  *ngFor="let website of websites" class="list-group-item cl-list-item-borderless">
+        <a routerLink="../{{website._id}}"><span class="glyphicon glyphicon-cog pull-right"></span></a>
+        <a routerLink="../{{website._id}}/page">{{website.name}}</a>
       </li>
     </ul>
   </div>
-  <div class="col-xs-8">
-    <form>
-      <div class="form-group">
-        <label for="website-name">Name</label>
-        <input type="text" class="form-control" id="website-name" placeholder="Name">
-      </div>
-      <div class="form-group">
-        <label for="website-description">Description</label>
-        <textarea id="website-description" class="form-control" rows="5" placeholder="Description"></textarea>
-      </div>
-    </form>
-  </div>
+
+<!--<div class="contain-fluid">-->
+  <!--<div class="col-xs-4 hidden-xs">-->
+    <!--<ul class="list-group cl-list-group-borderless">-->
+      <!--<li class="list-group-item cl-list-item-borderless">-->
+        <!--<a routerLink="/website/edit"><span class="glyphicon glyphicon-cog pull-right"></span></a>-->
+        <!--<a routerLink="/page/list">Blogging App</a>-->
+      <!--</li>-->
+      <!--<li class="list-group-item cl-list-item-borderless">-->
+        <!--<a routerLink="/website/edit"><span class="glyphicon glyphicon-cog pull-right"></span></a>-->
+        <!--<a routerLink="page-list">Address Book App</a>-->
+      <!--</li>-->
+      <!--<li class="list-group-item cl-list-item-borderless">-->
+        <!--<a routerLink="/website/edit"><span class="glyphicon glyphicon-cog pull-right"></span></a>-->
+        <!--<a routerLink="/page/list">Script Testing App</a>-->
+      <!--</li>-->
+      <!--<li class="list-group-item cl-list-item-borderless">-->
+        <!--<a routerLink="/website/edit"><span class="glyphicon glyphicon-cog pull-right"></span></a>-->
+        <!--<a href="page-list.html">Blogger</a>-->
+      <!--</li>-->
+    <!--</ul>-->
+  <!--</div>-->
+<div class="col-xs-8">
+  <form (ngSubmit) = "getWebsite()" #f="ngForm">>
+    <div class="form-group">
+      <label for="website-name">Name</label>
+      <input type="text" class="form-control" id="website-name" placeholder="Name">
+    </div>
+    <div class="form-group">
+      <label for="website-description">Description</label>
+      <textarea id="website-description" class="form-control" rows="5" placeholder="Description"></textarea>
+    </div>
+  </form>
 </div>
+
+
+
 
 <nav class="navbar navbar-fixed-bottom cl-blue-navbar">
   <div class="container-fuild">
@@ -72,5 +95,5 @@
     </a>
   </div>
 </nav>
-</body>
+
 

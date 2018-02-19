@@ -23,7 +23,7 @@ export class WidgetChooserComponent implements OnInit {
     this.activatedRoute.params.subscribe(
       (params: any) => {
         this.userId = params['uid'];
-        this.websiteId = params['uid'];
+        this.websiteId = params['wid'];
         this.pageId = params['pid'];
       }
     );

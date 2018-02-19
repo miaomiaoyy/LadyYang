@@ -20,15 +20,30 @@ import { PageNewComponent } from './views/page/page-new/page-new.component';
 import { PageEditComponent } from './views/page/page-edit/page-edit.component';
 
 const appRoutes: Routes = [
+  // {path: 'login', component: LoginComponent},
+  // {path: 'register', component: RegisterComponent},
+  // {path: 'profile/:userId', component: ProfileComponent},
+  // {path: 'profile/:userId/website', component: WebsiteListComponent},
+  // {path: 'profile/:userId/website/new', component: WebsiteNewComponent},
+  // {path: 'profile/:userId/website/:pid', component: WebsiteEditComponent},
+  // {path: 'profile/:userId/website/:pid/widget', component: WidgetListComponent},
+  // {path: 'profile/:userId/website/:pid/widget/new', component: WidgetChooserComponent},
+  // {path: 'profile/:userId/website/:pid/widget/.wgid', component: WidgetEditComponent}
+
+
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'profile/:userId', component: ProfileComponent},
-  {path: 'profile/:userId/website', component: WebsiteListComponent},
-  {path: 'profile/:userId/website/new', component: WebsiteNewComponent},
-  {path: 'profile/:userId/website/:pid', component: WebsiteEditComponent},
-  {path: 'profile/:userId/website/:pid/widget', component: WidgetListComponent},
-  {path: 'profile/:userId/website/:pid/widget/new', component: WidgetChooserComponent},
-  {path: 'profile/:userId/website/:pid/widget/.wgid', component: WidgetEditComponent}
+  {path: 'profile/:uid', component: ProfileComponent},
+  {path: 'profile/:uid/website', component: WebsiteListComponent},
+  {path: 'profile/:uid/website/new', component: WebsiteNewComponent},
+  {path: 'profile/:uid/website/:wid', component: WebsiteEditComponent},
+  {path: 'profile/:uid/website/:wid/page', component: PageListComponent},
+  {path: 'profile/:uid/website/:wid/page/new', component: PageNewComponent},
+  {path: 'profile/:uid/website/:wid/page/:pid', component: PageEditComponent},
+  {path: 'profile/:uid/website/:wid/page/:pid/widget', component: WidgetListComponent},
+  {path: 'profile/:uid/website/:wid/page/:pid/widget/new', component: WidgetChooserComponent},
+  {path: 'profile/:uid/website/:wid/page/:pid/widget/:wgid', component: WidgetEditComponent},
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
 
 ];
 

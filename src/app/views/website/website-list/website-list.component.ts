@@ -12,6 +12,7 @@ import {User} from '../../../models/user.model.client';
 export class WebsiteListComponent implements OnInit {
   user: User;
   userId: String;
+  websiteId: String;
   websites: Website[] = [];
   foundWebsite = Website;
 
@@ -21,6 +22,7 @@ export class WebsiteListComponent implements OnInit {
     this.activatedRoute.params.subscribe(
       (params: any) => {
         this.userId = params['uid'];
+        this.websiteId = params['wid'];
         // this.user._id = this.userId;
       }
     );

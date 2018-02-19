@@ -18,11 +18,11 @@
 
 
   <div class="list-group cl-list-group-borderless" *ngFor="let website of websites">
-    <a class="ist-group-item cl-list-item-borderless" routerLink="profile/:userId/website/{{website._id}}/page">{{website.name}}</a>
+    <a class="ist-group-item cl-list-item-borderless" routerLink="./{{website._id}}/page">{{website.name}}</a>
 
-    <a class="pull-right" routerLink="/profile/:userId/website/{{website._id}}">
+    <a class="pull-right" routerLink="./{{website._id}}">
       <li class="list-group-item cl-list-item-borderless">
-        <a routerLink="/profile/:userId/website/{{website._id}}"><span class="glyphicon glyphicon-cog pull-right"></span></a>
+        <a routerLink="./{{website._id}}"><span class="glyphicon glyphicon-cog pull-right"></span></a>
       </li>
     </a>
   </div>
@@ -30,7 +30,7 @@
 
 <nav class="navbar navbar-fixed-bottom cl-blue-navbar">
   <div class="container-fuild">
-    <a routerLink="/profile/:userId" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
+    <a routerLink=".." class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
       <span class="glyphicon glyphicon-user"></span>
     </a>
   </div>
