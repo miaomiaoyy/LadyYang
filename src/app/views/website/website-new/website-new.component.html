@@ -75,12 +75,12 @@
 <div class="col-xs-8">
   <form (ngSubmit) = "getWebsite()" #f="ngForm">>
     <div class="form-group">
-      <label for="website-name">Name</label>
-      <input type="text" class="form-control" id="website-name" placeholder="Name">
+      <label>Name</label>
+      <input type="text" class="form-control" name="websitename" placeholder="Name">
     </div>
     <div class="form-group">
-      <label for="website-description">Description</label>
-      <textarea id="website-description" class="form-control" rows="5" placeholder="Description"></textarea>
+      <label>Description</label>
+      <input name="websitedescription" class="form-control" rows="5" placeholder="Description">
     </div>
   </form>
 </div>

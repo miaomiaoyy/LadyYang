@@ -9,14 +9,17 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./website-new.component.css']
 })
 export class WebsiteNewComponent implements OnInit {
-  @ViewChild('f') loginForm: NgForm;
+  @ViewChild('f') websiteForm: NgForm;
   userId: String;
   websites: Website[] = [];
   name: String;
   description: String;
 
   constructor(private websiteService: WebsiteService, private activatedRoute: ActivatedRoute) { }
-
+  getWebsite() {
+    this.name = this.websiteForm.value.websitename;
+    this.description = this.websiteForm.value.websitedescription;
+  }
   ngOnInit() {
     this.activatedRoute.params.subscribe(
       (params: any) => {
@@ -28,7 +31,8 @@ export class WebsiteNewComponent implements OnInit {
     // this.websites = this.websiteService.findWebsitesByUser2(this.userId);
   }
 
-  createWebsiteController(){
-
+  createWebsiteController(website: Website) {
+      this.websiteService.createWebsite(this.userId, website);
+    }
   }
-}
+
