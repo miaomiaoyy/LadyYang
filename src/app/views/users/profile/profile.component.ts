@@ -17,9 +17,10 @@ export class ProfileComponent implements OnInit {
     private userService: UserService
   ) { }
 
-  updateUser(user) {
-    console.log(user);
+  updateUserController(user) {
+    //console.log(user);
     this.user = this.userService.updateUser(user);
+
   }
   ngOnInit() {
     this.router.params.subscribe(
