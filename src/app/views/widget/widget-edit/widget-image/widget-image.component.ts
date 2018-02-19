@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {WidgetService} from '../../../../service/widget.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Widget} from '../../../../models/widget.model.client';
 
 
 @Component({
@@ -14,6 +15,7 @@ export class WidgetImageComponent implements OnInit {
   websiteId: String;
   pageId: String;
   widgetId: String;
+  widget: Widget;
 
   constructor(private widgetService: WidgetService,
               private activatedRoute: ActivatedRoute,
@@ -29,7 +31,7 @@ export class WidgetImageComponent implements OnInit {
         this.websiteId = params['wid'];
       }
     );
-
+    this.widget._id = this.widgetId;
     this.widgetService.findWidgetsById(this.widgetId);
   }
 }

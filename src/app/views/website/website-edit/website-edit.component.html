@@ -3,24 +3,24 @@
     <div class="col-xs-4 hidden-xs">
       <div class="container-fluid row">
         <p class="navbar-text pull-left">
-          <a href="website-list.html" class="navbar-link cl-text-white">
+          <a routerLink="profile/{{user._id}}/website/list" class="navbar-link cl-text-white">
             <span class="glyphicon glyphicon-chevron-left"></span>
           </a>
         </p>
-        <a class="cl-text-white navbar-brand cl-text-bold" href="#">
+        <a class="cl-text-white navbar-brand cl-text-bold" routerLink="#">
           myWebsites
         </a>
-        <a href="website-new.html" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
+        <a routerLink="profile/{{user._id}}/website/new" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
           <span class="glyphicon glyphicon-plus"></span>
         </a>
       </div>
     </div>
     <div class="col-xs-8">
       <div class="container-fluid">
-        <a class="cl-text-white navbar-brand cl-text-bold" href="#">
+        <a class="cl-text-white navbar-brand cl-text-bold" routerLink="#">
           Edit Websites
         </a>
-        <a href="website-list.html" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
+        <a routerLink="profile/{{user._id}}/website/list" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
           <span class="glyphicon glyphicon-ok"></span>
         </a>
       </div>

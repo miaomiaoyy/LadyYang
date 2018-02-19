@@ -5,19 +5,24 @@
 
     <input [(ngModel)]="username" type="text" class="form-control"id="username" placeholder="Username" />
 
-    <span class="btn-block" *ngIf="!username.valid && !username.errorFlag">
-      Please enter username!
-    </span>
 
-
-    <input [(ngModel)]="user.username" type="text" class="form-control"id="password" placeholder="Password" />
+    <input [(ngModel)]="username" type="text" class="form-control"id="password" placeholder="Password" />
 
 
     <input [(ngModel)]="verifyPassword" type="text" class="form-control"id="verificationPassword" placeholder="VerificationPassword" />
 
 
-  <button class="btn btn-primary btn-block" (click)="register()"> Register</button>
-  <button class="btn btn-danger btn-block" (click)="cancel()"> Cancel</button>
+  <button class="btn btn-primary btn-block" type = "submit" [disabled]="!f.valid"> Register</button>
+    <button class="btn btn-danger btn-block" (click)="cancel()"> Cancel</button>
+
+    <span class="btn-block" *ngIf="userDuplicateError"
+          class = "alert jasmine-alert" error()>
+      {{userDuplicateErrorMsg}}
+    </span>
+    <span class="btn-block" *ngIf="errorFlag"
+          class = "alert jasmine-alert" error()>
+      {{errorMsg}}
+    </span>
   </form>
 </div>
 

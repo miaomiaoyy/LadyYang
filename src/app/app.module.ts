@@ -24,7 +24,7 @@ import {WidgetYoutubeComponent} from './views/widget/widget-edit/widget-youtube/
 import { PageListComponent } from './views/page/page-list/page-list.component';
 import { PageNewComponent } from './views/page/page-new/page-new.component';
 import { PageEditComponent } from './views/page/page-edit/page-edit.component';
-import {AlertService} from './service/alert.service.client';
+import { AlertService } from './service/alert.service.client';
 
 
 

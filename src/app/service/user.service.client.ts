@@ -16,10 +16,12 @@ export class UserService {
   }
 
   findUserByCredential(username: String, password: String) {
-    return this.users.find(function (user) {
-      return user.username === username && user.password === password;
-    });
+    for (let i = 0; i < this.users.length; i++) {
+      if (this.users[i].username === username && this.users[i].password === password) {
+        return this.users[i];
+      }
   }
+}
 
   findUserById(userId: String) {
     return this.users.find(function (user) {
