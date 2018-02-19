@@ -31,13 +31,11 @@ export class WidgetChooserComponent implements OnInit {
     this.newWidget.widgetType = 'HEADER';
     this.newWidget.text = '';
     this.newWidget.width = '100%';
-    this.newWidget.url = '"/user/" + this.userId + "/website/" + this.websiteId + "/page/" + this.pageId + "/widget/" + newWidget._id';
-    this.widgetService.createWidget(this.pageId, this.newWidget);
-    this.router.navigate([this.newWidget.url]);
-
+    this.newWidget.url = '/user/' + this.userId + '/website/' + this.websiteId + '/page/' + this.pageId + '/widget/' + this.newWidget._id;
   }
     createWidgetController() {
       this.widgetService.createWidget(this.pageId, this.newWidget);
+      this.router.navigate([this.newWidget.url]);
     }
   }
 

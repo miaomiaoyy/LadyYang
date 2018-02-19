@@ -14,6 +14,10 @@ import {WebsiteNewComponent} from './views/website/website-new/website-new.compo
 import {WidgetListComponent} from './views/widget/widget-list/widget-list.component';
 import {WidgetChooserComponent} from './views/widget/widget-chooser/widget-chooser.component';
 import {WidgetEditComponent} from './views/widget/widget-edit/widget-edit.component';
+import {WidgetYoutubeComponent} from './views/widget/widget-edit/widget-youtube/widget-youtube.component';
+import { PageListComponent } from './views/page/page-list/page-list.component';
+import { PageNewComponent } from './views/page/page-new/page-new.component';
+import { PageEditComponent } from './views/page/page-edit/page-edit.component';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},

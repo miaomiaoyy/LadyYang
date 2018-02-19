@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {WebsiteService} from '../../../service/website.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Website} from '../../../models/website.model.client';
+import {User} from '../../../models/user.model.client';
 
 @Component({
   selector: 'app-website-edit',
@@ -14,6 +15,7 @@ export class WebsiteEditComponent implements OnInit {
   website: Website[] = [];
   name = String;
   developerId: String;
+  user: User;
 
   constructor(private websiteService: WebsiteService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
@@ -22,6 +24,7 @@ export class WebsiteEditComponent implements OnInit {
       (params: any) => {
         this.websiteId = params['wid'];
         this.developerId = params['uid'];
+        this.user._id = this.developerId;
       }
     );
 

@@ -19,7 +19,6 @@ export class WidgetEditComponent implements OnInit {
     this.activatedRoute.params.subscribe(
       (params: any) => {
         this.widgetId = params['wid'];
-        this.pageId = params['pid'];
       }
     );
 

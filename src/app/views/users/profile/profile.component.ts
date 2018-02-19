@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../../service/user.service.client';
 import {User} from '../../../models/user.model.client';
-import {NgForm} from '@angular/forms';
-import { ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-profile',
@@ -12,7 +10,8 @@ import { ViewChild } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
   user: User;
-  // constructor() { }
+  userId: String;
+
   constructor(
     private router: ActivatedRoute,
     private userService: UserService
@@ -23,8 +22,11 @@ export class ProfileComponent implements OnInit {
     this.user = this.userService.updateUser(user);
   }
   ngOnInit() {
-    this.router.params.subscribe(params => {
-      this.user = this.userService.findUserById(params['userId']);
+    this.router.params.subscribe(
+      (params) => {
+        this.userId = params['userId'];
+        this.user = this.userService.findUserById(params['userId']);
     });
   }
 }
+

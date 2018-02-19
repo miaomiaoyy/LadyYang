@@ -1,3 +1,70 @@
-<p>
-  website-list works!
-</p>
+
+<nav class="navbar navbar-fixed-top cl-blue-navbar">
+  <div class="container-fluid">
+    <p class="navbar-text pull-left">
+      <a routerLink="/profile" class="navbar-link cl-text-white">
+      <!--<a href="profile.html" class="navbar-link cl-text-white"(click)="createNewWebsite(website)" )>-->
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+    </p>
+    <a class="cl-text-white navbar-brand cl-text-bold">
+      Websites
+    </a>
+    <a class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding" routerLink="/profile/{{userId}}/website/new" >
+      <span class="glyphicon glyphicon-plus"></span>
+    </a>
+  </div>
+</nav>
+
+
+  <div class="list-group cl-list-group-borderless" *ngFor="let website of websites">
+    <a class="ist-group-item cl-list-item-borderless" routerLink="/website/{{website._id}}/page">{{website.name}}</a>
+
+    <a class="pull-right" routerLink="/website/{{website._id}}">
+      <li class="list-group-item cl-list-item-borderless">
+        <a routerLink="/website/{{website._id}}"><span class="glyphicon glyphicon-cog pull-right"></span></a>
+      </li>
+    </a>
+  </div>
+
+
+  <!--<ul class="list-group cl-list-group-borderless">-->
+    <!--<li class="list-group-item cl-list-item-borderless">-->
+
+      <!--<label for="email">Email</label>-->
+      <!--<input [(ngModel)]="user.password" type="password" class="form-control"id="email" />-->
+      <!--<a routerLink="/profile/:uid/website/edit"><span class="glyphicon glyphicon-cog pull-right"></span></a>-->
+      <!--<a routerLink="/profile/:uid/page/list">Address Book App</a>-->
+      <!--&lt;!&ndash;<a href="website-edit.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>&ndash;&gt;-->
+      <!--&lt;!&ndash;<a href="page-list.html">Address Book App</a>&ndash;&gt;-->
+    <!--</li>-->
+    <!--<li class="list-group-item cl-list-item-borderless">-->
+      <!--<a href="/website/edit"><span class="glyphicon glyphicon-cog pull-right"></span></a>-->
+      <!--<a href="/page/list">Blogger</a>-->
+      <!--&lt;!&ndash;&ndash;&gt;-->
+      <!--&lt;!&ndash;<a href="website-edit.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>&ndash;&gt;-->
+      <!--&lt;!&ndash;<a href="page-list.html">Blogger</a>&ndash;&gt;-->
+    <!--</li>-->
+    <!--<li class="list-group-item cl-list-item-borderless">-->
+      <!--<a routerLink="/website/edit"><span class="glyphicon glyphicon-cog pull-right"></span></a>-->
+      <!--<a routerLink="/page/list">Blogging App</a>-->
+      <!--&lt;!&ndash;<a href="website-edit.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>&ndash;&gt;-->
+      <!--&lt;!&ndash;<a href="page-list.html">Blogging App</a>&ndash;&gt;-->
+    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+    <!--&lt;!&ndash;<li class="list-group-item cl-list-item-borderless">&ndash;&gt;-->
+      <!--&lt;!&ndash;<a routerLink="/website/edit"><span class="glyphicon glyphicon-cog pull-right"></span></a>&ndash;&gt;-->
+      <!--&lt;!&ndash;<a href="/page/list">Script Testing App</a>&ndash;&gt;-->
+      <!--&lt;!&ndash;&lt;!&ndash;<a href="website-edit.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>&ndash;&gt;&ndash;&gt;-->
+      <!--&lt;!&ndash;&lt;!&ndash;<a href="page-list.html">Script Testing App</a>&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+  <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<nav class="navbar navbar-fixed-bottom cl-blue-navbar">
+  <div class="container-fuild">
+    <a href="profile.html" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
+      <span class="glyphicon glyphicon-user"></span>
+    </a>
+  </div>
+</nav>
+

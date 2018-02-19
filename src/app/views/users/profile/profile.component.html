@@ -4,8 +4,9 @@
       Profile
     </a>
 
-    <a href="profile.html" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
-      <span class="glyphicon glyphicon-ok"></span>
+    <a href="profile.html"
+       class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding" (click)="updateUser(user)">
+      <span class="glyphicon glyphicon-ok" ></span>
     </a>
   </div>
 </nav>
@@ -13,7 +14,6 @@
 
 <h1>Profile</h1>
 <div class="form-group">
-
   <label for="username">Username</label>
   <input [(ngModel)]="user.username" type="text" class="form-control"id="username"  />
 
@@ -25,18 +25,18 @@
 
   <label for="last-name">LastName</label>
   <input [(ngModel)]="user.lastName"type="text" class="form-control" id="last-name"/>
-
 <br>
 
-
-  <a class="btn btn-primary btn-block" href="../website/website-list.html">Websites</a>
-  <a class="btn btn-danger  btn-block" href="login.html">Logout</a>
+  <a routerLink="/profile/{{user._id}}/website" class="btn btn-primary btn-block">Websites</a>
+  <a routerLink="/login" class="btn btn-danger btn-block">Logout</a>
 </div>
 
 <nav class="navbar navbar-fixed-bottom cl-blue-navbar">
   <div class="container-fluid">
-    <a href="profile.html" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
+    <a routerLink="/profile" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
       <span class="glyphicon glyphicon-user"></span>
     </a>
   </div>
 </nav>
+
+

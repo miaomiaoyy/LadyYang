@@ -1,5 +1,5 @@
   import { Component, OnInit } from '@angular/core';
-  import {Router} from '@angular/router';
+  import {ActivatedRoute, Router} from '@angular/router';
   import {UserService} from '../../../service/user.service.client';
   import {User} from '../../../models/user.model.client';
   import {NgForm} from '@angular/forms';
@@ -13,48 +13,46 @@
 })
 export class RegisterComponent implements OnInit {
   @ViewChild('f') registerForm: NgForm;
-  user: User;
+  username: String;
+  password: String;
   verifyPassword: String;
+  firstName: String;
+  lastName: String;
   errorFlag: boolean;
-
+  userDuplicateError: boolean;
   errorMsg = 'Two passwords mismatch, please retry';
-
+  userDuplicateErrorMsg = 'The user already exits';
 
    constructor(
      private userService: UserService,
      private router: Router,
+     private activeRoute: ActivatedRoute,
      private alertService: AlertService) {}
      register() {
-     this.user.username = this.registerForm.value.username;
-     this.user.password = this.registerForm.value.password;
+     this.username = this.registerForm.value.username;
+     this.password = this.registerForm.value.password;
      this.verifyPassword = this.registerForm.value.verifyPassword;
-     this.user.lastName = this.registerForm.value.lastName;
-     this.user.firstName = this.registerForm.value.firstName;
-     this.user._id = Math.random().toString();
-     while (this.userService.findUserById(this.user._id) != null) {
-       this.user._id = Math.random().toString();
+     this.lastName = this.registerForm.value.lastName;
+     this.firstName = this.registerForm.value.firstName;
+     if (this.userService.findUserByCredential(this.username, this.password) != null) {
+       this.userDuplicateError = true;
+       alert(this.userDuplicateErrorMsg);
      }
-     if (this.verifyPassword !== this.user.password) {
+     if (this.verifyPassword !== this.password) {
        this.errorFlag = true;
+       alert(this.errorMsg);
      }
      if (this.errorFlag) {
-       this.user.password = null;
+       this.password = null;
      }
-     this.userService.createUser(this.user);
-
-     // this.userService.createUser(this.user)
-     //   .subscribe(
-     //     data => {
-     //       this.alertService.success('Registration successful', true);
-     //       this.router.navigate(['/login']);
-     //     },
-     //     error => {
-     //       this.alertService.error(error);
-     //       this.loading = false;
-     //     });
-     this.router.navigate(['/profile', this.user._id]);
+     const user: User = new User(Math.random().toString() + '', this.username, this.password, this.firstName, this.lastName);
+     this.userService.createUser(user);
+     this.router.navigate(['/profile', user._id]);
    }
-      OnInit() {}
+   cancel() {
+     this.router.navigate(['/login']);
+   }
+   OnInit() {}
 
   ngOnInit(): void {
   }

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WidgetYoutubuComponent } from './widget-youtubu.component';
+import {WidgetYoutubeComponent} from './widget-youtube.component';
 
-describe('WidgetYoutubuComponent', () => {
-  let component: WidgetYoutubuComponent;
-  let fixture: ComponentFixture<WidgetYoutubuComponent>;
+describe('WidgetYoutubeComponent', () => {
+  let component: WidgetYoutubeComponent;
+  let fixture: ComponentFixture<WidgetYoutubeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WidgetYoutubuComponent ]
+      declarations: [ WidgetYoutubeComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WidgetYoutubuComponent);
+    fixture = TestBed.createComponent(WidgetYoutubeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

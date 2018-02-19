@@ -20,9 +20,11 @@ import { WidgetListComponent } from './views/widget/widget-list/widget-list.comp
 import { WidgetEditComponent } from './views/widget/widget-edit/widget-edit.component';
 import { WidgetImageComponent } from './views/widget/widget-edit/widget-image/widget-image.component';
 import { WidgetHeaderComponent } from './views/widget/widget-edit/widget-header/widget-header.component';
+import {WidgetYoutubeComponent} from './views/widget/widget-edit/widget-youtube/widget-youtube.component';
 import { PageListComponent } from './views/page/page-list/page-list.component';
 import { PageNewComponent } from './views/page/page-new/page-new.component';
 import { PageEditComponent } from './views/page/page-edit/page-edit.component';
+import {AlertService} from './service/alert.service.client';
 
 
 
@@ -40,6 +42,7 @@ import { PageEditComponent } from './views/page/page-edit/page-edit.component';
     WidgetEditComponent,
     WidgetImageComponent,
     WidgetHeaderComponent,
+    WidgetYoutubeComponent,
     PageListComponent,
     PageNewComponent,
     PageEditComponent
@@ -51,7 +54,7 @@ import { PageEditComponent } from './views/page/page-edit/page-edit.component';
     //HttpModule,
     //Routing,
   ],
-  providers: [UserService, WebsiteService, PageService, WidgetService],
+  providers: [UserService, WebsiteService, PageService, WidgetService, AlertService],
   bootstrap: [AppComponent]
 
 })

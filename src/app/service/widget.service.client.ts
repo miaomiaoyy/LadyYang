@@ -46,11 +46,19 @@ export  class WidgetService {
     return false;
   }
 
-
+  findWidgetsByPageId(pageId: String) {
+    const res: Widget[] = [];
+    for (let x = 0; x < this.widgets.length; x++) {
+      if (this.widgets[x].pageId == pageId) {
+        res.push(this.widgets[x]);
+      }
+    }
+    return res;
+  }
   deleteWidget(widgetId) {
     alert(this.alertService.success('delete Successful', true));
   }
-  findWidgetsByPageId(pageId) {
+  findWidgetsByPageId2(pageId) {
     return this.widgets.find(function (widget) {
       return widget.pageId === pageId;
     });
