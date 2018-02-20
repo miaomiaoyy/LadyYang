@@ -12,11 +12,11 @@ import {User} from '../../../models/user.model.client';
 export class WebsiteEditComponent implements OnInit {
 
   websiteId: String;
-  website: Website[] = [];
+  websites: Website[] = [];
   name = String;
   developerId: String;
   user: User;
-
+  userId: String;
   constructor(private websiteService: WebsiteService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
@@ -24,11 +24,11 @@ export class WebsiteEditComponent implements OnInit {
       (params: any) => {
         this.websiteId = params['wid'];
         this.developerId = params['uid'];
-        this.user.uid = this.developerId;
+        this.userId = params['uid'];
       }
     );
 
-    this.website = this.websiteService.findWebsitesByUser(this.developerId);
+    this.websites = this.websiteService.findWebsitesByUser(this.developerId);
     this.websiteService.deleteWebsite(this.websiteId);
   }
 

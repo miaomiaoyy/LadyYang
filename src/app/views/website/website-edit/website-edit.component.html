@@ -1,36 +1,75 @@
 <nav class="navbar navbar-fixed-top cl-blue-navbar">
   <div class="row">
-    <div class="col-xs-4 hidden-xs">
+    <div class="col-xs-3 hidden-xs">
       <div class="container-fluid row">
         <p class="navbar-text pull-left">
-          <a routerLink="profile/{{user.uid}}/website/list" class="navbar-link cl-text-white">
+          <a routerLink=".." class="navbar-link cl-text-white">
             <span class="glyphicon glyphicon-chevron-left"></span>
           </a>
         </p>
         <a class="cl-text-white navbar-brand cl-text-bold" routerLink="#">
           myWebsites
         </a>
-        <a routerLink="profile/{{user.uid}}/website/new" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
+        <a routerLink="./new" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
           <span class="glyphicon glyphicon-plus"></span>
         </a>
       </div>
     </div>
+
     <div class="col-xs-8">
       <div class="container-fluid">
-        <a class="cl-text-white navbar-brand cl-text-bold" routerLink="#">
+        <a class="cl-text-white navbar-brand cl-text-bold">
           Edit Websites
         </a>
-        <a routerLink="profile/{{user.uid}}/website/list" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
+        <a routerLink=".." class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
           <span class="glyphicon glyphicon-ok"></span>
         </a>
       </div>
     </div>
   </div>
 </nav>
+<div class="col-xs-3 hidden-xs cl-body-padding cl-full-height">
+
+  <!--<div class="row extra-padding" *ngFor="let website of websites">-->
+    <!--<a class="extra-left-padding" routerLink="/user/{{developerId}}/website/{{website._id}}/page">{{website.name}}</a>-->
+    <!--<a class="pull-right" routerLink="/user/{{userId}}/website/{{website._id}}">-->
+      <!--<i class="glyphicon glyphicon-cog text-primary extra-right-padding"></i>-->
+    <!--</a>-->
+  <!--</div>-->
+<!--</div>-->
 
 
-<nav class="navbar navbar-fixed-bottom navbar-light bg-primary">
-  <a class="navbar-brand pull-right" routerLink="/profile/{{user._id}}">
-    <span class="glyphicon glyphicon-user text-white"></span>
+  <div class="list-group cl-list-group-borderless" *ngFor="let website of websites">
+    <!--<a class="list-group-item cl-list-item-borderless" routerLink="./{{website._id}}/page">{{website.name}}</a>-->
+    <a routerLink="./{{website._id}}/page">{{website.name}}</a>
+    <a class="pull-right" routerLink="./{{website._id}}">
+      <li class="list-group-item cl-list-item-borderless">
+        <a routerLink="./{{website._id}}"><span class="glyphicon glyphicon-cog pull-right"></span></a>
+      </li>
+    </a>
+  </div>
+</div>
+
+<div class="col-xs-8">
+  <form>
+    <div class="form-group">
+      <label for="website-name">Website Name</label>
+      <input type="text" class="form-control" id="website-name" placeholder="give me a name">
+    </div>
+    <div class="form-group">
+      <label for="website-description">Website Description</label>
+      <textarea id="website-description" class="form-control" rows="5"
+                placeholder="How do you wnat me to look like?"></textarea>
+    </div>
+    <a class="btn btn-danger  btn-block" routerLink="..">Delete</a>
+  </form>
+</div>
+
+
+<nav class="navbar navbar-fixed-bottom cl-blue-navbar">
+  <div class="container-fuild">
+  <a class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding" routerLink="./profile/{{userId}}">
+    <span class="glyphicon glyphicon-user"></span>
   </a>
+  </div>
 </nav>
