@@ -1,25 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Widget List</title>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="../css/style.css" rel="stylesheet"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-</head>
-<body>
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid row">
 
     <div class="navbar-text pull-left">
-      <a href="page-list.html" class="cl-text-black cl-icon-padding">
+      <a routerLink="./new" class="cl-text-black cl-icon-padding">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
       </a>
     </div>
     <div class="navbar-text pull-right">
-      <a href="widget-chooser.html" class="cl-icon-padding cl-text-black">
+      <a routerLink="./new" class="cl-icon-padding cl-text-black">
           <span class="glyphicon glyphicon-plus">
           </span>
       </a>
@@ -33,10 +23,10 @@
 <div class="container cl-container-padding">
   <div>
     <div class="pull-right">
-      <a href="#" class="pull-right">
+      <a routerLink="#" class="pull-right">
         <span class="glyphicon glyphicon-menu-hamburger"></span>
       </a>
-      <a href="widget-heading.html">
+      <a routerLink="./heading">
         <span class="glyphicon glyphicon-cog"></span>
       </a>
     </div>
@@ -48,7 +38,7 @@
       <a href="#" class="pull-right">
         <span class="glyphicon glyphicon-menu-hamburger"></span>
       </a>
-      <a href="widget-heading.html">
+      <a routerLink="./heading.html">
         <span class="glyphicon glyphicon-cog"></span>
       </a>
     </div>
@@ -60,7 +50,7 @@
       <a href="#" class="pull-right">
         <span class="glyphicon glyphicon-menu-hamburger"></span>
       </a>
-      <a href="widget-image.html" class="pull-right">
+      <a routerLink="./image" class="pull-right">
         <span class="glyphicon glyphicon-cog"></span>
       </a>
       <img class="img-responsive img-rounded cl-widget-images"
@@ -69,10 +59,10 @@
   </div>
   <div>
     <div class="pull-right">
-      <a href="#" class="pull-right">
+      <a routerLink="#" class="pull-right">
         <span class="glyphicon glyphicon-menu-hamburger"></span>
       </a>
-      <a href="#">
+      <a routerLink="#">
         <span class="glyphicon glyphicon-cog"></span>
       </a>
     </div>
@@ -82,10 +72,10 @@
 
   <div>
     <div class="pull-right">
-      <a href="#" class="pull-right">
+      <a routerLink="#" class="pull-right">
         <span class="glyphicon glyphicon-menu-hamburger"></span>
       </a>
-      <a href="widget-heading.html">
+      <a routerLink="./heading.html">
         <span class="glyphicon glyphicon-cog"></span>
       </a>
     </div>
@@ -123,7 +113,7 @@
   <div class="container-fluid row">
     <div class="pull-right navbar-text">
 
-      <a href="profile.html" class="cl-icon-padding">
+      <a routerLink="/profile/{{userId}}}" class="cl-icon-padding">
         <span class="glyphicon glyphicon-user"></span>
       </a>
 

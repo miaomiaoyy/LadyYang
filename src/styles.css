@@ -7,20 +7,22 @@
 .user-login {
   padding-top:10px;
 }
+
 body {
   padding-top: 70px;
   padding-bottom: 70px;
 }
+
 input.form-control {
   margin-bottom: 5px;
 }
 
 .cl-form-bottom-padding{
-  margin-bottom: 2em;
+  margin-bottom: 3em;
 }
 
 .form-group{
-  padding-top: 0px;
+  padding-top: 50px;
 }
 
 

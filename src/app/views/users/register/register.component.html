@@ -2,15 +2,11 @@
   <h1>Register</h1>
   <form (ngSubmit)="register()" #f="ngForm">
 
-
     <input [(ngModel)]="username" type="text" class="form-control"id="username" placeholder="Username" />
-
 
     <input [(ngModel)]="username" type="text" class="form-control"id="password" placeholder="Password" />
 
-
     <input [(ngModel)]="verifyPassword" type="text" class="form-control"id="verificationPassword" placeholder="VerificationPassword" />
-
 
   <button class="btn btn-primary btn-block" type = "submit" [disabled]="!f.valid"> Register</button>
     <button class="btn btn-danger btn-block" (click)="cancel()"> Cancel</button>

@@ -24,7 +24,7 @@ export class WebsiteEditComponent implements OnInit {
       (params: any) => {
         this.websiteId = params['wid'];
         this.developerId = params['uid'];
-        this.user._id = this.developerId;
+        this.user.uid = this.developerId;
       }
     );
 

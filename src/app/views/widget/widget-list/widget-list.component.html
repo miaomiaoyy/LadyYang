@@ -1,16 +1,15 @@
 
-
 <nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid row" routerLink="/user/{{userId}}/website/{{websiteId}}/page">
+  <div class="container-fluid row">
 
     <div class="navbar-text pull-left">
-      <a routerLink="/page/list" class="cl-text-black cl-icon-padding">
+      <a routerLink="/profile/{{userId}}/website/{websiteId}}/page/{{pageId}}" class="cl-text-black cl-icon-padding">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
       </a>
     </div>
     <div class="navbar-text pull-right">
-      <a routerLink="/user/{{userId}}/website/{{websiteId}}/page/{{pageId}}/widget/new" class="cl-icon-padding cl-text-black">
+      <a routerLink="./" class="cl-icon-padding cl-text-black">
           <span class="glyphicon glyphicon-plus">
           </span>
       </a>
@@ -22,121 +21,87 @@
 </nav>
 
 
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid row">
+  <div class="cl-update-padding">
+    <div *ngFor="let widget of widgets">
+      <div *ngIf="widget.widgetType.match('HEADER')">
+        <div class="pull-right">
+          <a routerLink=".." class="pull-right">
+            <span class="glyphicon glyphicon-menu-hamburger"></span>
+          </a>
+          <a routerLink="./{{widget._id}}">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </div>
+        <h1>{{widget.text}}</h1>
+      </div>
 
-    <div class="navbar-text pull-left">
-      <a href="page-list.html" class="cl-text-black cl-icon-padding">
-          <span class="glyphicon glyphicon-chevron-left">
-          </span>
-      </a>
+      <div *ngIf="widget.widgetType.match('IMAGE')">
+          <a class="pull-right">
+            <span class="glyphicon glyphicon-menu-hamburger"></span>
+          </a>
+          <a routerLink="./{{widget._id}}" class="pull-right">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+          <img class="img-responsive cl-widget-images" src="{{widget.url}}" alt="alt" width="{{widget.width}}">
+        <br>
+      </div>
+
+      <div class="embed-responsive embed-responsive-16by9" *ngIf="widget.widgetType.match('YOUTUBE')">
+          <iframe width="{{widget.width}}" height="360" [src]="updateURL(widget.url)" frameborder="0" allowfullscreen>
+          </iframe>
+          <a [routerLink]="['/#']" class="pull-right">
+            <span class="glyphicon glyphicon-menu-hamburger" style="background-color: white"></span>
+          </a>
+          <a routerLink="./{{widget._id}}" class="pull-right">
+            <span class="glyphicon glyphicon-cog" style="background-color: white"></span>
+          </a>
+      </div>
     </div>
-    <div class="navbar-text pull-right">
-      <a href="widget-chooser.html" class="cl-icon-padding cl-text-black">
-          <span class="glyphicon glyphicon-plus">
-          </span>
-      </a>
-    </div>
-    <a class="navbar-brand cl-text-white cl-text-bold" href="#">
-      Widgets
-    </a>
   </div>
-</nav>
 
 
-<nav class="navbar navbar-fixed-top navbar-light bg-secondary">
-  <a class="btn navbar-brand" routerLink="/user/{{userId}}/website/{{websiteId}}/page">
-    <span class="glyphicon glyphicon-chevron-left text-dark"></span>
-  </a>
-  <div class="navbar-brand font-weight-bold">
-    Widgets
-  </div>
-  <a class="btn navbar-brand pull-right" routerLink="/user/{{userId}}/website/{{websiteId}}/page/{{pageId}}/widget/new">
-    <span class="glyphicon glyphicon-plus text-dark"></span>
-  </a>
-</nav>
+
+<!--<div class="list-group cl-update-padding" *ngFor="let widget of widgets">-->
+  <!--<a class="list-group-item cl-update-padding" routerLink="./{{pageId}}/widget">{{page.name}}</a>-->
+
+  <!--<a class="pull-right" routerLink="./{{pageId}}/widget">-->
+    <!--<h1>{{widget.text}}</h1>-->
+    <!--<i class="glyphicon glyphicon-cog text-primary extra-right-padding"></i>-->
+  <!--</a>-->
+<!--</div>-->
 
 
-<!--<div class="container cl-container-padding">-->
-  <!--<div>-->
-    <!--<div *ngFor="let widget of widgets">-->
-      <!--<div *ngIf="widget.widgetType == 'HEADER'">-->
-    <!--<div class="pull-right" routerLink="/user/{{userId}}/website/{{websiteId}}/page/{{pageId}}/widget/new">-->
-      <!--<a href="#" class="pull-right">-->
-        <!--<span class="glyphicon glyphicon-menu-hamburger"></span>-->
-      <!--</a>-->
-      <!--<a href="widget-heading.html">-->
-        <!--<span class="glyphicon glyphicon-cog"></span>-->
-      <!--</a>-->
-    <!--</div>-->
-        <!--<h1>{{widget.text}}</h1>-->
-    <!--&lt;!&ndash;<h1>London terror attack: Police fired 'unprecedented' number of rounds</h1>&ndash;&gt;-->
-  <!--</div>-->
-
-
-  <!--<div>-->
-    <!--<div class="pull-right">-->
-      <!--<a href="#" class="pull-right">-->
-        <!--<span class="glyphicon glyphicon-menu-hamburger"></span>-->
-      <!--</a>-->
-      <!--<a href="widget-heading.html">-->
-        <!--<span class="glyphicon glyphicon-cog"></span>-->
-      <!--</a>-->
-    <!--</div>-->
-    <!--<h3>Counterterrorism officers patrol near the scene of the attack on London Bridge.</h3>-->
-  <!--</div>-->
-
-  <!--<div>-->
     <!--<div>-->
       <!--<a href="#" class="pull-right">-->
         <!--<span class="glyphicon glyphicon-menu-hamburger"></span>-->
       <!--</a>-->
-      <!--<a href="widget-image.html" class="pull-right">-->
+      <!--<a routerLink="./image" class="pull-right">-->
         <!--<span class="glyphicon glyphicon-cog"></span>-->
       <!--</a>-->
       <!--<img class="img-responsive img-rounded cl-widget-images"-->
            <!--src="http://i2.cdn.cnn.com/cnnnext/dam/assets/170604130220-41-london-bridge-incident-0604-gallery-exlarge-169.jpg">-->
     <!--</div>-->
   <!--</div>-->
+
   <!--<div>-->
     <!--<div class="pull-right">-->
-      <!--<a [routerLink]="['/#']" class="pull-right">-->
+      <!--<a routerLink="#" class="pull-right">-->
         <!--<span class="glyphicon glyphicon-menu-hamburger"></span>-->
       <!--</a>-->
-      <!--<a [routerLink]="['/#']">-->
-      <!--<span class="glyphicon glyphicon-cog"></span>-->
+      <!--<a routerLink="#">-->
+        <!--<span class="glyphicon glyphicon-cog"></span>-->
       <!--</a>-->
     <!--</div>-->
     <!--<p>Armed officers responding to the London Bridge terror attack fired an "unprecedented" number of rounds at the three attackers because they were wearing what appeared to be suicide belts, police said.-->
     <!--</p>-->
   <!--</div>-->
 
-  <!--<div>-->
-    <!--<div class="pull-right">-->
-      <!--<div *ngIf="widget.widgetType == 'IMAGE'">-->
-        <!--<div>-->
-          <!--<a [routerLink]="['/#']" class="pull-right">-->
 
-        <!--<span class="glyphicon glyphicon-menu-hamburger"></span>-->
-      <!--</a>-->
-      <!--<a href="widget-heading.html">-->
-        <!--<span class="glyphicon glyphicon-cog"></span>-->
-      <!--</a>-->
-    <!--</div>-->
-    <!--<h3>Report: Incident at London Bridge</h3>-->
-  <!--</div>-->
 
   <!--<div>-->
     <!--<div class="embed-responsive embed-responsive-16by9">-->
-      <!--<a routerLink="/user/{{userId}}/website/{{websiteId}}/page/{{pageId}}/widget/{{widget._id}}" class="pull-right">-->
-      <!--</a>-->
-      <!--<img class="cl-widget-images" src="{{widget.url}}" alt="alt" width="{{widget.width}}">-->
-    <!--</div>-->
-    <!--<br>-->
-  <!--</div>-->
-
       <!--<iframe width="640" height="360" src="https://www.youtube.com/embed/APexI9Zb6iE" frameborder="0" allowfullscreen></iframe>"-->
-      <!--allowfullscreen></iframe>-->
+
       <!--<a href="#" class="pull-right">-->
         <!--<span class="glyphicon glyphicon-menu-hamburger" style="background-color: white"></span>-->
       <!--</a>-->
@@ -148,79 +113,36 @@
 
   <!--<div>-->
     <!--<div class="pull-right">-->
+      <!--<a href="#" class="pull-right">-->
         <!--<span class="glyphicon glyphicon-menu-hamburger"></span>-->
+      <!--</a>-->
+      <!--<a href="#">-->
         <!--<span class="glyphicon glyphicon-cog"></span>-->
+      <!--</a>-->
     <!--</div>-->
     <!--<p>There is a report of an incident has occurred at London Bridge. From CNN London.</p>-->
   <!--</div>-->
 
-<!--</div>-->
 
 
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid row">
+    <div class="pull-right navbar-text">
 
-<!--<nav class="navbar navbar-default navbar-fixed-bottom">-->
-  <!--<div class="container-fluid row">-->
-    <!--<div class="pull-right navbar-text">-->
+      <a routerLink="/profile/{{userId}}}" class="cl-icon-padding">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
 
-      <!--<a routerLink="/profile" class="cl-icon-padding">-->
-        <!--<span class="glyphicon glyphicon-user"></span>-->
-      <!--</a>-->
+    </div>
 
-    <!--</div>-->
+    <div class="pull-left navbar-text">
+      <a  class="cl-icon-padding" routerLink="./">
+        <span class="glyphicon glyphicon-play"></span>
+      </a>
+      <a class="cl-icon-padding" routerLink="./">
+        <span class="glyphicon glyphicon-eye-open"></span>
+      </a>
 
-    <!--<div class="pull-left navbar-text">-->
-      <!--<a class="cl-icon-padding">-->
-        <!--<span class="glyphicon glyphicon-play"></span>-->
-      <!--</a>-->
-      <!--<a class="cl-icon-padding">-->
-        <!--<span class="glyphicon glyphicon-eye-open"></span>-->
-      <!--</a>-->
-
-    <!--</div>-->
-  <!--</div>-->
-<!--</nav>-->
-
-<!--/////////////////-->
-
-<!--<div class="cl-body-padding">-->
-  <!--<div *ngFor="let widget of widgets">-->
-    <!--<div *ngIf="widget.widgetType == 'HEADER'">-->
-      <!--<div class="pull-right">-->
-        <!--<a [routerLink]="['/#']" class="pull-right">-->
-          <!--<span class="glyphicon glyphicon-menu-hamburger"></span>-->
-        <!--</a>-->
-        <!--<a routerLink="/user/{{userId}}/website/{{websiteId}}/page/{{pageId}}/widget/{{widget._id}}">-->
-          <!--<span class="glyphicon glyphicon-cog"></span>-->
-        <!--</a>-->
-      <!--</div>-->
-      <!--<h1>{{widget.text}}</h1>-->
-    <!--</div>-->
-
-    <!--<div *ngIf="widget.widgetType == 'IMAGE'">-->
-      <!--<div>-->
-        <!--<a [routerLink]="['/#']" class="pull-right">-->
-          <!--<span class="glyphicon glyphicon-menu-hamburger"></span>-->
-        <!--</a>-->
-        <!--<a routerLink="/user/{{userId}}/website/{{websiteId}}/page/{{pageId}}/widget/{{widget._id}}" class="pull-right">-->
-          <!--<span class="glyphicon glyphicon-cog"></span>-->
-        <!--</a>-->
-        <!--<img class="img-responsive cl-widget-images" src="{{widget.url}}" alt="alt" width="{{widget.width}}">-->
-      <!--</div>-->
-      <!--<br>-->
-    <!--</div>-->
-
-    <!--<div class="embed-responsive embed-responsive-16by9" *ngIf="widget.widgetType == 'YOUTUBE'">-->
-      <!--<div>-->
-        <!--<iframe width="{{widget.width}}" height="360" [src]="photoURL(widget.url)" frameborder="0" allowfullscreen>-->
-        <!--</iframe>-->
-        <!--<a [routerLink]="['/#']" class="pull-right">-->
-          <!--<span class="glyphicon glyphicon-menu-hamburger" style="background-color: white"></span>-->
-        <!--</a>-->
-        <!--<a routerLink="/user/{{userId}}/website/{{websiteId}}/page/{{pageId}}/widget/{{widget._id}}" class="pull-right">-->
-          <!--<span class="glyphicon glyphicon-cog" style="background-color: white"></span>-->
-        <!--</a>-->
-      <!--</div>-->
-      <!--<br>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</div>-->
+    </div>
+  </div>
+</nav>

@@ -12,7 +12,7 @@ export class UserService {
   ];
   alertService: AlertService;
   createUser(user: User) {
-    this.users.push(new User(user._id, user.username, user.password, user.firstName, user.lastName));
+    this.users.push(new User(user.uid, user.username, user.password, user.firstName, user.lastName));
   }
 
   findUserByCredential(username: String, password: String) {
@@ -25,13 +25,13 @@ export class UserService {
 
   findUserById(userId: String) {
     return this.users.find(function (user) {
-      return user._id === userId;
+      return user.uid === userId;
     });
   }
 
   updateUser(user: User) {
     for (let i = 0; i < this.users.length; i++) {
-      if (this.users[i]._id === user._id) {
+      if (this.users[i].uid === user.uid) {
         this.users[i].firstName = user.firstName;
         this.users[i].lastName = user.lastName;
         return this.users[i];
@@ -41,7 +41,7 @@ export class UserService {
 
   deleteUser(userId: String) {
     for (const i in this.users) {
-      if (this.users[i]._id === userId) {
+      if (this.users[i].uid === userId) {
         const j = +i;
         this.users.splice(j, 1);
         alert(this.alertService.success('delete Successful', true));

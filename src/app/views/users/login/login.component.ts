@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.username = this.loginForm.value.username;
     this.password = this.loginForm.value.password;
-    alert(this.username);
+    alert(this.username + 'is login');
 
     const user: User = this.userService.findUserByCredential(this.username, this.password);
     if (user) {
@@ -32,6 +32,9 @@ export class LoginComponent implements OnInit {
     } else {
       this.router.navigate(['/login']);
     }
+  }
+  register() {
+    this.router.navigate(['/register']);
   }
 
   ngOnInit() {}

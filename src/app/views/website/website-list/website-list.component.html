@@ -2,7 +2,7 @@
 <nav class="navbar navbar-fixed-top cl-blue-navbar">
   <div class="container-fluid">
     <p class="navbar-text pull-left">
-      <a routerLink="/profile" class="navbar-link cl-text-white">
+      <a routerLink=".." class="navbar-link cl-text-white">
       <!--<a href="profile.html" class="navbar-link cl-text-white"(click)="createNewWebsite(website)" )>-->
         <span class="glyphicon glyphicon-chevron-left"></span>
       </a>
@@ -10,7 +10,7 @@
     <a class="cl-text-white navbar-brand cl-text-bold">
       Websites
     </a>
-    <a class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding" routerLink="/profile/:userId/website/new" >
+    <a class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding" routerLink="./new" >
       <span class="glyphicon glyphicon-plus"></span>
     </a>
   </div>
@@ -18,7 +18,7 @@
 
 
   <div class="list-group cl-list-group-borderless" *ngFor="let website of websites">
-    <a class="ist-group-item cl-list-item-borderless" routerLink="./{{website._id}}/page">{{website.name}}</a>
+    <a class="list-group-item cl-list-item-borderless" routerLink="./{{website._id}}/page">{{website.name}}</a>
 
     <a class="pull-right" routerLink="./{{website._id}}">
       <li class="list-group-item cl-list-item-borderless">

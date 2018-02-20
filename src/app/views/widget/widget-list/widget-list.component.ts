@@ -3,6 +3,8 @@ import {Widget} from '../../../models/widget.model.client';
 import {WidgetService} from '../../../service/widget.service.client';
 import {ActivatedRoute} from '@angular/router';
 import {DomSanitizer} from '@angular/platform-browser';
+import {Page} from '../../../models/page.model.client';
+import {PageService} from '../../../service/page.service.client';
 
 @Component({
   selector: 'app-widget-list',
@@ -15,9 +17,15 @@ export class WidgetListComponent implements OnInit {
   websiteId: String;
   pageId: String;
   widgets: Widget[] = [];
+  widgetType: String;
+  typeIsHeader: boolean;
+  typeIsYouTuBe: boolean;
+  typeIsImage: boolean;
+  page: Page;
 
   constructor(
     private widgetService: WidgetService,
+    private pageService: PageService,
     private activatedRoute: ActivatedRoute,
     private domSanitizer: DomSanitizer,
   ) { }
@@ -32,6 +40,8 @@ export class WidgetListComponent implements OnInit {
     );
 
     this.widgets = this.widgetService.findWidgetsByPageId(this.pageId);
+    this.page = this.pageService.findPageById(this.pageId);
+
   }
   updateURL(url: String) {
     return this.domSanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/4jtVx4_QpKA');

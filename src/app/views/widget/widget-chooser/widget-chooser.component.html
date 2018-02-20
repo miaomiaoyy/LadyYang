@@ -1,5 +1,5 @@
 <nav class="navbar navbar-fixed-top navbar-light bg-secondary">
-  <a class="navbar-brand" routerLink="/user/{{userId}}/website/{{websiteId}}/page/{{pageId}}/widget">
+  <a class="navbar-brand" routerLink="/profile/{{userId}}/website/{{websiteId}}/page/{{pageId}}/widget">
     <span class="glyphicon glyphicon-chevron-left text-dark"></span>
   </a>
   <div class="navbar-brand font-weight-bold">
@@ -11,19 +11,19 @@
     <a class="btn extra-left-padding" (click)="createWidgetController('HEADER')">Header</a>
   </div>
   <div class="extra-padding">
-    <a class="extra-left-padding" routerLink="./">Label</a>
+    <a class="btn extra-left-padding" routerLink="./">Label</a>
   </div>
   <div class="extra-padding">
-    <a class="extra-left-padding" routerLink="./">HTML</a>
+    <a class="btn extra-left-padding" routerLink="./">HTML</a>
   </div>
   <div class="extra-padding">
-    <a class="extra-left-padding" routerLink="./">Text Input</a>
+    <a class="btn extra-left-padding" routerLink="./">Text Input</a>
   </div>
   <div class="extra-padding">
-    <a class="extra-left-padding" routerLink="./">Link</a>
+    <a class="btn extra-left-padding" routerLink="./">Link</a>
   </div>
   <div class="extra-padding">
-    <a class="extra-left-padding" routerLink="./">Button</a>
+    <a class="btn extra-left-padding" routerLink="./">Button</a>
   </div>
   <div class="extra-padding">
     <a class="btn extra-left-padding" (click)="createWidgetController('IMAGE')">Image</a>
@@ -32,14 +32,14 @@
     <a class="btn extra-left-padding" (click)="createWidgetController('YOUTUBE')">YouTube</a>
   </div>
   <div class="extra-padding">
-    <a class="extra-left-padding" routerLink="./">Data Table</a>
+    <a class="btn extra-left-padding" routerLink="./">Data Table</a>
   </div>
   <div class="extra-padding">
-    <a class="extra-left-padding" routerLink="./">Repeater</a>
+    <a class="btn extra-left-padding" routerLink="./">Repeater</a>
   </div>
 </div>
 <nav class="navbar navbar-fixed-bottom navbar-light bg-secondary">
-  <a class="btn navbar-brand pull-right" routerLink="/user/{{userId}}">
+  <a class="btn navbar-brand pull-right" routerLink="/profile/{{userId}}">
     <span class="glyphicon glyphicon-user text-primary"></span>
   </a>
 </nav>

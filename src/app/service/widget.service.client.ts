@@ -13,6 +13,7 @@ export  class WidgetService {
     new Widget('123', 'IMAGE', '321', '2', 'text', '100%', 'http://lorempixel.com/400/200/'),
     new Widget('123', 'HTML', '321', '2', '<p>blalbla</p>' ),
     new Widget('123', 'YOUTUBE', '321', '2', 'text', '100%', 'https://youtube.com/token' ),
+    new Widget('666', 'YOUTUBE', '666', '2', 'text', '100%', 'https://youtube.com/token' ),
   ];
   alertService: AlertService;
   createWidget(pageId, widget) {

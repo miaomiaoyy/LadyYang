@@ -15,6 +15,7 @@ export class PageService {
     new Page('333', 'page333', '333', 'test page 333' ),
     new Page('432', 'page432', '432', 'test page 432' ),
     new Page('234', 'page234', '234', 'test page 234' ),
+    new Page('333', 'page666', '666', 'test page 666' ),
   ];
   alertService: AlertService;
 
@@ -52,16 +53,16 @@ export class PageService {
     });
   }
 
-  updatePage(pageId: String, page: Page) {
+  updatePage(pageId: String, pageName: String, pageTitle: String) {
     for (const i in this.pages) {
       if (this.pages[i]._id === pageId) {
-        this.pages[i].name = page.name;
-        this.pages[i].title = page.title;
+        this.pages[i].name = pageName;
+        this.pages[i].title = pageTitle;
       }
     }
   }
 
-  deletePage(pageId: String) {
+  deletePageById(pageId: String) {
     for (const i in this.pages) {
       if (this.pages[i]._id === pageId) {
         const j = +i;

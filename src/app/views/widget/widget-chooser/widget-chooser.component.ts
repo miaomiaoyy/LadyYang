@@ -12,7 +12,7 @@ export class WidgetChooserComponent implements OnInit {
   userId: String;
   websiteId: String;
   pageId: String;
-  newWidget: Widget;
+  widgetType: String;
 
   constructor(private widgetService: WidgetService,
               private activatedRoute: ActivatedRoute,
@@ -27,15 +27,19 @@ export class WidgetChooserComponent implements OnInit {
         this.pageId = params['pid'];
       }
     );
-    this.newWidget._id = '';
-    this.newWidget.widgetType = 'HEADER';
-    this.newWidget.text = '';
-    this.newWidget.width = '100%';
-    this.newWidget.url = '/user/' + this.userId + '/website/' + this.websiteId + '/page/' + this.pageId + '/widget/' + this.newWidget._id;
   }
-    createWidgetController() {
-      this.widgetService.createWidget(this.pageId, this.newWidget);
-      this.router.navigate([this.newWidget.url]);
+    createWidgetController(wgtype: String) {
+      const new_widget = {
+        _id: (new Date()).getTime() + '',
+        type: wgtype,
+        pageId: this.pageId,
+        size: '2',
+        websiteId: this.websiteId,
+        url : ''
+      };
+      new_widget.url = '/user/' + this.userId + '/website/' + this.websiteId + '/page/' + this.pageId + '/widget/' + new_widget._id;
+      this.widgetService.createWidget(this.pageId, new_widget);
+      this.router.navigate([new_widget.url]);
     }
   }
 

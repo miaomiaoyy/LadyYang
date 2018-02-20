@@ -1,3 +1,70 @@
-<p>
-  page-list works!
-</p>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid row">
+    <div class="navbar-text pull-left">
+      <a routerLink=".." class="cl-text-black cl-icon-padding">
+            <span class="glyphicon glyphicon-chevron-left">
+            </span>
+      </a>
+    </div>
+    <div class="navbar-text pull-right">
+      <a routerLink="./new" class="cl-icon-padding cl-text-black">
+            <span class="glyphicon glyphicon-plus">
+            </span>
+      </a>
+    </div>
+    <a class="navbar-brand cl-text-white cl-text-bold" href="#">
+      Pages
+    </a>
+  </div>
+</nav>
+
+<!--<div class="container-fluid cl-container-padding">-->
+  <!--<ul class="list-group cl-list-group-borderless">-->
+    <!--<li class="list-group-item cl-list-item-borderless">-->
+      <!--<a routerLink="./edit"><span class="glyphicon glyphicon-cog pull-right"></span></a>-->
+      <!--<a routerLink="./widget">Blog Post</a>-->
+    <!--</li>-->
+    <!--<li class="list-group-item cl-list-item-borderless">-->
+      <!--<a routerLink="./edit"><span class="glyphicon glyphicon-cog pull-right"></span></a>-->
+      <!--<a routerLink="../widget/widget-list.html">Blogs</a>-->
+    <!--</li>-->
+    <!--<li class="list-group-item cl-list-item-borderless">-->
+      <!--<a routerLink="./edit"><span class="glyphicon glyphicon-cog pull-right"></span></a>-->
+      <!--<a routerLink="../widget/widget/list">Home</a>-->
+    <!--</li>-->
+    <!--<li class="list-group-item cl-list-item-borderless">-->
+      <!--<a routerLink="./edit"><span class="glyphicon glyphicon-cog pull-right"></span></a>-->
+      <!--<a routerLink="../widget/widget/list">About</a>-->
+    <!--</li>-->
+    <!--<li class="list-group-item cl-list-item-borderless">-->
+      <!--<a routerLink="./edit"><span class="glyphicon glyphicon-cog pull-right"></span></a>-->
+      <!--<a routerLink="../widget/widget/list">Contact Us</a>-->
+    <!--</li>-->
+  <!--</ul>-->
+<!--</div>-->
+
+
+<!--'profile/:uid/website/:wid/page/:pid/widget-->
+<!--cl-list-group-borderless-->
+
+<div class="list-group cl-update-padding" *ngFor="let page of pages">
+  <a class="list-group-item cl-update-padding" routerLink="./{{page._id}}/widget">{{page.name}}</a>
+
+  <a class="pull-right" routerLink="./{{page._id}}/widget">
+    <i class="glyphicon glyphicon-cog text-primary extra-right-padding"></i>
+  </a>
+</div>
+
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid row">
+    <div class="pull-right navbar-text">
+      <a routerLink="../../.." class="cl-icon-padding">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </div>
+  </div>
+</nav>
+
