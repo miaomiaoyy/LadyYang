@@ -22,15 +22,17 @@ export class ProfileComponent implements OnInit {
     private userService: UserService
   ) { }
 
+
   updateUserController() {
+
     const updateUser = {
-      uid: (new Date()).getTime() + '',
-      name: this.username,
+      uid: this.userId,
+      username: this.username,
       password: this.password,
       firstName: this.firstName,
       lastName: this.lastName
     };
-     this.userService.updateUser(this.updateUser);
+     this.userService.updateUser(this.user);
 
   }
   ngOnInit() {

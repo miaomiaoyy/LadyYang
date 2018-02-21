@@ -14,6 +14,7 @@ export class WidgetYoutubeComponent implements OnInit {
   pageId: String;
   widgetId: String;
   newWidget: Widget;
+  widget: Widget;
 
 constructor(
     private widgetService: WidgetService,
@@ -29,14 +30,19 @@ constructor(
         this.websiteId = params['wid'];
       }
     );
+    this.widget = this.widgetService.findWidgetById(this.widgetId);
     this.newWidget._id = '';
-    this.newWidget.widgetType = 'HEADER';
+    this.newWidget.widgetType = 'YOUTUBE';
     this.newWidget.text = '';
     this.newWidget.width = '100%';
     this.newWidget.url = '/user/' + this.userId + '/website/' + this.websiteId + '/page/' + this.pageId + '/widget/' + this.newWidget._id;
+    // this.widgetService.createWidget(this.pageId, this.newWidget);
+    // this.router.navigate([this.newWidget.url]);
+   // this.newWidget = this.widgetService.findWidgetsById(this.widgetId);
+  }
+  createWidgetController() {
     this.widgetService.createWidget(this.pageId, this.newWidget);
     this.router.navigate([this.newWidget.url]);
-    this.newWidget = this.widgetService.findWidgetsById(this.widgetId);
   }
   updateWidgetController(widget: Widget) {
     this.widgetService.updateWidget(widget._id, widget);

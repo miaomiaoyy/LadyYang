@@ -9,8 +9,10 @@
 }
 
 body {
-  padding-top: 70px;
+  padding-top: 80px;
   padding-bottom: 70px;
+  padding-left: 60px;
+  padding-right: 60px;
 }
 
 input.form-control {
@@ -130,6 +132,6 @@ padding-bottom: 10%;
 
 
 .cl-update-padding {
-  margin-top: 20px;
-  margin-left: 0px;
+  margin-top: 10px;
+  margin-left: 10px;
 }

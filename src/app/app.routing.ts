@@ -12,6 +12,9 @@ import {WidgetEditComponent} from './views/widget/widget-edit/widget-edit.compon
 import { PageListComponent } from './views/page/page-list/page-list.component';
 import { PageNewComponent } from './views/page/page-new/page-new.component';
 import { PageEditComponent } from './views/page/page-edit/page-edit.component';
+import {WidgetHeaderComponent} from './views/widget/widget-edit/widget-header/widget-header.component';
+import {WidgetImageComponent} from './views/widget/widget-edit/widget-image/widget-image.component';
+import {WidgetYoutubeComponent} from './views/widget/widget-edit/widget-youtube/widget-youtube.component';
 
 const appRoutes: Routes = [
 
@@ -28,6 +31,9 @@ const appRoutes: Routes = [
   {path: 'profile/:uid/website/:wid/page/:pid/widget', component: WidgetListComponent},
   {path: 'profile/:uid/website/:wid/page/:pid/widget/new', component: WidgetChooserComponent},
   {path: 'profile/:uid/website/:wid/page/:pid/widget/:wgid', component: WidgetEditComponent},
+  {path: 'profile/:uid/website/:wid/page/:pid/widget/new/header', component: WidgetHeaderComponent},
+  {path: 'profile/:uid/website/:wid/page/:pid/widget/new/image', component: WidgetImageComponent},
+  {path: 'profile/:uid/website/:wid/page/:pid/widget/new/youtube', component: WidgetYoutubeComponent},
   {path: '', redirectTo: '/login', pathMatch: 'full'},
 
 ];

@@ -48,12 +48,13 @@
 <!--'profile/:uid/website/:wid/page/:pid/widget-->
 <!--cl-list-group-borderless-->
 
-<div class="list-group cl-update-padding" *ngFor="let page of pages">
-  <a class="list-group-item cl-update-padding" routerLink="./{{page._id}}/widget">{{page.name}}</a>
-
-  <a class="pull-right" routerLink="./{{page._id}}/widget">
-    <i class="glyphicon glyphicon-cog text-primary extra-right-padding"></i>
-  </a>
+<div class="container-fluid cl-container-padding" >
+  <ul class="list-group cl-list-group-borderless">
+    <li *ngFor="let page of pages" class="list-group-item cl-list-group-borderless">
+      <a class="pull-right glyphicon glyphicon-cog" routerLink="./{{page._id}}/widget"></a>
+      <a routerLink="./{{page._id}}/widget">{{page.name}}</a>
+    </li>
+  </ul>
 </div>
 
 

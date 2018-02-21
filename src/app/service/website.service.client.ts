@@ -14,7 +14,8 @@ export class WebsiteService {
     new Website('432', 'Twitter', '456', 'test' ),
     new Website('234', 'Amazon', '789', 'test' ),
     new Website('123', 'Heruko', '123', 'helloKitty'),
-    new Website('666', 'HeloKitty', '666', 'helloKitty')
+    new Website('666', 'HeloKitty', '666', 'helloKitty'),
+    new Website('666', 'HeloKitty', '234', 'helloKitty')
   ];
   createWebsite(userId: String, website: Website) {
 

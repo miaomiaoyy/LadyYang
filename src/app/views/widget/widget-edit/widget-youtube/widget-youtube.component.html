@@ -8,8 +8,8 @@
           </span>
       </a>
     </div>
-    <div class="navbar-text pull-right" (click)="updateWidgetController(newWidget)">
-      <a routerLink="/widget/list" class="cl-icon-padding cl-text-black">
+    <div class="navbar-text pull-right" (click)="updateWidgetController()">
+      <a routerLink="./new" class="cl-icon-padding cl-text-black">
           <span class="glyphicon glyphicon-ok">
           </span>
       </a>
@@ -46,7 +46,7 @@
   <div class="container-fluid row">
     <div class="pull-right navbar-text">
 
-      <a routerLink="/profile" class="cl-icon-padding">
+      <a routerLink="/profile/{{userId}}" class="cl-icon-padding">
         <span class="glyphicon glyphicon-user"></span>
       </a>
 

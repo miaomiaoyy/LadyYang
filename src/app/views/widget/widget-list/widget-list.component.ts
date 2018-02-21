@@ -41,6 +41,7 @@ export class WidgetListComponent implements OnInit {
 
     this.widgets = this.widgetService.findWidgetsByPageId(this.pageId);
     this.page = this.pageService.findPageById(this.pageId);
+    console.log(this.widgets);
 
   }
   updateURL(url: String) {

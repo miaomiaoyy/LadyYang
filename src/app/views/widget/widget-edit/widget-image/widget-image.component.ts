@@ -32,6 +32,14 @@ export class WidgetImageComponent implements OnInit {
       }
     );
     this.widget._id = this.widgetId;
-    this.widgetService.findWidgetsById(this.widgetId);
+    this.widgetService.findWidgetById(this.widgetId);
+  }
+  updateWidgetController(widget: Widget) {
+    this.widgetService.updateWidget(widget._id, widget);
+    this.router.navigate([this.newWidget.url]);
+  }
+  deleteWidgetController(widget: Widget) {
+    this.widgetService.deleteWidget(this.widgetId);
+    this.router.navigate([this.newWidget.url]);
   }
 }

@@ -3,13 +3,13 @@
   <div class="container-fluid row">
 
     <div class="navbar-text pull-left" routerLink='/profile/{{userId}}/website/{websiteId}}/page/{{pageId}}/widget'>
-      <a routerLink="/widget/list" class="cl-text-black cl-icon-padding">
+      <a routerLink=".." class="cl-text-black cl-icon-padding">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
       </a>
     </div>
-    <div class="navbar-text pull-right" routerLink="/user/{{userId}}/website/{{websiteId}}/page/{{pageId}}/widget">
-      <a routerLink="/widget/list" class="cl-icon-padding cl-text-black">
+    <div class="navbar-text pull-right" (click)="updateWidgetController('IMAGE')">
+      <a routerLink="./new" class="cl-icon-padding cl-text-black">
           <span class="glyphicon glyphicon-ok">
           </span>
       </a>
@@ -51,7 +51,7 @@
   <div class="container-fluid row">
     <div class="pull-right navbar-text">
 
-      <a routerLink="/profile" class="cl-icon-padding">
+      <a routerLink="/profile/{{userId}}}" class="cl-icon-padding">
         <span class="glyphicon glyphicon-user"></span>
       </a>
 

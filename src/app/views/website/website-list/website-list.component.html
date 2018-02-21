@@ -17,13 +17,12 @@
 </nav>
 
 
-  <div class="list-group cl-list-group-borderless" *ngFor="let website of websites">
-    <a class="list-group-item cl-list-item-borderless" routerLink="./{{website._id}}/page">{{website.name}}</a>
-
-    <a class="pull-right" routerLink="./{{website._id}}">
-      <li class="list-group-item cl-list-item-borderless">
-        <a routerLink="./{{website._id}}"><span class="glyphicon glyphicon-cog pull-right"></span></a>
-      </li>
+  <div  class="list-group item cl-list-group-borderless" *ngFor="let website of websites">
+    <a>
+      <a class="list-group item cl-list-item-borderless" routerLink="./{{website._id}}/page">{{website.name}}</a>
+      <!--<li class="list-group-item cl-list-item-borderless">-->
+      <a class="pull-right" routerLink="./{{website._id}}"></a>
+      <span routerLink="./{{website._id}}"><span class="glyphicon glyphicon-cog pull-right"></span></span>
     </a>
   </div>
 
