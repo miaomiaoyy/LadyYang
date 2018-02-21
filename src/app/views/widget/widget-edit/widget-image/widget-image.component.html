@@ -3,7 +3,7 @@
   <div class="container-fluid row">
 
     <div class="navbar-text pull-left" routerLink='/profile/{{userId}}/website/{websiteId}}/page/{{pageId}}/widget'>
-      <a routerLink=".." class="cl-text-black cl-icon-padding">
+      <a  routerLink='/profile/{{userId}}/website/{websiteId}}/page/{{pageId}}/widget' class="cl-text-black cl-icon-padding">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
       </a>
@@ -47,14 +47,14 @@
 
   </form>
   <a class="btn btn-primary btn-block" routerLink="./">Upload Image</a>
-  <a class="btn btn-danger  btn-block" routerLink="..">Delete</a>
+  <a class="btn btn-danger  btn-block" routerLink=".." (click) = "deleteWidgetController()">Delete</a>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid row">
     <div class="pull-right navbar-text">
 
-      <a routerLink="/profile/{{userId}}}" class="cl-icon-padding">
+      <a routerLink="/profile/{{userId}}" class="cl-icon-padding">
         <span class="glyphicon glyphicon-user"></span>
       </a>
 

@@ -77,8 +77,8 @@ export class WidgetImageComponent implements OnInit {
   //   this.widgetService.updateWidget(widget._id, widget);
   //   this.router.navigate([this.newWidget.url]);
   // }
-  // deleteWidgetController(widget: Widget) {
-  //   this.widgetService.deleteWidget(this.widgetId);
-  //   this.router.navigate([this.newWidget.url]);
-  // }
+  deleteWidgetController(widget: Widget) {
+    this.widgetService.deleteWidget(this.widgetId);
+    this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+  }
 }
