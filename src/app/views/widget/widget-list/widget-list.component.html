@@ -25,10 +25,10 @@
     <div *ngFor="let widget of widgets">
       <div *ngIf="widget.widgetType.match('HEADER')">
         <div class="pull-right">
-          <a routerLink=".." class="pull-right">
+          <a routerLink="./new/header" class="pull-right">
             <span class="glyphicon glyphicon-menu-hamburger"></span>
           </a>
-          <a routerLink="./{{widget._id}}">
+          <a routerLink="./new/header">
             <span class="glyphicon glyphicon-cog"></span>
           </a>
         </div>
@@ -36,10 +36,10 @@
       </div>
 
       <div *ngIf="widget.widgetType.match('IMAGE')">
-          <a class="pull-right">
+          <a class="pull-right" routerLink="./new/image">
             <span class="glyphicon glyphicon-menu-hamburger"></span>
           </a>
-          <a routerLink="./{{widget._id}}" class="pull-right">
+          <a routerLink="./new/image" class="pull-right">
             <span class="glyphicon glyphicon-cog"></span>
           </a>
           <img class="img-responsive cl-widget-images" src="{{widget.url}}" alt="alt" width="{{widget.width}}">
@@ -49,10 +49,10 @@
       <div class="embed-responsive embed-responsive-16by9" *ngIf="widget.widgetType.match('YOUTUBE')">
           <iframe width="{{widget.width}}" height="360" [src]="updateURL(widget.url)" frameborder="0" allowfullscreen>
           </iframe>
-          <a [routerLink]="['/#']" class="pull-right">
+          <a routerLink= "./new/youtube" class="pull-right">
             <span class="glyphicon glyphicon-menu-hamburger" style="background-color: white"></span>
           </a>
-          <a routerLink="./{{widget._id}}" class="pull-right">
+          <a routerLink="./new/youtube" class="pull-right">
             <span class="glyphicon glyphicon-cog" style="background-color: white"></span>
           </a>
       </div>

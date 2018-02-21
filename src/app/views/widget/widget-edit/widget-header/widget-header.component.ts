@@ -3,6 +3,7 @@ import {WidgetService} from '../../../../service/widget.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Widget} from '../../../../models/widget.model.client';
 import {NgForm} from '@angular/forms';
+import {text} from '@angular/core/src/render3/instructions';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class WidgetHeaderComponent implements OnInit {
   size: String;
   widgetType: String;
 
+
   constructor(private widgetService: WidgetService,
               private activatedRoute: ActivatedRoute,
               private router: Router) {
@@ -31,9 +33,26 @@ export class WidgetHeaderComponent implements OnInit {
     this.name = this.headerForm.value.headingName;
     this.text = this.headerForm.value.headingText;
     this.size = this.headerForm.value.headingSize;
-    if (this.widget._id !== 'newHeading') {
-      this.widgetService.updateWidget(this.widgetId, this.widget);
+    if (this.widget._id !== undefined) {
+      this.widgetService.updateWidget(this.widget._id, this.widget);
     } else {
+      this.widgetService.createWidget(this.pageId, this.widgetId);
+    }
+
+    this.router.navigate(['./header']);
+  }
+  update() {
+    // this.name = this.headerForm.value.headingName;
+    this.text = this.headerForm.value.headingText;
+    this.size = this.headerForm.value.headingSize;
+    if (this.widget._id !== undefined) {
+      this.widget.text = this.text;
+      this.widget.size = this.size;
+      this.widgetService.updateWidget(this.widget._id, this.widget);
+    } else {
+      this.widget = new Widget('', '', '', '', '', '', '');
+      this.widget.text = this.text;
+      this.widget.size = this.size;
       this.widgetService.createWidget(this.pageId, this.widgetId);
     }
 
@@ -74,6 +93,7 @@ export class WidgetHeaderComponent implements OnInit {
     }
 
     this.router.navigate(['./header']);
+    console.log(this.widget);
   }
   deleteWidgetController() {
     this.widgetService.deleteWidget(this.widgetId);

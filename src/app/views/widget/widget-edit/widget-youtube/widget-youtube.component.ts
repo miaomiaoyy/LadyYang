@@ -43,10 +43,12 @@ constructor(
   createWidgetController() {
     this.widgetService.createWidget(this.pageId, this.newWidget);
     this.router.navigate([this.newWidget.url]);
+    console.log(this.widget);
   }
   updateWidgetController(widget: Widget) {
     this.widgetService.updateWidget(widget._id, widget);
     this.router.navigate([this.newWidget.url]);
+    console.log(this.widget);
   }
   deleteWidgetController(widget: Widget) {
     this.widgetService.deleteWidget(this.widgetId);
