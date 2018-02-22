@@ -38,27 +38,50 @@ export class WidgetImageComponent implements OnInit {
     }
   }
 
-  updateOrCreate() {
-    this.widget.text = this.imageForm.value.imageText;
-    if (this.imageForm.value.imageUrl !== '') {
-      this.widget.url = this.imageForm.value.imageUrl;
-    } else if (this.widgetId !== undefined) {
-      this.router.navigate(['../'], {relativeTo: this.activatedRoute});
-      return;
-    } else {
-      this.router.navigate(['../../'], {relativeTo: this.activatedRoute});
-      return;
-    }
-    this.widget.width = this.imageForm.value.imageWidth;
-    this.widget.widgetType = 'IMAGE';
-    if (this.widgetId !== undefined) {
-      this.widgetService.updateWidget(this.widgetId, this.widget);
-      this.router.navigate(['../'], {relativeTo: this.activatedRoute});
-    } else {
-      this.widgetService.createWidget(this.pageId, this.widget);
-      this.router.navigate(['../../'], {relativeTo: this.activatedRoute});
-    }
-  }
+  // update() {
+  //   if (this.imageForm.value.headerText !== '' || this.imageForm.value.headerSize !== '') {
+  //     this.widget.text = this.imageForm.value.headerText;
+  //     this.widget.size = this.imageForm.value.headerSize;
+  //     alert(this.widget.text);
+  //     alert(this.widget.size);
+  //   }
+  //   if (this.widgetId === 'header') {
+  //     this.widgetService.createWidget(this.pageId, this.widget);
+  //     alert(this.widgetId);
+  //     alert('Creation succeeds');
+  //   } else {
+  //     this.widgetService.updateWidget(this.widget._id, this.widget);
+  //     alert(this.widgetId);
+  //     alert('Change succeeds');
+  //   }
+  //   const url: any = '/user/' + this.userId + '/website' + this.websiteId + '/page/' + this.pageId + '/widget';
+  //   this.router.navigate([url]);
+  //   this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+  // }
+  //
+  // updateOrCreate() {
+  //   this.widget.text = this.imageForm.value.imageText;
+  //   if (this.imageForm.value.imageUrl !== '') {
+  //     this.widget.url = this.imageForm.value.imageUrl;
+  //   } else if (this.widgetId !== undefined) {
+  //     this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+  //     return;
+  //   } else {
+  //     this.router.navigate(['../../'], {relativeTo: this.activatedRoute});
+  //     return;
+  //   }
+  //   this.widget.width = this.imageForm.value.imageWidth;
+  //   this.widget.widgetType = 'IMAGE';
+  //   if (this.widgetId !== undefined) {
+  //     this.widgetService.updateWidget(this.widgetId, this.widget);
+  //     alert(this.widget.text);
+  //     this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+  //   } else {
+  //     this.widgetService.createWidget(this.pageId, this.widget);
+  //     alert(this.widget.text);
+  //     this.router.navigate(['../../'], {relativeTo: this.activatedRoute});
+  //   }
+  // }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {

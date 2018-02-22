@@ -11,25 +11,29 @@ import {User} from '../../../models/user.model.client';
 })
 export class WebsiteEditComponent implements OnInit {
 
-  websiteId: String;
+  website: Website;
   websites: Website[] = [];
-  name = String;
-  developerId: String;
-  user: User;
-  userId: String;
-  constructor(private websiteService: WebsiteService, private activatedRoute: ActivatedRoute, private router: Router) { }
+
+  constructor(
+    private websiteService: WebsiteService,
+    private activatedRoute: ActivatedRoute
+  ) { }
+
+  updateWebsite() {
+    this.website = this.websiteService.updateWebsite(this.website._id, this.website);
+    console.log(this.website);
+  }
+
+  deleteWebsite() {
+    this.websiteService.deleteWebsite(this.website._id);
+  }
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe(
-      (params: any) => {
-        this.websiteId = params['wid'];
-        this.developerId = params['uid'];
-        this.userId = params['uid'];
-      }
-    );
-
-    this.websites = this.websiteService.findWebsitesByUser(this.developerId);
-    this.websiteService.deleteWebsite(this.websiteId);
+    this.activatedRoute.params.subscribe((params: any) => {
+      this.website = this.websiteService.findWebsiteById(params['websiteId']);
+      this.websites = this.websiteService.findWebsitesByUser(params['userId']);
+    });
   }
+
 
 }

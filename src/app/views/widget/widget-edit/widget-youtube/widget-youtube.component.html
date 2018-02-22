@@ -3,13 +3,14 @@
   <div class="container-fluid row">
 
     <div class="navbar-text pull-left">
-      <a routerLink='/profile/{{userId}}/website/{websiteId}}/page/{{pageId}}/widget' class="cl-text-black cl-icon-padding">
+      <a routerLink='..'
+         class="cl-text-black cl-icon-padding">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
       </a>
     </div>
     <div class="navbar-text pull-right">
-      <a routerLink="../" class="cl-icon-padding cl-text-black" (click)="updateWidgetController()">
+      <a routerLink="../" class="cl-icon-padding cl-text-black" (click)= "f.ngSubmit.emit()">
           <span class="glyphicon glyphicon-ok">
           </span>
       </a>
@@ -21,7 +22,7 @@
 </nav>
 
 <div class="container">
-  <form>
+  <form #f = "ngForm">
     <div class="form-group">
       <label for="youtube-name">Name</label>
       <input type="text" class="form-control" id="youtube-name" placeholder="Name">
@@ -32,14 +33,15 @@
     </div>
     <div class="form-group">
       <label for="youtube-URL">URL</label>
-      <input [(ngModel)]="newWidget.url" type="text" class="form-control" id="youtube-URL" placeholder="YouTube URL">
+      <input [(ngModel)]="widget.url" type="text" class="form-control" id="youtube-URL" placeholder="YouTube URL"
+             [ngModelOptions]="{standalone: true}">
     </div>
     <div class="form-group">
       <label for="youtube-width">Width</label>
       <input type="text" class="form-control" id="youtube-width" placeholder="100%">
     </div>
   </form>
-  <a class="btn btn-danger btn-block"  (click)="deleteWidgetController(newWidget)">Delete</a>
+  <a class="btn btn-danger btn-block"  (click)="deleteWidget(widget)">Delete</a>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">

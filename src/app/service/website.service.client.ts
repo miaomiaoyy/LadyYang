@@ -14,7 +14,7 @@ export class WebsiteService {
     new Website('234', 'Amazon', '789', 'test' ),
     new Website('123', 'Heruko', '123', 'helloKitty'),
     new Website('666', 'HeloKitty', '666', 'helloKitty'),
-    new Website('666', 'HeloKitty', '234', 'helloKitty')
+    new Website('234', 'HeloKitty', '234', 'helloKitty')
   ];
   createWebsite(userId: String, website: Website) {
 
@@ -44,7 +44,7 @@ export class WebsiteService {
     });
   }
 
-  findWebsitesById(websiteId: String) {
+  findWebsiteById(websiteId: String) {
     return this.websites.find(function (website) {
       return website._id === websiteId;
     });
@@ -55,6 +55,7 @@ export class WebsiteService {
       if (this.websites[i]._id === websiteId) {
         this.websites[i].name = website.name;
         this.websites[i].description = website.description;
+        return this.websites[i];
       }
     }
   }

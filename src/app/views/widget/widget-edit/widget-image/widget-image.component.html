@@ -3,13 +3,13 @@
   <div class="container-fluid row">
 
     <div class="navbar-text pull-left" routerLink='/profile/{{userId}}/website/{websiteId}}/page/{{pageId}}/widget'>
-      <a  routerLink='/profile/{{userId}}/website/{websiteId}}/page/{{pageId}}/widget' class="cl-text-black cl-icon-padding">
+      <a  routerLink='..' class="cl-text-black cl-icon-padding">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
       </a>
     </div>
-    <div class="navbar-text pull-right" (click)="updateOrCreate()">
-      <a routerLink="../.." class="cl-icon-padding cl-text-black">
+    <div class="navbar-text pull-right" (click)= "f.ngSubmit.emit()">
+      <a routerLink=".." class="cl-icon-padding cl-text-black">
           <span class="glyphicon glyphicon-ok">
           </span>
       </a>
