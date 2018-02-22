@@ -21,7 +21,7 @@
 </nav>
 
 <div class="container">
-  <form (ngSubmit) = "updateOrCreate()" #f = "ngForm">
+  <form #f = "ngForm">
     <div class="form-group">
       <label for="imageName">Name</label>
       <input [(ngModel)]="widget.text" type="name" class="form-control"

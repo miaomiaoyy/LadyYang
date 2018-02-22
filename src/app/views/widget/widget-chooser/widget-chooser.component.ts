@@ -28,6 +28,8 @@ export class WidgetChooserComponent implements OnInit {
       }
     );
   }
+
+
     createWidgetController(wgtype: String) {
       const new_widget = {
         _id: '',

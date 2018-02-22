@@ -10,6 +10,9 @@ import {NgForm} from '@angular/forms';
   templateUrl: './widget-image.component.html',
   styleUrls: ['./widget-image.component.css']
 })
+
+
+
 export class WidgetImageComponent implements OnInit {
   @ViewChild('f') imageForm: NgForm;
   userId: String;
@@ -79,6 +82,6 @@ export class WidgetImageComponent implements OnInit {
   // }
   deleteWidgetController(widget: Widget) {
     this.widgetService.deleteWidget(this.widgetId);
-    this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+    this.router.navigate(['../..'], {relativeTo: this.activatedRoute});
   }
 }

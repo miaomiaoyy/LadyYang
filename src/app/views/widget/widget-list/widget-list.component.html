@@ -8,10 +8,10 @@
           </span>
       </a>
     </div>
+
     <div class="navbar-text pull-right">
       <a routerLink="./new" class="cl-icon-padding cl-text-black">
-          <span class="glyphicon glyphicon-plus">
-          </span>
+        <span class="glyphicon glyphicon-cog" style="background-color: white"></span>
       </a>
     </div>
     <a class="navbar-brand cl-text-white cl-text-bold">
@@ -25,39 +25,42 @@
     <div *ngFor="let widget of widgets">
       <div *ngIf="widget.widgetType.match('HEADER')">
         <div class="pull-right">
-          <a routerLink="./new/header" class="pull-right">
+          <a routerLink="./{{widget._id}}" class="pull-right">
+          <!--<a routerLink="./new/header" class="pull-right">-->
             <span class="glyphicon glyphicon-menu-hamburger"></span>
           </a>
-          <a routerLink="./new/header">
-            <span class="glyphicon glyphicon-cog"></span>
+          <a routerLink="./{{widget._id}}">
+            <span class="glyphicon glyphicon-cog" style="background-color: white"></span>
           </a>
         </div>
         <h1>{{widget.text}}</h1>
       </div>
 
       <div *ngIf="widget.widgetType.match('IMAGE')">
-          <a class="pull-right" routerLink="./new/image">
+          <a class="pull-right" routerLink="./{{widget._id}}">
             <span class="glyphicon glyphicon-menu-hamburger"></span>
           </a>
-          <a routerLink="./new/image" class="pull-right">
+          <a routerLink="./{{widget._id}}" class="pull-right">
             <span class="glyphicon glyphicon-cog"></span>
           </a>
-          <img class="img-responsive cl-widget-images" src="{{widget.url}}" alt="alt" width="{{widget.width}}">
+          <img class="img-responsive cl-widget-images" src="{{widget.url}}"  width="{{widget.width}}">
         <br>
       </div>
 
+      <br>
+      <br>
       <div class="embed-responsive embed-responsive-16by9" *ngIf="widget.widgetType.match('YOUTUBE')">
-          <iframe width="{{widget.width}}" height="360" [src]="updateURL(widget.url)" frameborder="0" allowfullscreen>
+          <iframe width="50%" height="360" [src]="updateURL(widget.url)" frameborder="0" allowfullscreen>
           </iframe>
-          <a routerLink= "./new/youtube" class="pull-right">
+          <a routerLink= "./{{widget._id}}" class="pull-right">
             <span class="glyphicon glyphicon-menu-hamburger" style="background-color: white"></span>
           </a>
-          <a routerLink="./new/youtube" class="pull-right">
+          <a routerLink="./{{widget._id}}" class="pull-right">
             <span class="glyphicon glyphicon-cog" style="background-color: white"></span>
           </a>
       </div>
     </div>
-  </div>
+
 
 
 
@@ -134,7 +137,6 @@
       </a>
 
     </div>
-
     <div class="pull-left navbar-text">
       <a  class="cl-icon-padding" routerLink="./">
         <span class="glyphicon glyphicon-play"></span>
@@ -142,7 +144,6 @@
       <a class="cl-icon-padding" routerLink="./">
         <span class="glyphicon glyphicon-eye-open"></span>
       </a>
-
     </div>
   </div>
 </nav>

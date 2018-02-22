@@ -1,7 +1,7 @@
 
 import { Page } from '../models/page.model.client';
 import {Injectable} from '@angular/core';
-import {AlertService} from './alert.service.client';
+
 
 
 
@@ -17,7 +17,7 @@ export class PageService {
     new Page('234', 'page234', '234', 'test page 234' ),
     new Page('333', 'page666', '666', 'test page 666' ),
   ];
-  alertService: AlertService;
+
 
   createPage(websiteId: String, page: Page) {
 
@@ -67,7 +67,6 @@ export class PageService {
       if (this.pages[i]._id === pageId) {
         const j = +i;
         this.pages.splice(j, 1);
-        alert(this.alertService.success('delete Successful', true));
       }
     }
   }

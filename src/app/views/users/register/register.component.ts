@@ -4,7 +4,7 @@
   import {User} from '../../../models/user.model.client';
   import {NgForm} from '@angular/forms';
   import { ViewChild } from '@angular/core';
-  import {AlertService} from '../../../service/alert.service.client';
+
 
 @Component({
   selector: 'app-register',
@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
      private userService: UserService,
      private router: Router,
      private activeRoute: ActivatedRoute,
-     private alertService: AlertService) {}
+     ) {}
      register() {
      this.username = this.registerForm.value.username;
      this.password = this.registerForm.value.password;

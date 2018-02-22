@@ -1,7 +1,7 @@
 
 import {Injectable} from '@angular/core';
 import { Widget } from '../models/widget.model.client';
-import {AlertService} from './alert.service.client';
+
 
 @Injectable()
 export  class WidgetService {
@@ -12,12 +12,13 @@ export  class WidgetService {
     new Widget('321', 'HEADER', '321', '2', 'LOVE LIFE' ),
     new Widget('132', 'IMAGE', '321', '2', 'text', '100%', 'http://lorempixel.com/400/200/'),
     new Widget('231', 'HTML', '321', '2', '<p>blalbla</p>' ),
-    new Widget('312', 'YOUTUBE', '321', '2', 'text', '100%', 'https://youtube.com/token' ),
+    new Widget('312', 'YOUTUBE', '321', '2', 'text', '100%', 'https://www.youtube.com/watch?v=87gWaABqGYs&list=RDMM87gWaABqGYs' ),
     new Widget('666', 'YOUTUBE', '333', '2', 'text', '100%', 'https://www.youtube.com/watch?v=oX5wJm-3R9I' ),
   ];
-  alertService: AlertService;
   createWidget(pageId, widget) {
-    widget._id = (new Date()).getTime() + '',
+
+    widget._id = (new Date()).getTime() + '';
+    widget.pageId = pageId;
     this.widgets.push(widget);
   }
 
@@ -28,27 +29,26 @@ export  class WidgetService {
           case 'HEADER':
             this.widgets[i].text = widget.text;
             this.widgets[i].size = widget.size;
-            return true;
+            return this.widgets[i];
           case 'HTML':
             this.widgets[i].text = widget.text;
             this.widgets[i].size = widget.size;
-            return true;
+            return this.widgets[i];
           case 'IMAGE':
             this.widgets[i].text = widget.text;
             this.widgets[i].url = widget.url;
             this.widgets[i].width = widget.width;
-            return true;
-
+            return this.widgets[i];
           case 'YOUTUBE':
             this.widgets[i].text = widget.text;
             this.widgets[i].url = widget.url;
             this.widgets[i].width = widget.width;
-            return true;
+            return this.widgets[i];
         }
 
       }
     }
-    return false;
+    alert('No Update');
   }
 
   findWidgetsByPageId(pageId: String) {
@@ -60,8 +60,20 @@ export  class WidgetService {
     }
     return res;
   }
+  findWidgetsByPageIdandText(text: String, pageId: String) {
+    for (let x = 0; x < this.widgets.length; x++) {
+      if (this.widgets[x].pageId === pageId && (this.widgets[x].text === text)) {
+        return this.widgets[x];
+      }
+    }
+  }
   deleteWidget(widgetId) {
-    alert(this.alertService.success('delete Successful', true));
+    for (const i in this.widgets) {
+      if (this.widgets[i]._id === widgetId) {
+        const j = +i;
+        this.widgets.splice(j, 1);
+      }
+    }
   }
   findWidgetsByPageId2(pageId) {
     return this.widgets.find(function (widget) {
@@ -74,6 +86,8 @@ export  class WidgetService {
       return widget._id === widgetId;
     });
   }
+
+
 }
 
 

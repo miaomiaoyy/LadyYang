@@ -3,13 +3,14 @@
   <div class="container-fluid row">
 
     <div class="navbar-text pull-left">
-      <a routerLink='/profile/{{userId}}/website/{websiteId}}/page/{{pageId}}/widget' class="cl-text-black cl-icon-padding">
+      <a routerLink='/profile/{{userId}}/website/{{websiteId}}/page/{{pageId}}/widget' class="cl-text-black cl-icon-padding">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
       </a>
     </div>
-    <div class="navbar-text pull-right" (click)= "updateWidgetController()">
-      <a routerLink="../.." class="cl-icon-padding cl-text-black">
+    <div class="navbar-text pull-right" >
+      <a routerLink="/profile/{{userId}}/website/{{websiteId}}/page/{{pageId}}/widget" (click)= "f.ngSubmit.emit()"
+         class="cl-icon-padding cl-text-black">
           <span class="glyphicon glyphicon-ok">
           </span>
       </a>
@@ -21,7 +22,7 @@
 </nav>
 
 <a class="container">
-  <form (ngSubmit) = "update()" #f="ngForm">
+  <form  #f = "ngForm">
 
     <a class="form-group">
       <label for="headingName">Name</label>
@@ -39,7 +40,7 @@
     </a>
 
   </form>
-  <a class="btn btn-danger  btn-block" (click) = "deleteWidgetController()">Delete</a>
+  <a class="btn btn-danger  btn-block" (click) = "delete()">Delete</a>
 </a>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">

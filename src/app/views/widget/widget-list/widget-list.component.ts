@@ -18,9 +18,6 @@ export class WidgetListComponent implements OnInit {
   pageId: String;
   widgets: Widget[] = [];
   widgetType: String;
-  typeIsHeader: boolean;
-  typeIsYouTuBe: boolean;
-  typeIsImage: boolean;
   page: Page;
 
   constructor(
@@ -34,7 +31,7 @@ export class WidgetListComponent implements OnInit {
     this.activatedRoute.params.subscribe(
       (params: any) => {
         this.userId = params['uid'];
-        this.websiteId = params['uid'];
+        this.websiteId = params['wid'];
         this.pageId = params['pid'];
       }
     );
@@ -46,6 +43,7 @@ export class WidgetListComponent implements OnInit {
   }
   updateURL(url: String) {
     return this.domSanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/4jtVx4_QpKA');
+
   }
 }
 

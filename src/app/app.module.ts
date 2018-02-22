@@ -24,7 +24,6 @@ import { WidgetYoutubeComponent } from './views/widget/widget-edit/widget-youtub
 import { PageListComponent } from './views/page/page-list/page-list.component';
 import { PageNewComponent } from './views/page/page-new/page-new.component';
 import { PageEditComponent } from './views/page/page-edit/page-edit.component';
-import { AlertService } from './service/alert.service.client';
 
 
 
@@ -54,7 +53,7 @@ import { AlertService } from './service/alert.service.client';
     //HttpModule,
     //Routing,
   ],
-  providers: [UserService, WebsiteService, PageService, WidgetService, AlertService],
+  providers: [UserService, WebsiteService, PageService, WidgetService],
   bootstrap: [AppComponent]
 
 })

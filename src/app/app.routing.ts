@@ -31,9 +31,10 @@ const appRoutes: Routes = [
   {path: 'profile/:uid/website/:wid/page/:pid/widget', component: WidgetListComponent},
   {path: 'profile/:uid/website/:wid/page/:pid/widget/new', component: WidgetChooserComponent},
   {path: 'profile/:uid/website/:wid/page/:pid/widget/:wgid', component: WidgetEditComponent},
-  {path: 'profile/:uid/website/:wid/page/:pid/widget/new/header', component: WidgetHeaderComponent},
-  {path: 'profile/:uid/website/:wid/page/:pid/widget/new/image', component: WidgetImageComponent},
-  {path: 'profile/:uid/website/:wid/page/:pid/widget/new/youtube', component: WidgetYoutubeComponent},
+  // {path: 'profile/:uid/website/:wid/page/:pid/widget/:wgid/header', component: WidgetHeaderComponent},
+  //  {path: 'profile/:uid/website/:wid/page/:pid/widget/new/header', component: WidgetHeaderComponent},
+  // {path: 'profile/:uid/website/:wid/page/:pid/widget/new/image', component: WidgetImageComponent},
+  // {path: 'profile/:uid/website/:wid/page/:pid/widget/new/youtube', component: WidgetYoutubeComponent},
   {path: '', redirectTo: '/login', pathMatch: 'full'},
 
 ];
