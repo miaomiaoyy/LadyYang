@@ -14,6 +14,7 @@ export class WebsiteNewComponent implements OnInit {
   websites: Website[] = [];
   name: String;
   description: String;
+  website: Website;
 
   constructor(private websiteService: WebsiteService, private activatedRoute: ActivatedRoute) { }
   getWebsite() {
@@ -28,7 +29,12 @@ export class WebsiteNewComponent implements OnInit {
     );
 
     this.websites = this.websiteService.findWebsitesByUser(this.userId);
-    // this.websites = this.websiteService.findWebsitesByUser2(this.userId);
+    this.website = new Website((new Date()).getTime() + '', '', this.userId, '');
+    this.website.name = this.websiteForm.value.websitename;
+    this.website.description = this.websiteForm.value.websitedescription;
+    this.websiteService.createWebsite(this.userId, this.website);
+    this.websites = this.websiteService.findWebsitesByUser2(this.userId);
+    console.log(this.websites);
   }
 
   createWebsiteController(website: Website) {

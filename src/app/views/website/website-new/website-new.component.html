@@ -21,7 +21,7 @@
         <a class="cl-text-white navbar-brand cl-text-bold" href="#">
           New Websites
         </a>
-        <a routerLink=".." class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding" (click)="createWebsiteController()">
+        <a routerLink=".." class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding" (click)="f.ngSubmit.emit()">
           <span class="glyphicon glyphicon-ok"></span>
         </a>
       </div>
@@ -73,14 +73,14 @@
     <!--</ul>-->
   <!--</div>-->
 <div class="col-xs-8">
-  <form (ngSubmit) = "getWebsite()" #f="ngForm">
+  <form  #f="ngForm">
     <div class="form-group">
       <label>Name</label>
-      <input [(ngModel)]="name" type="text" class="form-control" name="websitename" placeholder="Name">
+      <input [(ngModel)]="website.name" type="text" class="form-control" name="websitename" placeholder="Name">
     </div>
     <div class="form-group">
       <label>Description</label>
-      <input [(ngModel)]="description" name="websitedescription" class="form-control" rows="5" placeholder="Description">
+      <input [(ngModel)]="website.description" name="websitedescription" class="form-control" rows="5" placeholder="Description">
     </div>
   </form>
 </div>

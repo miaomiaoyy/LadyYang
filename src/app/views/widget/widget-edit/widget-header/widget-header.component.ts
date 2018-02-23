@@ -87,7 +87,6 @@ export class WidgetHeaderComponent implements OnInit {
       // this.router.navigate([url]);
       // this.router.navigate(['../'], {relativeTo: this.activatedRoute});
       this.text = this.headerForm.value.headerText;
-      alert(this.widget.text);
       this.size = this.headerForm.value.headerSize;
       // this.widgetService.createWidget(this.pageId, this.widget);
       // this.text = this.widget.text;

@@ -18,14 +18,14 @@ export class WebsiteService {
   ];
   createWebsite(userId: String, website: Website) {
 
-    const new_website = {
-      _id: (new Date()).getTime() + '',
-      name: website.name,
-      developId: website.developId,
-      description: website.description
-    };
+   // this.website {
+   //    _id: (new Date()).getTime() + '',
+   //    name: website.name,
+   //    developId: website.developId,
+   //    description: website.description
+   //  };
 
-    this.websites.push(new_website);
+    this.websites.push(website);
   }
 
   findWebsitesByUser(userId: String) {
