@@ -1,8 +1,19 @@
 <nav class="navbar navbar-fixed-top cl-blue-navbar">
-  <div class="container-fluid">
-    <a class="cl-text-white navbar-brand cl-text-bold" href="#">
-      Profile
-    </a>
+  <div class="row">
+    <div class="col-xs-4 hidden-xs">
+      <div class="container-fluid">
+        <p class="navbar-text pull-left">
+          <a routerLink="../.." class="navbar-link cl-text-white">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+        </p>
+        <a class="cl-text-white navbar-brand cl-text-bold" href="#">
+          Website
+        </a>
+      </div>
+    </div>
+
+
 
     <a routerLink="./"
        class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding" (click)="updateUserController()">
