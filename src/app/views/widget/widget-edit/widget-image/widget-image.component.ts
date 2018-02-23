@@ -98,7 +98,7 @@ export class WidgetImageComponent implements OnInit {
     });
   }
 
-
+  //
   // updateWidgetController(widget: Widget) {
   //   this.widgetService.updateWidget(widget._id, widget);
   //   this.router.navigate([this.newWidget.url]);

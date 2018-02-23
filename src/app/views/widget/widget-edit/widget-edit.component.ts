@@ -33,7 +33,7 @@ export class WidgetEditComponent implements OnInit {
     } else {
       this.widget = this.widgetService.findWidgetById(this.widgetId);
     }
-    alert(this.widgetId);
+    // alert('Edit. ' + this.widgetId);
     // this.widgetService.updateWidget(this.widgetId, this.widget);
     // this.widgetService.deleteWidget(this.widgetId);
   }

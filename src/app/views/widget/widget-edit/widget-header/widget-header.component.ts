@@ -37,7 +37,7 @@ export class WidgetHeaderComponent implements OnInit {
     if (this.headerForm.value.headerText !== '' || this.headerForm.value.headerSize !== '') {
       this.widget.text = this.headerForm.value.headerText;
       this.widget.size = this.headerForm.value.headerSize;
-      alert(this.widget.text);
+      alert('Updating widget + ' + this.widget.text);
       alert(this.widget.size);
     }
     if (this.widgetId === 'header') {
@@ -63,13 +63,37 @@ export class WidgetHeaderComponent implements OnInit {
       this.websiteId = params['wid'];
       if (params['wgid'] !== 'header') {
         this.widget = this.widgetService.findWidgetById(this.widgetId);
+        this.text = this.widget.text;
+        this.size = this.widget.size;
       } else {
-        this.widget = new Widget('', '', this.pageId, '', '', '', '');
+        this.widget = new Widget('', 'HEADER', this.pageId, '', '', '100%', 'url');
+        this.widget.text = this.headerForm.value.headerText;
+        this.widget.size = this.headerForm.value.headerSize;
+        this.widgetService.createWidget(this.pageId, this.widget);
       }
+
+
+      // if (this.widgetId === 'header') {
+      //   this.widgetService.createWidget(this.pageId, this.widget);
+      //   alert(this.widgetId);
+      //   alert(this.widgets.length);
+      //   alert('Creation succeeds');
+      // } else {
+      //   this.widgetService.updateWidget(this.widget._id, this.widget);
+      //   alert(this.widgetId);
+      //   alert('Change succeeds');
+      // }
+      // const url: any = '/user/' + this.userId + '/website' + this.websiteId + '/page/' + this.pageId + '/widget';
+      // this.router.navigate([url]);
+      // this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+      this.text = this.headerForm.value.headerText;
+      alert(this.widget.text);
+      this.size = this.headerForm.value.headerSize;
+      // this.widgetService.createWidget(this.pageId, this.widget);
+      // this.text = this.widget.text;
+      // this.size = this.widget.size;
+      // this.widgetType = this.widget.widgetType;
       this.widgets = this.widgetService.findWidgetsByPageId(this.pageId);
-      this.text = this.widget.text;
-      this.size = this.widget.size;
-      this.widgetType = this.widget.widgetType;
     });
   }
 }

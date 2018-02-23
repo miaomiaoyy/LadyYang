@@ -15,14 +15,13 @@ export  class WidgetService {
     new Widget('321', 'HEADER', '321', '2', 'LOVE LIFE' ),
     new Widget('132', 'IMAGE', '321', '2', 'text', '100%', 'http://lorempixel.com/400/200/'),
     new Widget('231', 'HTML', '222', '2', '<p>blalbla</p>' ),
-    new Widget('231', 'HEADER', '222', '2', '<p>blalbla</p>' ),
-    new Widget('312', 'YOUTUBE', '111', '2', 'text', '100%', 'https://www.youtube.com/watch?v=87gWaABqGYs&list=RDMM87gWaABqGYs' ),
+    new Widget('222', 'HEADER', '222', '2', '<p>blalbla</p>' ),
+    new Widget('312', 'YOUTUBE', '321', '2', 'text', '100%', 'https://www.youtube.com/watch?v=87gWaABqGYs&list=RDMM87gWaABqGYs' ),
+    new Widget('435', 'YOUTUBE', '111', '2', 'text', '100%', 'https://www.youtube.com/watch?v=87gWaABqGYs&list=RDMM87gWaABqGYs' ),
     new Widget('666', 'IMAGE', '333', '3', 'http://lorempixel.com/400/200/'),
   ];
   createWidget(pageId, widget) {
-
     widget._id = (new Date()).getTime() + '';
-    widget.pageId = pageId;
     this.widgets.push(widget);
   }
 

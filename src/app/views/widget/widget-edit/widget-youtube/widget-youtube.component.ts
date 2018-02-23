@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Widget} from '../../../../models/widget.model.client';
 import {ActivatedRoute} from '@angular/router';
 import {WidgetService} from '../../../../service/widget.service.client';
