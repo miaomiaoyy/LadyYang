@@ -8,7 +8,7 @@
     <input [(ngModel)]="password" type="text" class="form-control"id="password" placeholder="Password"
            [ngModelOptions]="{standalone: true}"/>
 
-    <input [(ngModel)]="verifyPassword" type="text" class="form-control"id="verificationPassword"
+    <input [(ngModel)]="verifyPassword" type="text" class="form-control"id="verifyPassword"
            placeholder="VerificationPassword"
            [ngModelOptions]="{standalone: true}"/>
 
@@ -16,11 +16,11 @@
     <button class="btn btn-danger btn-block" (click)="cancel()"> Cancel</button>
 
     <span class="btn-block" *ngIf="userDuplicateError"
-          class = "alert jasmine-alert" error()>
+          class = "alert jasmine-alert">
       {{userDuplicateErrorMsg}}
     </span>
     <span class="btn-block" *ngIf="errorFlag"
-          class = "alert jasmine-alert" error()>
+          class = "alert jasmine-alert">
       {{errorMsg}}
     </span>
   </form>
