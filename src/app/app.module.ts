@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
+import {HttpModule} from '@angular/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './views/users/login/login.component';
 import { ProfileComponent } from './views/users/profile/profile.component';
@@ -24,6 +24,7 @@ import { WidgetYoutubeComponent } from './views/widget/widget-edit/widget-youtub
 import { PageListComponent } from './views/page/page-list/page-list.component';
 import { PageNewComponent } from './views/page/page-new/page-new.component';
 import { PageEditComponent } from './views/page/page-edit/page-edit.component';
+import { MyDirectiveNameDirective } from './my-directive-name.directive';
 
 
 
@@ -44,7 +45,8 @@ import { PageEditComponent } from './views/page/page-edit/page-edit.component';
     WidgetYoutubeComponent,
     PageListComponent,
     PageNewComponent,
-    PageEditComponent
+    PageEditComponent,
+    MyDirectiveNameDirective
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,36 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+/* Api CALLS*/
+app.get('/api/user/', function (req,res) {
+    res.send();
+})
+
+app.get('/api/user/:userId', function (req,res) {
+  res.send();
+})
+
+app.post('/api/user/', function (req,res) {
+  res.send();
+})
+
+
+app.post('/api/user/:userId', function (req,res) {
+  res.send();
+})
+
+
+app.delete('/api/user/:userId', function (req,res) {
+  res.send();
+})
+
+app.put('/api/user/:userId', function (req,res) {
+  res.send();
+})
+
+
+var webmaker = require('./assignment/app');
+webmaker(app);
 
 
 
@@ -41,10 +71,10 @@ const server = http.createServer(app);
 
 
 
-// For Build: Catch all other routes and return the index file -- BUILDING
-app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'assets/index.html'));
-});
+// // For Build: Catch all other routes and return the index file -- BUILDING
+// app.get('*', function (req, res) {
+//   res.sendFile(path.join(__dirname, 'assets/index.html'));
+// });
 
 
 server.listen( port , () => console.log('Running'));
