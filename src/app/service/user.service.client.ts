@@ -1,88 +1,54 @@
-import { User } from '../models/user.model.client';
+
+
 import {Injectable} from '@angular/core';
+import {Http, Response} from '@angular/http';
+import 'Rxjs/Rx';
+import {environment} from '../../environments/environment';
 
-
+// injecting Http service into UserService
 @Injectable()
-export class UserService {
-  users: User[] = [
-    new User('123', 'alice', 'qq', 'Alice', 'Pitt'),
-    new User('234', 'bob', 'qq', 'Bob', 'Delon'),
-    new User('345', 'charlie', 'qq', 'Charlie', 'Joseph'),
-    new User('666', 'yang', '224', 'Yang', 'Yuan')
-  ];
-  createUser(user: User) {
-    this.users.push(new User(user.uid, user.username, user.password, user.firstName, user.lastName));
-  }
 
-  findUserByCredential(username: String, password: String) {
-    for (let i = 0; i < this.users.length; i++) {
-      if (this.users[i].username === username && this.users[i].password === password) {
-        return this.users[i];
-      }
-  }
-}
+export class UserService {
+
+  constructor(private _http: Http) {}
+
+  baseUrl = environment.baseUrl;
 
   findUserById(userId: String) {
-    return this.users.find(function (user) {
-      return user.uid === userId;
+    return this._http.get(this.baseUrl + '/api/user/' + userId)
+      .map(
+        (res: Response) => {
+          const data = res.json();
+          return data;
+        }
+      );
+  }
+
+  findUserByCredentials(username, password) {
+    return this._http.get('http://localhost:3100/api/user?username=' + username + '&password=' + password)
+      .map((res: Response) => {
+        return res.json();
+      });
+  }
+
+  updateUser(user) {
+    const url =  'http://localhost:3100/api/user/' + user.uid;
+    return this._http.put(url, user).map((res: Response) => {
+      return res.json();
     });
   }
 
-  updateUser(user: User) {
-    for (let i = 0; i < this.users.length; i++) {
-      if (this.users[i].uid === user.uid) {
-        this.users[i].firstName = user.firstName;
-        this.users[i].lastName = user.lastName;
-        return this.users[i];
-      }
-    }
+  createUser(user) {
+    const url =  'http://localhost:3100/api/user/' + user.uid;
+    return this._http.post(url, user).map((res: Response) => {
+      return res.json();
+    });
   }
 
-  deleteUser(userId: String) {
-    for (const i in this.users) {
-      if (this.users[i].uid === userId) {
-        const j = +i;
-        this.users.splice(j, 1);
-
-      }
-    }
+  deleteUser(user) {
+    const url =  'http://localhost:3100/api/user/' + user.uid;
+    return this._http.delete(url, user).map((res: Response) => {
+      return res.json();
+    });
   }
 }
-
-
-
-// import { User } from '../models/user.model.client';
-// import {Injectable} from '@angular/core';
-// import {Http, Response} from '@angular/http';
-// import 'rxjs/Rx';
-//
-// @Injectable()
-// export class UserService {
-//
-//   constructor(private http: Http) {}
-//
-//   /*findUserByCredential(username, password){
-//     return this.users.find( function (user){
-//        return user.username === username && user.password === password;
-//     });
-//   }
-// */
-//
-//   findUserByCredentials(username, password) {
-//     return this.http.get('http://localhost:3100/api/user?username=' + username + '&password=' + password)
-//       .map((response: Response) => {
-//         return response.json();
-//       });
-//   }
-//
-//   findUserById(userId) {
-//     return this.http.get('http://localhost:3100/api/user/' + userId)
-//       .map((response: Response) => {
-//         return response.json();
-//       });
-//   }
-//
-//   updateUser(user) {
-//     return user;
-//   }
-// }

@@ -29,23 +29,26 @@ export class RegisterComponent implements OnInit {
     private activeRoute: ActivatedRoute,
   ) {}
   register() {
-    //this.username = this.registerForm.value.username;
-    //this.password = this.registerForm.value.password;
-    //this.verifyPassword = this.registerForm.value.verifyPassword;
-
-    this.lastName = this.registerForm.value.lastName;
-    this.firstName = this.registerForm.value.firstName;
-
 
     if (this.verifyPassword !== this.password) {
       this.errorFlag = true;
-      alert(this.errorMsg);
-      this.router.navigate(['/register']);
+      const user = new User(Math.random().toString() + '', this.username, this.password, this.firstName, this.lastName);
+      this.userService.createUser(user).subscribe(
+        (data: User) => {
+          this.errorFlag = true;
+          this.router.navigate(['/profile', data.uid]);
+        },
+      (error: any) => console.log(error)
+      );
     }
-    if (this.userService.findUserByCredential(this.username, this.password) != null) {
-      this.userDuplicateError = true;
-      alert(this.userDuplicateErrorMsg);
-      this.router.navigate(['/login']);
+    if (this.userService.findUserByCredentials(this.username, this.password) != null) {
+      const user = new User('', this.username, this.password, '', '');
+      this.userService.createUser(user).subscribe(
+        (data: User) => {
+          this.userDuplicateError = true;
+          alert(this.userDuplicateErrorMsg);
+          this.router.navigate(['/login', data.uid]);
+        });
     }
 
     if (this.errorFlag) {
@@ -54,13 +57,10 @@ export class RegisterComponent implements OnInit {
     const user: User = new User(Math.random().toString() + '', this.username, this.password, this.firstName, this.lastName);
     this.userService.createUser(user);
     this.router.navigate(['/profile', user.uid]);
-  }
-  cancel() {
-    this.router.navigate(['/login']);
-  }
-  OnInit() {}
-
-  ngOnInit(): void {
+    }
+  ngOnInit() {
+    this.lastName = this.registerForm.value.lastName;
+    this.firstName = this.registerForm.value.firstName;
     this.password = this.registerForm.value.password;
   }
 }

@@ -26,10 +26,13 @@ export class WebsiteListComponent implements OnInit {
         // this.user._id = this.userId;
       }
     );
-
-    this.websites = this.websiteService.findWebsitesByUser2(this.userId);
-  }
-  createNewWebsite(website) {
-    this.websiteService.createWebsite(this.userId, website);
+    this.activatedRoute.params.subscribe(params => {
+      this.websiteService.findWebsitesByUser(params['userId']).subscribe(
+        (websites: Website[]) => {
+          this.websites = websites;
+        },
+        (error: any) => console.log(error)
+      );
+    });
   }
 }

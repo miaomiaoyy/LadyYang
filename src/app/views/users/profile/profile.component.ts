@@ -9,38 +9,52 @@ import {User} from '../../../models/user.model.client';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  updateUser: User;
+
   user: User;
-  userId: String;
-  username: String;
-  password: String;
-  firstName: String;
-  lastName: String;
+  userId: string;
+  updateFlag = false;
+  updateMsg = 'Profile updated!';
+  errorFlag = false;
+  errorMsg = 'Username and password cannot be empty!';
 
   constructor(
-    private router: ActivatedRoute,
-    private userService: UserService
-  ) { }
-
-
-  updateUserController() {
-
-    const updateUser = {
-      uid: this.userId,
-      username: this.username,
-      password: this.password,
-      firstName: this.firstName,
-      lastName: this.lastName
-    };
-     this.userService.updateUser(this.user);
-
+    private userService: UserService,
+    private router: Router,
+    private route: ActivatedRoute) {
+    this.user = new User('', '', '', '', '');
   }
+
   ngOnInit() {
-    this.router.params.subscribe(
-      (params) => {
-        this.userId = params['userId'];
-        this.user = this.userService.findUserById(params['uid']);
+    this.route.params.subscribe(params => {
+      this.userId = params['userId'];
+      this.userService.findUserById(this.userId).subscribe(
+        (user: User) => {
+          this.user = user;
+        },
+        (error: any) => console.log(error)
+      );
     });
   }
-}
 
+  updateUser() {
+    if (this.user.username && this.user.password) {
+      this.userService.updateUser(this.user).subscribe(
+        (user: User) => {
+          this.user = user;
+          this.updateFlag = true;
+        },
+        (error: any) => console.log(error));
+    } else {
+      this.errorFlag = true;
+    }
+  }
+
+  deleteUser() {
+    this.userService.deleteUser(this.userId).subscribe(
+      () => {
+        this.router.navigate(['/login']);
+      },
+      (error: any) => console.log(error)
+    );
+  }
+}

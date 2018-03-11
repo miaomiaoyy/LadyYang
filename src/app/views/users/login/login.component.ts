@@ -26,14 +26,17 @@ export class LoginComponent implements OnInit {
     this.password = this.loginForm.value.password;
     alert(this.username + '  is login');
 
-    const user: User = this.userService.findUserByCredential(this.username, this.password);
-    if (user) {
-      alert('Login Success');
-      this.router.navigate(['/profile', user.uid]);
-    } else {
-      alert('Login Fail, usename or password is incorrect');
-      this.router.navigate(['/login']);
-    }
+    this.userService.findUserByCredentials(this.username, this.password)
+      .subscribe(
+        (user: User) => {
+          if (typeof user.uid === 'undefined') {
+            this.errorFlag = true;
+          } else {
+            this.router.navigate(['/profile', user.uid]);
+          }
+        },
+        (error: any) => console.log(this.errorMsg)
+      );
   }
   register() {
     this.router.navigate(['/register']);

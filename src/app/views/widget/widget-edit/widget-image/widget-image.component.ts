@@ -31,72 +31,38 @@ export class WidgetImageComponent implements OnInit {
 
   delete() {
     if (this.widgetId !== undefined) {
-      this.widgetService.deleteWidget(this.widgetId);
-      this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+      this.widgetService.deleteWidget(this.widgetId).subscribe(
+        () => {
+          this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+        },
+        (error: any) => console.log(error)
+      );
     } else {
-      this.router.navigate(['../../'], {relativeTo: this.activatedRoute});
+      this.widgetService.deleteWidget(this.widgetId).subscribe(
+        () => {
+          this.router.navigate(['../../'], {relativeTo: this.activatedRoute});
+        },
+        (error: any) => console.log(error)
+      );
     }
   }
 
-  // update() {
-  //   if (this.imageForm.value.headerText !== '' || this.imageForm.value.headerSize !== '') {
-  //     this.widget.text = this.imageForm.value.headerText;
-  //     this.widget.size = this.imageForm.value.headerSize;
-  //     alert(this.widget.text);
-  //     alert(this.widget.size);
-  //   }
-  //   if (this.widgetId === 'header') {
-  //     this.widgetService.createWidget(this.pageId, this.widget);
-  //     alert(this.widgetId);
-  //     alert('Creation succeeds');
-  //   } else {
-  //     this.widgetService.updateWidget(this.widget._id, this.widget);
-  //     alert(this.widgetId);
-  //     alert('Change succeeds');
-  //   }
-  //   const url: any = '/user/' + this.userId + '/website' + this.websiteId + '/page/' + this.pageId + '/widget';
-  //   this.router.navigate([url]);
-  //   this.router.navigate(['../'], {relativeTo: this.activatedRoute});
-  // }
-  //
-  // updateOrCreate() {
-  //   this.widget.text = this.imageForm.value.imageText;
-  //   if (this.imageForm.value.imageUrl !== '') {
-  //     this.widget.url = this.imageForm.value.imageUrl;
-  //   } else if (this.widgetId !== undefined) {
-  //     this.router.navigate(['../'], {relativeTo: this.activatedRoute});
-  //     return;
-  //   } else {
-  //     this.router.navigate(['../../'], {relativeTo: this.activatedRoute});
-  //     return;
-  //   }
-  //   this.widget.width = this.imageForm.value.imageWidth;
-  //   this.widget.widgetType = 'IMAGE';
-  //   if (this.widgetId !== undefined) {
-  //     this.widgetService.updateWidget(this.widgetId, this.widget);
-  //     alert(this.widget.text);
-  //     this.router.navigate(['../'], {relativeTo: this.activatedRoute});
-  //   } else {
-  //     this.widgetService.createWidget(this.pageId, this.widget);
-  //     alert(this.widget.text);
-  //     this.router.navigate(['../../'], {relativeTo: this.activatedRoute});
-  //   }
-  // }
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe(params => {
-      this.pageId = params['pid'];
-      this.widgetId = params['wgid'];
-      if (params['wgid'] !== undefined) {
-        this.widget = this.widgetService.findWidgetById(this.widgetId);
-      } else {
-        this.widget = new Widget('', '', '', '', '', '', '');
-      }
-      this.text = this.widget.text;
-      this.url = this.widget.url;
-      this.width = this.widget.width;
-    });
-  }
+      this.activatedRoute.params.subscribe(params => {
+        this.websiteId = params['wid'];
+        this.pageId = params['pid'];
+        this.userId = params['userId'];
+        this.widgetId = params['wgid'];
+        this.widgetService.findWidgetById(params['wgid']).subscribe(
+          (widget: Widget) => {
+            this.widget = widget;
+          },
+          (error: any) => console.log(error)
+        );
+      });
+      console.log('init url: ' + this.widget.url);
+    }
 
   //
   // updateWidgetController(widget: Widget) {

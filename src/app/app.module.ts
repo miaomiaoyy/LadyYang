@@ -25,6 +25,7 @@ import { PageListComponent } from './views/page/page-list/page-list.component';
 import { PageNewComponent } from './views/page/page-new/page-new.component';
 import { PageEditComponent } from './views/page/page-edit/page-edit.component';
 import { MyDirectiveNameDirective } from './my-directive-name.directive';
+import { SortableDirective } from '../../assignment/directives/sortable.directive';
 
 
 
@@ -46,7 +47,8 @@ import { MyDirectiveNameDirective } from './my-directive-name.directive';
     PageListComponent,
     PageNewComponent,
     PageEditComponent,
-    MyDirectiveNameDirective
+    MyDirectiveNameDirective,
+    SortableDirective
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,7 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {WebsiteService} from '../../../service/website.service.client';
+import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Website} from '../../../models/website.model.client';
-import {User} from '../../../models/user.model.client';
-import {NgForm} from '@angular/forms';
+import {WebsiteService} from '../../../service/website.service.client';
 
 @Component({
   selector: 'app-website-edit',
@@ -12,41 +10,51 @@ import {NgForm} from '@angular/forms';
 })
 export class WebsiteEditComponent implements OnInit {
 
-  @ViewChild('f') websiteForm: NgForm;
-
+  websiteId: string;
   website: Website;
-  websites: Website[] = [];
-  userId: String;
-  websiteId: String;
+  websites: Website[];
 
   constructor(
     private websiteService: WebsiteService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router
-  ) { }
-
-  updateWebsite() {
-    this.website = this.websiteService.updateWebsite(this.website._id, this.website);
-    console.log(this.website);
-  }
-
-  deleteWebsite() {
-    this.websiteService.deleteWebsite(this.website._id);
-    this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+    private route: ActivatedRoute,
+    private router: Router) {
+    this.website = new Website('', '', '', '');
   }
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe((params: any) => {
-      this.userId = params['uid'];
+    this.route.params.subscribe(params => {
       this.websiteId = params['wid'];
-      alert('Revising website  ' + this.websiteId);
-      this.website = this.websiteService.findWebsiteById(this.websiteId);
-      this.websites = this.websiteService.findWebsitesByUser(this.userId);
-      // this.website.name = this.websiteForm.value.name;
-      // this.website.description = this.websiteForm.value.description;
-      //     this.widget.size = this.imageForm.value.headerSize;
+      this.websiteService.findWebsiteById(this.websiteId).subscribe(
+        (website: Website) => {
+          this.website = website;
+        },
+        (error: any) => console.log(error)
+      );
+      this.websiteService.findWebsitesByUser(params['uid']).subscribe(
+        (websites: Website[]) => {
+          this.websites = websites;
+        },
+        (error: any) => console.log(error)
+      );
     });
   }
 
+  updateWebsite() {
+    this.websiteService.updateWebsite(this.websiteId, this.website).subscribe(
+      (website: Website) => {
+        this.website = website;
+        this.router.navigate(['../'], { relativeTo: this.route });
+      },
+      (error: any) => console.log(error)
+    );
+  }
 
+  deleteWebsite() {
+    this.websiteService.deleteWebsite(this.websiteId).subscribe(
+      () => {
+        this.router.navigate(['../'], { relativeTo: this.route });
+      },
+      (error: any) => console.log(error)
+    );
+  }
 }

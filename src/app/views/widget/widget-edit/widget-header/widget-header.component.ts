@@ -25,75 +25,107 @@ export class WidgetHeaderComponent implements OnInit {
 
   delete() {
     if (this.widgetId !== 'header') {
-      this.widgetService.deleteWidget(this.widgetId);
-      alert('delete success');
-      this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+      this.widgetService.deleteWidget(this.widgetId).subscribe(
+        () => {
+          alert('delete success');
+          this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+        },
+        (error: any) => console.log(error)
+      );
     } else {
-      this.router.navigate(['../../'], {relativeTo: this.activatedRoute});
+      this.widgetService.deleteWidget(this.widgetId).subscribe(
+        () => {
+          alert('delete success');
+          this.router.navigate(['../../'], {relativeTo: this.activatedRoute});
+        },
+        (error: any) => console.log(error)
+      );
     }
   }
-
-  updateWidgetController() {
-    if (this.headerForm.value.headerText !== '' || this.headerForm.value.headerSize !== '') {
-      this.widget.text = this.headerForm.value.headerText;
-      this.widget.size = this.headerForm.value.headerSize;
-      alert('Updating widget + ' + this.widget.text);
-      alert(this.widget.size);
-    }
-    if (this.widgetId === 'header') {
-        this.widgetService.createWidget(this.pageId, this.widget);
-        alert(this.widgetId);
-        alert(this.widgets.length);
-        alert('Creation succeeds');
-    } else {
-        this.widgetService.updateWidget(this.widget._id, this.widget);
-        alert(this.widgetId);
-        alert('Change succeeds');
-      }
-    const url: any = '/user/' + this.userId + '/website' + this.websiteId + '/page/' + this.pageId + '/widget';
-    this.router.navigate([url]);
-    this.router.navigate(['../'], {relativeTo: this.activatedRoute});
-  }
+  //
+  // updateWidgetController() {
+  //   if (this.headerForm.value.headerText !== '' || this.headerForm.value.headerSize !== '') {
+  //     this.widget.text = this.headerForm.value.headerText;
+  //     this.widget.size = this.headerForm.value.headerSize;
+  //     alert('Updating widget + ' + this.widget.text);
+  //     alert(this.widget.size);
+  //   }
+  //   if (this.widgetId === 'header') {
+  //       this.widgetService.createWidget(this.pageId, this.widget);
+  //       alert(this.widgetId);
+  //       alert(this.widgets.length);
+  //       alert('Creation succeeds');
+  //   } else {
+  //       this.widgetService.updateWidget(this.widget._id, this.widget);
+  //       alert(this.widgetId);
+  //       alert('Change succeeds');
+  //     }
+  //   const url: any = '/user/' + this.userId + '/website' + this.websiteId + '/page/' + this.pageId + '/widget';
+  //   this.router.navigate([url]);
+  //   this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+  // }
 
   ngOnInit() {
+    this.text = this.headerForm.value.headerText;
+    this.size = this.headerForm.value.headerSize;
+
     this.activatedRoute.params.subscribe(params => {
-      this.pageId = params['pid'];
-      this.userId = params['uid'];
-      this.widgetId = params['wgid'];
-      this.websiteId = params['wid'];
-      if (params['wgid'] !== 'header') {
-        this.widget = this.widgetService.findWidgetById(this.widgetId);
-        this.text = this.widget.text;
-        this.size = this.widget.size;
-      } else {
-        this.widget = new Widget('', 'HEADER', this.pageId, '', '', '100%', 'url');
-        this.widget.text = this.headerForm.value.headerText;
-        this.widget.size = this.headerForm.value.headerSize;
-        this.widgetService.createWidget(this.pageId, this.widget);
+        this.pageId = params['pid'];
+        this.userId = params['uid'];
+        this.widgetId = params['wgid'];
+        this.websiteId = params['wid'];
+        if (params['wgid'] !== 'header') {
+          this.widgetService.findWidgetById(params['wgid']).subscribe(
+            (widget: Widget) => {
+              this.widget = widget;
+            },
+            (error: any) => console.log(error)
+          );
+        } else {
+          this.widget = new Widget('', 'HEADER', this.pageId, '', '', '100%', 'url');
+          this.widget.text = this.headerForm.value.headerText;
+          this.widget.size = this.headerForm.value.headerSize;
+          this.widgetService.createWidget(params['pid'], this.widget).subscribe(
+            (widget: Widget) => {
+              this.widget = widget;
+            },
+            (error: any) => console.log(error)
+          );
+        }
       }
-
-
-      // if (this.widgetId === 'header') {
-      //   this.widgetService.createWidget(this.pageId, this.widget);
-      //   alert(this.widgetId);
-      //   alert(this.widgets.length);
-      //   alert('Creation succeeds');
-      // } else {
-      //   this.widgetService.updateWidget(this.widget._id, this.widget);
-      //   alert(this.widgetId);
-      //   alert('Change succeeds');
-      // }
-      // const url: any = '/user/' + this.userId + '/website' + this.websiteId + '/page/' + this.pageId + '/widget';
-      // this.router.navigate([url]);
-      // this.router.navigate(['../'], {relativeTo: this.activatedRoute});
-      this.text = this.headerForm.value.headerText;
-      this.size = this.headerForm.value.headerSize;
-      // this.widgetService.createWidget(this.pageId, this.widget);
-      // this.text = this.widget.text;
-      // this.size = this.widget.size;
-      // this.widgetType = this.widget.widgetType;
-      this.widgets = this.widgetService.findWidgetsByPageId(this.pageId);
-    });
+    );
   }
-}
+
+  updateWidget() {
+    if (this.widgetId === 'header') {
+      this.widgetService.createWidget('header', this.widget).subscribe(
+        (widget: Widget) => {
+          this.widget = widget;
+          this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+        },
+        (error: any) => console.log(error)
+      );
+      alert('Creation succeeds');
+    } else {
+      this.widgetService.updateWidget(this.widgetId.toString(), this.widget).subscribe(
+        (widget: Widget) => {
+          this.widget = widget;
+          this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+        },
+        (error: any) => console.log(error)
+      );
+    }
+  }
+
+    // deleteWidget() {
+    //   this.widgetService.deleteWidget(this.widgetId).subscribe(
+    //     () => {
+    //       this.router.navigate(['../'], { relativeTo: this.activatedRoute });
+    //     },
+    //     (error: any) => console.log(error)
+    //   );
+    // }
+  }
+
+
 

@@ -9,10 +9,10 @@ import {Widget} from '../../../models/widget.model.client';
   styleUrls: ['./widget-chooser.component.css']
 })
 export class WidgetChooserComponent implements OnInit {
+  widgets: Widget[];
   userId: String;
   websiteId: String;
   pageId: String;
-  widgetType: String;
 
   constructor(private widgetService: WidgetService,
               private activatedRoute: ActivatedRoute,
@@ -27,8 +27,15 @@ export class WidgetChooserComponent implements OnInit {
         this.pageId = params['pid'];
       }
     );
+    this.activatedRoute.params.subscribe(params => {
+      this.widgetService.findWidgetsByPageId(params['pid']).subscribe(
+        (widgets: Widget[]) => {
+          this.widgets = widgets;
+        },
+        (error: any) => console.log(error)
+      );
+    });
   }
-
 
     // createWidgetController(wgtype: String) {
     //   const new_widget = {

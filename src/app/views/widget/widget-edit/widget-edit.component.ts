@@ -11,31 +11,21 @@ export class WidgetEditComponent implements OnInit {
 
   constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute, private router: Router) {
   }
+
   widget: Widget;
   widgetId: String;
   pageId: String;
   widgetType: String;
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe(
-      (params: any) => {
-        this.widgetId = params['wgid'];
-        this.pageId = params['pid']
-        this.widget = new Widget('xx', 'xx', this.pageId, 'xx', 'xx', 'xx', 'xx');
-      }
-    );
-    if (this.widgetId === 'header') {
-      this.widget.widgetType = 'HEADER';
-    } else if ( this.widgetId === 'image') {
-      this.widget.widgetType = 'IMAGE';
-    } else if (this.widgetId === 'youtube') {
-      this.widget.widgetType = 'YOUTUBE';
-    } else {
-      this.widget = this.widgetService.findWidgetById(this.widgetId);
-    }
-    // alert('Edit. ' + this.widgetId);
-    // this.widgetService.updateWidget(this.widgetId, this.widget);
-    // this.widgetService.deleteWidget(this.widgetId);
+    this.activatedRoute.params.subscribe(params => {
+      this.widgetService.findWidgetById(params['wgid']).subscribe(
+        (widget: Widget) => {
+          this.widget = widget;
+        },
+        (error: any) => console.log(error)
+      );
+    });
   }
 }
 
