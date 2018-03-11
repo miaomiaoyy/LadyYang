@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Widget} from '../../../../models/widget.model.client';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {WidgetService} from '../../../../service/widget.service.client';
 
 @Component({
@@ -17,24 +17,25 @@ export class WidgetYoutubeComponent implements OnInit {
 
   constructor(
     private widgetService: WidgetService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) { }
 
   updateOrCreateWidget() {
     if (!this.widget._id) {
       alert('Create success');
-      this.widgetService.createWidget(this.pageId, this.widget).subscribe(
+      this.widgetService.createWidget(this.pageId.toString(), this.widget).subscribe(
         (widget: Widget) => {
-          this.activatedRoute.navigate(['../'], {relativeTo: this.activatedRoute});
+          this.router.navigate(['../'], {relativeTo: this.activatedRoute});
         },
         (error: any) => console.log(error)
       );
     } else {
-      this.widgetService.updateWidget(this.widgetId, this.widget).subscribe(
+      this.widgetService.updateWidget(this.widgetId.toString(), this.widget).subscribe(
         (widget: Widget) => {
           console.log(widget);
           this.widget = widget;
-          this.activatedRoute.navigate(['../'], {relativeTo: this.activatedRoute});
+          this.router.navigate(['../'], {relativeTo: this.activatedRoute});
         },
         (error: any) => console.log(error)
       );
@@ -42,11 +43,11 @@ export class WidgetYoutubeComponent implements OnInit {
   }
 
   updateWidget() {
-    this.widgetService.updateWidget(this.widgetId, this.widget).subscribe(
+    this.widgetService.updateWidget(this.widgetId.toString(), this.widget).subscribe(
       (widget: Widget) => {
         console.log(widget);
         this.widget = widget;
-        this.activatedRoute.navigate(['../'], {relativeTo: this.activatedRoute});
+        this.router.navigate(['../'], {relativeTo: this.activatedRoute});
       },
       (error: any) => console.log(error)
     );
@@ -55,7 +56,7 @@ export class WidgetYoutubeComponent implements OnInit {
   deleteWidget() {
     this.widgetService.deleteWidget(this.widgetId).subscribe(
       () => {
-        this.activatedRoute.navigate(['../'], {relativeTo: this.activatedRoute});
+        this.router.navigate(['../'], {relativeTo: this.activatedRoute});
       },
       (error: any) => console.log(error)
     );
@@ -66,7 +67,7 @@ export class WidgetYoutubeComponent implements OnInit {
     this.pageId = params['pid'];
     this.userId = params['userId'];
     this.widgetId = params['wgid'];
-    this.activatedRoute.params.subscribe(params => {
+    this.activatedRoute.params.subscribe(() => {
       this.widgetId = params['wgid'];
       this.widgetService.findWidgetById(params['wgid']).subscribe(
         (widget: Widget) => {
@@ -75,7 +76,7 @@ export class WidgetYoutubeComponent implements OnInit {
         (error: any) => console.log(error)
       );
     });
-    }
+    });
   }
 
 }
