@@ -33,12 +33,13 @@ export class WidgetListComponent implements OnInit {
         this.userId = params['uid'];
         this.websiteId = params['wid'];
         this.pageId = params['pid'];
+        this.widgetService.findWidgetsByPageId(this.pageID).subscribe(
+          (widgets: Widget[]) => {
+            this.widgets = widgets;
+          });
       }
     );
 
-    this.widgets = this.widgetService.findWidgetsByPageId(this.pageId);
-    this.page = this.pageService.findPageById(this.pageId);
-    console.log(this.widgets);
 
   }
   updateURL(url: String) {

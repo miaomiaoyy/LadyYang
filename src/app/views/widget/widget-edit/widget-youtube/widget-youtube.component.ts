@@ -48,8 +48,7 @@ export class WidgetYoutubeComponent implements OnInit {
         console.log(widget);
         this.widget = widget;
         this.router.navigate(['../'], {relativeTo: this.activatedRoute});
-      },
-      (error: any) => console.log(error)
+      }
     );
   }
 
@@ -57,8 +56,7 @@ export class WidgetYoutubeComponent implements OnInit {
     this.widgetService.deleteWidget(this.widgetId).subscribe(
       () => {
         this.router.navigate(['../'], {relativeTo: this.activatedRoute});
-      },
-      (error: any) => console.log(error)
+      }
     );
   }
 
