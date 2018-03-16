@@ -3,6 +3,8 @@ import {Page} from '../models/page.model.client';
 import {Http, Response} from '@angular/http';
 import {environment} from '../../environments/environment';
 import 'Rxjs/Rx';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class PageService {
