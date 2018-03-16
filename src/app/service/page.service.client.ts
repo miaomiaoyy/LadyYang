@@ -4,7 +4,7 @@ import {Http, Response} from '@angular/http';
 import {environment} from '../../environments/environment';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
-import 'rxjs';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class PageService {
