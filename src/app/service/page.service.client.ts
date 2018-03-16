@@ -40,7 +40,7 @@ export class PageService {
     });
   }
 
-  deletePage(pageId: String) {
+  deletePageById(pageId: String) {
     return this._http.delete(this.baseUrl + '/api/page/' + pageId)
       .map((response: Response) => {
         return response.json();

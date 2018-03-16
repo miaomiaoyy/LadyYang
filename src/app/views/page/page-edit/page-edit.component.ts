@@ -21,7 +21,7 @@ export class PageEditComponent implements OnInit {
   }
 
   deletePage(pageId) {
-    this.pageService.deletePage(pageId).subscribe();
+    this.pageService.deletePageById(pageId).subscribe();
   }
   ngOnInit() {
     this.route.params.subscribe(params => {
