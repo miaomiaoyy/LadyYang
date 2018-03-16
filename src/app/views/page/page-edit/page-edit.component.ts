@@ -1,9 +1,8 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {PageService} from '../../../service/page.service.client';
-import {ActivatedRoute, Router} from '@angular/router';
-import {NgForm} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import {Page} from '../../../models/page.model.client';
-
+import {PageService} from '../../../service/page.service.client';
+import {ActivatedRoute} from '@angular/router';
+import {Website} from '../../../models/website.model.client';
 
 @Component({
   selector: 'app-page-edit',
@@ -11,33 +10,30 @@ import {Page} from '../../../models/page.model.client';
   styleUrls: ['./page-edit.component.css']
 })
 export class PageEditComponent implements OnInit {
-  @ViewChild('f') PageForm: NgForm;
-  page: Page[] = [];
-  websiteId: String;
-  pageId: String;
-  useId: String;
-  pageName: String;
-  pageTitle: String;
-  constructor(private pageService: PageService, private activatedRoute: ActivatedRoute, private router: Router) { }
+  page: Page;
+  userId: String;
 
+  constructor(private pageService: PageService,
+              private route: ActivatedRoute) { }
+
+  updatePage(changed_page) {
+    this.pageService.updatePage(changed_page).subscribe();
+  }
+
+  deletePage(pageId) {
+    this.pageService.deletePage(pageId).subscribe();
+  }
   ngOnInit() {
-    this.activatedRoute.params.subscribe(
-      (params: any) => {
-        this.websiteId = params['wid'];
-        this.pageId = params['pid'];
-        this.useId = params['uid'];
-      }
-    );
-    this.page = this.pageService.findPageByWebsiteId(this.websiteId);
-  }
-  deletePageController() {
-    this.pageService.deletePageById(this.pageId);
-  }
-  updatePageConntroller() {
-    this.pageName = this.PageForm.value.pagename;
-    this.pageTitle = this.PageForm.value.pagetitle;
-    this.pageService.updatePage(this.pageId, this.pageName, this.pageTitle);
+    this.route.params.subscribe(params => {
+      // const prePage = this.pageService.findPageById(params['pid']);
+      // this.page = Object.assign({}, prePage);
+      this.pageService.findPageById(params['pid']).subscribe(
+        (page: Page) => {
+          this.page = page;
+        }
+      );
+      this.userId = params['uid'];
+    });
   }
 
 }
-

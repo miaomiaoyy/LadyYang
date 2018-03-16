@@ -33,11 +33,11 @@ export class PageService {
       });
   }
 
-  updatePage(pageId: String, page: Page) {
-    return this._http.put(this.baseUrl + '/api/page/' + pageId, page)
-      .map((response: Response) => {
-        return response.json();
-      });
+  updatePage(page: Page) {
+    const url = this.baseUrl + '/api/page/' + page._id;
+    return this._http.put(url, page).map((response: Response) => {
+      return response.json();
+    });
   }
 
   deletePage(pageId: String) {
