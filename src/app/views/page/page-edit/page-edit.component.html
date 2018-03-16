@@ -9,7 +9,7 @@
     </div>
     <div class="navbar-text pull-right">
 
-      <a routerLink=".." class="cl-icon-padding cl-text-black" (click)="updatePageConntroller()">
+      <a routerLink=".." class="cl-icon-padding cl-text-black" (click)="updatePage()">
             <span class="glyphicon glyphicon-ok">
             </span>
       </a>
@@ -21,26 +21,26 @@
 </nav>
 
 
-  <form (ngSubmit) = "updatePageConntroller()" #f="ngForm">
+  <form (ngSubmit) = "updatePage()" #f="ngForm">
 
       <label for="name">Name</label>
-      <input [(ngModel)]="pageName"  name="pagename" type="text" id="name" placeholder="Page Name" class = "form-control">
+      <input [(ngModel)]="page.name"  name="pagename" type="text" id="name" placeholder="Page Name" class = "form-control">
 
     <div class="form-group">
       <label for="pagetitle">Title</label>
-      <input [(ngModel)]="pageTitle" name="pagetitle" type="text" class="form-control" id="pagetitle" placeholder="Page Name">
+      <input [(ngModel)]="page.title" name="pagetitle" type="text" class="form-control" id="pagetitle" placeholder="Page Name">
     </div>
   </form>
   <!--<span class="help-block" *ngIf="pageName.touched || pageTitle.touched">-->
     <!--Please delete the page-->
   <!--</span>-->
-  <button class="btn btn-danger btn-block" (click)="deletePageController()">Delete</button>
+  <button class="btn btn-danger btn-block" (click)="deletePage()">Delete</button>
 
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid row">
     <div class="pull-right navbar-text">
-      <a routerLink="/profile/{{useId}}" class="cl-icon-padding">
+      <a routerLink="/profile/{{userId}}" class="cl-icon-padding">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </div>

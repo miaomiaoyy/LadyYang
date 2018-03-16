@@ -22,11 +22,11 @@
 <form (ngSubmit) = "createPage()" #f="ngForm">
 
   <label for="name">Name</label>
-  <input [(ngModel)]="pageName"  name="pagename" type="text" id="name" placeholder="Page Name" class = "form-control">
+  <input [(ngModel)]="page.name"  name="pagename" type="text" id="name" placeholder="Page Name" class = "form-control">
 
   <div class="form-group">
     <label for="pagetitle">Title</label>
-    <input [(ngModel)]="pageTitle" name="pagetitle" type="text" class="form-control" id="pagetitle" placeholder="Page Name">
+    <input [(ngModel)]="page.title" name="pagetitle" type="text" class="form-control" id="pagetitle" placeholder="Page Name">
   </div>
 </form>
 
@@ -35,7 +35,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid row">
     <div class="pull-right navbar-text">
-      <a routerLink="/profile/{{useId}}" class="cl-icon-padding">
+      <a routerLink="/profile/{{userId}}" class="cl-icon-padding">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </div>
