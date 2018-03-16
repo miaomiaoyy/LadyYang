@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Page} from '../../../models/page.model.client';
 import {PageService} from '../../../service/page.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
+import {User} from '../../../models/user.model.client';
 
 @Component({
   selector: 'app-page-list',
@@ -27,7 +28,12 @@ export class PageListComponent implements OnInit {
         this.userId = params['uid'];
       }
     );
-    this.pageService.findPageByWebsiteId(this.websiteId).subscribe();
+    this.pageService.findPageByWebsiteId(this.websiteId).subscribe(
+      (websiteId: String) => {
+        this.websiteId = websiteId;
+      },
+      (error: any) => console.log(error)
+    );
   }
 }
 
