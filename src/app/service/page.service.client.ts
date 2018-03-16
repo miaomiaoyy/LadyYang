@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Page} from '../models/page.model.client';
 import {Http, Response} from '@angular/http';
 import {environment} from '../../environments/environment';
+import 'Rxjs/Rx';
 
 @Injectable()
 export class PageService {
