@@ -1,5 +1,3 @@
-import {getRandomString} from 'selenium-webdriver/safari';
-
 
 module.exports = function (app) {
     const multer = require('multer'); // npm install multer --save
