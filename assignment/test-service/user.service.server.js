@@ -4,7 +4,7 @@ module.exports = function (app) {
   app.post("/api/user", createUser);
   app.get('/api/user/hello', helloUser);
   app.get('/api/user/:userId', findUserById);
-  app.get('/api/user', findUsers);
+
   app.delete("/api/user/:userId", deleteUser);
 
   const users = [
@@ -30,19 +30,6 @@ module.exports = function (app) {
     res.json(users);
   }
 
-  function findUsers(req, res) {
-    const username = req.query['username'];
-    const password = req.query['password'];
-
-    const user = null;
-
-    if (username && password) {
-      user = users.find(function (user) {
-        return user.username === username && user.password === password;
-      });
-    }
-    res.json(user);
-  }
 
   function createUser(req, res) {
     const userId = req.params['userId'];
