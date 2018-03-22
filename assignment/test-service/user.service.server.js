@@ -1,15 +1,17 @@
 module.exports = function (app) {
 
   app.put('/api/user/:userId', updateUserById);
+  app.post("/api/user", createUser);
   app.get('/api/user/hello', helloUser);
   app.get('/api/user/:userId', findUserById);
   app.get('/api/user', findUsers);
+  app.delete("/api/user/:userId", deleteUser);
 
   const users = [
-    {_id: '123', username: 'alice',    password: 'alice',    firstName: 'Alice',  lastName: 'Wonderland'  },
-    {_id: '234', username: 'bob',      password: 'bob',      firstName: 'Bob',    lastName: 'Marley'  },
-    {_id: '345', username: 'charly',   password: 'charly',   firstName: 'Charly', lastName: 'Garcia'  },
-    {_id: '456', username: 'jannunzi', password: 'jannunzi', firstName: 'Jose',   lastName: 'Annunzi' }
+    {_id: '123', username: 'Alice',    password: 'qq',    firstName: 'Alice',  lastName: 'Wonderland'  },
+    {_id: '234', username: 'Bob',      password: 'bob',      firstName: 'Bob',    lastName: 'Marley'  },
+    {_id: '345', username: 'Charley',   password: 'cc',   firstName: 'Charly', lastName: 'Garcia'  },
+    {_id: '456', username: 'Yang', password: '224', firstName: 'Yang',   lastName: 'Kathleen' }
   ];
 
   function helloUser(req, res) {
@@ -42,7 +44,7 @@ module.exports = function (app) {
     res.json(user);
   }
 
-  function updateUser(req, res) {
+  function createUser(req, res) {
     const userId = req.params['userId'];
     const newUser = req.body;
 

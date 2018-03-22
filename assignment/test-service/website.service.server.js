@@ -45,8 +45,8 @@ module.exports = function (app) {
   }
 
   function updateWebsite(req, res) {
-    let websiteId = req.params['websiteId'];
-    let website = req.body;
+    var websiteId = req.params['websiteId'];
+    var website = req.body;
     for (const i in websites) {
       if (websites[i]._id === websiteId) {
         websites[i].name = website.name;
@@ -59,7 +59,7 @@ module.exports = function (app) {
   }
 
   function deleteWebsite(req, res) {
-    let websiteId = req.params['websiteId'];
+    var websiteId = req.params['websiteId'];
     websites.splice(websites.findIndex(function(website) {
       return website._id === websiteId;
     }), 1);

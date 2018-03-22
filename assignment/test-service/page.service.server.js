@@ -7,11 +7,11 @@ module.exports = function (app) {
   app.delete('/api/page/:pageId', deletePage);
 
   const pages = [
-    { '_id': '321', 'name': 'Post 1', 'websiteId': '456', 'description': 'Lorem' },
-    { '_id': '432', 'name': 'Post 2', 'websiteId': '456', 'description': 'Lorem' },
-    { '_id': '543', 'name': 'Post 3', 'websiteId': '456', 'description': 'Lorem' },
-    { '_id': '654', 'name': 'Post 1', 'websiteId': '890', 'description': 'Lorem' },
-    { '_id': '765', 'name': 'Post 2', 'websiteId': '890', 'description': 'Lorem' },
+    { '_id': '321', 'name': 'Post 1', 'websiteId': '456', 'description': 'HelloKitty' },
+    { '_id': '432', 'name': 'Post 2', 'websiteId': '456', 'description': 'haha' },
+    { '_id': '543', 'name': 'Post 3', 'websiteId': '456', 'description': '2333' },
+    { '_id': '654', 'name': 'Post 1', 'websiteId': '890', 'description': '9i283jdj' },
+    { '_id': '765', 'name': 'Post 2', 'websiteId': '890', 'description': 'xixi' },
     { '_id': '876', 'name': 'Post 3', 'websiteId': '890', 'description': 'Lorem' }
   ];
 
