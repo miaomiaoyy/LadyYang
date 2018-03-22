@@ -11,6 +11,6 @@ module.exports = function (app) {
   require("./test-service/user.service.server")(app);
   require("./test-service/page.service.server")(app);
   require("./test-service/website.service.server")(app);
- // require("./test-service/widget.service.server")(app);
+  require("./test-service/widget.service.server")(app);
   //var db = require("./models/model";
 };

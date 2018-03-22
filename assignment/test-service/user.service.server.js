@@ -32,7 +32,7 @@ module.exports = function (app) {
     const username = req.query['username'];
     const password = req.query['password'];
 
-    let user = null;
+    const user = null;
 
     if (username && password) {
       user = users.find(function (user) {
@@ -64,7 +64,8 @@ module.exports = function (app) {
     console.log(req.body);
     console.log('update user: ' + userId + ' ' + user.firstName + ' ' + user.lastName);
 
-    for (let i = 0; i < users.length; i++) {
+    // noinspection JSAnnotator
+    for (const i = 0; i < users.length; i++) {
       if (users[i]._id === userId) {
         users[i].firstName = user.firstName;
         users[i].lastName = user.lastName;
