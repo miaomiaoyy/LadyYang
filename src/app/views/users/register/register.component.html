@@ -13,8 +13,7 @@
            [ngModelOptions]="{standalone: true}"/>
 
     <button class="btn btn-primary btn-block" type = "submit" [disabled]="!f.valid"> Register</button>
-    <button class="btn btn-danger btn-block" (click)="cancel()"> Cancel</button>
-
+    <button class="btn btn-danger  btn-block" routerLink="/login">Cancel</button>
     <span class="btn-block" *ngIf="userDuplicateError"
           class = "alert jasmine-alert">
       {{userDuplicateErrorMsg}}

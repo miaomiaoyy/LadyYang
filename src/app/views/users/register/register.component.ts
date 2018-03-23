@@ -60,6 +60,7 @@ export class RegisterComponent implements OnInit {
     this.router.navigate(['/profile', user.uid]);
     }
 
+
   ngOnInit() {
     this.lastName = this.registerForm.value.lastName;
     this.firstName = this.registerForm.value.firstName;

@@ -16,10 +16,10 @@ export class WebsiteNewComponent implements OnInit {
   websiteDescription: string;
   websites: Website[];
 
-  constructor(
-    private websiteService: WebsiteService,
-    private route: ActivatedRoute,
-    private router: Router) { }
+  constructor(private websiteService: WebsiteService,
+              private route: ActivatedRoute,
+              private router: Router) {
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -45,3 +45,14 @@ export class WebsiteNewComponent implements OnInit {
     );
   }
 }
+
+//   createWebsite() {
+//     const new_website = new Website(undefined, this.webForm.value.webname, this.developerId, this.webForm.value.description);
+//     this.websiteService.createWebsite(this.developerId, new_website).subscribe(
+//       (website: Website) => {
+//         console.log(website);
+//         this.router.navigate(['/..', this.developerId, 'website']);
+//       }
+//     );
+//   }
+// }
