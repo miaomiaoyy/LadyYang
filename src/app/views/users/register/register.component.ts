@@ -43,6 +43,7 @@ export class RegisterComponent implements OnInit {
     }
     if (this.userService.findUserByCredentials(this.username, this.password) != null) {
       const user = new User('', this.username, this.password, '', '');
+
       this.userService.createUser(user).subscribe(
         (data: User) => {
           this.userDuplicateError = true;
@@ -58,6 +59,7 @@ export class RegisterComponent implements OnInit {
     this.userService.createUser(user);
     this.router.navigate(['/profile', user.uid]);
     }
+
   ngOnInit() {
     this.lastName = this.registerForm.value.lastName;
     this.firstName = this.registerForm.value.firstName;

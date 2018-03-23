@@ -26,6 +26,7 @@ import { PageNewComponent } from './views/page/page-new/page-new.component';
 import { PageEditComponent } from './views/page/page-edit/page-edit.component';
 import { MyDirectiveNameDirective } from './my-directive-name.directive';
 import { SortableDirective } from '../../assignment/directives/sortable.directive';
+import {HttpClientModule} from '@angular/common/http';
 
 
 
@@ -54,11 +55,14 @@ import { SortableDirective } from '../../assignment/directives/sortable.directiv
     BrowserModule,
     routing,
     FormsModule,
-    //HttpModule,
-    //Routing,
+    HttpClientModule,
+    HttpModule,
+
   ],
   providers: [UserService, WebsiteService, PageService, WidgetService],
   bootstrap: [AppComponent]
 
 })
-export class AppModule { }
+export class AppModule {
+  private static QuillEditorModule: any;
+}
