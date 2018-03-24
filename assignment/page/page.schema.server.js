@@ -1,14 +1,14 @@
 var mongoose = require("mongoose");
-var websiteSchema = require('../website/website.schema.server')
+var PageSchema = require('../website/page.schema.server')
 
-var UserSchema = mongoose.Schema({
+var PsgeSchema = mongoose.Schema({
   username: String,
   password: String,
   firstname:String,
   lastname: String,
-  websites:[websiteSchema],
+  pages:[pageSchema],
   dob: Date,
   salary: Number,
 }, {collection:'user'});
 
-module.exports = UserSchema;
+module.exports = PageSchema;

@@ -16,9 +16,9 @@ module.exports = function (app) {
   ];
 
   function createPage(req, res) {
-    const websiteId = req.params['websiteId'];
-    const page = req.body;
-    const new_page = {
+    var websiteId = req.params['websiteId'];
+    var page = req.body;
+    var new_page = {
       _id: (new Date()).getTime() + '',
       name: page.name,
       websiteId: websiteId,
@@ -29,24 +29,27 @@ module.exports = function (app) {
   }
 
   function findAllPagesForWebsite(req, res) {
-    const websiteId = req.params['websiteId'];
-    const pagesByWebsiteId = pages.filter(function(page) {
+    var websiteId = req.params['websiteId'];
+    var pagesByWebsiteId = pages.filter(function(page) {
       return page.websiteId === websiteId;
     });
     res.json(pagesByWebsiteId);
   }
 
   function findPageById(req, res) {
-    const pageId = req.params['pageId'];
-    const page = pages.find(function(page) {
+    var pageId = req.params['pageId'];
+    console.log('here'+ this.pageId);
+    var page = pages.find(function(page) {
       return page._id === pageId;
     });
     res.json(page);
   }
 
+
+
   function updatePage(req, res) {
-    const pageId = req.params['pageId'];
-    const page = req.body;
+    var pageId = req.params['pageId'];
+    var page = req.body;
     for (const i in pages) {
       if (pages[i]._id === pageId) {
         pages[i].name = page.name;
@@ -57,9 +60,23 @@ module.exports = function (app) {
       }
     }
   }
+  // //mongoversion
+  // function updatePage(req, res) {
+  //   var pageId = req.params['pageId'];
+  //   var page = req.body;
+  //   pageModel.deletePage(pageId)
+  //     .then(function (response) {
+  //       res.send(200).json(response);
+  //     }, function(err)
+  //   {
+  //     res.send(500);
+  //   }
+  // );
+  // }
+
 
   function deletePage(req, res) {
-    const pageId = req.params['pageId'];
+    var pageId = req.params['pageId'];
     pages.splice(pages.findIndex(function(page) {
       return page._id === pageId;
     }), 1);

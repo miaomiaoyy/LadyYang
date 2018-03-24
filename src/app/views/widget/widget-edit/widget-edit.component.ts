@@ -19,6 +19,7 @@ export class WidgetEditComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
+      console.log('get wgis  ' + params['wgid']);
       this.widgetService.findWidgetById(params['wgid']).subscribe(
         (widget: Widget) => {
           this.widget = widget;

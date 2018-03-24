@@ -38,6 +38,25 @@ export class LoginComponent implements OnInit {
         (error: any) => console.log(this.errorMsg)
       );
   }
+
+  // login() {
+  //   this.username = this.loginForm.value.username;
+  //   this.password = this.loginForm.value.password;
+  //
+  //   this.userService.findUserByCredentials(this.username, this.password).subscribe(
+  //     (user: User) => {
+  //       console.log(user);
+  //       this.errorFlag = false;
+  //       console.log(user.uid);
+  //
+  //       this.router.navigate(['/profile', user.uid]);
+  //     },
+  //     (error: any) => {
+  //       this.errorFlag = true;
+  //     }
+  //   );
+  // }
+
   register() {
     this.router.navigate(['/register']);
   }

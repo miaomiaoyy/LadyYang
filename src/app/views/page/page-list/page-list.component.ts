@@ -16,8 +16,7 @@ export class PageListComponent implements OnInit {
   websiteId: String;
   pageId: String;
   userId: String;
-  pageName: String;
-  pageTitle: String;
+
   constructor(private pageService: PageService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
@@ -29,8 +28,8 @@ export class PageListComponent implements OnInit {
       }
     );
     this.pageService.findPageByWebsiteId(this.websiteId).subscribe(
-      (websiteId: String) => {
-        this.websiteId = websiteId;
+      (pages: Page[]) => {
+        this.pages = pages;
       },
       (error: any) => console.log(error)
     );

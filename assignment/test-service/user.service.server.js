@@ -1,61 +1,74 @@
 module.exports = function (app) {
 
-  app.put('/api/user/:userId', updateUserById);
-  app.post("/api/user", createUser);
-  app.get('/api/user/hello', helloUser);
-  app.get('/api/user/:userId', findUserById);
+  //Put calls
+  app.put("/api/user/:userId",updateUser);
 
+  //GET calls
+  app.get("/api/user/hello", helloUser);
+  app.get("/api/user/:userId",findUserById);
+  app.get("/api/user", findUserByCredentials);
+
+  //Post calls
+  app.post("/api/user", createUsers);
+
+  //delete calls
   app.delete("/api/user/:userId", deleteUser);
 
-  const users = [
-    {_id: '123', username: 'Alice',    password: 'qq',    firstName: 'Alice',  lastName: 'Wonderland'  },
-    {_id: '234', username: 'Bob',      password: 'bob',      firstName: 'Bob',    lastName: 'Marley'  },
-    {_id: '345', username: 'Charley',   password: 'cc',   firstName: 'Charly', lastName: 'Garcia'  },
-    {_id: '456', username: 'Yang', password: '224', firstName: 'Yang',   lastName: 'Kathleen' }
+  var users = [
+    {uid: "123", username: "alice",    password: "qq",    firstName: "Alice",  lastName: "Wonder"  },
+    {uid: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
+    {uid: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
+    {uid: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
   ];
 
   function helloUser(req, res) {
-    res.send('Hello from user service!');
+    res.send("Hello from user service!");
   }
 
-  function findUserById(req, res) {
-    const userId = req.params['userId'];
-    const user = users.find(function (user) {
-      return user._id === userId;
+  function createUsers(req, res) {
+    var user = req.body;
+    user.uid = new Date().getTime().toString();
+    users.push(user);
+    res.json(user);
+  }
+
+  function findUserById(req, res){
+    var userId = req.params["userId"];
+    var user = users.find(function (user) {
+      return user.uid === userId;
+      console.log("here" + this.uid);
     });
     res.json(user);
   }
 
-  function findAllUsers(req, res) {
-    res.json(users);
-  }
+  function findUserByCredentials(req, res){
+    var username = req.query["username"];
+    var password = req.query["password"];
 
+    var user = null;
 
-  function createUser(req, res) {
-    const userId = req.params['userId'];
-    const newUser = req.body;
-
-    for (var i = 0; i < users.length; i++) {
-      if (users[i]._id === userId) {
-        users[i].username = newUser.username;
-        users[i].password = newUser.password;
-        users[i].firstName = newUser.firstName;
-        users[i].lastName = newUser.lastName;
-        res.json(users[i]);
-        return;
+    if (username && password){
+      user = users.find(function (user) {
+        return user.username === username && user.password === password;
+      });
+      if (user) {
+        res.status(200).send(user);
+      } else {
+        res.status(404).send('Not found');
       }
     }
+    res.json(user);
   }
-  function updateUserById(req, res){
-    const userId = req.params['userId'];
-    const user = req.body;
+
+  function updateUser(req, res){
+    var userId = req.params['userId'];
+    var user = req.body;
 
     console.log(req.body);
-    console.log('update user: ' + userId + ' ' + user.firstName + ' ' + user.lastName);
+    console.log("update user: " + userId + " " + user.firstName + " " + user.lastName);
 
-    // noinspection JSAnnotator
-    for (const i = 0; i < users.length; i++) {
-      if (users[i]._id === userId) {
+    for(var i = 0; i < users.length; i++) {
+      if (users[i].uid === userId) {
         users[i].firstName = user.firstName;
         users[i].lastName = user.lastName;
 
@@ -63,14 +76,26 @@ module.exports = function (app) {
         return;
       }
     }
-    res.status(404).send('not found!');
+    res.status(404).send("not found!");
   }
 
   function deleteUser(req, res) {
-    const userId = req.params['userId'];
-    users.splice(users.findIndex(function(user) {
-      return user._id === userId;
-    }), 1);
-    res.json({});
+    var userId = req.params['userId'];
+    var user = req.body;
+
+    console.log(req.body);
+    console.log("delete user: " + userId + " " + user.firstName + " " + user.lastName);
+
+    for(var i = 0; i < users.length; i++) {
+      if (users[i].uid === userId) {
+        users[i].firstName = user.firstName;
+        users[i].lastName = user.lastName;
+        users.splice(i,1);
+        res.sendStatus(200);
+        return;
+      }
+    }
+    res.status(404).send("not found!");
   }
-};
+
+}

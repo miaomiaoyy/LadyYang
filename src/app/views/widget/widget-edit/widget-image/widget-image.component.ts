@@ -52,7 +52,7 @@ export class WidgetImageComponent implements OnInit {
       this.activatedRoute.params.subscribe(params => {
         this.websiteId = params['wid'];
         this.pageId = params['pid'];
-        this.userId = params['userId'];
+        this.userId = params['uid'];
         this.widgetId = params['wgid'];
         this.widgetService.findWidgetById(params['wgid']).subscribe(
           (widget: Widget) => {

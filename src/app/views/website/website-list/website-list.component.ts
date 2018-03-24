@@ -14,7 +14,7 @@ export class WebsiteListComponent implements OnInit {
   userId: String;
   websiteId: String;
   websites: Website[] = [];
-  foundWebsite = Website;
+
 
   constructor(private websiteService: WebsiteService, private activatedRoute: ActivatedRoute) { }
   OnInit() {}
@@ -27,7 +27,7 @@ export class WebsiteListComponent implements OnInit {
       }
     );
     this.activatedRoute.params.subscribe(params => {
-      this.websiteService.findWebsitesByUser(params['userId']).subscribe(
+      this.websiteService.findWebsitesByUser(params['uid']).subscribe(
         (websites: Website[]) => {
           this.websites = websites;
         },

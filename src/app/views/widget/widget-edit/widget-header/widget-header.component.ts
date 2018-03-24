@@ -78,6 +78,7 @@ export class WidgetHeaderComponent implements OnInit {
           this.widgetService.findWidgetById(params['wgid']).subscribe(
             (widget: Widget) => {
               this.widget = widget;
+              console.log('get widget @  ' + this.widget);
             },
             (error: any) => console.log(error)
           );
