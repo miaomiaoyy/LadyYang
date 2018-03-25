@@ -1,0 +1,15 @@
+<% include partials/header %>
+<h1>Welcome to Lady Yang Cake</h1>
+
+<% cakes.forEach(function(cake) { %>
+    <div>
+
+     <h4>
+         <li><%= cake.name%></li>
+
+         <img src="<%= cake.image %>">
+     </h4>
+    </div>
+
+<% }); %>
+
