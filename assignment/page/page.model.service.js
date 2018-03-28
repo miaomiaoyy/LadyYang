@@ -1,19 +1,46 @@
 var mongoose = require('mongoose');
-var UserSchema = require("./page.schema.server");
-var UserModel = mongoose.model("UserModel", UserSchema);//use model to communicate with db, service will not do query anymore
+var PageSchema = require("./page.schema.server");
+var PageModule = mongoose.model("PageModule", PageSchema);//use model to communicate with db, service will not do query anymore
 
-module.exports = UserModel;
+module.exports = PageModule;
 
-function createPage(req, res) {
-  var websiteId = req.param.websiteId;
-  var page = req.body;
-
-  return UserModel.create(user);
+function createPage(websiteId, page) {
+  return PageModel.create(page)
+    .then(function(newPage){
+      PageModule.findPageByWebsiteId(websiteId)
+        .then(function(website){
+          website.pages.push(newPage);
+          return website.save();
+        });
+      return newPage;
+    });
 }
 
-function updateUser(userId, user){
- return UserModel.update({uid: userId}, user);
+function updatePage(pageId, page){
+  return PageModule.update({pageId: pageId}, page);
 }
 
+function deletePage(pageId){
+
+  var deletepage = PageModule.findPageById(pageId)
+  .then(function (page) {
+    WebsiteModule.findWebsiteById(websiteId)
+      .then(function (website) {
+          website.pages.remove(deletepage);
+          return website.save();
+      });
+    return PageModule.pages;
+  });
+}
+
+function findAllPagesForWebsite(websiteId) {
+  return PageModel.find({'websiteId' : websiteId})
+    .populate('websiteId')
+    .exec();
+}
+
+function findPageById(pageId) {
+  return PageModel.findById(pageId);
+}
 
 

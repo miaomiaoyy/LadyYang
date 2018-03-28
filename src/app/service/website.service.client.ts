@@ -46,4 +46,35 @@ export class WebsiteService {
         return response.json();
       });
   }
+
+  //
+// function findWebsiteById(req,res) {
+//   var userId = req.param['uid'];
+//   var websiteId = req.param['websiteId'];
+//   res.json(findWebsiteById(websiteId));
+// }
+
+//
+// function updateWebsite(req,res) {
+//   var userId = req.param['uid'];
+//   var websiteId = req.param['websiteId'];
+//   var newWebsite = req.body;
+//   WebsiteModel.updateWebsite(websiteId, newWebsite)
+//     .then(function (websites) {
+//       WebsiteModel.findWebsitesForUser(userId)
+//         .then(function (websites) {
+//           res.json(websites);
+//         })
+//     }, function (error) {
+//       console.log(error);
+//     });
+// }
+//
+// function deleteWebsite(req, res) {
+//
+//   var user = req.param['uid'];
+//   var websiteId = req.param['websiteId'];
+//
+// }
+
 }
