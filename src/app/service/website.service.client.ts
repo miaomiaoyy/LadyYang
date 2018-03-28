@@ -19,12 +19,6 @@ export class WebsiteService {
       });
   }
 
-  findWebsitesByUser(userId: string) {
-    return this._http.get(this.baseUrl + '/api/user/' + userId + '/website')
-      .map((response: Response) => {
-        return response.json();
-      });
-  }
 
   findWebsiteById(websiteId: string) {
     return this._http.get(this.baseUrl + '/api/website/' + websiteId)
@@ -33,12 +27,23 @@ export class WebsiteService {
       });
   }
 
+  findWebsitesByUser(userId: string) {
+    return this._http.get(this.baseUrl + '/api/user/' + userId + '/website')
+      .map((response: Response) => {
+        return response.json();
+      });
+  }
+
+
+
+
   updateWebsite(websiteId: string, website: Website) {
     return this._http.put(this.baseUrl + '/api/website/' + websiteId, website)
       .map((response: Response) => {
         return response.json();
       });
   }
+
 
   deleteWebsite(websiteId: string) {
     return this._http.delete(this.baseUrl + '/api/website/' + websiteId)
@@ -47,12 +52,8 @@ export class WebsiteService {
       });
   }
 
-  //
-// function findWebsiteById(req,res) {
-//   var userId = req.param['uid'];
-//   var websiteId = req.param['websiteId'];
-//   res.json(findWebsiteById(websiteId));
-// }
+
+
 
 //
 // function updateWebsite(req,res) {

@@ -2,23 +2,16 @@ var mongoose = require("mongoose");
 var WebsiteSchema = require("./website.schema.server");
 var WebsiteModel = mongoose.model('WebsiteModel', WebsiteSchema);
 
-var WebsiteModel = require("../website/website.model.server");
 
 WebsiteModel.createWebsite = createWebsite;
 WebsiteModel.findWebsitesForUser = findWebSitesForUser;
+WebsiteModel.createWebsiteForUser =createWebsiteForUser;
 WebsiteModel.updateWebsite = updateWebsite;
 WebsiteModel.findWebsiteById = findWebsiteById;
 WebsiteModel.deleteWebsite = deleteWebsite;
 
 module.exports = WebsiteModel;
 
-
-function findWebSitesForUser(userId){
-  return WebsiteModel.find({"developerId": userId})
-  //.populate('developerId')
-    .populate('developerId', 'username')
-    .exec();
-}
 
 function createWebsite(website){
   return WebsiteModel.create(website)

@@ -2,6 +2,12 @@ var mongoose = require('mongoose');
 var PageSchema = require("./page.schema.server");
 var PageModule = mongoose.model("PageModule", PageSchema);//use model to communicate with db, service will not do query anymore
 
+PageModule.updatePage = updatePage;
+PageModule.createPage =createPage;
+PageModule.deletePage = deletePage;
+PageModule.findAllPagesForWebsite = findAllPagesForWebsite;
+PageModule.findPageById = findPageById;
+
 module.exports = PageModule;
 
 function createPage(websiteId, page) {

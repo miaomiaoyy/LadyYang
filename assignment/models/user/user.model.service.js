@@ -7,6 +7,10 @@ var UserModel = mongoose.model("UserModel", UserSchema);
 //UserModel.findUserById = findUserById;
 UserModel.createUser = createUser;
 UserModel.updateUser = updateUser;
+UserModel.findUserByCredentials =findUserByCredentials;
+UserModel.findUserByUserName = findUserByUserName;
+UserModel.findAllUsers = findAllUsers;
+UserModel.findUserById = findUserById;
 
 /*UserModel.findAllUsers = findAllUsers;
 UserModel.findUserByCredentials = findUserByCredentials;
