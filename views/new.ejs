@@ -1,7 +1,24 @@
 <% include partials/header.ejs%>
-<h1> Create a new Cake</h1>
-<form action="/cakes" method="post">
-    <input type="text" name = "name" placeholder="Name You Want" >
-    <input type="text" name = "image" placeholder="Image link">
-    <button> Submit You Wish Cake </button>
-</form>
+
+<div class="container">
+    <h1 style="text-align: center"> Create a new Cake</h1>
+    <div class="row">
+        <div style="width: 30%; margin: 0 auto">
+        <form action="/cakes" method="post">
+            <div class="form-group">
+                <input class="form-control" type="text" name = "name" placeholder="Name You Want" >
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name = "image" placeholder="Image link">
+            </div>
+
+            <button class="btn btn-lg btn-block"> Submit You Wish Cake </button>
+        </form>
+        </div>
+        <a href="cakes.ejs" style="text-align: center"> Go Back </a>
+    </div>
+
+</div>
+
+
+<% include partials/footer.ejs%>

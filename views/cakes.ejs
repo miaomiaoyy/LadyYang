@@ -1,15 +1,38 @@
 <% include partials/header %>
-<h1>Welcome to Lady Yang Cake</h1>
+
+
+
+<div class="container">
+    <header class="jumbotron">
+        <div class="container"> <h1>Welcome to Lady Yang Cake</h1>
+            <p>Enjoy the world-class yummy cake</p>
+        </div>
+
+        <a class="btn btn-primary btn-large" href="/cakes/new"> Add Your Own Cake</a>
+    </header>
+</div>
+
+<div class="row" text="center" style="display: flex; flex-wrap: wrap">
+    <div class="col-lg-h3">
+        Our Most Popular Cake
+    </div>
+</div>
+
+<div class="row">
+
 
 <% cakes.forEach(function(cake) { %>
     <div>
+        <div class="col-md-3 col-sm-6">
+<div class="thumbnail">
+    <img src="<%= cake.image %>">
+    <div class="caption">  <h4>
+            <li><%= cake.name%></li>
+        </h4></div>
 
-     <h4>
-         <li><%= cake.name%></li>
+</div>
 
-         <img src="<%= cake.image %>">
-     </h4>
-    </div>
-
+</div>
 <% }); %>
-
+    </div>
+</div>
