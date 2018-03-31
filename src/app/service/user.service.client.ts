@@ -1,7 +1,7 @@
 
 
 import {Injectable} from '@angular/core';
-import {Http, Response} from '@angular/http';
+import {Http, HttpModule, Response} from '@angular/http';
 import {environment} from '../../environments/environment';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
@@ -25,9 +25,15 @@ export class UserService {
       );
   }
 
-  findUserByCredentials(username, password) {
+  findUserByCredentials(username: String, password: String) {
+    console.log('client side is ready', username, password);
+    // const url = 'http://localhost:3100/api/user?username=' + username + '&password=' + password;
+    // fetch(url).then(function (res) {
+    //   console.log("yudong5", res);
+    // });
+
     return this._http.get('http://localhost:3100/api/user?username=' + username + '&password=' + password)
-      .map((res: Response) => {
+      .map((res) => {
         return res.json();
       });
   }

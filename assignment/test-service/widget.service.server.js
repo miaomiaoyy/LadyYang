@@ -1,5 +1,5 @@
 
-module.exports = function (app) {
+module.exports = function (app, model) {
     const multer = require('multer'); // npm install multer --save
     const upload = multer({ dest: __dirname + '/../../public/uploads' });
 
@@ -78,7 +78,7 @@ module.exports = function (app) {
     var pageId = req.params.pageId;
     var startIndex = parseInt(req.query["initial"]);
     var endIndex = parseInt(req.query["final"]);
-    WidgetModel.reorderWidget(pageId, startIndex, endIndex)
+    model.WidgetModel.reorderWidget(pageId, startIndex, endIndex)
       .then(
         function (page) {
           res.sendStatus(200);
@@ -93,10 +93,10 @@ module.exports = function (app) {
     console.log('create widget @  ' + req.body);
     var widget = req.body;
     var pageId = req.param['pid'];
-    WidgetModel.createWidget(pageId, widget)
+    model.WidgetModel.createWidget(pageId, widget)
       .then(function (newWidget){
         if(newWidget) {
-          WidgetModel.findAllWidgetsForPage(pageId)
+          model.WidgetModel.findAllWidgetsForPage(pageId)
             .then(function (widgets) {
               pageId.widgets.push(newWidget);
             })
@@ -110,8 +110,8 @@ module.exports = function (app) {
 
 
   function findAllWidgetsForPage(req, res) {
-    var pageId = req.params['pageId'];
-    WidgetModel.findAllWidgetsForPage(pageId).then( function (widget) {
+    var pageId = req.params['pid'];
+    model.WidgetModel.findAllWidgetsForPage(pageId).then( function (widget) {
       if(widget) {
         res.json(widget);
       }else {
@@ -124,7 +124,7 @@ module.exports = function (app) {
 
   function getWidgetById(req, res) {
     var widgetId = req.params["wgid"];
-    WidgetModel.findWidgetById(widgetId).then(function (widget) {
+    model.WidgetModel.findWidgetById(widgetId).then(function (widget) {
       if (widget) {
         res.status(200).send(widget);
       } else {
@@ -134,9 +134,9 @@ module.exports = function (app) {
   }
 
   function updateWidget(req, res) {
-    var widgetId = req.params['widgetId'];
+    var widgetId = req.params['wgid'];
     var widget = req.body;
-    WidgetModel.updateWidget(widgetId, widget).then(function (widget) {
+    model.WidgetModel.updateWidget(widgetId, widget).then(function (widget) {
         if (widget) {
           res.status(200).send(widget);
         } else {
@@ -206,10 +206,10 @@ module.exports = function (app) {
     if (widgetId === undefined) {
       var widget = {_id: undefined, type: 'IMAGE', pageId: pageId,size: size,text: 'text', width:'100%',
         url:'/uploads/'+filename};
-      WidgetModel.createWidget(pageId, widget)
+      model.WidgetModel.createWidget(pageId, widget)
     } else {
       var widget = { url: '/uploads/'+filename };
-      WidgetModel
+      model.WidgetModel
         .updateWidget(widgetId, widget)
         .then(function (stats) {
             res.send(200);
@@ -225,9 +225,9 @@ module.exports = function (app) {
     function deleteWidget(req, res) {
     var widgetId = req.params['wgid'];
     var pageId = req.param['pid'];
-    WidgetModel.deleteWidget(widgetId)
+    model.WidgetModel.deleteWidget(widgetId)
       .then(function(deleteWidget){
-      WidgetModel.findAllWidgetsForPage(pageId)
+      model.WidgetModel.findAllWidgetsForPage(pageId)
         .then(function (widgets) {
           pageId.widgets.remove(deleteWidget)
         });

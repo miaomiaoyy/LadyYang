@@ -33,32 +33,42 @@ export class ProfileComponent implements OnInit {
       this.userService.findUserById(this.userId).subscribe(
         (user: User) => {
           this.user = user;
-          console.log('profile receive:   ' + this.user);
+          console.log('profile receive:  ' + this.user);
         },
         (error: any) => console.log(error)
       );
     });
   }
 
-  updateUser() {
-    if (this.user.username && this.user.password) {
-      this.userService.updateUser(this.user).subscribe(
-        (user: User) => {
-          this.user = user;
-          this.updateFlag = true;
-        },
-        (error: any) => console.log(error));
-    } else {
-      this.errorFlag = true;
-    }
+  // updateUser() {
+  //   if (this.user.username && this.user.password) {
+  //     this.userService.updateUser(this.user).subscribe(
+  //       (user: User) => {
+  //         this.user = user;
+  //         this.updateFlag = true;
+  //       },
+  //       (error: any) => console.log(error));
+  //   } else {
+  //     this.errorFlag = true;
+  //   }
+  // }
+
+  updateUser(changed_user) {
+    return this.userService.updateUser(changed_user).subscribe(
+    );
   }
 
-  deleteUser() {
-    this.userService.deleteUser(this.userId).subscribe(
-      () => {
-        this.router.navigate(['/login']);
-      },
-      (error: any) => console.log(error)
+  // deleteUser() {
+  //   this.userService.deleteUser(this.userId).subscribe(
+  //     () => {
+  //       this.router.navigate(['/login']);
+  //     },
+  //     (error: any) => console.log(error)
+  //   );
+  // }
+  deleteUser(userId) {
+    return this.userService.deleteUser(userId).subscribe(
+      () => this.router.navigate(['/login'])
     );
   }
 }
