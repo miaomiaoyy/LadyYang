@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Page} from '../../../models/page.model.client';
-import {PageService} from '../../../service/page.service.client';
-import {ActivatedRoute} from '@angular/router';
+import {PageService} from '../../../services/page.service.client';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Website} from '../../../models/website.model.client';
 
 @Component({
@@ -14,19 +14,27 @@ export class PageEditComponent implements OnInit {
   userId: String;
 
   constructor(private pageService: PageService,
-              private route: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute,
+              private router: Router) { }
 
   updatePage(changed_page) {
-    this.pageService.updatePage(changed_page).subscribe();
+    this.pageService.updatePage(changed_page).subscribe(
+      (data: any) => {
+        this.page = data;
+        this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+      }
+    );
   }
 
   deletePage(pageId) {
-    this.pageService.deletePageById(pageId).subscribe();
+    this.pageService.deletePage(pageId).subscribe(
+      () => {
+        this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+      }
+    );
   }
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      // const prePage = this.pageService.findPageById(params['pid']);
-      // this.page = Object.assign({}, prePage);
+    this.activatedRoute.params.subscribe(params => {
       this.pageService.findPageById(params['pid']).subscribe(
         (page: Page) => {
           this.page = page;

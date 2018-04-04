@@ -1,45 +1,62 @@
-<nav class="navbar navbar-fixed-top navbar-light bg-secondary">
-  <a class="navbar-brand" routerLink="/profile/{{userId}}/website/{{websiteId}}/page/{{pageId}}/widget">
-    <span class="glyphicon glyphicon-chevron-left text-dark"></span>
-  </a>
-  <div class="navbar-brand font-weight-bold">
-    Choose Widget
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid row">
+
+    <div class="navbar-text pull-left">
+      <a routerLink="../" class="cl-text-black cl-icon-padding">
+          <span class="glyphicon glyphicon-chevron-left">
+          </span>
+      </a>
+    </div>
+
+    <a class="navbar-brand cl-text-white cl-text-bold" routerLink="./">
+      Choose Widget
+    </a>
   </div>
 </nav>
-<div class="container-fluid cl-body-padding">
-  <div class="extra-padding">
-    <a class="btn extra-left-padding" routerLink="../header">Header</a>
-  </div>
-  <div class="extra-padding">
-    <a class="btn extra-left-padding" routerLink="./">Label</a>
-  </div>
-  <div class="extra-padding">
-    <a class="btn extra-left-padding" routerLink="./">HTML</a>
-  </div>
-  <div class="extra-padding">
-    <a class="btn extra-left-padding" routerLink="./">Text Input</a>
-  </div>
-  <div class="extra-padding">
-    <a class="btn extra-left-padding" routerLink="./">Link</a>
-  </div>
-  <div class="extra-padding">
-    <a class="btn extra-left-padding" routerLink="./">Button</a>
-  </div>
-  <div class="extra-padding">
-    <a class="btn extra-left-padding" routerLink="./image">Image</a>
-  </div>
-  <div class="extra-padding">
-    <a class="btn extra-left-padding" routerLink="./youtube">YouTube</a>
-  </div>
-  <div class="extra-padding">
-    <a class="btn extra-left-padding" routerLink="./">Data Table</a>
-  </div>
-  <div class="extra-padding">
-    <a class="btn extra-left-padding" routerLink="./">Repeater</a>
-  </div>
+
+<div class="container-fluid cl-container-padding">
+  <ul class="list-group cl-list-group-borderless">
+    <li class="list-group-item cl-list-item-borderless">
+      <a routerLink="HEADING">Header</a>
+    </li>
+    <li class="list-group-item cl-list-item-borderless">
+      <a routerLink="./">Label</a>
+    </li>
+    <li class="list-group-item cl-list-item-borderless">
+      <a routerLink="HTML">HTML</a>
+    </li>
+    <li class="list-group-item cl-list-item-borderless">
+      <a routerLink="TEXT">Text Input</a>
+    </li>
+    <li class="list-group-item cl-list-item-borderless">
+      <a routerLink="./">Link</a>
+    </li>
+    <li class="list-group-item cl-list-item-borderless">
+      <a routerLink="./">Button</a>
+    </li>
+    <li class="list-group-item cl-list-item-borderless">
+      <a routerLink="IMAGE">Image</a>
+    </li>
+    <li class="list-group-item cl-list-item-borderless">
+      <a routerLink="YOUTUBE">YouTube</a>
+    </li>
+    <li class="list-group-item cl-list-item-borderless">
+      <a routerLink="./">Data Table</a>
+    </li>
+    <li class="list-group-item cl-list-item-borderless">
+      <a routerLink="./">Repeater</a>
+    </li>
+  </ul>
 </div>
-<nav class="navbar navbar-fixed-bottom navbar-light bg-secondary">
-  <a class="btn navbar-brand pull-right" routerLink="/profile/{{userId}}">
-    <span class="glyphicon glyphicon-user text-primary"></span>
-  </a>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid row">
+    <div class="pull-right navbar-text">
+
+      <a routerLink="profile/{{userId}}" class="cl-icon-padding">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+
+    </div>
+  </div>
 </nav>

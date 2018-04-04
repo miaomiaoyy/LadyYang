@@ -1,54 +1,27 @@
 
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid row">
+<div class="container">
+    <!--<div class="form-group">-->
+      <!--<label for="heading-id">Id</label>-->
+      <!--<input [(ngModel)]="widget._id" type="text" class="form-control" id="heading-id" placeholder="Id">-->
+    <!--</div>-->
 
-    <div class="navbar-text pull-left">
-      <a routerLink="/profile/{{userId}}/website/{{websiteId}}/page/{{pageId}}/widget" class="cl-text-black cl-icon-padding">
-          <span class="glyphicon glyphicon-chevron-left">
-          </span>
-      </a>
+    <div class="form-group">
+      <label for="heading-text">Text</label>
+      <input [(ngModel)]="widget.text" type="text" class="form-control" id="heading-text" placeholder="Text">
     </div>
-    <div class="navbar-text pull-right" >
-      <a (click)="f.ngSubmit.emit()" routerLink=".."
-         class="cl-icon-padding cl-text-black">
-          <span class="glyphicon glyphicon-ok">
-          </span>
-      </a>
+
+    <div class="form-group">
+      <label for="heading-size">Size</label>
+      <input [(ngModel)]="widget.size" type="text" class="form-control" id="heading-size" placeholder="Size">
     </div>
-    <a class="navbar-brand cl-text-white cl-text-bold" routerLink="#">
-      Widgets Edit
-    </a>
-  </div>
-</nav>
 
-<a class="container">
-  <form  #f = "ngForm">
-    <a class="form-group">
-      <label for="headingName">Name</label>
-      <input type="text" class="form-control" id="headingName" >
-    </a>
-    <a class="form-group">
-      <label for="headingText">Text</label>
-      <input [(ngModel)]="widget.text" type="text" class="form-control"
-             id="headingText" placeholder="text" [ngModelOptions]="{standalone: true}">
-    </a>
-    <a class="form-group">
-      <label for="headingSize">Size</label>
-      <input [(ngModel)]="widget.size" type="text" class="form-control"
-             id="headingSize" placeholder="size" [ngModelOptions]="{standalone: true}">
-    </a>
-  </form>
-  <a class="btn btn-danger btn-block" (click) = "delete()">Delete</a>
-</a>
-
-<nav class="navbar navbar-default navbar-fixed-bottom">
-  <div class="container-fluid row">
-    <div class="pull-right navbar-text">
-
-      <a routerLink="/profile/{{userId}}" class="cl-icon-padding">
-        <span class="glyphicon glyphicon-user"></span>
-      </a>
+    <div class="alert alert-warning">
+      Size can only between 1 to 6
     </div>
-  </div>
-</nav>
+
+  <button class="btn btn-primary btn-block" (click)="updateWidget(widget)">Update</button>
+  <button class="btn btn-danger btn-block" (click)="deleteWidget(widget._id)">Delete</button>
+</div>
+
+
 

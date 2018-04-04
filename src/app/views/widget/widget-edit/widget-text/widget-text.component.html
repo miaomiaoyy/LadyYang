@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="form-group">
+      <label for="widget-name">Name</label>
+      <input [(ngModel)]="widget.name" type="text" class="form-control" id="widget-name" placeholder="Name"
+             [ngModelOptions]="{standalone:true}">
+    </div>
+    <div class="form-group">
+      <label for="widget-text">Text</label>
+      <input [(ngModel)]="widget.text" type="text" class="form-control" id="widget-text" placeholder="Text"
+             [ngModelOptions]="{standalone:true}">
+    </div>
+    <div class="form-group">
+      <label for="widget-rows">Rows</label>
+      <input [(ngModel)]="widget.rows" type="text" class="form-control" id="widget-rows" placeholder="Rows"
+             [ngModelOptions]="{standalone:true}">
+    </div>
+    <div class="form-group">
+      <label for="widget-placeholder">Placeholder</label>
+      <input [(ngModel)]="widget.placeholder" type="text" class="form-control" id="widget-placeholder"
+             placeholder="Placeholder" [ngModelOptions]="{standalone:true}">
+    </div>
+    <div class="input-group">
+      <input type="text" readonly value="Formatted" class="form-control"/>
+      <span class="input-group-addon">
+        <input [(ngModel)]="widget.formatted" type="checkbox" [ngModelOptions]="{standalone:true}" />
+      </span>
+    </div>
+    <br/>
+
+    <button class="btn btn-primary btn-block" (click)="updateWidget(widget)">Update</button>
+    <button class="btn btn-danger btn-block" (click)="deleteWidget(widget._id)">Delete</button>
+</div>

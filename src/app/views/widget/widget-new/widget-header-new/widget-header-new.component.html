@@ -1,0 +1,18 @@
+<div class="container">
+  <form #f="ngForm" (ngSubmit) = "createWidget()">
+    <div class="form-group">
+      <label for="widget-text">Text</label>
+      <input type="text" class="form-control" id="widget-text" placeholder="Text" ngModel required name="text" #text="ngModel">
+    </div>
+    <div class="form-group">
+      <label for="widget-size">Size</label>
+      <input type="text" class="form-control" id="widget-size" placeholder="Size" ngModel required name="size" #size="ngModel">
+    </div>
+    <div class="alert alert-warning">
+      Size can only between 1 to 6
+    </div>
+    <button class="btn btn-primary btn-block" type="submit" [disabled]="!f.valid">Create</button>
+    <a class="btn btn-danger btn-block" routerLink="../">Cancel</a>
+  </form>
+</div>
+

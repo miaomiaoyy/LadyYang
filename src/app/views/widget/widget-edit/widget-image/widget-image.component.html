@@ -1,64 +1,46 @@
 
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid row">
-
-    <div class="navbar-text pull-left" routerLink='/profile/{{userId}}/website/{websiteId}}/page/{{pageId}}/widget'>
-      <a  routerLink='..' class="cl-text-black cl-icon-padding">
-          <span class="glyphicon glyphicon-chevron-left">
-          </span>
-      </a>
-    </div>
-    <div class="navbar-text pull-right" (click)= "f.ngSubmit.emit()">
-      <a routerLink=".." class="cl-icon-padding cl-text-black">
-          <span class="glyphicon glyphicon-ok">
-          </span>
-      </a>
-    </div>
-    <a class="navbar-brand cl-text-white cl-text-bold">
-      Widgets Edit
-    </a>
-  </div>
-</nav>
-
 <div class="container">
-  <form #f = "ngForm">
+    <!--<div class="form-group">-->
+      <!--<label for="image-id">Id</label>-->
+      <!--<input [(ngModel)]="widget._id" type="text" class="form-control" id="image-id" placeholder="Name">-->
+    <!--</div>-->
+
     <div class="form-group">
-      <label for="imageName">Name</label>
-      <input [(ngModel)]="widget.text" type="name" class="form-control"
-             id="imageName" placeholder="name" [ngModelOptions]="{standalone: true}"></div>
+      <label for="image-text">Text</label>
+      <input [(ngModel)]="widget.text" type="text" class="form-control" id="image-text" placeholder="Text">
+    </div>
 
-        <div class="form-group">
-          <label for="image-text">Text</label>
-          <input [(ngModel)]="widget.text" type="text" class="form-control" id="image-text" placeholder="Text"
-                 [ngModelOptions]="{standalone: true}">
-        </div>
+    <div class="form-group">
+      <label for="image-URL">URL</label>
+      <input [(ngModel)]="widget.url" type="text" class="form-control" id="image-URL" placeholder="URL">
+    </div>
 
-        <div class="form-group">
-          <label for="image-URL">URL</label>
-          <input [(ngModel)]="widget.url" type="text" class="form-control" id="image-URL" placeholder="URL"
-                 [ngModelOptions]="{standalone: true}">
-        </div>
+    <div class="form-group">
+      <label for="image-width">Width</label>
+      <input [(ngModel)]="widget.width" type="text" class="form-control" id="image-width" placeholder="100%">
+    </div>
 
-        <div class="form-group">
-          <label for="image-width">Width</label>
-          <input [(ngModel)]="widget.width" type="text" class="form-control" id="image-width" placeholder="100%"
-                 [ngModelOptions]="{standalone: true}">
-        </div>
+    <!--<div class="form-group">-->
+      <!--<label for="exampleInputFile">Upload</label>-->
+      <!--<input type="file" class="form-control" id="exampleInputFile">-->
+    <!--</div>-->
+
+  <form ngNoForm action="{{baseUrl}}/api/upload" method="post" enctype="multipart/form-data">
+
+    <input  name="myFile"   type="file" class="form-control"/>
+    <input  name="widgetId" value="{{widgetId}}"   style="display: none"/>
+    <input  name="websiteId" value="{{websiteId}}"   style="display: none"/>
+    <input  name="pageId" value="{{pageId}}"   style="display: none"/>
+    <input  name="userId" value="{{userId}}"   style="display: none"/>
+    <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
+    <br/>
 
   </form>
-  <a class="btn btn-primary btn-block" routerLink="./">Upload Image</a>
-  <a class="btn btn-danger  btn-block" routerLink=".." (click) = "deleteWidgetController()">Delete</a>
+
+  <a class="btn btn-primary btn-block" routerLink="flickr" >Choose From Flickr</a>
+
+  <button class="btn btn-primary btn-block" (click)="updateWidget(widget)">Update</button>
+  <button class="btn btn-danger btn-block" (click)="deleteWidget(widget._id)">Delete</button>
 </div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
-  <div class="container-fluid row">
-    <div class="pull-right navbar-text">
-
-      <a routerLink="/profile/{{userId}}" class="cl-icon-padding">
-        <span class="glyphicon glyphicon-user"></span>
-      </a>
-
-    </div>
-  </div>
-</nav>
 

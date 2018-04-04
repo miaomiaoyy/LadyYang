@@ -1,1 +1,1 @@
-web node server_bk.js
+web: node server.js

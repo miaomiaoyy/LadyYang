@@ -1,9 +1,31 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid row">
+
+    <div class="navbar-text pull-left">
+      <a routerLink="../" class="cl-text-black cl-icon-padding">
+          <span class="glyphicon glyphicon-chevron-left">
+          </span>
+      </a>
+    </div>
+    <div class="navbar-text pull-right">
+      <a routerLink="../" class="cl-icon-padding cl-text-black">
+          <span class="glyphicon glyphicon-ok">
+          </span>
+      </a>
+    </div>
+    <a class="navbar-brand cl-text-white cl-text-bold" routerLink="./">
+      Widgets Edit
+    </a>
+  </div>
+</nav>
+
+
+
 <div [ngSwitch]="widget.widgetType">
 
-  <div *ngSwitchCase="'HEADER'">
+  <div *ngSwitchCase="'HEADING'">
     <app-widget-header></app-widget-header>
   </div>
-
   <div *ngSwitchCase="'IMAGE'">
     <app-widget-image></app-widget-image>
   </div>
@@ -12,4 +34,23 @@
     <app-widget-youtube></app-widget-youtube>
   </div>
 
+  <div *ngSwitchCase="'HTML'">
+    <app-widget-html></app-widget-html>
+  </div>
+
+  <div *ngSwitchCase="'TEXT'">
+    <app-widget-text></app-widget-text>
+  </div>
+
 </div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid row">
+    <div class="pull-right navbar-text">
+
+      <a routerLink="/profile/{{userId}}" class="cl-icon-padding">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+
+    </div>
+  </div>
+</nav>

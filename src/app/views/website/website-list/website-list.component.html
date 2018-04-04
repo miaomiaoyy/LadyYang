@@ -1,37 +1,34 @@
-
 <nav class="navbar navbar-fixed-top cl-blue-navbar">
   <div class="container-fluid">
     <p class="navbar-text pull-left">
-      <a routerLink=".." class="navbar-link cl-text-white">
-      <!--<a href="profile.html" class="navbar-link cl-text-white"(click)="createNewWebsite(website)" )>-->
+      <a routerLink="/profile/{{userId}}" class="navbar-link cl-text-white">
         <span class="glyphicon glyphicon-chevron-left"></span>
       </a>
     </p>
-    <a class="cl-text-white navbar-brand cl-text-bold">
+    <a class="cl-text-white navbar-brand cl-text-bold" href="#">
       Websites
     </a>
-    <a class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding" routerLink="./new" >
+    <a routerLink="./new" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
       <span class="glyphicon glyphicon-plus"></span>
     </a>
   </div>
 </nav>
 
+<div class="container">
 
-  <div  class="list-group item cl-list-group-borderless" *ngFor="let website of websites">
-    <a>
-      <a class="list-group item cl-list-item-borderless" routerLink="./{{website._id}}/page">{{website.name}}</a>
-      <!--<li class="list-group-item cl-list-item-borderless">-->
-      <a class="pull-right" routerLink="./{{website._id}}"></a>
-      <span routerLink="./{{website._id}}"><span class="glyphicon glyphicon-cog pull-right"></span></span>
-    </a>
-  </div>
+<ul class="list-group cl-list-group-borderless">
+  <li class="list-group-item cl-list-item-borderless" *ngFor = "let website of websites">
+    <a routerLink="{{website._id}}/page">{{website.name}} </a>
+    <a routerLink="{{website._id}}"><span class="glyphicon glyphicon-cog pull-right"></span></a>
+  </li>
+</ul>
+</div>
 
 
 <nav class="navbar navbar-fixed-bottom cl-blue-navbar">
   <div class="container-fuild">
-    <a routerLink=".." class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
-      <span class="glyphicon glyphicon-user"></span>
+    <a routerLink="/profile/{{userId}}" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
+      <span class="glyphicon glypbohicon-user"></span>
     </a>
   </div>
 </nav>
-

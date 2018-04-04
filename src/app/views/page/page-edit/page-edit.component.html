@@ -1,40 +1,43 @@
-
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid row">
+
     <div class="navbar-text pull-left">
-      <a routerLink=".." class="cl-text-black cl-icon-padding">
-            <span class="glyphicon glyphicon-chevron-left">
-            </span>
+      <a routerLink="../" class="cl-text-black cl-icon-padding">
+          <span class="glyphicon glyphicon-chevron-left">
+          </span>
       </a>
     </div>
     <div class="navbar-text pull-right">
-
-      <a routerLink=".." class="cl-icon-padding cl-text-black" (click)="updatePage()">
-            <span class="glyphicon glyphicon-ok">
-            </span>
+      <a routerLink="../" class="cl-icon-padding cl-text-black">
+          <span class="glyphicon glyphicon-ok">
+          </span>
       </a>
     </div>
-    <a class="navbar-brand cl-text-white cl-text-bold">
+    <a class="cl-text-white navbar-brand cl-text-bold" routerLink="./">
       Edit Page
     </a>
   </div>
 </nav>
 
+<div class="container">
+  <!--<div class="form-group">-->
+    <!--<label for="page-id">Page Id</label>-->
+    <!--<input [(ngModel)]="page._id" id="page-id" class="form-control"/>-->
+  <!--</div>-->
 
-  <form (ngSubmit) = "updatePage()" #f="ngForm">
+  <div class="form-group">
+    <label for="page-name">Name</label>
+    <input [(ngModel)]="page.name" id="page-name" class="form-control"/>
+  </div>
 
-      <label for="name">Name</label>
-      <input [(ngModel)]="page.name"  name="pagename" type="text" id="name" placeholder="Page Name" class = "form-control">
+  <div class="form-group">
+    <label for="page-description">Description</label>
+    <input [(ngModel)]="page.description" id="page-description" class="form-control"/>
+  </div>
 
-    <div class="form-group">
-      <label for="pagetitle">Title</label>
-      <input [(ngModel)]="page.title" name="pagetitle" type="text" class="form-control" id="pagetitle" placeholder="Page Name">
-    </div>
-  </form>
-  <!--<span class="help-block" *ngIf="pageName.touched || pageTitle.touched">-->
-    <!--Please delete the page-->
-  <!--</span>-->
-  <button class="btn btn-danger btn-block" (click)="deletePage()">Delete</button>
+  <button class="btn btn-primary btn-block" (click)="updatePage(page)">Update</button>
+  <button class="btn btn-danger btn-block" (click)="deletePage(page._id)">Delete</button>
+</div>
 
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
@@ -46,4 +49,3 @@
     </div>
   </div>
 </nav>
-

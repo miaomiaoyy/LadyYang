@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {WidgetYoutubeComponent} from './widget-youtube.component';
+import { WidgetYoutubeComponent } from './widget-youtube.component';
 
 describe('WidgetYoutubeComponent', () => {
   let component: WidgetYoutubeComponent;
