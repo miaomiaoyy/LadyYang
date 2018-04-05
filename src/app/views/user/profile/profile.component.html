@@ -1,37 +1,88 @@
-<nav class="navbar navbar-fixed-top cl-blue-navbar">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="cl-text-white navbar-brand cl-text-bold" href="#">
-        Profile
-      </a>
-    </div>
+<!--<nav class="navbar navbar-fixed-top navbar-light bg-primary">-->
+  <!--<div class="navbar-brand text-white font-weight-bold">-->
+    <!--Profile-->
+  <!--</div>-->
+  <!--<a class="navbar-brand btn pull-right" (click)="updateUserInfo(user)">-->
+    <!--<span class="glyphicon glyphicon-ok text-white"></span>-->
+  <!--</a>-->
+<!--</nav>-->
+<!--<div class="container cl-body-padding">-->
+  <!--<form>-->
+    <!--<div class="form-group">-->
+      <!--<label for="username">Username</label>-->
+      <!--<input [(ngModel)]="user.username"  id="username" type="text" name="username" placeholder="jannunzi" class="form-control">-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+      <!--<label for="email">Email</label>-->
+      <!--<input type="email" id="email" placeholder="jannunzi@gmail.com" class="form-control">-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+      <!--<label for="firstName">First Name</label>-->
+      <!--<input [(ngModel)]="user.firstName" id="firstName" type="text" name="firstName" placeholder="Jose" class="form-control">-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+      <!--<label for="lastName">Last Name</label>-->
+      <!--<input [(ngModel)]="user.lastName" id="lastName" type="text" name="lastName" placeholder="Annunziato" class="form-control">-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+      <!--<a routerLink="/user/{{user._id}}/website" class="btn btn-primary btn-block">Websites</a>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+      <!--<a routerLink="/login" class="btn btn-danger btn-block">Logout</a>-->
+    <!--</div>-->
+  <!--</form>-->
+<!--</div>-->
+
+<!--<nav class="navbar navbar-fixed-bottom navbar-light bg-primary">-->
+  <!--<a class="navbar-brand pull-right" routerLink="/user/{{userId}}">-->
+    <!--<i class="glyphicon glyphicon-user text-white"></i>-->
+  <!--</a>-->
+<!--</nav>-->
+
+<nav class="navbar navbar-fixed-top navbar-light bg-primary">
+  <div *ngIf="errorFlag" class="alert alert-danger">
+    {{errorMessage}}
   </div>
+  <div class="navbar-brand text-white font-weight-bold">
+    Profile
+    <!--{{user.firstName}}-->
+    <!--{{user.lastName}}-->
+  </div>
+  <a class="navbar-brand btn pull-right" (click)="updateUserInfo(user)">
+    <span class="glyphicon glyphicon-ok text-white"></span>
+  </a>
 </nav>
-
-
-<div class="container">
-  <h1>Profile</h1>
-  <input [(ngModel)]="user.username" class="form-control"/>
-
-  <input [(ngModel)]="user.password" type="password" class="form-control"/>
-
-  <input [(ngModel)]="user.firstName" class="form-control"/>
-
-  <input [(ngModel)]="user.lastName" class="form-control"/>
-
-  <input [(ngModel)]="user.email" class="form-control"/>
-
-  <button class="btn btn-primary btn-block" (click)="updateUser(user)">Update</button>
-
-
-  <a class="btn btn-primary btn-block" routerLink="/profile/{{user._id}}/website">Websites</a>
-  <a class="btn btn-danger btn-block" routerLink="/login">Logout</a>
-  <a class="btn btn-danger btn-block" (click)="deleteUser(user._id)" routerLink="/login">Delete</a>
-
-
-
+<div class="container cl-body-padding">
+  <form>
+    <div class="form-group">
+      <label>Username</label>
+      <input [(ngModel)]="user.username" type="text" name="username" placeholder="jannunzi" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="jannunzi@gmail.com" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>First Name</label>
+      <input [(ngModel)]="user.firstName" type="text" name="firstName" placeholder="Jose" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Last Name</label>
+      <input [(ngModel)]="user.lastName" type="text" name="lastName" placeholder="Annunziato" class="form-control">
+    </div>
+    <div class="form-group">
+      <a routerLink="/user/{{user._id}}/website" class="btn btn-primary btn-block">Websites</a>
+    </div>
+    <div class="form-group">
+      <a (click)="deleteUser()" class="btn btn-warning btn-block">Delete User</a>
+    </div>
+    <div class="form-group">
+      <a routerLink="/login" class="btn btn-danger btn-block">Logout</a>
+    </div>
+  </form>
 </div>
-<nav class="navbar navbar-fixed-bottom cl-blue-navbar">
-
+<nav class="navbar navbar-fixed-bottom navbar-light bg-primary">
+  <a class="navbar-brand pull-right" routerLink="/user/{{userId}}">
+    <i class="glyphicon glyphicon-user text-white"></i>
+  </a>
 </nav>
-

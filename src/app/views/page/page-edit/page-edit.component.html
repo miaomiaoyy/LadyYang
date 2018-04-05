@@ -2,50 +2,74 @@
   <div class="container-fluid row">
 
     <div class="navbar-text pull-left">
-      <a routerLink="../" class="cl-text-black cl-icon-padding">
+      <a routerLink="/user/{{userId}}/website/{{websiteId}}/page" class="cl-text-black cl-icon-padding">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
       </a>
     </div>
     <div class="navbar-text pull-right">
-      <a routerLink="../" class="cl-icon-padding cl-text-black">
+      <a (click)="updatePage(updatedPage)" class="cl-icon-padding cl-text-black">
           <span class="glyphicon glyphicon-ok">
           </span>
       </a>
     </div>
-    <a class="cl-text-white navbar-brand cl-text-bold" routerLink="./">
+    <a class="navbar-brand cl-text-white cl-text-bold" routerLink=".">
       Edit Page
     </a>
   </div>
 </nav>
 
 <div class="container">
-  <!--<div class="form-group">-->
-    <!--<label for="page-id">Page Id</label>-->
-    <!--<input [(ngModel)]="page._id" id="page-id" class="form-control"/>-->
-  <!--</div>-->
-
-  <div class="form-group">
-    <label for="page-name">Name</label>
-    <input [(ngModel)]="page.name" id="page-name" class="form-control"/>
-  </div>
-
-  <div class="form-group">
-    <label for="page-description">Description</label>
-    <input [(ngModel)]="page.description" id="page-description" class="form-control"/>
-  </div>
-
-  <button class="btn btn-primary btn-block" (click)="updatePage(page)">Update</button>
-  <button class="btn btn-danger btn-block" (click)="deletePage(page._id)">Delete</button>
+  <form>
+    <div class="form-group">
+      <label for="page-name">Name</label>
+      <input [(ngModel)]="updatedPage.name" type="text" class="form-control" name="name" id="page-name" placeholder="Page Name">
+    </div>
+    <div class="form-group">
+      <label for="page-description">Description</label>
+      <input [(ngModel)]="updatedPage.description" type="text" class="form-control" name="description" id="page-description" placeholder="Page Description">
+    </div>
+  </form>
+  <a class="btn btn-danger  btn-block" (click)="deletePage()">Delete</a>
 </div>
-
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid row">
     <div class="pull-right navbar-text">
-      <a routerLink="/profile/{{userId}}" class="cl-icon-padding">
+      <a routerLink="/user/{{userId}}" class="cl-icon-padding">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </div>
   </div>
 </nav>
+
+
+<!--<nav class="navbar navbar-fixed-top navbar-light bg-secondary">-->
+  <!--<a class="navbar-brand" routerLink="/user/{{userId}}/website/{{websiteId}}/page">-->
+    <!--<span class="glyphicon glyphicon-chevron-left text-dark"></span>-->
+  <!--</a>-->
+  <!--<div class="navbar-brand font-weight-bold">-->
+    <!--Edit Page-->
+  <!--</div>-->
+  <!--<a class="btn navbar-brand pull-right" (click)="updatePage(updatedPage)">-->
+    <!--<span class="glyphicon glyphicon-ok text-dark"></span>-->
+  <!--</a>-->
+<!--</nav>-->
+<!--<div class="container-fluid cl-body-padding">-->
+  <!--<form>-->
+    <!--<div class="form-group">-->
+      <!--<label>Name</label>-->
+      <!--<input [(ngModel)]="updatedPage.name" type="text" class="form-control" name="name" placeholder="Page Name">-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+      <!--<label>Title</label>-->
+      <!--<input [(ngModel)]="updatedPage.description" type="text" class="form-control" name="title" placeholder="Page Title">-->
+    <!--</div>-->
+    <!--<a (click)="deletePage()" class="btn btn-block btn-danger">Delete</a>-->
+  <!--</form>-->
+<!--</div>-->
+<!--<nav class="navbar navbar-fixed-bottom navbar-light bg-secondary">-->
+  <!--<a class="navbar-brand pull-right" routerLink="/user/{{userId}}">-->
+    <!--<span class="glyphicon glyphicon-user text-primary"></span>-->
+  <!--</a>-->
+<!--</nav>-->
