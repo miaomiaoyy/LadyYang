@@ -53,24 +53,11 @@ export class FlickrImageSearchComponent implements OnInit {
           this.photos = val.photos;
         }
       );
-
-
-    // .then(function (response) {
-    //   let dat = response.data.replace('jsonFlickrApi(', '');
-    //   dat = dat.substring(0, dat.length - 1);
-    //   dat = JSON.parse(dat);
-    //   this.photos = dat.photos;
-    // });
   }
 
   selectPhoto(photo) {
     let url = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server;
     url += '/' + photo.id + '_' + photo.secret + '_b.jpg';
-
-    // const widget = {
-    //   pageId : this.pageId,
-    //   url: url
-    // };
 
     this.widget.url = url;
 
@@ -84,16 +71,6 @@ export class FlickrImageSearchComponent implements OnInit {
           }
         }
       );
-
-
-    // .then(function (response) {
-    //   const result = response.data;
-    //   if(result){
-    //     this.router.url('/user/' + this.userId + '/website/' + this.websiteId + '/page/' + this.pageId + '/widget/' + this.widgetId);
-    //   }else{
-    //     const error = 'failed!';
-    //   }
-    // });
   }
 
 
