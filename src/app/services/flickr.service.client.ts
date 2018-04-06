@@ -8,13 +8,13 @@ export class FlickrService {
   secret = '59b7fb7ceb0a467b';
   urlBase = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&api_key=API_KEY&text=TEXT';
 
-  constructor(private _http: Http) {}
+  constructor(private http: Http) {}
 
   searchPhotos(searchTerm: any) {
     const url = this.urlBase
       .replace('API_KEY', this.key)
       .replace('TEXT', searchTerm);
-    return this._http.get(url);
+    return this.http.get(url);
   }
 
 }
