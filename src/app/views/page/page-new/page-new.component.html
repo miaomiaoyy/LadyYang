@@ -2,72 +2,45 @@
   <div class="container-fluid row">
 
     <div class="navbar-text pull-left">
-      <a routerLink="/user/{{userId}}/website/{{websiteId}}/page" class="cl-text-black cl-icon-padding">
+      <a routerLink="../" class="cl-text-black cl-icon-padding">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
       </a>
     </div>
     <div class="navbar-text pull-right">
-      <a (click)="createNewPage(newPage)" class="cl-icon-padding cl-text-black">
+      <a routerLink="../" class="cl-icon-padding cl-text-black" type="submit" (click)="createPage()">
           <span class="glyphicon glyphicon-ok">
           </span>
       </a>
     </div>
-    <a class="navbar-brand cl-text-white cl-text-bold" routerLink=".">
+    <a class="navbar-brand cl-text-white cl-text-bold" routerLink="./">
       New Page
     </a>
   </div>
 </nav>
 
+
 <div class="container">
-  <form>
+  <form #f="ngForm" (ngSubmit) = "createPage()">
     <div class="form-group">
       <label for="page-name">Name</label>
-      <input [(ngModel)]="newPage.name" type="text" class="form-control" name="name" id="page-name" placeholder="Page Name" ngModel required>
+      <input type="text" class="form-control" id="page-name" placeholder="Page Name" ngModel required name="name" #name="ngModel">
     </div>
     <div class="form-group">
       <label for="page-description">Description</label>
-      <input [(ngModel)]="newPage.description" type="text" class="form-control" name="description" id="page-description" placeholder="Page Description" ngModel required>
+      <input type="text" class="form-control" id="page-description" placeholder="Page Description" ngModel required name="description" #description="ngModel">
     </div>
+
+    <button class="btn btn-primary btn-block" type="submit" [disabled]="!f.valid">Create</button>
   </form>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid row">
     <div class="pull-right navbar-text">
-      <a routerLink="/user/{{userId}}" class="cl-icon-padding">
+      <a routerLink="/profile/{{userId}}" class="cl-icon-padding">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </div>
   </div>
 </nav>
-
-
-<!--<nav class="navbar navbar-fixed-top navbar-light bg-secondary">-->
-  <!--<a class="navbar-brand" routerLink="/user/{{userId}}/website/{{websiteId}}/page">-->
-    <!--<span class="glyphicon glyphicon-chevron-left text-dark"></span>-->
-  <!--</a>-->
-  <!--<div class="navbar-brand font-weight-bold">-->
-    <!--New Page-->
-  <!--</div>-->
-  <!--<a class="btn navbar-brand pull-right" (click)="createNewPage(newPage)">-->
-    <!--<span class="glyphicon glyphicon-ok text-dark"></span>-->
-  <!--</a>-->
-<!--</nav>-->
-<!--<div class="container-fluid cl-body-padding">-->
-  <!--<form>-->
-    <!--<div class="form-group">-->
-      <!--<label for="name">Name</label>-->
-      <!--<input [(ngModel)]="newPage.name" type="text" class="form-control" id="name" name="name" placeholder="Page Name" ngModel required>-->
-    <!--</div>-->
-    <!--<div class="form-group">-->
-      <!--<label for="title">Title</label>-->
-      <!--<input [(ngModel)]="newPage.description" type="text" class="form-control" id="title" name="title" placeholder="Page Title" ngModel required>-->
-    <!--</div>-->
-  <!--</form>-->
-<!--</div>-->
-<!--<nav class="navbar navbar-fixed-bottom navbar-light bg-secondary">-->
-  <!--<a class="navbar-brand pull-right" routerLink="/user/{{userId}}">-->
-    <!--<span class="glyphicon glyphicon-user text-primary"></span>-->
-  <!--</a>-->
-<!--</nav>-->

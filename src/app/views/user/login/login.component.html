@@ -1,33 +1,26 @@
-<div class="container-fluid cl-body-padding">
-  <div *ngIf="errorFlag" class="alert alert-danger">
+<div class="container">
+  <h1>
+    Login
+  </h1>
+
+  <div *ngIf="errorFlag"
+       class="alert alert-danger">
     {{errorMsg}}
+
   </div>
-  <h1>Login</h1>
-  <form (ngSubmit)="login(username,password)" #f="ngForm">
 
-    <div class="form-group">
-      <!--<input type="text" name="username" placeholder="username" class="form-control" ngModel required #username="ngModel">-->
-      <input [(ngModel)]="username" type="text" name="username" placeholder="username" class="form-control">
-    </div>
-    <!--<span class="help-block" *ngIf="!username.valid && username.touched">-->
-      <!--Please enter username!-->
-    <!--</span>-->
+  <form (ngSubmit) = "login()" #f="ngForm">
+    <label>Username</label>
+    <input   placeholder="username" name="username" type="text" class="form-control" ngModel required #username="ngModel"/>
 
-    <div class="form-group">
-      <!--<input type="password" name="password" placeholder="password" class="form-control" ngModel required #password="ngModel">-->
-      <input [(ngModel)]="password" type="password" name="password" placeholder="password" class="form-control">
-    </div>
-    <!--<span class="help-block" *ngIf="!password.valid && password.touched">-->
-      <!--Please enter password!-->
-    <!--</span>-->
+    <label>Password</label>
+    <input   placeholder="password" name="password" type="password" class="form-control" ngModel required #password="ngModel"/>
 
-    <div class="form-group">
-      <!--<button [disabled]="!f.valid" class="btn btn-primary btn-block" type="submit">Login</button>-->
-      <button class="btn btn-primary btn-block" type="submit">Login</button>
-    </div>
+    <span class="help-block" *ngIf="!username.valid && username.touched">
+          Please enter username!
+    </span>
+    <button class="btn btn-primary btn-block" type="submit" [disabled]="!f.valid">Login</button>
+    <a class="btn btn-success btn-block" routerLink="/register" role="button">Register</a>
 
-    <div class="form-group">
-      <a routerLink="/register" class="btn btn-success btn-block">Register</a>
-    </div>
   </form>
 </div>

@@ -1,0 +1,19 @@
+<div class="container">
+  <form #f="ngForm" (ngSubmit) = "createWidget()">
+    <div class="form-group">
+      <label for="Name">Name</label>
+      <input type="text" class="form-control" id="Name" placeholder="Name" ngModel required name="name" #name="ngModel">
+    </div>
+
+
+    <div class="form-group">
+      <label for="text">HTML</label>
+      <quill-editor id="text" [(ngModel)]="middle" [ngModelOptions]="{standalone:true}"
+      (change)="onContentChanged($event)"></quill-editor>
+    </div>
+
+  <br/>
+    <button class="btn btn-primary btn-block" type="submit" [disabled]="!f.valid">Create</button>
+    <a class="btn btn-danger btn-block" routerLink="../">Cancel</a>
+  </form>
+</div>

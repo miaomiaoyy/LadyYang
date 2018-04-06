@@ -1,16 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
 body {
   padding-top: 70px;
   padding-bottom: 70px;
 }
-
-.borders {
-  border-left: 1px solid #ddd;
-  margin: -20px;
-  height:750px;
-  left: 20px;
-}
-
 input.form-control {
   margin-bottom: 5px;
 }
@@ -24,7 +15,7 @@ a:hover{
 }
 
 .cl-container-padding {
-  padding-top: 1%;
+  padding-top: 5%;
   padding-bottom: 10%;
 }
 
@@ -104,45 +95,35 @@ a:hover{
   border-right: 0 none;
 }
 
-.cl-widget-images{
+.cl-widget-images {
   display: inline;
   width: 85%;
   z-index: 100;
   position: relative;
 }
 
-.cl-font-size {
-  font-size: 20px;
-}
-
-.cl-8-top {
-  margin-top: 20px;
-  margin-left: 0px;
-}
-
-.cl-widget-gly-color {
-  color: #000000;
-}
-
-.cl-widget-toolbar-cog {
+.jga-widget-tool {
+  position: absolute;
+  right: 15px;
   background-color: white;
-  border-bottom-left-radius: 10px;
-  font-size:20px;
+  padding-left: 5px;
   padding-bottom: 5px;
-  padding-left: 2px;
+  border-bottom-left-radius: 8px;
+  opacity: 0.7;
+  z-index: 2;
 }
 
-.cl-widget-toolbar-hamburger {
-  background-color: white;
-  font-size:20px;
-  padding-bottom: 5px;
+
+.youtube-widget {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
 }
 
-/*.extra-left-padding {*/
-  /*padding-left: 30px;*/
-/*}*/
+.youtube-widget iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
 
-/*.cl-body-padding {*/
-  /*padding-top: 70px;*/
-  /*padding-bottom: 70px;*/
-/*}*/
+  height: 100%;
+}

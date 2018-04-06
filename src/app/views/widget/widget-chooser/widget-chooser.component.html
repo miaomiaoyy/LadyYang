@@ -2,13 +2,13 @@
   <div class="container-fluid row">
 
     <div class="navbar-text pull-left">
-      <a routerLink="/user/{{userId}}/website/{{websiteId}}/page/{{pageId}}/widget" class="cl-text-black cl-icon-padding">
+      <a routerLink="../" class="cl-text-black cl-icon-padding">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
       </a>
     </div>
 
-    <a class="navbar-brand cl-text-white cl-text-bold" href="#">
+    <a class="navbar-brand cl-text-white cl-text-bold" routerLink="./">
       Choose Widget
     </a>
   </div>
@@ -17,36 +17,34 @@
 <div class="container-fluid cl-container-padding">
   <ul class="list-group cl-list-group-borderless">
     <li class="list-group-item cl-list-item-borderless">
-      <a (click)="createNewWidget('HEADER')">Header</a>
+      <a routerLink="HEADING">Header</a>
     </li>
     <li class="list-group-item cl-list-item-borderless">
-      <a routerLink=".">Label</a>
+      <a routerLink="./">Label</a>
     </li>
     <li class="list-group-item cl-list-item-borderless">
-      <!--<a routerLink=".">HTML</a>-->
-      <a (click)="createNewWidget('HTML')">HTML</a>
+      <a routerLink="HTML">HTML</a>
     </li>
     <li class="list-group-item cl-list-item-borderless">
-      <!--<a routerLink=".">Text Input</a>-->
-      <a (click)="createNewWidget('TEXT')">TEXT</a>
+      <a routerLink="TEXT">Text Input</a>
     </li>
     <li class="list-group-item cl-list-item-borderless">
-      <a routerLink=".">Link</a>
+      <a routerLink="./">Link</a>
     </li>
     <li class="list-group-item cl-list-item-borderless">
-      <a routerLink=".">Button</a>
+      <a routerLink="./">Button</a>
     </li>
     <li class="list-group-item cl-list-item-borderless">
-      <a (click)="createNewWidget('IMAGE')">Image</a>
+      <a routerLink="IMAGE">Image</a>
     </li>
     <li class="list-group-item cl-list-item-borderless">
-      <a (click)="createNewWidget('YOUTUBE')">YouTube</a>
+      <a routerLink="YOUTUBE">YouTube</a>
     </li>
     <li class="list-group-item cl-list-item-borderless">
-      <a routerLink=".">Data Table</a>
+      <a routerLink="./">Data Table</a>
     </li>
     <li class="list-group-item cl-list-item-borderless">
-      <a routerLink=".">Repeater</a>
+      <a routerLink="./">Repeater</a>
     </li>
   </ul>
 </div>
@@ -55,7 +53,7 @@
   <div class="container-fluid row">
     <div class="pull-right navbar-text">
 
-      <a routerLink ="/user/{{userId}}" class="cl-icon-padding">
+      <a routerLink="profile/{{userId}}" class="cl-icon-padding">
         <span class="glyphicon glyphicon-user"></span>
       </a>
 

@@ -3,30 +3,24 @@
     <div class="col-xs-4 hidden-xs">
       <div class="container-fluid">
         <p class="navbar-text pull-left">
-          <!--go back to last page jiantou-->
-          <a routerLink="/user/{{developerId}}/website/" class="navbar-link cl-text-white">
+          <a routerLink="../" class="navbar-link cl-text-white">
             <span class="glyphicon glyphicon-chevron-left"></span>
           </a>
         </p>
-        <!--stay in the same page when click website-->
-        <a class="cl-text-white navbar-brand cl-text-bold" routerLink=".">
+        <a class="cl-text-white navbar-brand cl-text-bold" routerLink="../">
           Websites
         </a>
-        <!--jiahao create new-->
-        <a routerLink="/user/{{developerId}}/website/new" class="navbar-link navbar-text pull-right cl-text-white">
+        <a routerLink="../new" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
           <span class="glyphicon glyphicon-plus"></span>
         </a>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+    <div class="col-xs-8">
       <div class="container-fluid">
-        <!--stay on the same page when click edit-->
-        <a class="cl-text-white navbar-brand cl-text-bold" routerLink=".">
+        <a class="cl-text-white navbar-brand cl-text-bold" routerLink="../">
           Edit Websites
         </a>
-        <!--click the check, update the website transfer the updated website to the backend ts-->
-        <a (click)="updateWebsite(updatedWebsite)"
-           class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
+        <a routerLink="../" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
           <span class="glyphicon glyphicon-ok"></span>
         </a>
       </div>
@@ -34,137 +28,44 @@
   </div>
 </nav>
 
+
 <div class="contain-fluid">
   <div class="col-xs-4 hidden-xs">
-    <div *ngFor="let website of websites">
-      <ul class="list-group cl-list-group-borderless">
-        <!--<li class="list-group-item cl-list-item-borderless">-->
-        <a routerLink="/user/{{developerId}}/website/{{website._id}}"><span
-          class="glyphicon glyphicon-cog pull-right"></span></a>
-        <a routerLink="/user/{{developerId}}/website/{{website._id}}/page">{{website.name}}</a>
-        <!--</li>-->
-      </ul>
+    <ul class="list-group cl-list-group-borderless">
+      <li class="list-group-item cl-list-item-borderless" *ngFor = "let website of websites">
+        <a routerLink="../{{website._id}}"><span class="glyphicon glyphicon-cog pull-right"></span></a>
+        <a routerLink="../{{website._id}}/page">{{website.name}} </a>
+      </li>
+    </ul>
+
+  </div>
+
+  <div class="col-xs-8">
+    <!--<div class="form-group">-->
+      <!--<label for="website-id">Website Id</label>-->
+      <!--<input [(ngModel)]="website._id" id="website-id" class="form-control"/>-->
+    <!--</div>-->
+
+    <div class="form-group">
+      <label for="website-name">Website Name</label>
+      <input [(ngModel)]="website.name" id="website-name" class="form-control"/>
     </div>
+
+    <div class="form-group">
+      <label for="website-description">Website Description</label>
+      <textarea [(ngModel)]="website.description" id="website-description" class="form-control" rows="5"></textarea>
+    </div>
+
+    <button class="btn btn-primary btn-block" (click)="updateWebsite(website)">Update</button>
+    <button class="btn btn-danger btn-block" (click)="deleteWebsite(website._id)">Delete</button>
+
   </div>
-  <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 borders">
-    <form>
-      <div class="form-group cl-8-top">
-        <label>Name</label>
-        <input [(ngModel)]="updatedWebsite.name" type="text" class="form-control" name="name" value="Blogger"
-               placeholder="Name" ngModel required>
-      </div>
-      <div class="form-group cl-8-top">
-        <label for>Description</label>
-        <textarea [(ngModel)]="updatedWebsite.description" name="description" class="form-control" rows="5"
-                  placeholder="Description"></textarea>
-      </div>
-      <div class="form-group">
-        <!--<a (click)="deleteWebsite()" class="btn btn-block btn-danger">Delete</a>-->
-      </div>
-      <a (click)="deleteWebsite()" class="btn btn-danger btn-block cl-8-top">Delete</a>
-    </form>
-  </div>
-</div>
 
 <nav class="navbar navbar-fixed-bottom cl-blue-navbar">
   <div class="container-fuild">
-    <a routerLink="/user/{{developerId}}" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
+    <a routerLink="/profile/{{userId}}" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
       <span class="glyphicon glyphicon-user"></span>
     </a>
   </div>
 </nav>
-
-
-<!--<nav class="navbar navbar-fixed-top navbar-light bg-primary">-->
-<!--<div class="col-xs-5 hidden-xs">-->
-<!--<div class="navbar-text pull-left">-->
-<!--<a routerLink="/user/{{developerId}}/website/" class="navbar-link text-white">-->
-<!--<span class="glyphicon glyphicon-chevron-left"></span>-->
-<!--</a>-->
-<!--</div>-->
-
-<!--<div class="text-white navbar-brand font-weight-bold" [routerLink]="['/#']">-->
-<!--Websites-->
-<!--</div>-->
-<!--<a [routerLink]="['/#']" class="navbar-link navbar-text pull-right text-white">-->
-<!--<span class="glyphicon glyphicon-plus"></span>-->
-<!--</a>-->
-
-<!--</div>-->
-<!--<div class="col-xs-7">-->
-<!--<div class="navbar-text pull-left visible-xs">-->
-<!--<a routerLink="/user/{{developerId}}/website/" class="navbar-link text-white">-->
-<!--<span class="glyphicon glyphicon-chevron-left"></span>-->
-<!--</a>-->
-<!--</div>-->
-
-<!--<div class="text-white navbar-brand font-weight-bold" [routerLink]="['/#']">-->
-<!--Edit Website-->
-<!--</div>-->
-<!--<a (click)="updateWebsite(updatedWebsite)" class="navbar-link navbar-text pull-right text-white">-->
-<!--<span class="glyphicon glyphicon-ok"></span>-->
-<!--</a>-->
-
-<!--</div>-->
-<!--</nav>-->
-
-<!--<div class="col-xs-4 hidden-xs cl-body-padding cl-full-height">-->
-
-<!--<div class="row extra-padding" *ngFor="let website of websites">-->
-<!--<a class="extra-left-padding" routerLink="/user/{{developerId}}/website/{{website._id}}/page">{{website.name}}</a>-->
-<!--<a class="pull-right" routerLink="/user/{{developerId}}/website/{{website._id}}">-->
-<!--<i class="glyphicon glyphicon-cog text-primary extra-right-padding"></i>-->
-<!--</a>-->
-<!--</div>-->
-
-<!--&lt;!&ndash; <div class="row extra-padding">-->
-<!--<a class="cl-left-padding" [routerLink]="['/page-list']">Blogging App</a>-->
-<!--<a class="pull-right" [routerLink]="['/website-edit']">-->
-<!--<i class="glyphicon glyphicon-cog text-primary right-padding"></i>-->
-<!--</a>-->
-<!--</div>-->
-<!--<div class="row extra-padding">-->
-<!--<a class="cl-left-padding" [routerLink]="['/page-list']">Address Book App</a>-->
-<!--<a class="pull-right" [routerLink]="['/website-edit']">-->
-<!--<i class="glyphicon glyphicon-cog text-primary right-padding"></i>-->
-<!--</a>-->
-<!--</div>-->
-<!--<div class="row extra-padding">-->
-<!--<a class="cl-left-padding" [routerLink]="['/page-list']">Script Testing App</a>-->
-<!--<a class="pull-right" [routerLink]="['/website-edit']">-->
-<!--<i class="glyphicon glyphicon-cog text-primary right-padding"></i>-->
-<!--</a>-->
-<!--</div>-->
-<!--<div class="row extra-padding">-->
-<!--<a class="cl-left-padding" [routerLink]="['/page-list']">Blogger</a>-->
-<!--<a class="pull-right" [routerLink]="['/website-edit']">-->
-<!--<i class="glyphicon glyphicon-cog text-primary right-padding"></i>-->
-<!--</a>-->
-<!--</div> &ndash;&gt;-->
-<!--</div>-->
-
-<!--<div class="col-xs-1 hidden-xs cl-full-height cl-right-divider"></div>-->
-
-<!--<div class="col-xs-7 cl-body-padding">-->
-<!--<form>-->
-<!--<div class="form-group">-->
-<!--<label>Website Name</label>-->
-<!--<input [(ngModel)]="updatedWebsite.name" type="text" class="form-control" name="name" value="Blogger"-->
-<!--placeholder="Name" ngModel required>-->
-<!--</div>-->
-<!--<div class="form-group">-->
-<!--<label>Description</label>-->
-<!--<textarea [(ngModel)]="updatedWebsite.description" name="description" class="form-control" rows="5"-->
-<!--placeholder="Description"></textarea>-->
-<!--</div>-->
-<!--<div class="form-group">-->
-<!--&lt;!&ndash;<a (click)="deleteWebsite()" class="btn btn-block btn-danger">Delete</a>&ndash;&gt;-->
-<!--</div>-->
-<!--</form>-->
-<!--</div>-->
-
-<!--<nav class="navbar navbar-fixed-bottom navbar-light bg-primary">-->
-<!--<a class="navbar-brand pull-right" routerLink="/user/{{developerId}}">-->
-<!--<i class="glyphicon glyphicon-user text-white"></i>-->
-<!--</a>-->
-<!--</nav>-->
+</div>

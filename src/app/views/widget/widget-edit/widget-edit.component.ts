@@ -1,11 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {Widget} from '../../../model/widget.model.client';
-import {WidgetService} from '../../../service/widget.service.client';
-import {ActivatedRoute} from '@angular/router';
-import {PageService} from '../../../service/page.service.client';
-import {Page} from '../../../model/page.model.client';
-import {Website} from '../../../model/website.model.client';
-import {WebsiteService} from '../../../service/website.service.client';
+import { Component, OnInit } from '@angular/core';
+import {Widget} from '../../../models/widget.model.client';
+import {WidgetService} from '../../../services/widget.service.client';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Website} from '../../../models/website.model.client';
 
 @Component({
   selector: 'app-widget-edit',
@@ -13,57 +10,32 @@ import {WebsiteService} from '../../../service/website.service.client';
   styleUrls: ['./widget-edit.component.css']
 })
 export class WidgetEditComponent implements OnInit {
-
-  widget: Widget = {
-    _id: '', widgetType: '', name: 'name', pageId: '', size: '1', text: '', url: '', width: '100%',
-    height: 100, rows: 0, class: '', icon: '', deletable: false, formatted: false, placeholder: ''
-  };
-  widgetId: String;
+  widget: Widget;
   userId: String;
-  websiteId: String;
-  pageId: String;
 
   constructor(private widgetService: WidgetService,
               private activatedRoute: ActivatedRoute,
-              private pageService: PageService,
-              private websiteService: WebsiteService) {
+              private router: Router) { }
+
+  updateWidget(changed_widget) {
+    this.widgetService.updateWidget(changed_widget).subscribe(
+      () => {
+        // this.widget = data;
+        this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+      }
+    );
   }
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe(
-      params => {
-        this.widgetService.findWidgetById(params.wgid).subscribe(
-          (widget: Widget) => {
-            if (widget.pageId === params.pid) {
-              this.pageService.findPageById(widget.pageId).subscribe(
-                (page: Page) => {
-                  if (page.websiteId === params.wid) {
-                    this.websiteService.findWebsitesById(page.websiteId).subscribe(
-                      (website: Website) => {
-                        if (website.developerId === params.uid) {
-                          this.userId = params.uid;
-                          this.websiteId = params.wid;
-                          this.pageId = params.pid;
-                          this.widgetId = params.wgid;
-                          this.widget = widget;
-                        } else {
-                          console.log('Two user ID does not match.');
-                        }
-                      }
-                    );
-                  } else {
-                    console.log('Two Website ID does not match.');
-                  }
-                }
-              );
-            }
-          }
-        );
-      }
-    );
-    console.log('type          widget-edit widget type = ' + this.widget.widgetType);
-    console.log('url           widget-edit url = ' + this.widget.url);
-    console.log('text          widget-edit text = ' + this.widget.text);
+    this.activatedRoute.params.subscribe(params => {
+      // const preWidget = this.widgetService.findWidgetById(params['wgid']);
+      // this.widget = Object.assign({}, preWidget);
+      this.widgetService.findWidgetById(params['wgid']).subscribe(
+        (widget: Widget) => {
+          this.widget = widget;
+        }
+      );
+      this.userId = params['uid'];
+    });
   }
-
 }

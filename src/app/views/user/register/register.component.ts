@@ -1,9 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {UserService} from '../../../services/user.service.client';
 import {NgForm} from '@angular/forms';
-import {Router} from '@angular/router';
-
-import {UserService} from '../../../service/user.service.client';
-import {User} from '../../../model/user.model.client';
+import {User} from '../../../models/user.model.client';
+import {Page} from '../../../models/page.model.client';
 
 @Component({
   selector: 'app-register',
@@ -13,63 +13,41 @@ import {User} from '../../../model/user.model.client';
 export class RegisterComponent implements OnInit {
 
   @ViewChild('f') registerForm: NgForm;
-
-  user: User = {_id: '', username: '', password: '', firstName: '', lastName: ''};
   username: String;
+  firstName: String;
+  lastName: String;
   password: String;
   verifyPassword: String;
-  errorFlag: boolean;
-  errorMsg: String;
+  email: String;
+  passwordErrorFlag: boolean;
+  passwordErrorMsg = 'password does not macth';
 
-  constructor(private userService: UserService, private router: Router) {
+  user: User;
+  constructor(private userService: UserService, private router: Router,
+              private activatedRouter: ActivatedRoute) { }
+  register() {
+    this.username = this.registerForm.value.username;
+    this.password = this.registerForm.value.password;
+    this.verifyPassword = this.registerForm.value.verifyPassword;
+    this.firstName = this.registerForm.value.firstName;
+    this.lastName = this.registerForm.value.lastName;
+    this.email = this.registerForm.value.email;
+
+    if (this.password !== this.verifyPassword) {
+      this.passwordErrorFlag = true;
+    } else {
+      this.user = new User(undefined, this.username, this.password, this.firstName, this.lastName, this.email);
+      this.userService.createUser(this.user).subscribe(
+        (user: User) => {
+          console.log('success');
+          this.user = user;
+          this.router.navigate(['/profile', this.user._id]);
+        }
+      );
+    }
   }
 
   ngOnInit() {
   }
 
-  register(username: String, password: String, verifyPassword: String) {
-    console.log('this is user register method');
-    this.username = username;
-    this.password = password;
-    this.verifyPassword = verifyPassword;
-    // if (this.userService.findUserByUsername(this.username) != null) {
-    //   this.errorMsg = 'This username is already exist.';
-    //   this.errorFlag = true;
-    // }
-    // updated code here
-    if (username.trim() === '') {
-      this.errorMsg = 'Username cannot be empty';
-      this.errorFlag = true;
-    }
-    if (password.trim() === '') {
-      this.errorMsg = 'password cannot be empty';
-      this.errorFlag = true;
-    }
-    if (password !== verifyPassword) {
-      this.errorMsg = 'the two password do not match!';
-      this.errorFlag = true;
-    }
-    if (!this.errorFlag) {
-      console.log('creating user');
-      this.user.username = this.username;
-      this.user.password = this.password;
-      // this.userService.createUser(this.user);
-      // this.router.navigate(['/user', this.userService.findUserByUsername(this.username)._id]);
-
-      this.userService.createUser(this.user).subscribe(
-        (user: User) => {
-          this.errorFlag = false;
-          this.router.navigate(['/user', user._id]);
-        },
-        (error: any) => {
-          this.errorFlag = true;
-          this.errorMsg = error;
-        }
-      );
-      console.log('register username -----' + this.user.username);
-      console.log('register password -----' + this.user.password);
-      // this.errorFlag = false;
-      // console.log(this.userService.findUserByUsername(this.username)._id);
-    }
-  }
 }
