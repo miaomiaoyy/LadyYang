@@ -102,6 +102,7 @@ module.exports = function (app) {
 
     if (username && password){
       userModel.findUserByCredentials(username, password).then(function(user){
+        console.log(user, "hehe");
         if (!user) {
           res.status(401);
           res.json(user);

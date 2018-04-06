@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
     this.userService.findUserByCredential(this.username, this.password).subscribe(
       (user: User) => {
         this.errorFlag = false;
+        console.log(user._id, user.password);
         this.router.navigate(['/profile', user._id]);
       },
       (error: any) => {
