@@ -147,8 +147,7 @@ module.exports = function (app) {
 
     if (myFile == null) {
       // return "http://localhost:4200/profile/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/" + widgetId;
-      return "http://localhost:4200/profile/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/" + widgetId;
-     // return "https://hellokittyy.herokuapp.com/profile/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/" + widgetId;
+      return "https://hellokittyy.herokuapp.com//profile/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/" + widgetId;
     }
 
     var userId = req.body.userId;
@@ -235,7 +234,7 @@ module.exports = function (app) {
 
 
     // var callbackUrl = "http://localhost:4200/profile/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget";
-    var callbackUrl = "https://jielu-webdev.herokuapp.com/profile/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget";
+    var callbackUrl = "https://hellokittyy.herokuapp.com/profile/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget";
     res.redirect(callbackUrl);
   }
 

@@ -1,5 +1,5 @@
 {
-  "name": "cs5610-webdev-master",
+  "name": "webdev",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -24,7 +24,6 @@
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
-    "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.3",
     "core-js": "^2.4.1",
     "express": "^4.16.2",

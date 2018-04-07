@@ -14,7 +14,7 @@ export class PageService {
 
 
   createPage(websiteId: String, page: Page) {
-    const url = this.baseUrl + 'api/website/' + websiteId + '/page';
+    const url = this.baseUrl + '/api/website/' + websiteId + '/page';
     return this.http.post(url, page);
     //   .map((response: Response) => {
     //   return response.json();
@@ -22,28 +22,28 @@ export class PageService {
   }
 
   findPageByWebsiteId(websiteId: String) {
-    const url = this.baseUrl + 'api/website/' + websiteId + '/page';
+    const url = this.baseUrl + '/api/website/' + websiteId + '/page';
     return this.http.get(url).map((response: Response) => {
       return response.json();
     });
   }
 
   findPageById(pageId: String) {
-    const url = this.baseUrl + 'api/page/' + pageId;
+    const url = this.baseUrl + '/api/page/' + pageId;
     return this.http.get(url).map((response: Response) => {
       return response.json();
     });
   }
 
   updatePage(page: Page) {
-    const url = this.baseUrl + 'api/page/' + page._id;
+    const url = this.baseUrl + '/api/page/' + page._id;
     return this.http.put(url, page).map((response: Response) => {
       return response.json();
     });
   }
 
   deletePage(pageId: String) {
-    const url = this.baseUrl + 'api/page/' + pageId;
+    const url = this.baseUrl + '/api/page/' + pageId;
     return this.http.delete(url);
     //   .map((response: Response) => {
     //   return response.json();
