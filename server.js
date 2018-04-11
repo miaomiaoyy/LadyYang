@@ -68,6 +68,13 @@ require("./assignment/app")(app);
 // var db = mongoose.connect('mongodb://localhost:27017/webdev');
 
 // For Build: Catch all other routes and return the index file -- BUILDING
+
+app.get("/cakes", function (req, res) {
+      console.log("Pika11");
+      res.send(webdev.find({}));
+});
+
+
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'dist/index.html'));
 });

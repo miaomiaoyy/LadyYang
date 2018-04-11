@@ -14,11 +14,13 @@ import {WidgetEditComponent} from './views/widget/widget-edit/widget-edit.compon
 import {WidgetNewComponent} from './views/widget/widget-new/widget-new.component';
 import {FlickrImageSearchComponent} from './views/widget/widget-edit/widget-image/flickr-image-search/flickr-image-search.component';
 import {AuthGuard} from './services/auth-guard.service';
+import {CakesComponent} from './views/cakes/cakes.component';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
+  {path: 'cakes', component: CakesComponent},
   {path: 'profile/:uid/website', component: WebsiteListComponent},
   {path: 'profile/:uid/website/new', component: WebsiteNewComponent},
   {path: 'profile/:uid/website/:wid', component: WebsiteEditComponent},

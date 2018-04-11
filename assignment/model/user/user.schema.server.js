@@ -18,7 +18,7 @@ var userSchema = mongoose.Schema({
     token: String
   }
 
-}, {collection:'dev.user'});
+}, {collection:'user'});
 
 
 module.exports = userSchema;

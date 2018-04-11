@@ -10,6 +10,7 @@ export class CakesComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }
