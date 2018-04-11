@@ -12,7 +12,7 @@ userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
 userModel.addWebsite = addWebsite;
 userModel.deleteWebsite = deleteWebsite;
-userModel.findUserByFacebookId = findUserByFacebookId;
+
 
 module.exports = userModel;
 
