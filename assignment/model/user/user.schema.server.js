@@ -12,7 +12,12 @@ var userSchema = mongoose.Schema({
   dateCreate: {
     type: Date,
     default: Date.now()
+  },
+  facebook: {
+    id:    String,
+    token: String
   }
+
 }, {collection:'dev.user'});
 
 

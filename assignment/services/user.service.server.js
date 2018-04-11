@@ -1,11 +1,14 @@
 module.exports = function (app) {
 
-  var userModel = require("../model/user/user.model.server");
-  var passport = require('passport');
-  var LocalStrategy = require('passport-local').Strategy;
+  var userModel        = require("../model/user/user.model.server");
+  var passport         = require('passport');
+  var LocalStrategy    = require('passport-local').Strategy;
+  var FacebookStrategy = require('passport-facebook').Strategy;
+  var bcrypt           = require("bcrypt-nodejs");
   passport.serializeUser(serializeUser);
   passport.deserializeUser(deserializeUser);
   passport.use(new LocalStrategy(localStrategy));
+  //passport.use(new FacebookStrategy(facebookStrategy));
 
   app.post("/api/user", createUser);
   app.get("/api/user", findUser);
@@ -13,24 +16,33 @@ module.exports = function (app) {
   app.put("/api/user/:userId", updateUser);
   app.delete("/api/user/:userId", deleteUser);
   app.get("/api/user/hello", helloUser);
-  app.post  ('/api/login', passport.authenticate('local'), login);
+  app.post('/api/login', passport.authenticate('local'), login);
+  app.post('/api/logout', logout);
+  app.post ('/api/register', register);
+  app.post ('/api/loggedin', loggedin);
+  app.get('/facebook/login', passport.authenticate('facebook', {scope:'email'}))
+  app.get('/auth/facebook/callback', passport.authenticate('facebook', {
+    successRedirect: '/profile',
+    failureRedirect: '/login'
+  }));
 
-  // var users = [
-  //   {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonderland", email: "alice@gmail.com"  },
-  //   {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley",     email: "bob@gmail.com"  },
-  //   {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia",     email: "charly@gmail.com" },
-  //   {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi",    email: "jan@gamil.com" }
-  // ];
-
+  var AppId = '165803390787476';
+  var SECRET = '94eda8464172ea3417b1921bb1d920b3';
+  var facebookCallbackUrl = 'http://localhost:5000/auth/facebooka/callback';
+  const facebookConfig = {
+    clientId: AppId,
+    clientSecret: SECRET,
+    callbackURL: facebookCallbackUrl
+  }
+  //
+  // passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
   function serializeUser(user, done) {
     done(null, user);
   }
 
-
-
   function deserializeUser(user, done) {
-    developerModel
-      .findDeveloperById(user._id)
+    userModel
+      .findUserById(user._id)
       .then(
         function(user){
           done(null, user);
@@ -46,11 +58,16 @@ module.exports = function (app) {
       .findUserByCredentials(username, password)
       .then(
         function(user) {
-          if(user.username === username && user.password === password) {
+          if(user && bcrypt.compareSync(password, user.password)) {
             return done(null, user);
           } else {
             return done(null, false);
           }
+          // if(user.username === username && user.password === password) {
+          //   return done(null, user);
+          // } else {
+          //   return done(null, false);
+          // }
         },
         function(err) {
           if (err) { return done(err); }
@@ -58,9 +75,80 @@ module.exports = function (app) {
       );
   }
 
+  function facebookStrategy(token, refreshToken, profile, done) {
+    userModel 
+      .findUserByFacebookId(profile.id) 
+      .then( 
+        function(user) {
+          if (user) {
+            return done(null, user);
+          } else {
+            var names = profile.displayName.split(" ");
+            var newFacebookUser = {
+              lastName: names[1],
+              firstName: names[0],
+              email: profile.emails ? profile.emails[0].value : "",
+              facebook: {
+                id: profile.id,
+                token: token
+              }
+            };
+            return userModel.createUser(newFacebookUser);
+          }
+        },
+        function(err) { 
+          if (err) {
+            return done(err);
+          } 
+        } 
+    )
+      .then( 
+        function(user){ 
+          return done(null, user); 
+          }, 
+        function(err){ 
+          if (err) {
+            return done(err);
+          } 
+        } 
+        ); 
+  }
+
+
+
   function login(req, res) {
     var user = req.user;
     res.json(user);
+  }
+
+  function logout(req, res) { 
+    req.logOut(); 
+    res.send(200); 
+  }
+
+  function register (req, res) {
+    const user = req.body;
+    user.password = bcrypt.hashSync(user.password);
+    userModel
+      .createUser(user)
+      .then(
+        function(user){
+          if(user){
+            req.login(user, function(err) {
+              if(err) {
+                res.status(400).send(err);
+              } else {
+                res.json(user);
+              }
+            });
+          }
+        }
+      );
+    return userModel.createUser(user);
+  }
+
+  function loggedin(req, res) {
+    res.send(req.isAuthenticated() ? req.user : '0'); //null
   }
 
   function helloUser(req, res) {

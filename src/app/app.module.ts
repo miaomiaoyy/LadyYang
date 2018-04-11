@@ -38,7 +38,11 @@ import { WidgetHtmlComponent } from './views/widget/widget-edit/widget-html/widg
 import { WidgetTextComponent } from './views/widget/widget-edit/widget-text/widget-text.component';
 import { FlickrImageSearchComponent } from './views/widget/widget-edit/widget-image/flickr-image-search/flickr-image-search.component';
 import {FlickrService} from './services/flickr.service.client';
-
+import {SharedService} from './services/shared.service';
+import {AuthGuard} from './services/auth-guard.service';
+import { ShoppingCartComponent } from './views/shopping-cart/shopping-cart.component';
+import { CookieService } from 'ngx-cookie-service';
+import { CakesComponent } from './views/cakes/cakes.component';
 
 
 @NgModule({
@@ -68,7 +72,9 @@ import {FlickrService} from './services/flickr.service.client';
     WidgetTextNewComponent,
     WidgetHtmlComponent,
     WidgetTextComponent,
-    FlickrImageSearchComponent
+    FlickrImageSearchComponent,
+    ShoppingCartComponent,
+    CakesComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +84,7 @@ import {FlickrService} from './services/flickr.service.client';
     HttpClientModule,
     QuillEditorModule
   ],
-  providers: [UserService, PageService, WebsiteService, WidgetService, FlickrService],
+  providers: [UserService, PageService, WebsiteService, WidgetService, FlickrService, SharedService, AuthGuard, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

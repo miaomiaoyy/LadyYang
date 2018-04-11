@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {UserService} from '../../../services/user.service.client';
 import {User} from '../../../models/user.model.client';
 import {NgForm} from '@angular/forms';
-
+import {SharedService} from '../../../services/shared.service';
 
 @Component({
   selector: 'app-login',
@@ -19,21 +19,26 @@ export class LoginComponent implements OnInit {
   errorFlag: boolean;
   errorMsg = 'Invalid Username or password!';
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private sharedService: SharedService) { }
   login() {
+    // fetching data from loginForm
     this.username = this.loginForm.value.username;
     this.password = this.loginForm.value.password;
-    // alert(this.username);
 
-    this.userService.findUserByCredential(this.username, this.password).subscribe(
-      (user: User) => {
-        this.errorFlag = false;
-        this.router.navigate(['/profile', user._id]);
-      },
-      (error: any) => {
-        this.errorFlag = true;
-        // alert(this.errorMsg);
-      });
+    // calling client side userservice to send login information
+    console.log('data', this.username);
+    this.userService.login(this.username, this.password)
+      .subscribe(
+        (data: any) => {
+          this.sharedService.user = data;
+          console.log( "print");
+          this.router.navigate(['/profile']);
+          },
+        (error: any) => {
+          console.log( "print2");
+          console.log(error);
+        }
+      );
   }
 
   register() {

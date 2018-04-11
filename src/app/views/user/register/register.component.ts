@@ -4,6 +4,7 @@ import {UserService} from '../../../services/user.service.client';
 import {NgForm} from '@angular/forms';
 import {User} from '../../../models/user.model.client';
 import {Page} from '../../../models/page.model.client';
+import {SharedService} from '../../../services/shared.service';
 
 @Component({
   selector: 'app-register',
@@ -23,6 +24,7 @@ export class RegisterComponent implements OnInit {
   passwordErrorMsg = 'password does not macth';
 
   user: User;
+  private error: any;
   constructor(private userService: UserService, private router: Router,
               private activatedRouter: ActivatedRoute) { }
   register() {
@@ -36,14 +38,23 @@ export class RegisterComponent implements OnInit {
     if (this.password !== this.verifyPassword) {
       this.passwordErrorFlag = true;
     } else {
-      this.user = new User(undefined, this.username, this.password, this.firstName, this.lastName, this.email);
-      this.userService.createUser(this.user).subscribe(
-        (user: User) => {
-          console.log('success');
-          this.user = user;
-          this.router.navigate(['/profile', this.user._id]);
-        }
-      );
+      // this.user = new User(undefined, this.username, this.password, this.firstName, this.lastName, this.email);
+      // this.userService.createUser(this.user).subscribe(
+      //   (user: User) => {
+      //     console.log('success');
+      //     this.user = user;
+      //     this.router.navigate(['/profile', this.user._id]);
+      //   }
+      // );
+      this.userService.register(this.username, this.password)
+        .subscribe(
+          (data: any) => {
+            this.router.navigate(['/profile']);
+          },
+          (error: any) => {
+            this.error = error._body;
+          }
+        );
     }
   }
 

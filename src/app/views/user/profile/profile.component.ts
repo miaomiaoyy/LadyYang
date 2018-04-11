@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../../../models/user.model.client';
 import {UserService} from '../../../services/user.service.client';
+import {SharedService} from '../../../services/shared.service';
 
 @Component({
   selector: 'app-profile',
@@ -13,7 +14,15 @@ export class ProfileComponent implements OnInit {
 
   constructor(private userService: UserService,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private sharedService: SharedService) { }
+
+  logout() {
+    this.userService.logout()
+      .subscribe(
+        (data: any) => this.router.navigate(['/login'])
+      );
+  }
 
   updateUser(changed_user) {
     return this.userService.updateUser(changed_user).subscribe(
@@ -31,7 +40,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      return this.userService.findUserById(params['uid']).subscribe(
+      return this.userService. findUserById(params['uid']).subscribe(
         (user: User) => {
           this.user = user;
         }
