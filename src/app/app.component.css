@@ -74,7 +74,27 @@ h6 {
   float: left;
   height: 50px;
   padding: 15px 15px;
-  font-size: 40px;
+  font-size: 50px;
   line-height: 20px;
+  margin-left: 80px;
   color: deeppink;
+}
+
+input.form-control {
+  margin-bottom: 5px;
+  margin-left: 140px;
+}
+
+.form-control {
+  display: block;
+  width: 50%;
+}
+
+
+label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  margin-left: 150px;
+  font-weight: 700;
 }
