@@ -10,7 +10,7 @@ import { LoginComponent } from './views/user/login/login.component';
 import { ProfileComponent } from './views/user/profile/profile.component';
 import { RegisterComponent } from './views/user/register/register.component';
 
-import {UserService} from './services/user.service.client';
+import { UserService } from './services/user.service.client';
 import { WebsiteListComponent } from './views/website/website-list/website-list.component';
 import { WebsiteNewComponent } from './views/website/website-new/website-new.component';
 import { WebsiteEditComponent } from './views/website/website-edit/website-edit.component';
@@ -23,9 +23,9 @@ import { WidgetListComponent } from './views/widget/widget-list/widget-list.comp
 import { WidgetHeaderComponent } from './views/widget/widget-edit/widget-header/widget-header.component';
 import { WidgetImageComponent } from './views/widget/widget-edit/widget-image/widget-image.component';
 import { WidgetYoutubeComponent } from './views/widget/widget-edit/widget-youtube/widget-youtube.component';
-import {PageService} from './services/page.service.client';
-import {WebsiteService} from './services/website.service.client';
-import {WidgetService} from './services/widget.service.client';
+import { PageService } from './services/page.service.client';
+import { WebsiteService } from './services/website.service.client';
+import { WidgetService } from './services/widget.service.client';
 import { WidgetNewComponent } from './views/widget/widget-new/widget-new.component';
 import { WidgetHeaderNewComponent } from './views/widget/widget-new/widget-header-new/widget-header-new.component';
 import { WidgetYoutubeNewComponent } from './views/widget/widget-new/widget-youtube-new/widget-youtube-new.component';
@@ -37,12 +37,14 @@ import {QuillEditorModule} from 'ngx-quill-editor/quillEditor.module';
 import { WidgetHtmlComponent } from './views/widget/widget-edit/widget-html/widget-html.component';
 import { WidgetTextComponent } from './views/widget/widget-edit/widget-text/widget-text.component';
 import { FlickrImageSearchComponent } from './views/widget/widget-edit/widget-image/flickr-image-search/flickr-image-search.component';
-import {FlickrService} from './services/flickr.service.client';
-import {SharedService} from './services/shared.service';
-import {AuthGuard} from './services/auth-guard.service';
+import { FlickrService } from './services/flickr.service.client';
+import { SharedService } from './services/shared.service';
+import { AuthGuard } from './services/auth-guard.service';
 import { ShoppingCartComponent } from './views/shopping-cart/shopping-cart.component';
 import { CookieService } from 'ngx-cookie-service';
 import { CakesComponent } from './views/cakes/cakes.component';
+import {CakeService} from './services/cake.service.client';
+import { MainPageComponent } from './views/main-page/main-page.component';
 
 
 @NgModule({
@@ -74,7 +76,9 @@ import { CakesComponent } from './views/cakes/cakes.component';
     WidgetTextComponent,
     FlickrImageSearchComponent,
     ShoppingCartComponent,
-    CakesComponent
+    CakesComponent,
+    MainPageComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -84,7 +88,7 @@ import { CakesComponent } from './views/cakes/cakes.component';
     HttpClientModule,
     QuillEditorModule
   ],
-  providers: [UserService, PageService, WebsiteService, WidgetService, FlickrService, SharedService, AuthGuard, CookieService],
+  providers: [UserService, PageService, WebsiteService, WidgetService, FlickrService, SharedService, AuthGuard, CookieService, CakeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

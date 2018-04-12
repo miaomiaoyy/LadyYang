@@ -12,9 +12,8 @@ export class CakeService {
   baseUrl = environment.baseUrl;
   options = new RequestOptions();
 
-
   showCake() {
-    return this.http.post(this.baseUrl + 'api/cakes', '', this.options)
+    return this.http.post(this.baseUrl + '/api/cakes', '', this.options)
       .map(
         (res) => {
           const data = res;

@@ -98,3 +98,7 @@ label {
   margin-left: 150px;
   font-weight: 700;
 }
+
+active{
+  color: deeppink;
+}

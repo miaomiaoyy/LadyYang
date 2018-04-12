@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {CakeService} from '../../services/cake.service.client';
 
 @Component({
   selector: 'app-cakes',
@@ -7,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CakesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cakeService: CakeService) { }
 
   ngOnInit() {
-
+    this.cakeService.showCake();
   }
 
 }

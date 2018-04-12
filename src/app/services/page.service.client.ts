@@ -12,7 +12,6 @@ export class PageService {
 
   baseUrl = environment.baseUrl;
 
-
   createPage(websiteId: String, page: Page) {
     const url = this.baseUrl + '/api/website/' + websiteId + '/page';
     return this.http.post(url, page);
