@@ -17,7 +17,7 @@ export class UserService {
   options = new RequestOptions();
 
   addToShoppingCart(user: User, cake: Cake) {
-    if(!user) {
+    if (!user) {
       let shoppingCart = JSON.parse(this.cookieService.get('shoppingCart'));
 
       shoppingCart = shoppingCart && shoppingCart.length > 0 ? [...shoppingCart, cake] : [cake];
