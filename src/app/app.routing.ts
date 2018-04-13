@@ -16,6 +16,7 @@ import {FlickrImageSearchComponent} from './views/widget/widget-edit/widget-imag
 import {AuthGuard} from './services/auth-guard.service';
 import {CakesComponent} from './views/cakes/cakes.component';
 import {MainPageComponent} from './views/main-page/main-page.component';
+import {CakeNewComponent} from './views/cakes/cake-new/cake-new.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: 'main-page', pathMatch: 'full'},
@@ -23,6 +24,7 @@ const appRoutes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'cakes', component: CakesComponent},
+  {path: 'cakes/new', component: CakeNewComponent},
   {path: 'main-page', component: MainPageComponent},
   {path: 'profile/:uid/website', component: WebsiteListComponent},
   {path: 'profile/:uid/website/new', component: WebsiteNewComponent},

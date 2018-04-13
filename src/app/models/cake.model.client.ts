@@ -1,12 +1,16 @@
 export class Cake {
   _id: String;
+  name: String;
   color: String;
   layer: Number;
   description: String;
-  image: String;
+  url: String;
 
-  constructor(_id) {
+  constructor(_id, name, description, url) {
     this._id = _id;
+    this.name = name;
+    this.description = description;
+    this.url = url;
   }
 
 }

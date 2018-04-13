@@ -45,6 +45,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { CakesComponent } from './views/cakes/cakes.component';
 import {CakeService} from './services/cake.service.client';
 import { MainPageComponent } from './views/main-page/main-page.component';
+import { CakeNewComponent } from './views/cakes/cake-new/cake-new.component';
 
 
 @NgModule({
@@ -78,6 +79,7 @@ import { MainPageComponent } from './views/main-page/main-page.component';
     ShoppingCartComponent,
     CakesComponent,
     MainPageComponent,
+    CakeNewComponent,
 
   ],
   imports: [

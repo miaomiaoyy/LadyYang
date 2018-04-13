@@ -1,7 +1,9 @@
 import {Injectable} from '@angular/core';
-import {Http, RequestOptions} from '@angular/http';
+import {Http, RequestOptions, Response} from '@angular/http';
 import 'rxjs/Rx';
 import {environment} from '../../environments/environment';
+import {Website} from '../models/website.model.client';
+import {Cake} from '../models/cake.model.client';
 
 
 @Injectable()
@@ -19,6 +21,14 @@ export class CakeService {
           const data = res;
         }
       );
+  }
+
+
+  createCake(cake: Cake) {
+    const url = this.baseUrl + '/api/cakes/new';
+    return this.http.post(url, cake).map((response: Response) => {
+      return response.json();
+    });
   }
 }
 
