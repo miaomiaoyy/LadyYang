@@ -1,3 +1,7 @@
+<body><!doctype html>
+<html>
+<body>
+
 <nav class="navbar navbar-fixed-top cl-blue-navbar">
   <div class="row">
     <div class="col-xs-4 hidden-xs">
@@ -8,7 +12,7 @@
           </a>
         </p>
         <a class="cl-text-white navbar-brand cl-text-bold" routerLink="./">
-          Websites
+          All cakes
         </a>
         <a routerLink="../" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
           <span class="glyphicon glyphicon-plus"></span>
@@ -18,7 +22,7 @@
     <div class="col-xs-8">
       <div class="container-fluid">
         <a class="cl-text-white navbar-brand cl-text-bold" routerLink="./">
-          New Websites
+          Create Your Own Cake
         </a>
         <a routerLink="../" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding" type="submit" (click)="createWebsite()">
           <span class="glyphicon glyphicon-ok"></span>
@@ -53,12 +57,15 @@
       </div>
       <div class="form-group">
         <label for="cake-url">Description</label>
-        <textarea placeholder="URL" class="form-control" id="cake-url" rows="5" ngModel required name="url" #description="ngModel">
+        <textarea placeholder="URL" class="form-control" id="cake-url" rows="2" ngModel required name="url" #description="ngModel">
 
-        </textarea>
       </div>
       <button class="btn btn-primary btn-block" type="submit" [disabled]="!f.valid">Create</button>
     </form>
   </div>
 
 </div>
+
+</body>
+</html>
+</body>

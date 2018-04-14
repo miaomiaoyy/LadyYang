@@ -1,0 +1,46 @@
+body {
+  /* Location of the image */
+  background-image: url(../../../assets/uploads/cakeBackground.jpg);
+
+  /* Background image is centered vertically and horizontally at all times */
+  background-position: 0% center;
+
+  /* Background image doesn't tile */
+  background-repeat: no-repeat;
+
+  /* Background image is fixed in the viewport so that it doesn't move when
+     the content's height is greater than the image's height */
+  background-attachment: fixed;
+
+  /* This is what makes the background image rescale based
+     on the container's size */
+  background-size: cover;
+
+  /* Set a background color that will be displayed
+     while the background image is loading */
+  background-color: #464646;
+}
+
+.btn btn-primary btn-large{
+  color: deeppink;
+}
+.btn-3d {
+  position: relative;
+  display: inline-block;
+  font-size: 22px;
+  padding: 20px 60px;
+  color: white;
+  margin: 20px 10px 10px;
+  border-radius: 6px;
+  text-align: center;
+  transition: top .01s linear;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+}
+.btn-3d.purple {
+  background-color: pink;
+  box-shadow: 0 0 0 1px #cb99c5 inset,
+  0 0 0 2px rgba(255,255,255,0.15) inset,
+  0 8px 0 0 rgba(189, 142, 183, 2),
+  0 8px 0 1px rgba(0,0,0,.4),
+  0 8px 8px 1px rgba(0,0,0,0.5);
+}

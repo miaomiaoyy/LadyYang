@@ -27,6 +27,7 @@ export class CakeService {
   createCake(cake: Cake) {
     const url = this.baseUrl + '/api/cakes/new';
     return this.http.post(url, cake).map((response: Response) => {
+      console.log("cake");
       return response.json();
     });
   }

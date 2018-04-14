@@ -13,6 +13,7 @@ userModel.deleteUser = deleteUser;
 userModel.addWebsite = addWebsite;
 userModel.deleteWebsite = deleteWebsite;
 userModel.findUserByFacebookId = findUserByFacebookId;
+userModel.addCake = addCake;
 
 module.exports = userModel;
 
@@ -23,6 +24,14 @@ function createUser(user){
 
 function updateUser(user){
   return userModel.update(user);
+}
+
+function addCake(cake) {
+  return userModel.findAllCakesForUser(userId)
+    .then(function (cakes) {
+      user.cakes.push(cake);
+      return user.save();
+    });
 }
 
 function findUserByUserName(username){

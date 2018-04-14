@@ -3,6 +3,7 @@ var mongoose = require("mongoose");
 var cakeSchema = mongoose.Schema({
 
    _id: String,
+  userId: String,
   name: String,
   quantity: Number,
   color: String,

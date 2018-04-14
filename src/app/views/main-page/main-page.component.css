@@ -49,5 +49,9 @@ active{
   color: deeppink;
 }
 
+nav-item active.li{
+  color: hotpink;
+  text-underline-mode: under ;
+}
 
 

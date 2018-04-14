@@ -34,7 +34,7 @@ export class CakeNewComponent implements OnInit {
       this.cakeService.createCake(this.cake).subscribe(
         (data: any) => {
           this.cake = data;
-          this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+          this.router.navigate(['../:cid'], {relativeTo: this.activatedRoute});
         });
     }
 }
