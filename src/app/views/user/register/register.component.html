@@ -4,8 +4,24 @@
   {{passwordErrorMsg}}
 </div>
 
+
+
+
 <div class="container">
-  <h1>Register</h1>
+
+
+  <link href='https://fonts.googleapis.com/css?family=Dancing Script' rel='stylesheet'>
+  <style>
+    header {
+      font-family: 'Dancing Script';font-size: 100px;
+    }
+  </style>
+  <header>
+    <div class="navbar-brand container" align="center">Register</div>
+
+  </header>
+
+
   <form (ngSubmit) = "register()" #f="ngForm">
     <div class="form-group">
       <label>Username</label>
@@ -37,8 +53,8 @@
       <input   placeholder="email" type="text" class="form-control" ngModel required name="email" #email="ngModel"/>
     </div>
 
-    <button class="btn btn-primary btn-block" type="submit" [disabled]="!f.valid">Register</button>
-    <a class="btn btn-danger btn-block" routerLink="/login">Cancel</a>
+    <button class="btn-3d purple" type="submit" [disabled]="!f.valid">Register</button>
+    <button class="btn-3d purple" routerLink="/login">Cancel</button>
 
     <span class="help-block" *ngIf="!username.valid || username.untouched">
           Please enter valid username

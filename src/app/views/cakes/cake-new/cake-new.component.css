@@ -20,3 +20,8 @@ body {
      while the background image is loading */
   background-color: pink;
 }
+
+body {
+  padding-top: 20px;
+  padding-bottom: 70px;
+}

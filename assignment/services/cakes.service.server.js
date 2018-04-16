@@ -15,8 +15,11 @@ module.exports = function (app) {
   function showCakes(req, res) {
     cakeModel.showCake().then(function (cakes) {
       res.json(cakes);
-    });
-    res.send("Hello from cake service!");
+    }),
+      function (error) {
+      res.sendStatus(400).send('error');
+    };
+    // res.send("Hello from cake service!");
 
     // webdev.find({}, function (err, cake) {
     //   if (err) {
@@ -31,35 +34,38 @@ module.exports = function (app) {
 
   function createCake(req, res) {
     var cake = req.body;
-    var user = req.body;
+    //var user = req.body;
+    //var userId = req.params['userId'];
 
     cakeModel.createCake(cake).then(function (newCake) {
       console.log("cake service1");
       res.send(newCake);
     })
       , function (error) {
-      res.sendStatus(400).send('error');
+      res.sendStatus(400).send(error);
     };
   }
 
 
   function createCakeForUser(req, res) {
     var cake = req.body;
-    var user = req.body;
+    var userId = req.params['userId'];
 
-    cakeService.createCakeForUser(userId, cake)
+
+    cakeModel.createCakeForUser(userId, cake)
       .then(function (cake) {
         res.json(cake);
       })
       , function (error) {
-      res.sendStatus(400).send('error');
+      res.sendStatus(400).send(error);
     };
   }
 
 
   function findAllCakesForUser(req, res) {
-    var user = req.body;
-    cakeModel.findAllCakesForUser(user._id)
+    //var user = req.body;
+    var userId = req.params['userId'];
+    cakeModel.findAllCakesForUser(userId)
       .then(
         function (cakes) {
           res.json(cakes);

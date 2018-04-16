@@ -16,6 +16,19 @@
       <p>Enjoy the world-class yummy cake</p>
     </div>
 
+
+
+    <div class="container">
+
+      <ul class="list-group cl-list-group-borderless">
+        <li class="list-group-item cl-list-item-borderless" *ngFor = "let cake of cakes">
+          <a routerLink="{{cake._id}}">{{cake.name}} </a>
+          <a routerLink="{{cake.url}}"><span class="glyphicon glyphicon-cog pull-right"></span></a>
+        </li>
+      </ul>
+    </div>
+
+
     <a class="btn-3d purple" href="/cakes/new"> Add Your Own Cake</a>
   </header>
 </div>

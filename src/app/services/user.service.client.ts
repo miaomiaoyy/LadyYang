@@ -50,11 +50,15 @@ export class UserService {
       );
   }
 
-  register(username: String, password: String) {
+  register(username: String, password: String, firstName: String, lastName: String, email: String) {
+
     this.options.withCredentials = true;
     const user = {
       username : username,
-      password : password
+      password : password,
+      firstName: firstName,
+      lastName: lastName,
+      email: email
     };
 
     return this.http.post(this.baseUrl + '/api/register', user, this.options)

@@ -31,5 +31,14 @@ export class CakeService {
       return response.json();
     });
   }
+
+  findCakeByUser(userId: String) {
+    const url = this.baseUrl + '/api/user/' + userId + '/cake';
+    return this.http.get(url).map((response: Response) => {
+      return response.json();
+    });
+  }
+
+
 }
 

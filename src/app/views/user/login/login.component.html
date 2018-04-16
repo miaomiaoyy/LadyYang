@@ -1,7 +1,15 @@
 <div class="container">
-  <h1>
-    Login
-  </h1>
+  <link href='https://fonts.googleapis.com/css?family=Dancing Script' rel='stylesheet'>
+  <style>
+    header {
+      font-family: 'Dancing Script';font-size: 100px;
+    }
+  </style>
+  <header>
+    <div class="navbar-brand container" align="center">Login</div>
+
+  </header>
+
 
   <div *ngIf="errorFlag"
        class="alert alert-danger">
@@ -19,9 +27,9 @@
     <span class="help-block" *ngIf="!username.valid && username.touched">
           Please enter username!
     </span>
-    <button class="btn btn-primary btn-block" type="submit" [disabled]="!f.valid">Login</button>
-    <a class="btn btn-success btn-block" routerLink="/register" role="button">Register</a>
-    <a href="http://localhost:3100/facebook/login" class="btn btn-primary btn-block">
+    <button class="btn-3d purple" type="submit" [disabled]="!f.valid">Login</button>
+    <a class="btn-3d purple" routerLink="/register" role="button">Register</a>
+    <a href="http://localhost:3100/facebook/login" class="btn-3d purple">
       <span class="fa fa-facebook"></span>
       Facebook
     </a>
