@@ -33,7 +33,7 @@ import { WidgetImageNewComponent } from './views/widget/widget-new/widget-image-
 import { SortableDirective } from '../../assignment/directives/sortable.directive';
 import { WidgetHtmlNewComponent } from './views/widget/widget-new/widget-html-new/widget-html-new.component';
 import { WidgetTextNewComponent } from './views/widget/widget-new/widget-text-new/widget-text-new.component';
-import {QuillEditorModule} from 'ngx-quill-editor/quillEditor.module';
+import { QuillEditorModule} from 'ngx-quill-editor/quillEditor.module';
 import { WidgetHtmlComponent } from './views/widget/widget-edit/widget-html/widget-html.component';
 import { WidgetTextComponent } from './views/widget/widget-edit/widget-text/widget-text.component';
 import { FlickrImageSearchComponent } from './views/widget/widget-edit/widget-image/flickr-image-search/flickr-image-search.component';
@@ -46,6 +46,10 @@ import { CakesComponent } from './views/cakes/cakes.component';
 import {CakeService} from './services/cake.service.client';
 import { MainPageComponent } from './views/main-page/main-page.component';
 import { CakeNewComponent } from './views/cakes/cake-new/cake-new.component';
+import { CakeListComponent } from './views/cake-list/cake-list.component';
+import {ShoppingCartService} from './services/shoppingcart.service.client';
+import { CakeCustomizationComponent } from './views/cakes/cake-customization/cake-customization.component';
+import { PaymentComponent } from './views/shopping-cart/payment/payment.component';
 
 
 @NgModule({
@@ -80,7 +84,9 @@ import { CakeNewComponent } from './views/cakes/cake-new/cake-new.component';
     CakesComponent,
     MainPageComponent,
     CakeNewComponent,
-
+    CakeListComponent,
+    CakeCustomizationComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -90,7 +96,8 @@ import { CakeNewComponent } from './views/cakes/cake-new/cake-new.component';
     HttpClientModule,
     QuillEditorModule
   ],
-  providers: [UserService, PageService, WebsiteService, WidgetService, FlickrService, SharedService, AuthGuard, CookieService, CakeService],
+  providers: [UserService, PageService, WebsiteService, WidgetService, FlickrService, SharedService, AuthGuard, CookieService,
+    CakeService, ShoppingCartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

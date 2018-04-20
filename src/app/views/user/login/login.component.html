@@ -20,13 +20,16 @@
   <form (ngSubmit) = "login()" #f="ngForm">
     <label>Username</label>
     <input   placeholder="username" name="username" type="text" class="form-control" ngModel required #username="ngModel"/>
-
-    <label>Password</label>
-    <input   placeholder="password" name="password" type="password" class="form-control" ngModel required #password="ngModel"/>
-
     <span class="help-block" *ngIf="!username.valid && username.touched">
           Please enter username!
     </span>
+    <label>Password</label>
+    <input   placeholder="password" name="password" type="password" class="form-control" ngModel required #password="ngModel"/>
+
+    <span class="help-block" *ngIf="!password.valid && password.touched">
+          Please enter Password!
+    </span>
+
     <button class="btn-3d purple" type="submit" [disabled]="!f.valid">Login</button>
     <a class="btn-3d purple" routerLink="/register" role="button">Register</a>
     <a href="http://localhost:3100/facebook/login" class="btn-3d purple">

@@ -7,7 +7,7 @@ var cakeSchema = mongoose.Schema({
   name: String,
   quantity: Number,
   color: String,
-  layer: Number,
+  price: Number,
   description: String,
   url: String,
 

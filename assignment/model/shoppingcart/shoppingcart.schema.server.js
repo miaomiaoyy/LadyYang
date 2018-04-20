@@ -1,15 +1,14 @@
 var mongoose = require("mongoose");
+var cakeSchema = require('../cake/cake.schema.server');
 
 var shoppingcartSchema = mongoose.Schema({
 
   _id: String,
+  uid: String,
   quantity: Number,
-  placeholder: String,
-  description: String,
-  url: String,
-  rows: {type: Number, default: 1},
-  size: Number,
-  deletable: {type: Boolean, default: true},
+  cakes:[cakeSchema],
+
+  deletable: {type: Boolean, default: false},
   formatted: {type: Boolean, default: false},
   dateCreated : {
     type : Date,

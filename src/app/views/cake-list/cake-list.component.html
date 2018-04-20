@@ -1,0 +1,48 @@
+<nav class="navbar navbar-fixed-top cl-blue-navbar">
+  <div class="container-fluid">
+    <p class="navbar-text pull-left">
+      <a routerLink="/..}" class="navbar-link cl-text-white">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+    </p>
+    <a class="cl-text-white navbar-brand cl-text-bold" href="#">
+      Cakes
+    </a>
+    <a routerLink="./new" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
+      <span class="glyphicon glyphicon-plus"></span>
+    </a>
+  </div>
+</nav>
+<div>
+<button class="btn-3d green" (click)="viewShoppingCart()" routerLink="../shoppingcart">
+  View shoppingCart
+</button>
+</div>
+<div class="container">
+
+  <ul class="list-group cl-list-group-borderless">
+    <li class="list-group-item cl-list-item-borderless" *ngFor = "let cake of cakes">
+      <a routerLink="{{cake._id}}">{{cake.name}}
+      <img src="{{cake.url}}">
+        <span>
+        <button class="btn-3d purple" (click)="addToCart()">
+          Add to shoppingCart
+        </button>
+      </span>
+      </a>
+      <a routerLink="{{cake._id}}"><span class="glyphicon glyphicon-cog pull-right"></span></a>
+    </li>
+  </ul>
+</div>
+
+
+
+
+
+<nav class="navbar navbar-fixed-bottom cl-blue-navbar">
+  <div class="container-fuild">
+    <a routerLink="./top10}" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
+      <span class="glyphicon glypbohicon-user"></span>
+    </a>
+  </div>
+</nav>

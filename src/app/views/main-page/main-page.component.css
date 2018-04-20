@@ -41,7 +41,8 @@ label {
   display: inline-block;
   max-width: 100%;
   margin-bottom: 5px;
-  margin-left: 150px;
+
+
   font-weight: 700;
 }
 
@@ -54,4 +55,29 @@ nav-item active.li{
   text-underline-mode: under ;
 }
 
+md-form.li {
+  color: hotpink;
+  margin-bottom: 5px;
+  margin-left: 0px;
+}
 
+
+
+@font-face {
+  font-family: 'font-effect-neon'; /*a name to be used later*/
+  src: url('http://domain.com/fonts/font.ttf'); /*URL to font*/
+}
+
+
+service {
+  font-family: 'YourFontName';
+  font-size: 10px;
+  color: pink;
+}
+
+font-effect-neon {
+  font-family: Lato;
+  font-size: 8em;
+  background: #111;
+  text-align: center;
+}

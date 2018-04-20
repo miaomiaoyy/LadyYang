@@ -2,8 +2,24 @@ module.exports = function (app) {
   var shoppingCartModel = require("../model/shoppingcart/shoppingcart.model.server");
   var cakeModel = require("../model/cake/cake.model.server");
 
-  app.post("/api/shoppingCart", addToShoppingCart);
-  app.get("/api/shoppingCart/user", findAllCakesForUser);
+  app.post("/api/addshoppingcart", addToShoppingCart);
+  app.post('api/guest/shoppingcart', addGuestShoppingCart);
+  app.get("/api/shoppingcart/user", findAllCakesForUser);
+
+
+  function addGuestShoppingCart(req, res) {
+    var cake = req.body;
+    shoppingCartModel.addToShoppingCart(cake)
+      .then(function (data, err) {
+        if (data) {
+          console.log(cake);
+          res.json(data);
+          res.send(200);
+        } else {
+          res.send(404)
+        }
+      });
+  }
 
 
   function addToShoppingCart(req, res) {
@@ -36,5 +52,7 @@ module.exports = function (app) {
         }
       );
   }
+
+
 }
 

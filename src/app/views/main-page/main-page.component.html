@@ -66,17 +66,6 @@
     <div class="container flex-center">
       <div class="d-flex align-items-center content-height">
         <div class="row flex-center pt-5 mt-3">
-          <div class="col-md-6 text-center text-md-left mb-5">
-            <div class="white-text">
-              <h2 class="h1-responsive font-weight-bold wow fadeInLeft" data-wow-delay="0.3s">Sign up right now! </h2>
-              <hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s">
-              <h3>Premium Services</h3>
-              <h5>CALL OR EMAIL TO ORDER( 212 ) 242-5858 INFO@EMPIRECAKE.COM</h5>
-              <h6 class="wow fadeInLeft" data-wow-delay="0.3s">Speed up your shipping — and your growth. Our premium services include fast, global, transit solutions to meet even the tightest deadlines.</h6>
-              <br>
-              <a class="btn btn-outline-white wow fadeInLeft" data-wow-delay="0.3s" routerLink="/delivery">Learn more</a>
-            </div>
-          </div>
 
           <div class="col-md-6 col-xl-5 offset-xl-1">
             <!--Form-->
@@ -84,39 +73,140 @@
               <div class="card-body">
                 <!--Header-->
                 <div class="text-center">
-                  <h3 class="white-text"><i class="fa fa-user white-text"></i> Register:</h3>
+                  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100&effect=neon">
+                  <h3 class="font-effect-neon"><i class="fa fa-user white-text"></i> Login:</h3>
                   <hr class="hr-light">
-                </div>
+                  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100&effect=neon">
 
-                <!--Body-->
+                  <div class="font-effect-destruction">Sign in to create your own unique cake and enjoy the Premium Services</div>
+
+                  <form (ngSubmit) = "login()" #f="ngForm">
                 <div class="md-form">
-                  <i class="fa fa-user prefix white-text active"></i>
-                  <input type="text" id="form3" class="form-control">
-                  <label for="form3" class="active">Your name</label>
-                </div>
-                <div class="md-form">
-                  <i class="fa fa-envelope prefix white-text active"></i>
-                  <input type="email" id="form2" class="form-control">
-                  <label for="form2" class="active">Your email</label>
+                  <i class="fa fa-lock prefix white-text active"></i>
+                  <input type="name" id="form1" class="form-control" ngModel required #username="ngModel">
+                  <label for="form1" class="active">Your Username</label>
                 </div>
 
                 <div class="md-form">
                   <i class="fa fa-lock prefix white-text active"></i>
-                  <input type="password" id="form4" class="form-control">
-                  <label for="form4" class="active">Your password</label>
+                  <input type="password" id="form2" class="form-control" ngModel required #username="ngModel">
+                  <label for="form2" class="active">Your password</label>
+                </div>
+                    <span class="help-block" *ngIf="!username.valid && username.touched">
+                    Please enter username!
+                    </span>
+                <div class="text-center">
+                  <button class="btn btn-indigo">Login</button>
+                  <hr class="hr-light mb-3 mt-4">
+
+                  <!--<div class="inline-ul text-center d-flex justify-content-center">-->
+                    <!--<a class="icons-sm tw-ic"><i class="fa fa-twitter white-text"></i></a>-->
+                    <!--<a class="icons-sm li-ic"><i class="fa fa-linkedin white-text"> </i></a>-->
+                    <!--<a class="icons-sm ins-ic"><i class="fa fa-instagram white-text"> </i></a>-->
+                  <!--</div>-->
+                </div>
+                  </form>
+
+
+
+                  <!--<form (ngSubmit) = "login()" #f="ngForm">-->
+                    <!--<label>Username</label>-->
+                    <!--<input   placeholder="username" name="username" type="text" class="form-control" ngModel required #username="ngModel"/>-->
+
+                    <!--<label>Password</label>-->
+                    <!--<input   placeholder="password" name="password" type="password" class="form-control" ngModel required #password="ngModel"/>-->
+
+                    <!--<span class="help-block" *ngIf="!username.valid && username.touched">-->
+          <!--Please enter username!-->
+    <!--</span>-->
+                    <!--<button class="btn-3d purple" type="submit" [disabled]="!f.valid">Login</button>-->
+
+
+                  <h3>Premium Services</h3>
+                  <h5>CALL OR EMAIL TO ORDER( 212 ) 242-5858 INFO@EMPIRECAKE.COM</h5>
+                  <h6 class="wow fadeInLeft" data-wow-delay="0.3s">Speed up your shipping — and your growth. Our premium services include fast, global, transit solutions to meet even the tightest deadlines.</h6>
+                  <a class="btn btn-outline-white wow fadeInLeft" data-wow-delay="0.3s" routerLink="../delivery">Learn more</a>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+
+
+          <!--<div class="col-md-6 text-center text-md-left mb-5">-->
+            <!--<div class="card-body">-->
+              <!--&lt;!&ndash;<h2 class="h1-responsive font-weight-bold wow fadeInLeft" data-wow-delay="0.3s">Sign up right now! </h2>&ndash;&gt;-->
+              <!--<hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s">-->
+              <!--<div class="text-center">-->
+                <!--<h3 class="white-text"><i class="fa fa-user white-text"></i> Login:</h3>-->
+                <!--<hr class="hr-light">-->
+              <!--</div>-->
+              <!--<div class="md-form">-->
+                <!--<i class="fa fa-envelope prefix white-text active"></i>-->
+                <!--<input type="email" id="form2" class="form-control">-->
+                <!--<label for="form2" class="active">Your email</label>-->
+              <!--</div>-->
+
+              <!--<div class="md-form">-->
+                <!--<i class="fa fa-lock prefix white-text active"></i>-->
+                <!--<input type="password" id="form4" class="form-control">-->
+                <!--<label for="form4" class="active">Your password</label>-->
+              <!--</div>-->
+              <!--<h3>Premium Services</h3>-->
+              <!--<h5>CALL OR EMAIL TO ORDER( 212 ) 242-5858 INFO@EMPIRECAKE.COM</h5>-->
+              <!--<h6 class="wow fadeInLeft" data-wow-delay="0.3s">Speed up your shipping — and your growth. Our premium services include fast, global, transit solutions to meet even the tightest deadlines.</h6>-->
+              <!--<br>-->
+              <!--<a class="btn btn-outline-white wow fadeInLeft" data-wow-delay="0.3s" routerLink="/delivery">Learn more</a>-->
+            <!--</div>-->
+          <!--</div>-->
+
+          <div class="col-md-6 col-xl-5 offset-xl-1">
+            <!--Form-->
+            <div class="card wow fadeInRight" data-wow-delay="0.3s">
+              <div class="card-body">
+                <!--Header-->
+                <div class="text-center">
+                  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100&effect=neon">
+                  <h3 class="font-effect-neon"><i class="fa fa-user white-text"></i> Register:</h3>
+
+
+
+                  <hr class="hr-light">
+                  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100&effect=neon">
+
+                  <!--<div class="font-effect-destruction">Sign in to create your own unique cake and enjoy the Premium Services</div>-->
+
+
+                <!--Body-->
+                <div class="md-form">
+                  <i class="fa fa-lock prefix white-text active"></i>
+                  <input type="text" id="form3" class="form-control">
+                  <label for="form3" class="active" style="align:center">Your name</label>
+                </div>
+                <div class="md-form">
+                  <i class="fa fa-lock prefix w4ite-text active"></i>
+                  <input type="email" id="form4" class="form-control">
+                  <label for="form4" class="active">Your email</label>
+                </div>
+
+                <div class="md-form">
+                  <i class="fa fa-lock prefix white-text active"></i>
+                  <input type="password" id="form5" class="form-control">
+                  <label for="form5" class="active">Your password</label>
                 </div>
 
                 <div class="text-center">
-                  <button class="btn btn-indigo">Sign up</button>
+                  <button class="btn btn-indigo">Register</button>
                   <hr class="hr-light mb-3 mt-4">
-
                   <div class="inline-ul text-center d-flex justify-content-center">
                     <a class="icons-sm tw-ic"><i class="fa fa-twitter white-text"></i></a>
                     <a class="icons-sm li-ic"><i class="fa fa-linkedin white-text"> </i></a>
                     <a class="icons-sm ins-ic"><i class="fa fa-instagram white-text"> </i></a>
                   </div>
                 </div>
-
+                </div>
               </div>
             </div>
             <!--/.Form-->
@@ -125,7 +215,9 @@
       </div>
     </div>
   </div>
+
 </section>
+
 
 
 <!--Main Navigation-->

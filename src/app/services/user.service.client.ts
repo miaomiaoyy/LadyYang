@@ -25,7 +25,7 @@ export class UserService {
   }
 
 
-  login(username: String, password: String) {
+  login(username, password) {
     this.options.withCredentials = true; // jga
     const body = {
       username : username,
@@ -34,7 +34,7 @@ export class UserService {
     return this.http.post(this.baseUrl + '/api/login', body, this.options)
       .map(
         (res: Response) => {
-           return res.json();
+          return res.json();
         }
       );
   }
@@ -95,7 +95,7 @@ export class UserService {
       });
   }
 
-  findUserById(userId: String) {
+  findUserById(userId) {
     return this.http.get(this.baseUrl + '/api/user/' + userId)
       .map((response: Response) => {
         return response.json();

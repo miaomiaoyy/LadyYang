@@ -26,11 +26,11 @@ function updateUser(user){
   return userModel.update(user);
 }
 
-function addCake(cake) {
+function addCake(cake, userId) {
   return userModel.findAllCakesForUser(userId)
     .then(function (cakes) {
-      user.cakes.push(cake);
-      return user.save();
+      cakes.push(cake);
+      return cakes.save();
     });
 }
 
@@ -45,13 +45,13 @@ function findUserByCredentials(username, password){
 
 
 function findAllUsers(){
-  userModel.find(function (err, doc) {
-    console.log(doc);
+  userModel.find(function (err, users) {
+    console.log(users);
   })
 }
 
 function findUserById(userId){
-  return userModel.findById(userId);
+  return userModel.findById({_id: userId});
 }
 
 function deleteUser(userId) {

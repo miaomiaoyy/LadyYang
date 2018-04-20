@@ -10,10 +10,13 @@ cakeModel.findPageById = findPageById;
 cakeModel.updateCake = updateCake;
 cakeModel.findAllCakesForUser = findAllCakesForUser;
 cakeModel.deleteCake = deleteCake;
+cakeModel.findTop10 = findTop10;
+cakeModel.findBirthday = findBirthday;
 
 module.exports = cakeModel;
 
 function showCake() {
+  console.log('showcake show cake func');
   return cakeModel.find({});
 }
 
@@ -48,7 +51,7 @@ function updateCake(cakeId, newCake) {
 }
 
 
-function findAllCakesForUser(cakeId){
+function findAllCakesForUser(userId){
   return cakeModel.find({"_user": userId})
     .populate('_user')
     //   .populate('_user', 'username')
@@ -59,6 +62,17 @@ function deleteCake() {
   return cakeModel.deleteCake({_id: cakeId});
 }
 
+function findBirthday(){
+  return cakeModel.find({"description": 'birthday cake'})
+    .populate('description')
+    .exec();
+}
+
+function findTop10() {
+  return cakeModel.find({"_user": admin})
+    .populate('_user')
+    .exec();
+}
 
 
 

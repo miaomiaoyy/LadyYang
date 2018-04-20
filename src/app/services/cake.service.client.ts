@@ -15,10 +15,11 @@ export class CakeService {
   options = new RequestOptions();
 
   showCake() {
-    return this.http.post(this.baseUrl + '/api/cakes', '', this.options)
+    return this.http.get(this.baseUrl + '/api/cakes')
       .map(
-        (res) => {
-          const data = res;
+        (response: Response) => {
+          console.log('client server work');
+          return response.json();
         }
       );
   }
@@ -34,6 +35,13 @@ export class CakeService {
 
   findCakeByUser(userId: String) {
     const url = this.baseUrl + '/api/user/' + userId + '/cake';
+    return this.http.get(url).map((response: Response) => {
+      return response.json();
+    });
+  }
+
+  findCakeById(cakeId: String) {
+    const url = this.baseUrl + '/api/cake/' + cakeId;
     return this.http.get(url).map((response: Response) => {
       return response.json();
     });

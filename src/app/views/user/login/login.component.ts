@@ -1,7 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {UserService} from '../../../services/user.service.client';
-import {User} from '../../../models/user.model.client';
 import {NgForm} from '@angular/forms';
 import {SharedService} from '../../../services/shared.service';
 
@@ -31,11 +30,13 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (data: any) => {
           this.sharedService.user = data;
-          console.log( "print");
+          this.errorFlag = false;
+          console.log(data,  "print");
           this.router.navigate(['/profile']);
           },
         (error: any) => {
-          console.log( "print2");
+          this.errorFlag = true;
+          console.log( this.username, "print2");
           console.log(error);
         }
       );

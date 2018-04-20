@@ -12,6 +12,7 @@ module.exports = function (app) {
 
   app.post("/api/user", createUser);
   app.get("/api/user", findUser);
+  app.get("/api/username/:username", findUserByUsername);
   app.get("/api/user/:userId", findUserById);
   app.put("/api/user/:userId", updateUser);
   app.delete("/api/user/:userId", deleteUser);
@@ -55,7 +56,7 @@ module.exports = function (app) {
 
   function localStrategy(username, password, done) {
     userModel
-      .findUserByCredentials(username, password)
+      .findUserByUserName(username)
       .then(
         function(user) {
           if(user && bcrypt.compareSync(password, user.password)) {
@@ -70,7 +71,7 @@ module.exports = function (app) {
           // }
         },
         function(err) {
-          if (err) { return done(err); }
+          if (err) {  done(err); }
         }
       );
   }
@@ -121,30 +122,61 @@ module.exports = function (app) {
     res.json(user);
   }
 
+
   function logout(req, res) { 
     req.logOut(); 
     res.send(200); 
   }
 
-  function register (req, res) {
-    const user = req.body;
+  // function register (req, res) {
+  //   const user = req.body;
+  //   user.password = bcrypt.hashSync(user.password);
+  //   userModel
+  //     .createUser(user)
+  //     .then(
+  //       function(user){
+  //         if(user){
+  //           req.login(user, function(err) {
+  //             if(err) {
+  //               res.status(400).send(err);
+  //             } else {
+  //               res.json(user);
+  //             }
+  //           });
+  //         }
+  //       }
+  //     );
+  //   return userModel.createUser(user);
+  // }
+  function register(req, res) {
+    var user = req.body;
     user.password = bcrypt.hashSync(user.password);
     userModel
-      .createUser(user)
-      .then(
-        function(user){
-          if(user){
-            req.login(user, function(err) {
-              if(err) {
-                res.status(400).send(err);
-              } else {
-                res.json(user);
+      .findUserByUsername(user.username)
+      .then(function (data) {
+        console.log(data);
+        if (data) {
+          res.status(400).send('Username is in use!');
+          return;
+        } else {
+          userModel
+            .createUser(user)
+            .then(
+              function (user) {
+                if (user) {
+                  req.login(user, function (err) {
+                    if (err) {
+                      res.status(400).send(err);
+                    } else {
+                      res.json(user);
+                    }
+                  });
+                }
               }
-            });
-          }
+            );
         }
-      );
-    return userModel.createUser(user);
+      })
+
   }
 
   function loggedin(req, res) {
@@ -209,6 +241,16 @@ module.exports = function (app) {
     res.json(user);
   }
 
+
+  function findUserByUsername(req, res) {
+    var username = req.params["username"];
+    if (username) {
+      userModel.findUserByUserName(username).then(function (user) {
+        res.json(user);
+      });
+    }
+  }
+
   function findUserById(req, res){
     var userId = req.params["userId"];
     // var user = users.find(function (user) {
@@ -227,18 +269,6 @@ module.exports = function (app) {
     console.log(req.body);
     console.log("update user: " + userId + " " + user.username + " " + user.password + " " + user.firstName + " " + user.lastName + " " + user.email);
 
-    // for(var i = 0; i < users.length; i++) {
-    //   if (users[i]._id === userId) {
-    //     users[i].username = user.username;
-    //     users[i].firstName = user.firstName;
-    //     users[i].lastName = user.lastName;
-    //     users[i].password = user.password;
-    //     users[i].email = user.email;
-    //     res.status(200).send(user);
-    //     return;
-    //   }
-    // }
-    // res.status(404).send("not found!");
     userModel.update(user).then(function(status){
       res.send(status);
     })
@@ -246,14 +276,6 @@ module.exports = function (app) {
 
   function deleteUser(req, res) {
     var userId = req.params['userId'];
-    // for (var i = 0; i < users.length; i++) {
-    //   if (users[i]._id === userId) {
-    //     var j = +i;
-    //     users.splice(j, 1);
-    //     res.json(users);
-    //     return;
-    //   }
-    // }
     userModel.deleteUser(userId).then(function(status) {
       res.send(status);
     })

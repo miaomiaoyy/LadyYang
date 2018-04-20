@@ -22,20 +22,31 @@ export class CakesComponent implements OnInit {
 
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe(
-      (params: any) => {
-        this.userId = params['uid'];
-      });
-    if (this.userId) {
-      this.cakeService.findCakeByUser(this.userId).subscribe(
-        (cakes: Cake[]) => {
-          this.cakes = cakes;
-        }
-      );
-    } else {
-      this.cakeService.showCake();
-    }
+    // this.activatedRoute.params.subscribe(
+    //   (params: any) => {
+    //     this.userId = params['uid'];
+    //     console.log(this.userId, 'userId');
+    //   });
+    // if (this.userId !== 'undefined') {
+    //   this.cakeService.findCakeByUser(this.userId).subscribe(
+    //     (cakes: Cake[]) => {
+    //       this.cakes = cakes;
+    //       console.log(this.cakes, 'cakesList');
+    //     }
+    //   );
+    // }
+    // if (this.cakes == null) {
+    //       console.log(this.cakes, 'cakesList');
+    //       this.cakeService.showCake();
+    //       this.cakes.push( new Cake('934', '88', 'Hellokitty',
+    //         'Hello Kitty World',
+    //         'http://joyeuxbakery.com/pikachu-cakes/#http%3A%2F%2Fjoyeuxbakery.com%2Fwp-content%2Fuploads%2FPikachu-Sitting-1024x790.jpg'));
+    //   }
+  }
+  showcake() {
+    this.cakeService.showCake();
   }
 }
+
 
 

@@ -4,6 +4,7 @@ module.exports = function (app){
   require("./services/page.service.server")(app);
   require("./services/widget.service.server")(app);
   require("./services/cakes.service.server")(app);
+  require("./services/shoppingcart.service.server")(app);
   var db = require("./model/models.server");
 };
 

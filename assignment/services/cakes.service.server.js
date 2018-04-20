@@ -5,20 +5,28 @@ module.exports = function (app) {
 
   app.post("/api/cakes/cake", createCake);
   app.get("/api/cakes", showCakes);
-  app.post("api/user/cake", createCakeForUser);
-  app.get("api/user/cakes", findAllCakesForUser);
-  app.get("api/user/:cid", findCakeById);
-  app.post("api/user/cake", updateCake);
+  app.post("/api/user/cake", createCakeForUser);
+  app.get("/api/:userId/cakes", findAllCakesForUser);
+  app.get("/api/user/:cid", findCakeById);
+  app.post("/api/user/cake", updateCake);
   app.delete("/api/cakes/:cid", deleteCake);
-
+  app.post("/api/cakes/top10", getTop10Cake);
+  app.post("/api/cakes/birthday", getBirthdayCake);
+  app.get("/api/cakes/cakeCustomization", customizeCake);
 
   function showCakes(req, res) {
-    cakeModel.showCake().then(function (cakes) {
-      res.json(cakes);
-    }),
-      function (error) {
-      res.sendStatus(400).send('error');
-    };
+    // cakeModel.showCake().then(function (cakes) {
+    //   res.json(cakes);
+    // }),
+    //   function (error) {
+    //   res.sendStatus(400).send('error');
+    // };
+
+    cakeModel.showCake()
+      .then(function(cakes) {
+        res.send(cakes);
+      });
+
     // res.send("Hello from cake service!");
 
     // webdev.find({}, function (err, cake) {
@@ -29,7 +37,7 @@ module.exports = function (app) {
     //     res.render("cakes", {cakes: cake});
     //   }
     // });
-  };
+  }
 
 
   function createCake(req, res) {
@@ -44,6 +52,10 @@ module.exports = function (app) {
       , function (error) {
       res.sendStatus(400).send(error);
     };
+  }
+
+  function customizeCake(req, res) {
+    console.log('customize ok');
   }
 
 
@@ -111,4 +123,50 @@ module.exports = function (app) {
         res.send(status);
       });
   };
+
+
+  function getTop10Cake(req, res) {
+    cakeModel.showCake().then(
+      function (cake) {
+        res.json(cake);
+        console.log('showcake2');
+      },
+      function (error) {
+        console.log('showcake err2');
+        res.sendStatus(400).send(error);
+      }
+    );
+    // cakeModel.findTop10()
+    //   .then(
+    //     function (cakes) {
+    //       res.send(cakes);
+    //     },
+    //     function (error) {
+    //       res.sendStatus(400).send(error);
+    //     }
+    //   );
+  }
+
+
+  function getBirthdayCake(req, res) {
+    cakeModel.showCake().then(
+      function (cake) {
+        console.log('showcake1');
+        res.json(cake);
+      },
+      function (error) {
+        console.log('showcake err1');
+        res.sendStatus(400).send(error);
+      }
+    );
+    // cakeModel.findBirthday()
+    //   .then(
+    //     function (cakes) {
+    //       res.send(cakes);
+    //     },
+    //     function (error) {
+    //       res.sendStatus(400).send(error);
+    //     }
+    //   );
+  }
 }
