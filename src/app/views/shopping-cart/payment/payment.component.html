@@ -1,3 +1,134 @@
-<p>
-  payment works!
-</p>
+<link href='https://fonts.googleapis.com/css?family=Dancing Script' rel='stylesheet'>
+<style>
+  header {
+    font-family: 'Dancing Script';font-size: 50px;
+  }
+</style>
+<header>
+  <div class="navbar-brand container" align="center" >Lady Yang</div>
+
+</header>
+
+<body class="body-black">
+
+<br>
+
+<div class="row footer-padding">
+  <div class="card col-lg-6 col-md-6 col-sm-12 col-xs-12 black-card">
+    <p class="center_text supreme-font white_text text-font-size">Shipping Address</p >
+    <form>
+      <table>
+        <table class="table">
+          <tbody>
+          <tr>
+            <td colspan="3">
+              <label class="white_text">First Name</label>
+              <input class="form-control" type="text">
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <label class="white_text">Last Name</label>
+              <input class="form-control" type="text">
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <label class="white_text">Email</label>
+              <input class="form-control" type="text">
+            </td>
+          <tr>
+            <td colspan="3">
+              <label class="white_text">Phone</label>
+              <input class="form-control" type="text">
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <label class="white_text">Address</label>
+              <input class="form-control" type="text">
+            </td>
+          </tr>
+          <tr>
+            <td><label class="white_text">Zip</label><input class="form-control" type="text">
+            </td>
+            <td><label class="white_text">City</label><input class="form-control" type="text">
+            </td>
+            <td><label class="white_text">State</label><input class="form-control" type="text">
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </table>
+    </form>
+    <br>
+  </div>
+
+  <div class="card col-lg-6 col-md-6 col-sm-12 col-xs-12 left-border black-card">
+    <p class="center_text supreme-font white_text text-font-size">Credit Card</p >
+    <div *ngIf="errorFlag"
+         class="alert alert-danger">
+      {{errorMsg}}
+    </div>
+    <form (ngSubmit)="check()" #f="ngForm">
+      <table class="table">
+        <tbody>
+        <tr>
+          <td>
+            <label class="white_text supreme-font">First Name</label>
+            <input
+              [(ngModel)]="firstName"
+              name="firstName"
+              class="form-control"
+              type="text"
+              placeholder="{{firstName}}"/>
+          </td>
+          <td></td>
+          <td>
+            <label class="white_text supreme-font">Last Name</label>
+            <input [(ngModel)]="lastName"
+                   name="lastName"
+                   class="form-control"
+                   type="text"
+                   placeholder="{{lastName}}"/>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <label class="white_text supreme-font">Card Number</label>
+            <input [(ngModel)]="cardNumber"
+                   name="cardNumber"
+                   class="form-control"
+                   type="text"
+                   placeholder="{{cardNumber}}"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label class="white_text supreme-font">Expiration Date</label>
+            <input [(ngModel)]="expirationDate"
+                   name="expirationDate"
+                   class="form-control"
+                   type="text"
+                   placeholder="{{expirationDate}}"/>
+          </td>
+          <td></td>
+          <td>
+            <label class="white_text supreme-font">CVV</label>
+            <input [(ngModel)]="cvv"
+                   name="cvv"
+                   class="form-control"
+                   type="text"
+                   placeholder="{{cvv}}"/>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="creditCardBtn">
+        <button class="btn-3d purple">Check Out</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+</body>

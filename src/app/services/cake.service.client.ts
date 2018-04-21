@@ -47,6 +47,12 @@ export class CakeService {
     });
   }
 
+  updateCake(cakeId: String, cake : Cake) {
+  const url = this.baseUrl + '/api/cake/' + cakeId
+  return this.http.get(url).map((response: Response) => {
+    return response.json();
+    });
+  }
 
 }
 

@@ -19,20 +19,22 @@ export class LoginComponent implements OnInit {
   errorMsg = 'Invalid Username or password!';
 
   constructor(private userService: UserService, private router: Router, private sharedService: SharedService) { }
+
+
   login() {
     // fetching data from loginForm
     this.username = this.loginForm.value.username;
     this.password = this.loginForm.value.password;
 
     // calling client side userservice to send login information
-    console.log('data', this.username);
     this.userService.login(this.username, this.password)
       .subscribe(
         (data: any) => {
           this.sharedService.user = data;
           this.errorFlag = false;
-          console.log(data,  "print");
+
           this.router.navigate(['/profile']);
+
           },
         (error: any) => {
           this.errorFlag = true;

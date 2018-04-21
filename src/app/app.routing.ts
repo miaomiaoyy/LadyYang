@@ -21,12 +21,13 @@ import {CakeListComponent} from './views/cake-list/cake-list.component';
 import {ShoppingCartComponent} from './views/shopping-cart/shopping-cart.component';
 import {CakeCustomizationComponent} from './views/cakes/cake-customization/cake-customization.component';
 import {PaymentComponent} from './views/shopping-cart/payment/payment.component';
+import {PaypalComponent} from "./views/shopping-cart/payment/paypal/paypal.component";
 
 const appRoutes: Routes = [
   {path: '', redirectTo: 'main-page', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
+  {path: 'profile', component: ProfileComponent},
   {path: 'cakes', component: CakesComponent},
   {path: 'cakes/new', component: CakeNewComponent},
   {path: 'main-page', component: MainPageComponent},
@@ -34,8 +35,9 @@ const appRoutes: Routes = [
   {path: 'cakes/cake-customization', component: CakeCustomizationComponent},
   {path: 'cakes/shoppingcart', component: ShoppingCartComponent},
   {path: 'cakes/shoppingcart/payment', component: PaymentComponent},
+  {path: 'cakes/shoppingcart/paypal', component: PaypalComponent},
   {path: 'guest/shoppingcake', component: ShoppingCartComponent},
-  {path: 'profile/:uid/website', component: WebsiteListComponent},
+  {path: 'user/website', component: WebsiteListComponent},
   {path: 'profile/:uid/website/new', component: WebsiteNewComponent},
   {path: 'profile/:uid/website/:wid', component: WebsiteEditComponent},
   {path: 'profile/:uid/website/:wid/page', component: PageListComponent},

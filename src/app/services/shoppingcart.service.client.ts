@@ -20,7 +20,7 @@ export class ShoppingCartService {
   baseUrl = environment.baseUrl;
 
   addToShoppingCart(user: User, cake: Cake) {
-    if (user != null && user != '' && user != 'undefined') {
+    if (user != null ) {
       let shoppingCart = JSON.parse(this.cookieService.get('shoppingcart'));
 
       shoppingCart = shoppingCart && shoppingCart.length > 0 ? [...shoppingCart, cake] : [cake];

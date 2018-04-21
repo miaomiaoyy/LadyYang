@@ -42,6 +42,7 @@ export class ShoppingCartComponent implements OnInit {
   checkout() {
     // this.router.navigate(['./payment']);
     alert('Security Payment');
+    //this.router.navigate(['/payment']);
   }
 
   getTotalPrice() {

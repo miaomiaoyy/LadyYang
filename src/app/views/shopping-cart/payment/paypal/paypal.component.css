@@ -1,6 +1,6 @@
 body {
   /* Location of the image */
-  background-image: url('../../../../assets/uploads/watercolor-heart-cake-thumb-sm-400x600.jpg');
+  background-image: url(../../../../../assets/uploads/cakeBackground.jpg);
 
   /* Background image is centered vertically and horizontally at all times */
   background-position: 0% center;
@@ -23,16 +23,15 @@ body {
 
 .btn btn-primary btn-large{
   color: deeppink;
-
 }
 .btn-3d {
   position: relative;
   display: inline-block;
   font-size: 22px;
-  padding: 10px 40px;
+  padding: 10px 30px;
   color: white;
   margin: 20px 10px 10px;
-  border-radius: 6px;
+  border-radius: 3px;
   text-align: center;
   transition: top .01s linear;
   text-shadow: 0 1px 0 rgba(0,0,0,0.15);

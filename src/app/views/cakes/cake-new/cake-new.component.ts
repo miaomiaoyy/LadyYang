@@ -21,6 +21,7 @@ export class CakeNewComponent implements OnInit {
   cakes: Cake[] = [];
   cake: Cake;
   url: String;
+
   ngOnInit() {
     this.activatedRoute.params.subscribe(
       (params: any) => {
@@ -29,8 +30,8 @@ export class CakeNewComponent implements OnInit {
       }
     );
   }
-  createCake() {
 
+  createCake() {
       this.cakeId =  '_' + Math.random().toString(36).substr(2, 9);
       this.name = this.cakeForm.value.name;
       this.description = this.cakeForm.value.description;
@@ -39,6 +40,7 @@ export class CakeNewComponent implements OnInit {
       this.cakeService.createCake(this.cake).subscribe(
         (data: any) => {
           this.cake = data;
+          console.log("get cake", this.cake);
           this.router.navigate(['../:cid'], {relativeTo: this.activatedRoute});
         });
     }

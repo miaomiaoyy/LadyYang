@@ -70,7 +70,7 @@ h6 {
 
 
 
-.navbar-brand {
+.page-header {
   float: left;
   height: 50px;
   padding: 15px 15px;
@@ -78,6 +78,7 @@ h6 {
   line-height: 20px;
   margin-left: 80px;
   color: deeppink;
+
 }
 
 input.form-control {
@@ -173,7 +174,7 @@ active{
 }
 body {
   margin: 0;
-  background: #eaedf1;
+  background: #f19938;
   font-family: 'Lato', sans-serif;
 }
 .header {
@@ -198,6 +199,7 @@ h2 {
   margin: 0 15px 0 0;
   width: 30px;
   height: 30px;
+
   display: inline-block;
   border-radius: 100%;
 }
@@ -362,9 +364,10 @@ button[class*="btn"] {border: 0;}
 .btn-3d {
   position: relative;
   display: inline-block;
-  font-size: 22px;
-  padding: 20px 60px;
-  color: white;
+  font-size: 20px;
+  font: jis78;
+  padding: 10px 40px;
+  color: #ff4d8e;
   margin: 20px 10px 10px;
   border-radius: 6px;
   text-align: center;
@@ -547,7 +550,7 @@ button[class*="btn"] {border: 0;}
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#82c8a0', endColorstr='#82c79e', GradientType=0 );
 }
 
-.btn-gradient.red:active      {background: #E35252;}
+.btn-gradient.red:active    {background: #E35252;}
 .btn-gradient.orange:active {background: #E8601B;}
 .btn-gradient.cyan:active   {background: #169499;}
 .btn-gradient.blue:active   {background: #608FBF;}

@@ -49,11 +49,28 @@
           <a class="nav-link" href="/login">Login</a>
         </li>
       </ul>
+
       <form class="form-inline">
-        <div class="md-form mt-0" pull-right>
-          <input class="form-control mr-sm-2 pull-right" type="text" placeholder="Search" aria-label="Search">
-          <button type="button" class="btn btn-default pull-right" type="submit">Submit</button>
-        </div>
+        <!--<div class="md-form mt-0" pull-right>-->
+          <!--<input class="form-control mr-sm-2 pull-right" type="text" placeholder="Search" aria-label="Search">-->
+          <!--<button type="button" class="btn btn-default pull-right" type="submit">Submit</button>-->
+        <!--</div>-->
+        <form (ngSubmit)="findCake()" #f="ngForm" class="center_input input_padding">
+          <label class="supreme-font"> Search Cake</label>
+          <input
+            [(ngModel)]="search"
+            style="width: 100%"
+            type="text"
+            placeholder="Search.."
+            name="search"><br>
+          <button type="submit" class="btn-outline-danger bottom-button" style="color: white">Search</button>
+        </form>
+
+        <!--<form class="md-form mt-0">-->
+          <!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+          <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">YY</button>-->
+        <!--</form>-->
+
       </form>
     </div>
   </div>

@@ -1,0 +1,97 @@
+<!--<header>-->
+  <!--<div class="navbar-brand container" align="center" >Lady Yang</div>-->
+
+<!--</header>-->
+
+<!--<script src="https://www.paypalobjects.com/api/checkout.js"></script>-->
+
+<!--<div id="paypal-button-container"></div>-->
+
+<script>
+
+  // Render the PayPal button
+
+  paypal.Button.render({
+
+    // Set your environment
+
+    env: 'sandbox', // sandbox | production
+
+    // Specify the style of the button
+
+    style: {
+      label: 'checkout',
+      size:  'medium',    // small | medium | large | responsive
+      shape: 'pill',     // pill | rect
+      color: 'gold'      // gold | blue | silver | black
+    },
+
+    // PayPal Client IDs - replace with your own
+    // Create a PayPal app: https://developer.paypal.com/developer/applications/create
+
+    client: {
+      sandbox:    'AVw_d7EtuYzjJWi0KuwGmR8SZEEqHA6FsnSbLX05D2Yzu3YE3z--2r_HO1E3EcSU3LuTaflvdxYKZic3',
+      production: '<insert production client id>'
+    },
+
+    payment: function(data, actions) {
+      return actions.payment.create({
+        payment: {
+          transactions: [
+            {
+              amount: { total: '0.01', currency: 'USD' }
+            }
+          ]
+        }
+      });
+    },
+
+    onAuthorize: function(data, actions) {
+      return actions.payment.execute().then(function() {
+        window.alert('Payment Complete!');
+      });
+    }
+
+  }, '#paypal-button-container');
+
+</script>
+<!--<paypal-button [props]="{ payment: payment, onAuthorize: onAuthorize }"></paypal-button>-->
+
+<!--<app-paypal></app-paypal>-->
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+  <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div class="container">-->
+  <!--<h2>Dropdown Example</h2>-->
+  <!--<div class="dropdown">-->
+    <!--<button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">Dropdown Example-->
+      <!--<span class="caret"></span></button>-->
+    <!--<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">-->
+      <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>-->
+      <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>-->
+      <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>-->
+      <!--<li role="presentation" class="divider"></li>-->
+      <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>-->
+    <!--</ul>-->
+  <!--</div><br>-->
+  <!--<p><strong>Note:</strong> The data-toggle="dropdown" attribute is required regardless of whether you call the dropdown() method.</p>-->
+<!--</div>-->
+
+<!--<script>-->
+  <!--$(document).ready(function(){-->
+    <!--$(".dropdown-toggle").dropdown();-->
+  <!--});-->
+<!--</script>-->
+
+<!--</body>-->
+<!--</html>-->

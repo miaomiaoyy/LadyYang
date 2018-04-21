@@ -50,8 +50,7 @@ import { CakeListComponent } from './views/cake-list/cake-list.component';
 import {ShoppingCartService} from './services/shoppingcart.service.client';
 import { CakeCustomizationComponent } from './views/cakes/cake-customization/cake-customization.component';
 import { PaymentComponent } from './views/shopping-cart/payment/payment.component';
-
-
+import { PaypalComponent } from './views/shopping-cart/payment/paypal/paypal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,7 +85,9 @@ import { PaymentComponent } from './views/shopping-cart/payment/payment.componen
     CakeNewComponent,
     CakeListComponent,
     CakeCustomizationComponent,
-    PaymentComponent
+    PaymentComponent,
+    PaypalComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -94,10 +95,13 @@ import { PaymentComponent } from './views/shopping-cart/payment/payment.componen
     FormsModule,
     HttpModule,
     HttpClientModule,
-    QuillEditorModule
+    QuillEditorModule,
+
   ],
   providers: [UserService, PageService, WebsiteService, WidgetService, FlickrService, SharedService, AuthGuard, CookieService,
     CakeService, ShoppingCartService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}

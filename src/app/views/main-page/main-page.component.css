@@ -34,6 +34,15 @@ input.form-control {
 .form-control {
   display: block;
   width: 50%;
+  height: 34px;
+  padding: 10px 120px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: pink;
+  background-color: #fff;
+  background-image: none;
+  border: 3px solid pink;
+  border-radius: 4px;
 }
 
 
