@@ -146,6 +146,7 @@ module.exports = function (app) {
   }
 
   function login(req, res) {
+    console.log('enter login Service111', req);
     console.log(req.user);
     var user = req.user;
     res.json(user);
@@ -192,6 +193,7 @@ module.exports = function (app) {
 
   // functions used for test
   function helloUser(req, res) {
+
     var username = req.query["username"];
     res.send("Hello from user service!" + username);
   }

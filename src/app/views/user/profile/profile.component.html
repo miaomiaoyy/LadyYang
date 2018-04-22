@@ -34,12 +34,13 @@
 
   <input [(ngModel)]="user.email" class="form-control"/>
 
-  <button class="btn btn-primary btn-block" (click)="updateUser(user)">Update</button>
+  <button class="btn-3d purple" (click)="updateUser(user)">Update</button>
 
+  <button class="btn-3d purple" routerLink="/{{user._id}}/cakes">View Cakes</button>
 
-  <a class="btn btn-primary btn-block" routerLink="/profile/{{user._id}}/website">Websites</a>
-  <a class="btn btn-danger btn-block" routerLink="/login">Logout</a>
-  <a class="btn btn-danger btn-block" (click)="deleteUser(user._id)" routerLink="/login">Delete</a>
+  <button class="btn-3d purple" routerLink="/profile/{{user._id}}/website">Websites</button>
+  <button class="btn-3d purple" routerLink="/login">Logout</button>
+  <button class="btn-3d purple" (click)="deleteUser(user._id)" routerLink="/login">Delete</button>
 
 
 

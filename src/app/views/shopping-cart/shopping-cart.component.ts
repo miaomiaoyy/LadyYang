@@ -7,6 +7,7 @@ import {CakeService} from '../../services/cake.service.client';
 import {Subscription} from 'rxjs/Subscription';
 import {Observable} from 'rxjs/Observable';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Widget} from "../../models/widget.model.client";
 
 @Component({
   selector: 'app-shopping-cart',
@@ -69,20 +70,31 @@ export class ShoppingCartComponent implements OnInit {
     this.activatedRoute.params.subscribe(
       (params: any) => {
         this.userId = params['uid'];
-        this.cartId = params['cartId'];
+        this.cartId = params['cid'];
       }
     );
-    if (this.userId === 'undefined') {
-      this.router.navigate(['/login']);
-    } else {
-      this.shoppingCartService.findCartForUser(this.userId).subscribe(
-        (myCart: ShoppingCart) => {
-          console.log(myCart);
-          return myCart;
-        }
-      );
-    }
+    console.log(this.userId, 'why u r undefined?');
+    this.shoppingCartService.findCartForUser(this.userId).subscribe(
+      (myCart: ShoppingCart) => {
+              console.log(myCart, 'find cart!!!!!!!');
+              return myCart;
+            }
+    );
   }
+    // console.log(this.userId, "userIs");
+    // console.log(this.cartId, "cart");
+    // if (this.userId === null|| this.userId === 'undefined') {
+    //   this.router.navigate(['/login']);
+    // } else {
+    //   console.log('enter findCartForUser', this.cart);
+    //   this.shoppingCartService.findCartForUser(this.userId).subscribe(
+    //     (myCart: ShoppingCart) => {
+    //       console.log(myCart, 'find cart!!!!!!!');
+    //       return myCart;
+    //     }
+    //   );
+
+
 
 
   removeProduct() {

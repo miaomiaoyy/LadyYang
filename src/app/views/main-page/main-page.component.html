@@ -45,7 +45,7 @@
           <!--<button type="button" class="btn btn-default pull-right" type="submit">  Submit</button>-->
         <!--</div>-->
 
-          <input class="form-control mr-sm-1 col-md-6 " type="search" placeholder="Search A Yummy Cake..." aria-label="Search">
+          <input class="form-control mr-sm-1 col-md-6" type="search" placeholder="Search A Yummy Cake..." aria-label="Search">
           <button class="btn btn-default pull-right" type="submit">Search</button>
 
         </div>
@@ -78,31 +78,49 @@
                   <div class="font-effect-destruction">Sign in to create your own unique cake and enjoy the Premium Services</div>
 
                   <form (ngSubmit) = "login()" #f="ngForm">
-                <div class="md-form">
-                  <i class="fa fa-lock prefix white-text active"></i>
-                  <input type="name" id="form1" class="form-control" ngModel required #username="ngModel">
-                  <label for="form1" class="active">Your Username</label>
-                </div>
 
-                <div class="md-form">
-                  <i class="fa fa-lock prefix white-text active"></i>
-                  <input type="password" id="form2" class="form-control" ngModel required #username="ngModel">
-                  <label for="form2" class="active">Your password</label>
-                </div>
+                    <input  name="username" type="text" class="form-control" ngModel required #username="ngModel"/>
                     <span class="help-block" *ngIf="!username.valid && username.touched">
-                    Please enter username!
+          Please enter username!
                     </span>
-                <div class="text-center">
-                  <button class="btn btn-indigo">Login</button>
-                  <hr class="hr-light mb-3 mt-4">
+                    <label>Username</label>
 
-                  <!--<div class="inline-ul text-center d-flex justify-content-center">-->
-                    <!--<a class="icons-sm tw-ic"><i class="fa fa-twitter white-text"></i></a>-->
-                    <!--<a class="icons-sm li-ic"><i class="fa fa-linkedin white-text"> </i></a>-->
-                    <!--<a class="icons-sm ins-ic"><i class="fa fa-instagram white-text"> </i></a>-->
-                  <!--</div>-->
-                </div>
+                    <input  name="password" type="password" class="form-control" ngModel required #password="ngModel"/>
+                    <label>Password</label>
+                    <span class="help-block" *ngIf="!password.valid && password.touched">
+          Please enter Password!
+                    </span>
+                    <div class="text-center">
+                    <button class="btn-3d purple" (click)="login()" type="submit" [disabled]="!f.valid">Login</button>
+                    </div>
                   </form>
+
+                  <!--<form (ngSubmit) = "login()" #f="ngForm">-->
+                <!--<div class="md-form">-->
+                  <!--<i class="fa fa-lock prefix white-text active"></i>-->
+                  <!--<input type="name" id="form1" class="form-control" ngModel required #username="ngModel">-->
+                  <!--<label for="form1" class="active">Your Username</label>-->
+                <!--</div>-->
+
+                <!--<div class="md-form">-->
+                  <!--<i class="fa fa-lock prefix white-text active"></i>-->
+                  <!--<input type="password" id="form2" class="form-control" ngModel required #username="ngModel">-->
+                  <!--<label for="form2" class="active">Your password</label>-->
+                <!--</div>-->
+                    <!--<span class="help-block" *ngIf="!username.valid && username.touched">-->
+                    <!--Please enter username!-->
+                    <!--</span>-->
+                <!--<div class="text-center">-->
+                  <!--<button class="btn btn-indigo" (click)="login()">Login</button>-->
+                  <!--<hr class="hr-light mb-3 mt-4">-->
+
+                  <!--&lt;!&ndash;<div class="inline-ul text-center d-flex justify-content-center">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<a class="icons-sm tw-ic"><i class="fa fa-twitter white-text"></i></a>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<a class="icons-sm li-ic"><i class="fa fa-linkedin white-text"> </i></a>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<a class="icons-sm ins-ic"><i class="fa fa-instagram white-text"> </i></a>&ndash;&gt;-->
+                  <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--</div>-->
+                  <!--</form>-->
 
 
 
@@ -176,33 +194,60 @@
                   <!--<div class="font-effect-destruction">Sign in to create your own unique cake and enjoy the Premium Services</div>-->
 
 
-                <!--Body-->
-                <div class="md-form">
-                  <i class="fa fa-lock prefix white-text active"></i>
-                  <input type="text" id="form3" class="form-control">
-                  <label for="form3" class="active" style="align:center">Your name</label>
-                </div>
-                <div class="md-form">
-                  <i class="fa fa-lock prefix w4ite-text active"></i>
-                  <input type="email" id="form4" class="form-control">
-                  <label for="form4" class="active">Your email</label>
-                </div>
+                <!--&lt;!&ndash;Body&ndash;&gt;-->
+                <!--<div class="md-form">-->
+                  <!--<i class="fa fa-lock prefix white-text active"></i>-->
+                  <!--<input type="text" id="form3" class="form-control">-->
+                  <!--<label for="form3" class="active" style="align:center">Your name</label>-->
+                <!--</div>-->
+                <!--<div class="md-form">-->
+                  <!--<i class="fa fa-lock prefix w4ite-text active"></i>-->
+                  <!--<input type="email" id="form4" class="form-control">-->
+                  <!--<label for="form4" class="active">Your email</label>-->
+                <!--</div>-->
 
-                <div class="md-form">
-                  <i class="fa fa-lock prefix white-text active"></i>
-                  <input type="password" id="form5" class="form-control">
-                  <label for="form5" class="active">Your password</label>
-                </div>
+                <!--<div class="md-form">-->
+                  <!--<i class="fa fa-lock prefix white-text active"></i>-->
+                  <!--<input type="password" id="form5" class="form-control">-->
+                  <!--<label for="form5" class="active">Your password</label>-->
+                <!--</div>-->
+                  <!---->
 
-                <div class="text-center">
-                  <button class="btn btn-indigo">Register</button>
-                  <hr class="hr-light mb-3 mt-4">
-                  <div class="inline-ul text-center d-flex justify-content-center">
-                    <a class="icons-sm tw-ic"><i class="fa fa-twitter white-text"></i></a>
-                    <a class="icons-sm li-ic"><i class="fa fa-linkedin white-text"> </i></a>
-                    <a class="icons-sm ins-ic"><i class="fa fa-instagram white-text"> </i></a>
-                  </div>
-                </div>
+                <!--<div class="text-center">-->
+                  <!--<button class="btn btn-indigo">Register</button>-->
+                  <!--<hr class="hr-light mb-3 mt-4">-->
+                  <!--<div class="inline-ul text-center d-flex justify-content-center">-->
+                    <!--<a class="icons-sm tw-ic"><i class="fa fa-twitter white-text"></i></a>-->
+                    <!--<a class="icons-sm li-ic"><i class="fa fa-linkedin white-text"> </i></a>-->
+                    <!--<a class="icons-sm ins-ic"><i class="fa fa-instagram white-text"> </i></a>-->
+                  <!--</div>-->
+                <!--</div>-->
+                  <!---->
+
+                  <form (ngSubmit) = "login()" #f="ngForm">
+
+                    <input  name="username" type="text" class="form-control" ngModel required #username="ngModel"/>
+                    <span class="help-block" *ngIf="!username.valid && username.touched">
+          Please enter username!
+                    </span>
+                    <label>Username</label>
+
+                    <input  name="password" type="password" class="form-control" ngModel required #password="ngModel"/>
+                    <label>Password</label>
+                    <span class="help-block" *ngIf="!password.valid && password.touched">
+          Please enter Password!
+                    </span>
+
+                    <input  name="email" type="password" class="form-control" ngModel required #password="ngModel"/>
+                    <label>Email</label>
+                    <span class="help-block" *ngIf="!password.valid && password.touched">
+          Please enter Password!
+                    </span>
+                    <div class="text-center">
+                      <button class="btn-3d purple" (click)="login()" type="submit" [disabled]="!f.valid">Register</button>
+                    </div>
+                  </form>
+
                 </div>
               </div>
             </div>

@@ -1,13 +1,15 @@
 
-
+var shoppingCartModel = require('../model/shoppingcart/shoppingcart.model.server');
 module.exports = function (app) {
   var cakeModel = require('../model/cake/cake.model.server');
 
   app.post("/api/cakes/cake", createCake);
   app.get("/api/cakes", showCakes);
+  app.get("/api/:uid/cakes",showCakes);
+  app.post(":uid/cakes/:cid",addCakeToUser);
   app.post("/api/user/cake", createCakeForUser);
-  app.get("/api/:userId/cakes", findAllCakesForUser);
-  app.get("/api/user/:cid", findCakeById);
+  app.get("/api/:uid/cakes", findAllCakesForUser);
+  app.get("/api/cake/:cid", findCakeById);
   app.post("/api/user/cake", updateCake);
   app.delete("/api/cakes/:cid", deleteCake);
   app.post("/api/cakes/top10", getTop10Cake);
@@ -21,7 +23,7 @@ module.exports = function (app) {
     //   function (error) {
     //   res.sendStatus(400).send('error');
     // };
-
+    var userId = req.params['userId'];
     cakeModel.showCake()
       .then(function(cakes) {
         res.send(cakes);
@@ -39,6 +41,22 @@ module.exports = function (app) {
     // });
   }
 
+  function addCakeToUser(req, res) {
+    var cake = req.body;
+    var user = req.body;
+
+    shoppingCartModel.addToShoppingCart(cake, user)
+      .then(function (data, err) {
+        if (data) {
+          console.log(cake,"add cake to user ok");
+          res.json(data);
+          res.send(200);
+        } else {
+          console.log(cake,"add cake to user fail");
+          res.send(404)
+        }
+      });
+  }
 
   function createCake(req, res) {
     var cake = req.body;
@@ -90,12 +108,15 @@ module.exports = function (app) {
 
   function findCakeById(req, res) {
     var cakeId = req.params['cid'];
-    cakeModel.findPageById(cakeId)
+    console.log('second, get cake Id', cakeId);
+    cakeModel.findCakeById(cakeId)
       .then(
-        function (page) {
-          res.send(page);
+        function (cake) {
+          console.log('third, find cake', cake);
+          res.send(cake);
         },
         function (error) {
+          console.log('third, find cake error', error);
           res.sendStatus(400).send(error);
         }
       );

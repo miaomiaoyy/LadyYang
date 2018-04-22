@@ -14,11 +14,11 @@ import {SharedService} from '../../services/shared.service';
 })
 export class CakeListComponent implements OnInit {
   cakes: Cake[] = [];
-  cakeId : String;
-  cake: Cake;
+  cakeId: String;
+cake: Cake;
   user: User;
   userId: String;
-  isGuest; boolean;
+  isGuest: boolean;
   isAdded: boolean;
 
   constructor(private cakeService: CakeService,
@@ -29,10 +29,20 @@ export class CakeListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.user = this.sharedService.user;
-    if(this.user != null) {
-      this.userId = this.sharedService.user['_id'];
-    }
+    this.activatedRoute.params.subscribe(
+      (params: any) => {
+
+        this.userId = params['uid'];
+        console.log('this is id'+ this.userId);
+        //this.cakeId = params['cid'];
+      }
+    );
+
+    // this.user = this.sharedService.user;
+    // if (this.user != null) {
+    //   this.userId = this.sharedService.user['_id'];
+    //   console.log(this.userId);
+    // }
 
     this.cakeService.showCake().subscribe(
       (cakes: Cake[]) => {
@@ -42,13 +52,15 @@ export class CakeListComponent implements OnInit {
   }
 
   viewShoppingCart() {
-    // this.route.navigate(['/shoppingcart']);
+    console.log('this is id yyyy test1'+ this.userId);
+    this.route.navigate(['/shoppingcart/' + this.userId]);
     alert('shoppingcart');
+
   }
 
 
-  addToCart(userId, cakeId) {
-
+  addToCart(cakeId) {
+    this.cakeId = cakeId;
     // if (this.user === '' || this.user === 'undefined') {
     //   this.isGuest = true;
     //   return;
@@ -69,13 +81,32 @@ export class CakeListComponent implements OnInit {
     // }
     // this.shoppingCartService.calculatePrice(currItem);
 
-    this.shoppingCartService.addToShoppingCart(userId, cakeId).subscribe(
-      (data: any) => {
-        console.log( "addtoSpcart Yangyang");
-        alert('add success, keep shopping');
-        // this.route.navigate(['/shoppingcart']);
 
-        window.confirm('Item added!');
-      });
+
+
+
+    if (this.userId == null || this.userId == '') {
+      this.route.navigate(['/login'], {relativeTo: this.activatedRoute});
+    } else {
+      console.log(this.userId, this.cakeId, 'ok');
+
+      this.cakeService.findCakeById(this.cakeId).subscribe(
+        (cake: Cake) => {
+          this.cake = cake;
+          console.log(cake, "cake is found and return");
+        });
+
+      this.shoppingCartService.addItem(this.userId, this.cake).subscribe(
+        (data: any) => {
+          console.log("addtoSpcart Yangyang");
+          alert('add success, keep shopping');
+
+          window.confirm('Item added!');
+        });
+    }
+  }
+
+  likeCake(cakeId) {
+    alert("liked");
   }
 }

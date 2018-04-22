@@ -7,6 +7,7 @@ var shoppingcartSchema = mongoose.Schema({
   uid: String,
   quantity: Number,
   cakes:[cakeSchema],
+  totalPrice: Number,
 
   deletable: {type: Boolean, default: false},
   formatted: {type: Boolean, default: false},
@@ -17,3 +18,4 @@ var shoppingcartSchema = mongoose.Schema({
 }, {collection: 'shoppingcart'});
 
 module.exports = shoppingcartSchema;
+

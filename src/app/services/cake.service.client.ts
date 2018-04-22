@@ -41,6 +41,7 @@ export class CakeService {
   }
 
   findCakeById(cakeId: String) {
+    console.log('first: in api call', cakeId);
     const url = this.baseUrl + '/api/cake/' + cakeId;
     return this.http.get(url).map((response: Response) => {
       return response.json();

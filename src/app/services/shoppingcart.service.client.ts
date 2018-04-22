@@ -9,6 +9,7 @@ import {Router} from '@angular/router';
 import {CookieService} from 'ngx-cookie-service';
 import {ShoppingCart} from '../models/shoppingcart.model.client';
 import {Observable} from 'rxjs/Observable';
+import {Widget} from "../models/widget.model.client";
 
 
 
@@ -19,19 +20,33 @@ export class ShoppingCartService {
 
   baseUrl = environment.baseUrl;
 
-  addToShoppingCart(user: User, cake: Cake) {
-    if (user != null ) {
-      let shoppingCart = JSON.parse(this.cookieService.get('shoppingcart'));
-
-      shoppingCart = shoppingCart && shoppingCart.length > 0 ? [...shoppingCart, cake] : [cake];
-      this.cookieService.set('shoppingCart', JSON.stringify(shoppingCart));
+  addToShoppingCart(userId, cakeId) {
+    console.log('userid inside shoppinfcard service client' + userId);
+    if (userId != null) {
+      // let shoppingCart = JSON.parse(this.cookieService.get('shoppingcart'));
+      //
+      // shoppingCart = shoppingCart && shoppingCart.length > 0 ? [...shoppingCart, cake] : [cake];
+      // this.cookieService.set('shoppingCart', JSON.stringify(shoppingCart));
+      return this.http.post(this.baseUrl + '/api/' + userId + '/shoppingcart' + '/add', {
+        cakeId
+      }).map(
+        (res: Response) => {
+          const data = res.json();
+          return data;
+        }
+      );
     } else {
 
-      user = new User(Math.random().toString(36).substr(2, 9), 'visitor', 'visitor', '', '', '', '');
-      return this.http.post(this.baseUrl + '/api/guest/shoppingcart', {
+      userId = Math.random().toString(36).substr(2, 9);
+      return this.http.post(this.baseUrl + '/api/' + userId + '/shoppingcart', {
         user: User,
         cake: Cake
-      });
+      }).map(
+        (res: Response) => {
+          const data = res.json();
+          return data;
+        }
+      );
     }
   }
 
@@ -60,21 +75,33 @@ export class ShoppingCartService {
   //     .catch((error: any) => Observable.throw('Server error'));
   // }
 
-  findCartForUser(userId) {
-    const url = this.baseUrl + '/api/shoppingcart/' + userId;
+  findCartForUser(userId:String) {
+    const url = this.baseUrl + '/api/shoppingcart/'+ userId;
+    console.log(url, 'url');
     return this.http.get(url).map((response: Response) => {
       return response.json();
     });
   }
 
-  addItem(cakeId, cake, quantity: number) {
-    const url = this.baseUrl + '/api/user/shoppingcart/' + cakeId;
-    return this.http.post(url, cake)
+
+  findShoppingCartByUserId(userId:String) {
+    const url = this.baseUrl + '/api/shoppingcart/'+ userId;
+    return this.http.get(url).map((response: Response) => {
+      return response.json();
+    });
+  }
+
+
+  addItem(userId, cakeId) {
+    const url = this.baseUrl + '/api/' + userId + '/shoppingcart/add';
+    return this.http.post(url, cakeId)
       .map((response: Response) => {
         return response.json();
       });
   }
+
 }
+
 
   //  emptyCartForUser(userId) {
   //   const newCart = new ShoppingCart(undefined, userId,undefined);

@@ -10,6 +10,7 @@ var userSchema = mongoose.Schema({
   phone: String,
   websites:[websiteSchema],
   cakes:[cakeSchema],
+  shoppingCart: [cakeSchema],
   dateCreate: {
     type: Date,
     default: Date.now()

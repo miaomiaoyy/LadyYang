@@ -14,35 +14,146 @@
   </div>
 </nav>
 <div>
-<button class="btn-3d green" (click)="viewShoppingCart()" routerLink="../shoppingcart">
+
+<button class="btn-3d purple" (click)="viewShoppingCart()">
   View shoppingCart
 </button>
 </div>
-<div class="container">
 
-  <ul class="list-group cl-list-group-borderless">
-    <li class="list-group-item cl-list-item-borderless" *ngFor = "let cake of cakes">
-      <a routerLink="{{cake._id}}">{{cake.name}}
+<div class="container">
+    <div class="row">
+      <div class="thumbnail list-group-item cl-lg-6" *ngFor = "let cake of cakes">
+      <!--<a routerLink="{{cake._id}}">-->
+      <h4>{{cake.name}}</h4>
       <img src="{{cake.url}}">
-        <span>
-        <button class="btn-3d purple" (click)="addToCart()">
-          Add to shoppingCart
+
+        <button class="glyphicon glyphicon-plus" type="submit" (click)="addToCart(cake._id)">
         </button>
-      </span>
-      </a>
-      <a routerLink="{{cake._id}}"><span class="glyphicon glyphicon-cog pull-right"></span></a>
-    </li>
-  </ul>
+      <button class="glyphicon glyphicon-heart" type="submit" (click)="likeCake(cake._id)">
+      </button>
+      <!--</a>-->
+      <button routerLink="{{cake._id}}"><span class="glyphicon glyphicon-cog pull-right"></span></button>
+
+    </div>
+    </div>
+
 </div>
 
 
+<!--<div class="container">-->
+    <!--<div class="row">-->
+  <!--<div class="col-lg-6">-->
+    <!--<div class="thumbnail image-size">-->
+    <!--<img src="../../../assets/uploads/Top-1.jpg">-->
+      <!--<h5></h5>-->
+    <!--<button class="glyphicon glyphicon-plus" type="submit" (click)="addToCart(cake._id)">-->
+    <!--</button>-->
+    <!--<button class="glyphicon glyphicon-heart" type="submit" (click)="likeCake(cake._id)">-->
+    <!--</button>-->
+    <!--&lt;!&ndash;</a>&ndash;&gt;-->
+    <!--<button routerLink="{{cake._id}}"><span class="glyphicon glyphicon-cog pull-right"></span></button>-->
+  <!--</div>-->
+
+  <!--</div>-->
+
+      <!--<div class="col-lg-6">-->
+        <!--<div class="thumbnail image-size">-->
+        <!--<img src="../../../assets/uploads/top-2.jpeg">-->
+          <!--<h5></h5>-->
+        <!--<button class="glyphicon glyphicon-plus" type="submit" (click)="addToCart(cake._id)">-->
+        <!--</button>-->
+        <!--<button class="glyphicon glyphicon-heart" type="submit" (click)="likeCake(cake._id)">-->
+        <!--</button>-->
+        <!--&lt;!&ndash;</a>&ndash;&gt;-->
+        <!--<button routerLink="{{cake._id}}"><span class="glyphicon glyphicon-cog pull-right"></span></button>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--<h5></h5>-->
+      <!--<div class="col-lg-6">-->
+        <!--<div class="thumbnail image-size">-->
+          <!--<img src="../../../assets/uploads/top-3.jpeg">-->
+          <!--<h5></h5>-->
+          <!--<button class="glyphicon glyphicon-plus" type="submit" (click)="addToCart(cake._id)">-->
+          <!--</button>-->
+          <!--<button class="glyphicon glyphicon-heart" type="submit" (click)="likeCake(cake._id)">-->
+          <!--</button>-->
+          <!--&lt;!&ndash;</a>&ndash;&gt;-->
+          <!--<button routerLink="{{cake._id}}"><span class="glyphicon glyphicon-cog pull-right"></span></button>-->
+        <!--</div>-->
+      <!--</div>-->
 
 
-
-<nav class="navbar navbar-fixed-bottom cl-blue-navbar">
-  <div class="container-fuild">
-    <a routerLink="./top10}" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
-      <span class="glyphicon glypbohicon-user"></span>
-    </a>
-  </div>
-</nav>
+      <!--<div class="col-lg-6">-->
+        <!--<div class="thumbnail image-size">-->
+          <!--<img src="../../../assets/uploads/rosegarden.jpg">-->
+          <!--<h5></h5>-->
+          <!--<button class="glyphicon glyphicon-plus" type="submit" (click)="addToCart(cake._id)">-->
+          <!--</button>-->
+          <!--<button class="glyphicon glyphicon-heart" type="submit" (click)="likeCake(cake._id)">-->
+          <!--</button>-->
+          <!--&lt;!&ndash;</a>&ndash;&gt;-->
+          <!--<button routerLink="{{cake._id}}"><span class="glyphicon glyphicon-cog pull-right"></span></button>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="col-lg-6">-->
+        <!--<div class="thumbnail image-size">-->
+          <!--<img src="../../../assets/uploads/summercake.jpg">-->
+          <!--<h5></h5>-->
+          <!--<button class="glyphicon glyphicon-plus" type="submit" (click)="addToCart(cake._id)">-->
+          <!--</button>-->
+          <!--<button class="glyphicon glyphicon-heart" type="submit" (click)="likeCake(cake._id)">-->
+          <!--</button>-->
+          <!--&lt;!&ndash;</a>&ndash;&gt;-->
+          <!--<button routerLink="{{cake._id}}"><span class="glyphicon glyphicon-cog pull-right"></span></button>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="col-lg-6">-->
+        <!--<div class="thumbnail image-size">-->
+          <!--<img src="../../../assets/uploads/PeppaPigcake.JPG">-->
+          <!--<h5></h5>-->
+          <!--<button class="glyphicon glyphicon-plus" type="submit" (click)="addToCart(cake._id)">-->
+          <!--</button>-->
+          <!--<button class="glyphicon glyphicon-heart" type="submit" (click)="likeCake(cake._id)">-->
+          <!--</button>-->
+          <!--&lt;!&ndash;</a>&ndash;&gt;-->
+          <!--<button routerLink="{{cake._id}}"><span class="glyphicon glyphicon-cog pull-right"></span></button>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="col-lg-6">-->
+        <!--<div class="thumbnail image-size">-->
+          <!--<img src="../../../assets/uploads/2D-Pikachu-1024x768.jpg">-->
+          <!--<h5></h5>-->
+          <!--<button class="glyphicon glyphicon-plus" type="submit" (click)="addToCart(cake._id)">-->
+          <!--</button>-->
+          <!--<button class="glyphicon glyphicon-heart" type="submit" (click)="likeCake(cake._id)">-->
+          <!--</button>-->
+          <!--&lt;!&ndash;</a>&ndash;&gt;-->
+          <!--<button routerLink="{{cake._id}}"><span class="glyphicon glyphicon-cog pull-right"></span></button>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="col-lg-6">-->
+        <!--<div class="thumbnail image-size">-->
+          <!--<img src="../../../assets/uploads/Pikachu-Shy-1024x768.jpg">-->
+          <!--<h5></h5>-->
+          <!--<button class="glyphicon glyphicon-plus" type="submit" (click)="addToCart(cake._id)">-->
+          <!--</button>-->
+          <!--<button class="glyphicon glyphicon-heart" type="submit" (click)="likeCake(cake._id)">-->
+          <!--</button>-->
+          <!--&lt;!&ndash;</a>&ndash;&gt;-->
+          <!--<button routerLink="{{cake._id}}"><span class="glyphicon glyphicon-cog pull-right"></span></button>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="col-lg-6">-->
+        <!--<div class="thumbnail image-size">-->
+          <!--<img src="../../../assets/uploads/puppy.jpg">-->
+          <!--<h5></h5>-->
+          <!--<button class="glyphicon glyphicon-plus" type="submit" (click)="addToCart(cake._id)">-->
+          <!--</button>-->
+          <!--<button class="glyphicon glyphicon-heart" type="submit" (click)="likeCake(cake._id)">-->
+          <!--</button>-->
+          <!--&lt;!&ndash;</a>&ndash;&gt;-->
+          <!--<button routerLink="{{cake._id}}"><span class="glyphicon glyphicon-cog pull-right"></span></button>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+<!--</div>-->

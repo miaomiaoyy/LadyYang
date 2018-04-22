@@ -14,11 +14,12 @@ userModel.addWebsite = addWebsite;
 userModel.deleteWebsite = deleteWebsite;
 userModel.findUserByFacebookId = findUserByFacebookId;
 userModel.addCake = addCake;
+userModel.createShoppingCart = createShoppingCart;
 
 module.exports = userModel;
 
 function createUser(user){
-  return userModel.create(user);
+    return userModel.create(user);
 }
 
 
@@ -76,5 +77,9 @@ function deleteWebsite(userId, websiteId) {
       user.websites.pull(websiteId);
       return user.save();
     })
+}
+
+function createShoppingCart(userId) {
+  return userModel.create(userId)
 }
 

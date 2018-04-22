@@ -6,7 +6,7 @@ var userModel = require("../user/user.model.server");
 cakeModel.showCake = showCake;
 cakeModel.createCake = createCake;
 cakeModel.createCakeForUser = createCakeForUser;
-cakeModel.findPageById = findPageById;
+cakeModel.findCakeById = findCakeById;
 cakeModel.updateCake = updateCake;
 cakeModel.findAllCakesForUser = findAllCakesForUser;
 cakeModel.deleteCake = deleteCake;
@@ -32,8 +32,9 @@ function createCakeForUser(cake) {
     });
 }
 
-function findPageById(cakeId) {
-  return cakeModel.find(cakeId);
+function findCakeById(cakeId) {
+  console.log('4, cake is found in DB', cakeId);
+  return cakeModel.findOne({"_id": cakeId.toJSON});
 }
 
 
