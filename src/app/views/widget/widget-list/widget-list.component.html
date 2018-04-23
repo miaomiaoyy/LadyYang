@@ -19,6 +19,20 @@
   </div>
 </nav>
 
+<!--<router-outlet></router-outlet>-->
+<!--<link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">-->
+
+<nav class="navbar navbar-light bg-light">
+
+  <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+  <style>
+    div {
+      font-family: 'Dancing Script';
+    }
+  </style>
+  <header class="page-header" align="center" >
+  </header>
+
 
 <div class="container cl-container-padding">
   <!--<div id="sortable">-->
@@ -83,7 +97,7 @@
             <span class="glyphicon glyphicon-cog"></span>
           </a>
         </div>
-        <div [innerHTML]="widget.text"></div>
+        <div [innerHTML]="widget.title"></div>
       </div>
 
       <div *ngSwitchCase="'TEXT'">

@@ -8,6 +8,7 @@
 <!--<paypal-button [props]="{ payment: payment, onAuthorize: onAuthorize }"></paypal-button>-->
 
 <!--</head>-->
+<body>
 <div *ngIf="cart.length <= 0">
   <h3 class="text-center"> Oops! No Cakes in the Cart! </h3>
 </div>
@@ -22,14 +23,14 @@
   </thead>
 
   <tbody>
-  <tr *ngFor="let cake of cart; let i = index">
+  <div class="top-nav-collapse" *ngFor="let cake of cart; let i = index">
     <td><h4>{{cake.quantity}}</h4></td>
     <td><h4>{{cake.name}}</h4></td>
     <td><h4>{{cake.price}}</h4></td>
     <td><img src={{cake.src}} width="100" height="100" /></td>
 
     <td><button (click)="removeProduct(cake)" class="btn-3d purple">Remove Cake</button></td>
-  </tr>
+  </div>
 
   <tr class="warning">
     <td><h4></h4></td>
@@ -37,59 +38,12 @@
     <td><h4>Total: ${{totalPrice}}</h4></td>
     <!--<script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>-->
     <!--<paypal-button [props]="{ payment: payment, onAuthorize: onAuthorize }"></paypal-button>-->
-    <td><button (click)="checkout()" class="btn-3d purple" routerLink="./payment">Checkout</button></td>
-    <td>
-
-    <button id="paypal-button-container" routerLink="./paypal">Paypal</button>
-
-    <script>
-      paypal.Button.render({
-
-        env: 'sandbox', // sandbox | production
-
-        // PayPal Client IDs - replace with your own
-        // Create a PayPal app: https://developer.paypal.com/developer/applications/create
-        client: {
-          sandbox:    'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
-          production: '<insert production client id>'
-        },
-
-        // Show the buyer a 'Pay Now' button in the checkout flow
-        commit: true,
-
-        // payment() is called when the button is clicked
-        payment: function(data, actions) {
-
-          // Make a call to the REST api to create the payment
-          return actions.payment.create({
-            payment: {
-              transactions: [
-                {
-                  amount: { total: '0.01', currency: 'USD' }
-                }
-              ]
-            }
-          });
-        },
-
-        // onAuthorize() is called when the buyer approves the payment
-        onAuthorize: function(data, actions) {
-
-          // Make a call to the REST api to execute the payment
-          return actions.payment.execute().then(function() {
-            window.alert('Payment Complete!');
-          });
-        }
-
-      }, '#paypal-button-container');
-
-    </script>
-    </td>
-
-  </tr>
+    <button (click)="checkout()" class="btn-3d purple" routerLink="./payment">Checkout</button>
+    <button class="btn-3d purple" (click)="paypal()" routerLink="./paypal">Paypal</button>
+      <div id="paypal-checkout-btn"></div>
 
   </tbody>
 </table>
 
 
-
+</body>

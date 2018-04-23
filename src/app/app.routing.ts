@@ -35,8 +35,9 @@ const appRoutes: Routes = [
   {path: ':uid/cakes', component: CakeListComponent},
   {path: 'cakes/cake-customization', component: CakeCustomizationComponent},
   {path: 'cakes/shoppingcart', component: ShoppingCartComponent},
-  {path: 'cakes/shoppingcart/payment', component: PaymentComponent},
-  {path: 'cakes/shoppingcart/paypal', component: PaypalComponent},
+  {path: 'shoppingcart/:uid/payment', component: PaymentComponent},
+  {path: 'shoppingcart/:uid/paypal', component: PaypalComponent},
+
   {path: ':shoppingcart/:uid', component: ShoppingCartComponent},
   {path: ':uid/shoppingcart/add', component:ShoppingCartComponent},
 

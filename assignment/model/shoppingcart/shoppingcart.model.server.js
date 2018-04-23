@@ -3,7 +3,8 @@ var shoppingcartSchema = require("./shoppingcart.schema.server");
 var shoppingcartModel = mongoose.model('shoppingcartModel', shoppingcartSchema);
 var userSchema = require("../user/user.schema.server");
 var userModel = mongoose.model("userModel", userSchema);
-
+var cakeSchema = require("../cake/cake.schema.server");
+var cakeModel = mongoose.model("cakeModel", cakeSchema);
 
 shoppingcartModel.addToShoppingCart = addToShoppingCart;
 shoppingcartModel.findShoppingCart = findShoppingCart;
@@ -13,15 +14,15 @@ shoppingcartModel.findCakeInShoppingCart = findCakeInShoppingCart;
 module.exports = shoppingcartModel;
 
 
-
 function addToShoppingCart(cakeId, userId) {
-  cake = cakeModel
+  var cake =  cakeModel.findCakeById(cakeId);
+  console.log('cake is found right????', cake);
   var addedItemIndex = -1;
   if(userId === null || userId === '') {
 
-    shoppingcart.push(cake);
+    shoppingcart.cakes.push(cake);
     shoppingcart.save();
-    console.log("this is model server, add to cart ok1");
+    console.log("this is model server, add to cart ok1????");
 
   } else {
     return shoppingcartModel.findShoppingCart(userId)

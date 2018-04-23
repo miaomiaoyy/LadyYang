@@ -43,7 +43,12 @@ export class ShoppingCartComponent implements OnInit {
   checkout() {
     // this.router.navigate(['./payment']);
     alert('Security Payment');
-    //this.router.navigate(['/payment']);
+
+  }
+  paypal() {
+    // this.router.navigate(['./payment']);
+    alert('Security Paypal');
+
   }
 
   getTotalPrice() {
@@ -73,7 +78,7 @@ export class ShoppingCartComponent implements OnInit {
         this.cartId = params['cid'];
       }
     );
-    console.log(this.userId, 'why u r undefined?');
+
     this.shoppingCartService.findCartForUser(this.userId).subscribe(
       (myCart: ShoppingCart) => {
               console.log(myCart, 'find cart!!!!!!!');

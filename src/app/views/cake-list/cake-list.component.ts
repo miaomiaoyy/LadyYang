@@ -91,7 +91,7 @@ cake: Cake;
       console.log(this.userId, this.cakeId, 'ok');
 
       this.cakeService.findCakeById(this.cakeId).subscribe(
-        (cake: Cake) => {
+        (cake: any) => {
           this.cake = cake;
           console.log(cake, "cake is found and return");
         });
