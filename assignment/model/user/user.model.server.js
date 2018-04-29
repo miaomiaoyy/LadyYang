@@ -15,6 +15,7 @@ userModel.deleteWebsite = deleteWebsite;
 userModel.findUserByFacebookId = findUserByFacebookId;
 userModel.addCake = addCake;
 userModel.createShoppingCart = createShoppingCart;
+userModel.updateCart = updateCart;
 
 module.exports = userModel;
 
@@ -83,3 +84,10 @@ function createShoppingCart(userId) {
   return userModel.create(userId)
 }
 
+function updateCart(userId, cartId) {
+    return userModel.findById(userId)
+      .then(function (user) {
+        user.websites.push(cartId);
+        return user.save();
+      })
+}

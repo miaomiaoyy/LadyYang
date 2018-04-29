@@ -6,7 +6,7 @@ module.exports = function (app) {
   app.post("/api/cakes/cake", createCake);
   app.get("/api/cakes", showCakes);
   app.get("/api/:uid/cakes",showCakes);
-  app.post(":uid/cakes/:cid",addCakeToUser);
+  app.post("/:uid/cakes/:cid",addCakeToUser);
   app.post("/api/user/cake", createCakeForUser);
   app.get("/api/:uid/cakes", findAllCakesForUser);
   app.get("/api/cake/:cid", findCakeById);
@@ -106,17 +106,21 @@ module.exports = function (app) {
       );
   }
 
+
+
   function findCakeById(req, res) {
     var cakeId = req.params['cid'];
-    console.log('second, get cake Id', cakeId);
+    console.log('step3, get cake Id', cakeId);
     cakeModel.findCakeById(cakeId)
       .then(
         function (cake) {
-          console.log('third, find cake', cake);
-          res.send(cake);
+          console.log('step3, find cake', cake);
+            var copy = Object.assign({}, cake);
+          console.log(copy, 'step 3');
+         // res.send(copy);
+          res.json(copy);
         },
         function (error) {
-          console.log('third, find cake error', error);
           res.sendStatus(400).send(error);
         }
       );

@@ -15,7 +15,7 @@ import {SharedService} from '../../services/shared.service';
 export class CakeListComponent implements OnInit {
   cakes: Cake[] = [];
   cakeId: String;
-cake: Cake;
+  cake: Cake;
   user: User;
   userId: String;
   isGuest: boolean;
@@ -47,6 +47,7 @@ cake: Cake;
     this.cakeService.showCake().subscribe(
       (cakes: Cake[]) => {
         this.cakes = cakes;
+        console.log(cakes, "cakesssssss");
       }
     );
   }
@@ -82,31 +83,27 @@ cake: Cake;
     // this.shoppingCartService.calculatePrice(currItem);
 
 
-
-
-
     if (this.userId == null || this.userId == '') {
       this.route.navigate(['/login'], {relativeTo: this.activatedRoute});
     } else {
       console.log(this.userId, this.cakeId, 'ok');
-
       this.cakeService.findCakeById(this.cakeId).subscribe(
         (cake: any) => {
+          console.log(cake, 'data is returned step1');
           this.cake = cake;
-          console.log(cake, "cake is found and return");
-        });
-
-      this.shoppingCartService.addItem(this.userId, this.cake).subscribe(
-        (data: any) => {
-          console.log("addtoSpcart Yangyang");
-          alert('add success, keep shopping');
-
-          window.confirm('Item added!');
+          console.log(this.cake, "cake step1");
+          console.log(this.cake, "transmit cake step1");
+          this.shoppingCartService.addItem(this.userId, this.cake).subscribe(
+            (data: any) => {
+              console.log(data,"addtoSpcart Yangyang");
+              alert('add success, keep shopping');
+              window.confirm('Item added!');
+            });
         });
     }
   }
 
-  likeCake(cakeId) {
-    alert("liked");
+  likeCake(cake) {
+    alert("liked"+ cake);
   }
 }

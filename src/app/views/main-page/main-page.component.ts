@@ -14,6 +14,7 @@ export class MainPageComponent implements OnInit {
   username: String;
   password: String;
 
+  inputText: string = "hello";
   errorFlag: boolean;
   errorMsg = 'Invalid Username or password!';
   constructor(private userService: UserService, private router: Router, private sharedService: SharedService) { }
@@ -40,5 +41,13 @@ export class MainPageComponent implements OnInit {
           console.log(error);
         }
       );
+  }
+  findCake() {
+    alert('search processing');
+    // this.userService.searchCakes(this.inputText)
+    //   .then((result) =>
+    //   {
+    //     console.log("Search results" + result);
+    //   });
   }
 }

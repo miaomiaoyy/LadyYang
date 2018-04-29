@@ -44,15 +44,24 @@
 
     <!--<a href="#default" class="logo">CompanyLogo</a>-->
 
-    <a class="btn-3d purple header-right " href="http://localhost:4200/">Home</a>
+    <a class="btn-3d purple header-right " href="https://hellokittyy.herokuapp.com/">Home</a>
 
-    <a class="btn-3d purple dropdown-header header-right" type="button" id="menu1" data-toggle="dropdown">Contact
-      <span class="caret"></span></a>
-    <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menu1">
-      <li role="presentation">Phone<a role="menuitem" tabindex="-1" href="#Phone">Phone</a></li>
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="#Email">Email</a></li>
+    <!--<a class="btn-3d purple dropdown-header header-right" type="button" id="menu1" data-toggle="dropdown">Contact-->
+      <!--<span class="caret"></span></a>-->
+    <!--<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menu1">-->
+      <!--<li role="presentation">Phone<a role="menuitem" tabindex="-1" href="#Phone">Phone</a></li>-->
+      <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#Email">Email</a></li>-->
 
-    </ul>
+    <!--</ul>-->
+   <div class="mymenu header-right">
+  <a class=" btn-3d purple" type="button" id="menu1" (click)="toggleMenu($event)">Contact
+    <span class="caret"></span></a>
+  <ul class="mymenuitems" aria-labelledby="menu1" [class.hidemenu]="hideMenu">
+    <li><a tabindex="-1" href="#Phone">Phone : 848 256 2046</a></li>
+    <li><a tabindex="-1" href="#Email">Email: yykathleen224@gmail.com</a></li>
+  </ul>
+
+   </div>
     <a class="btn-3d purple header-right" href="#about">About</a>
 
 </nav>

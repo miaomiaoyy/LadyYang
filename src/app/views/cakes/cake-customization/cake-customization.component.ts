@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {CakeDesc} from "../../../models/cake.model.client";
 
 @Component({
   selector: 'app-cake-customization',
@@ -7,12 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CakeCustomizationComponent implements OnInit {
 
-  constructor() { }
+  item: CakeDesc;
+  inputText: string = "hello";
+
+  constructor() {
+    this.item = new CakeDesc();
+    this.item.setText("Yang");
+  }
 
   ngOnInit() {
   }
 
   formclick() {
-    alert('change success');
+    this.item.setText(this.inputText);
   }
 }

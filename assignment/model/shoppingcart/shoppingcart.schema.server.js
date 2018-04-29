@@ -6,7 +6,7 @@ var shoppingcartSchema = mongoose.Schema({
   _id: String,
   uid: String,
   quantity: Number,
-  cakes:[cakeSchema],
+  cakes: [cakeSchema],
   totalPrice: Number,
 
   deletable: {type: Boolean, default: false},

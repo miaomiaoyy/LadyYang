@@ -10,7 +10,10 @@ var userSchema = mongoose.Schema({
   phone: String,
   websites:[websiteSchema],
   cakes:[cakeSchema],
-  shoppingCart: [cakeSchema],
+  shoppingCart: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'shoppingcartModel'
+  },
   dateCreate: {
     type: Date,
     default: Date.now()

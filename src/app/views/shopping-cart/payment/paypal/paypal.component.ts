@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 @Component({
   selector: 'app-paypal',
-  template:  `<div id="paypal-button">Button</div>`,
+  templateUrl:  './paypal.component.html',
   styleUrls: ['./paypal.component.css']
 })
 
@@ -39,7 +39,7 @@ export class PaypalComponent implements OnInit{
           }
         );
       }
-    }),'#paypal-button'
+    }, 'myContainerElement')
   }
 
   constructor() { }

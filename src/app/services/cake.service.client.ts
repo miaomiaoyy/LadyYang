@@ -41,12 +41,15 @@ export class CakeService {
   }
 
   findCakeById(cakeId: String) {
-    console.log('first: in api call', cakeId);
+    console.log('step 2 : in api call', cakeId);
     const url = this.baseUrl + '/api/cake/' + cakeId;
     return this.http.get(url).map((response: Response) => {
-      return response;
+      console.log(response, 'step5 res')
+      return response.json();
     });
   }
+
+
 
   updateCake(cakeId: String, cake : Cake) {
   const url = this.baseUrl + '/api/cake/' + cakeId

@@ -5,6 +5,7 @@ import 'rxjs/Rx';
 import {environment} from '../../environments/environment';
 import {SharedService} from './shared.service';
 import {Router} from '@angular/router';
+import {Observable} from "rxjs/Observable";
 
 
 @Injectable()
@@ -126,5 +127,12 @@ export class UserService {
       });
   }
 
+  public searchCakes(searchText: string): Observable<any> {
+    const url = this.baseUrl + '/api/cakes?search=' + searchText;
+    return this.http.get(url)
+      .map((response: Response) => {
+        return response.json();
+      });
+  }
 
 }

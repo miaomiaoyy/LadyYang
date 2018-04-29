@@ -3,14 +3,19 @@
 
 <div class="col-md-4 ">
   <div class="col-md-3">
-  <img itemprop="photo" class="fimg"
-       alt="Happy Birthday Chocolate Cake With Name"
-       src="http://namebirthdaycakes.net/img/happy-birthday-chocolate-cake-with-name/5.jpg">
+  <img itemprop="photo" class="fimg">
+       <!--alt="Happy Birthday Chocolate Cake With Name"-->
+       <!--src="http://namebirthdaycakes.net/img/happy-birthday-chocolate-cake-with-name/5.jpg">-->
 
 
-    <img itemprop="photo" class="fimg" alt="Princess Cake With Name" src="http://namebirthdaycakes.net/img/princess-cake-with-name/6.jpg">
-    <img itemprop="photo" class="fimg" alt="Blue Stars Birthday Cake With Name" src="http://namebirthdaycakes.net/img/blue-stars-birthday-cake-with-name/64.jpg">
+    <!--<img itemprop="photo" class="fimg" alt="Princess Cake With Name" src="http://namebirthdaycakes.net/img/princess-cake-with-name/6.jpg">-->
+    <!--<img itemprop="photo" class="fimg" alt="Blue Stars Birthday Cake With Name" src="http://namebirthdaycakes.net/img/blue-stars-birthday-cake-with-name/64.jpg">-->
+    <div class="layer-parent">
     <img itemprop="photo" class="fimg" alt="Cool Unique Happy Birthday Cake With Name" src="http://namebirthdaycakes.net/img/cool-unique-happy-birthday-cake-with-name/3.jpg">
+      <div class="layer-1" [style.left]="'280px'" [style.top]="'223px'">
+        {{item.modifications["text"].value}}
+      </div>
+    </div>
   </div>
     <form class="form-group" id="birthdayform2" method="post"
           action="./cake-customization.component.ts">
@@ -19,13 +24,15 @@
     <!--<label class="btn1 btn-2 btn-2g"><input onclick="formclick(); return false;" name="submitbtn" type="submit" id="submitbtn" value="Generate Image Now!"></label>-->
     <!--</div>-->
 
-    <input placeholder="Your Name Here" type="text"
-           name="InputID[5][text]" class="name_field form-control"
+    <input
+      [(ngModel)]="inputText"
+      placeholder="Your Name Here" type="text"
+           name="Input" class="name_field form-control"
            id="input Your Name Here" required="required"
            pattern=".{3,}" maxlength="15">
 
     <button class="btn-3d purple">
-      <input onclick="formclick(); return false;" name="submitbtn" type="submit" id="submitbtn" value="Generate Image Now!">
+      <input (click)="formclick()" name="submitbtn" type="submit" id="submitbtn" value="Generate Image Now!">
     </button>
   </form>
 </div>

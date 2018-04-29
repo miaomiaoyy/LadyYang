@@ -21,7 +21,7 @@ export class ShoppingCartService {
   baseUrl = environment.baseUrl;
 
   addToShoppingCart(userId, cakeId) {
-    console.log('userid inside shoppinfcard service client' + userId);
+    console.log('userid inside shoppingcard service client' + userId);
     if (userId != null) {
       // let shoppingCart = JSON.parse(this.cookieService.get('shoppingcart'));
       //
@@ -36,18 +36,17 @@ export class ShoppingCartService {
         }
       );
     } else {
-
-      userId = Math.random().toString(36).substr(2, 9);
-      return this.http.post(this.baseUrl + '/api/' + userId + '/shoppingcart', {
-        user: User,
-        cake: Cake
-      }).map(
-        (res: Response) => {
-          const data = res.json();
-          return data;
-        }
-      );
-    }
+        userId = Math.random().toString(36).substr(2, 9);
+        return this.http.post(this.baseUrl + '/api/' + userId + '/shoppingcart', {
+          user: User,
+          cake: Cake
+        }).map(
+          (res: Response) => {
+            const data = res.json();
+            return data;
+          }
+        );
+      }
   }
 
   // directly pass a new cart????
@@ -84,6 +83,7 @@ export class ShoppingCartService {
   }
 
 
+
   findShoppingCartByUserId(userId:String) {
     const url = this.baseUrl + '/api/shoppingcart/'+ userId;
     return this.http.get(url).map((response: Response) => {
@@ -92,9 +92,10 @@ export class ShoppingCartService {
   }
 
 
-  addItem(userId, cakeId) {
+  addItem(userId: String, cake: Cake) {
+    console.log("call new page YANG test 1", cake);
     const url = this.baseUrl + '/api/' + userId + '/shoppingcart/add';
-    return this.http.post(url, cakeId)
+    return this.http.post(url, cake)
       .map((response: Response) => {
         return response.json();
       });

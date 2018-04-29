@@ -18,7 +18,7 @@ module.exports = function (app) {
     //var userId1= req.param['uid'];
     var uid = req.params.uid;
 
-    // console.log(uid, 'inside userid should not be undefined');
+    console.log(uid, 'inside userid should not be undefined');
 
     shoppingCartModel.findShoppingCart(uid)
       .then(
@@ -53,9 +53,9 @@ module.exports = function (app) {
           if(cake) {
             console.log(cake, "find cake in cart");
             res.json(cake);
-            res.send(200);
+            res.sendStatus(200);
           } else {
-            res.send(404);
+            res.sendStatus(404);
           }
         });
   }
@@ -76,37 +76,36 @@ module.exports = function (app) {
 
 
 
+  function createWebsite(req, res) {
+    var userId = req.params['userId'];
+    var website = req.body;
+
+    websiteModel.createWebsiteForUser(userId, website)
+      .then(function(website) {
+        res.json(website);
+      });
+  }
+
+
   function addToUserShoppingCart(req, res) {
-    var cakeId = req.body;
+    var cake = req.body;
     var userId = req.params['uid'];
-
-    console.log(cakeId, userId, "req1");
-
-    shoppingCartModel.findShoppingCart(userId).then(function(cart) {
-      if (cart) {
-        shoppingCartModel.addToShoppingCart(cakeId, userId)
+    console.log("cake:", cake, "uid:", userId, "req1");
+    // shoppingCartModel.findShoppingCart(userId).then(function(cart) {
+    //   if (cart) {
+    //     console.log(cart, "cart is Yang test 1");
+    shoppingCartModel.addToShoppingCart(userId, cake)
           .then(function (data, err) {
             if (data) {
-              console.log(data,'cart');
+              console.log(data,'cart test Yang222');
               res.json(data);
-              res.send(200);
+              res.sendStatus(200);
             } else {
-              res.send(404)
+              res.sendStatus(404);
             }
           });
-      } else {
-        userModel.createShoppingCart(userId).then(function (cart, error) {
-          if (cart) {
-            console.log(cart);
-            res.json(cart);
-            res.send(200);
-          } else {
-            res.send(404)
-          }
-        });
       }
-    });
-  }
+
 
 
   function findAllCakesForUser(req, res) {

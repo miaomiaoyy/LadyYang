@@ -83,7 +83,7 @@ export class PaymentComponent implements OnInit {
           for (let i = 0; i < this.soldItem.length; i++) {
             this.sold += ' ' + this.soldItem[i]['name'] + ' ';
           }
-          alert('Item(s): ' + this.sold + ' sold.');
+          alert('Item: ' + this.sold + ' sold.');
           this.router.navigate(['/user/shoppingcrt']);
         }
       } else {

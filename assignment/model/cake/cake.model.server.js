@@ -33,8 +33,8 @@ function createCakeForUser(cake) {
 }
 
 function findCakeById(cakeId) {
-  console.log('4, cake is found in DB', cakeId);
-  return cakeModel.findOne({"_id": cakeId.toJSON});
+  console.log('4, cake is found in DB changed!!!!', cakeId);
+  return cakeModel.findOne({_id: cakeId});//changed this
 }
 
 
@@ -53,7 +53,7 @@ function updateCake(cakeId, newCake) {
 
 
 function findAllCakesForUser(userId){
-  return cakeModel.find({"_user": userId})
+  return cakeModel.find({_user: userId})
     .populate('_user')
     //   .populate('_user', 'username')
     .exec();
@@ -64,13 +64,13 @@ function deleteCake() {
 }
 
 function findBirthday(){
-  return cakeModel.find({"description": 'birthday cake'})
+  return cakeModel.find({description: 'birthday cake'})
     .populate('description')
     .exec();
 }
 
 function findTop10() {
-  return cakeModel.find({"_user": admin})
+  return cakeModel.find({_user: admin})
     .populate('_user')
     .exec();
 }

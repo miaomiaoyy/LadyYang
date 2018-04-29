@@ -557,3 +557,19 @@ button[class*="btn"] {border: 0;}
 .btn-gradient.yellow:active {background: #DBC05B;}
 .btn-gradient.green:active  {background: #72B08E;}
 
+
+.mymenu {
+  position: relative;
+}
+
+.mymenuitems {
+  position: absolute;
+  top: 60px;
+  left: 0px;
+  min-width: 200px;
+  background-color: white;
+}
+
+.hidemenu {
+  display: none;
+}

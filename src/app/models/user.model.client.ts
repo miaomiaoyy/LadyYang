@@ -1,3 +1,4 @@
+import {Cake} from "./cake.model.client";
 
 
 export class User {
@@ -7,7 +8,7 @@ export class User {
   firstName: String;
   lastName: String;
   email: String;
-  //shoppingCart : Array<Cake> = [];
+  shoppingCart : Array<Cake> = [];
 
   constructor(_id, username, password, fistName, lastName, email, shoppingCart) {
     this._id = _id;
@@ -16,7 +17,7 @@ export class User {
     this.firstName = fistName;
     this.lastName = lastName;
     this.email = email;
-    //this.shoppingCart = shoppingCart;
+    this.shoppingCart = shoppingCart;
   }
 
 }

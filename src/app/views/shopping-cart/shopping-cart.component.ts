@@ -15,10 +15,9 @@ import {Widget} from "../../models/widget.model.client";
   styleUrls: ['./shopping-cart.component.css']
 })
 export class ShoppingCartComponent implements OnInit {
-  cart = [];
+  public cart = new ShoppingCart(null, null, null);
   userId: String;
   cartId: String;
-  cakes: Cake[];
   public totalPrice: number;
   quantity: number;
   totalCost: number;
@@ -28,6 +27,7 @@ export class ShoppingCartComponent implements OnInit {
 
   constructor(private shoppingCartService: ShoppingCartService, private cakeService: CakeService,
               private router: Router, private activatedRoute: ActivatedRoute) {
+
   }
 
 
@@ -41,8 +41,8 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   checkout() {
-    // this.router.navigate(['./payment']);
-    alert('Security Payment');
+    this.router.navigate(['./payment']);
+    // alert('Security Payment');
 
   }
   paypal() {
@@ -56,9 +56,11 @@ export class ShoppingCartComponent implements OnInit {
     const quantity: Array<number> = []
     let intPrice: number
     let intQuantity: number
-    this.cart.forEach((item, i) => {
-      intPrice = (item.price)
-      intQuantity = (item.quantity)
+    this.cart.cakes.forEach((item, i) => {
+      // intPrice = (item.price)
+      // intQuantity = (item.quantity)
+      intPrice = 1;
+      intQuantity = 1;
       totalCost.push(intPrice)
       quantity.push(intQuantity);
     })
@@ -76,15 +78,15 @@ export class ShoppingCartComponent implements OnInit {
       (params: any) => {
         this.userId = params['uid'];
         this.cartId = params['cid'];
-      }
-    );
-
-    this.shoppingCartService.findCartForUser(this.userId).subscribe(
-      (myCart: ShoppingCart) => {
-              console.log(myCart, 'find cart!!!!!!!');
-              return myCart;
-            }
-    );
+        this.shoppingCartService.findCartForUser(this.userId).subscribe(
+          (myCart: ShoppingCart) => {
+            this.cart = myCart;
+            console.log(this.cart, "this cart changes?")
+            // console.log(myCart, 'find cart!!!!!!!');
+            return myCart;
+          }
+        );
+      });
   }
     // console.log(this.userId, "userIs");
     // console.log(this.cartId, "cart");

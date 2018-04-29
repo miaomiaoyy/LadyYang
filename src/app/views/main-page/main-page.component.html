@@ -44,10 +44,12 @@
           <!--<input class="form-control mr-sm-2 pull-right" type="text" placeholder="Search" aria-label="Search">-->
           <!--<button type="button" class="btn btn-default pull-right" type="submit">  Submit</button>-->
         <!--</div>-->
+          <form (ngSubmit)="findCake()" >
+          <input
+            [(ngModel)]="inputText" [ngModelOptions]="{standalone: true}" class="form-control mr-sm-1 col-md-6" type="text">
 
-          <input class="form-control mr-sm-1 col-md-6" type="search">
-          <button class="btn btn-default pull-right" type="submit">Search</button>
-
+          <button class="btn btn-default pull-right"  type="submit">Search111</button>
+          </form>
         </div>
       </li>
       </ul>
@@ -138,16 +140,14 @@
 
 
                   <h3>Premium Services</h3>
-                  <h5>CALL OR EMAIL TO ORDER( 212 ) 242-5858 INFO@EMPIRECAKE.COM</h5>
+                  <h5>CALL OR EMAIL TO ORDER( 206 ) 242-5858 INFO@LADYYANG.COM</h5>
                   <h6 class="wow fadeInLeft" data-wow-delay="0.3s">Speed up your shipping — and your growth. Our premium services include fast, global, transit solutions to meet even the tightest deadlines.</h6>
                   <a class="btn btn-outline-white wow fadeInLeft" data-wow-delay="0.3s" routerLink="../delivery">Learn more</a>
-
                 </div>
 
               </div>
             </div>
           </div>
-
 
 
           <!--<div class="col-md-6 text-center text-md-left mb-5">-->
