@@ -187,8 +187,7 @@ module.exports = function (app) {
               }
             );
         }
-      })
-
+      });
   }
 
   // functions used for test

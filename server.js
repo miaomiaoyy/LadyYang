@@ -48,9 +48,6 @@ const server = http.createServer(app);
 //var serverSide = require("./server/test-mongodb/app");
 //serverSide(app);
 
-
-
-
 // var webmaker = require('./assignment/app');
 // webmaker(app);
 

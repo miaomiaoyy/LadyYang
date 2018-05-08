@@ -12,8 +12,14 @@ cakeModel.findAllCakesForUser = findAllCakesForUser;
 cakeModel.deleteCake = deleteCake;
 cakeModel.findTop10 = findTop10;
 cakeModel.findBirthday = findBirthday;
+cakeModel.findPic = findPic;
 
 module.exports = cakeModel;
+
+function findPic(cakeId) {
+  console.log('find pic last', cakeId);
+return cakeModel.findOne({_id: cakeId});
+}
 
 function showCake() {
   console.log('showcake show cake func');
@@ -59,7 +65,7 @@ function findAllCakesForUser(userId){
     .exec();
 }
 
-function deleteCake() {
+function deleteCake(cakeId) {
   return cakeModel.deleteCake({_id: cakeId});
 }
 

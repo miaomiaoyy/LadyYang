@@ -23,13 +23,12 @@ export class ShoppingCartComponent implements OnInit {
   totalCost: number;
   public totalQuantity: number;
   public cartSubscription: Subscription;
-
+  public image: any;
 
   constructor(private shoppingCartService: ShoppingCartService, private cakeService: CakeService,
               private router: Router, private activatedRoute: ActivatedRoute) {
 
   }
-
 
   public emptyCart(cartId) {
     this.shoppingCartService.empty(cartId);
@@ -41,14 +40,13 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   checkout() {
-    this.router.navigate(['./payment']);
+    this.router.navigate(['../payment/payment.component']);
     // alert('Security Payment');
 
   }
   paypal() {
     // this.router.navigate(['./payment']);
     alert('Security Paypal');
-
   }
 
   getTotalPrice() {
@@ -63,7 +61,13 @@ export class ShoppingCartComponent implements OnInit {
       intQuantity = 1;
       totalCost.push(intPrice)
       quantity.push(intQuantity);
+      // console.log(item._id, 'kittyyyyyyyy');
+      console.log(this.cakeService.findPicForCake(item._id), 'hey someone');
+      // console.log((i), 'hey someone2');
+      this.image = item.url;
+
     })
+
 
     this.totalPrice = totalCost.reduce((acc, item) => {
       return acc += item;
@@ -81,6 +85,12 @@ export class ShoppingCartComponent implements OnInit {
         this.shoppingCartService.findCartForUser(this.userId).subscribe(
           (myCart: ShoppingCart) => {
             this.cart = myCart;
+            this.cart.cakes.forEach((item, i) => {
+              // intPrice = (item.price)
+              // intQuantity = (item.quantity)
+
+              this.image = item.url;
+            });
             console.log(this.cart, "this cart changes?")
             // console.log(myCart, 'find cart!!!!!!!');
             return myCart;
@@ -107,4 +117,14 @@ export class ShoppingCartComponent implements OnInit {
   removeProduct() {
     console.log('remove sucess');
   }
+
+
+  findUrl(cakeId: String){
+
+    // console.log(cakeId);
+    // console.log("findcakeforKitty", this.cakeService.findPicForCake(cakeId));
+    return this.cakeService.findPicForCake(cakeId).subscribe((image: any) =>
+    console.log(image.url))
+  }
+
 }

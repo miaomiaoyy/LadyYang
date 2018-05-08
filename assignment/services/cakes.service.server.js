@@ -15,6 +15,7 @@ module.exports = function (app) {
   app.post("/api/cakes/top10", getTop10Cake);
   app.post("/api/cakes/birthday", getBirthdayCake);
   app.get("/api/cakes/cakeCustomization", customizeCake);
+  app.get("/api/cake/pic/:cid", getPicture);
 
   function showCakes(req, res) {
     // cakeModel.showCake().then(function (cakes) {
@@ -107,10 +108,20 @@ module.exports = function (app) {
   }
 
 
+  function getPicture(req, res) {
+    var cid = req.param['cid'];
+    cakeModel.findPic(cid).then(
+      function (image) {
+        console.log('picture find cake', image);
+        res.json(image);
+      }
+    )
+  }
+
 
   function findCakeById(req, res) {
     var cakeId = req.params['cid'];
-    console.log('step3, get cake Id', cakeId);
+    // console.log('step3, get cake Id', cakeId);
     cakeModel.findCakeById(cakeId)
       .then(
         function (cake) {

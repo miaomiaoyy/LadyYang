@@ -103,5 +103,4 @@ import { PaypalComponent } from './views/shopping-cart/payment/paypal/paypal.com
   bootstrap: [AppComponent]
 })
 export class AppModule {
-
 }

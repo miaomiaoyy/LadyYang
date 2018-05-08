@@ -40,8 +40,14 @@ export class CakeService {
     });
   }
 
+  findPicForCake(cakeId: String) {
+    return this.http.get(this.baseUrl + '/api/cake/pic/' + cakeId).map((response: Response) => {
+      return response.json();
+    });
+  }
+
   findCakeById(cakeId: String) {
-    console.log('step 2 : in api call', cakeId);
+    // console.log('step 2 : in api call', cakeId);
     const url = this.baseUrl + '/api/cake/' + cakeId;
     return this.http.get(url).map((response: Response) => {
       console.log(response, 'step5 res')

@@ -20,7 +20,6 @@ export class CakesComponent implements OnInit {
   userId: String;
   cakes: Cake[] = [];
 
-
   ngOnInit() {
     // this.activatedRoute.params.subscribe(
     //   (params: any) => {

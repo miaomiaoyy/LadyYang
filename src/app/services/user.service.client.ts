@@ -52,7 +52,6 @@ export class UserService {
   }
 
   register(username: String, password: String, firstName: String, lastName: String, email: String) {
-
     this.options.withCredentials = true;
     const user = {
       username : username,
