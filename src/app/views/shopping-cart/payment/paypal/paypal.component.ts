@@ -1,5 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
+import {ShoppingCartService} from "../../../../services/shoppingcart.service.client";
+
 @Component({
   selector: 'app-paypal',
   templateUrl:  './paypal.component.html',
@@ -12,7 +14,11 @@ export class PaypalComponent implements OnInit{
   @ViewChild('f') paypalform: NgForm;
 
   addScript: Boolean = false;
-  finalAmount: Number = 0;
+  finalAmount: Number = 10;
+
+  constructor(private shoppingCartService: ShoppingCartService){
+
+  }
 
   public ngOnInit(): void {
     (window as any).paypal.Button.render({
@@ -27,7 +33,7 @@ export class PaypalComponent implements OnInit{
         return action.payment.create({
           payment: {
             transactions: [
-              {amount: {total: this.finalAmount, currency: 'USD'}}
+              {amount: {total: this.shoppingCartService.total, currency: 'USD'}}
             ]
           }
         });
@@ -40,8 +46,6 @@ export class PaypalComponent implements OnInit{
       }
     }, 'myContainerElement')
   }
-
-  constructor() { }
 
 
   addPaypal(){

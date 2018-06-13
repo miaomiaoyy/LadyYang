@@ -36,7 +36,7 @@ export class PaymentComponent implements OnInit {
     this.count = 0;
     this.soldItem = [];
     this.sold = '';
-    this.userId = this.sharedService.user['_id'];
+    this.userId = this.sharedService.uçser._id;
     this.userService.findUserById(this.userId).subscribe((returnedUser: any) => {
       this.items = returnedUser.cart;
     });

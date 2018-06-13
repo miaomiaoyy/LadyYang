@@ -108,7 +108,7 @@ module.exports = function (app) {
     // console.log("please work222,", cake);
     var userId = req.params['uid'];
     var cake = req.body;
-    console.log(userId, cake, 'whatt');
+
     // console.log("cake:", cake, "uid:", userId, "req1");
     // shoppingCartModel.findShoppingCart(userId).then(function(cart) {
     //   if (cart) {

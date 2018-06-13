@@ -41,7 +41,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   checkout() {
-    this.router.navigate(['../payment/payment.component']);
+    this.router.navigate(['shoppingcart/' + this.userId + '/payment']);
     // alert('Security Payment');
 
   }
@@ -72,7 +72,8 @@ export class ShoppingCartComponent implements OnInit {
 
     this.totalPrice = totalCost.reduce((acc, item) => {
       return acc += item;
-    }, 0)
+    }, 0);
+    this.shoppingCartService.total = this.totalPrice;
     this.totalQuantity = quantity.reduce((acc, item) => {
       return acc += item;
     }, 0);

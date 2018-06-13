@@ -3,7 +3,7 @@ var cakeSchema = require('../cake/cake.schema.server');
 
 var shoppingcartSchema = mongoose.Schema({
 
-  _id: String,
+  //_id: String,
   uid: String,
   quantity: Number,
   cakes: [cakeSchema],

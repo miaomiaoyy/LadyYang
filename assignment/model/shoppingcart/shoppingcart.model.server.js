@@ -19,11 +19,10 @@ module.exports = shoppingcartModel;
 function addToShoppingCart(userId, cake) {
   return shoppingcartModel.findShoppingCart(userId)
       .then(function (shoppingCart) {
-          if(!shoppingCart) {
+        if(!shoppingCart) {
           shoppingCart = {};
-
           shoppingCart.uid = userId;
-          // console.log(shoppingCart._id, 'is it empty?');
+          console.log(shoppingCart, 'is it empty?');
           return createCart(userId, shoppingCart)
             .then(function (realCart) {
 
@@ -124,9 +123,12 @@ function addToShoppingCart2(cake) {
 
 function createCart(userId, cart) {
     cart.uid = userId;
+    console.log(userId, cart, 'created? what?');
     return shoppingcartModel.create(cart)
       .then(function (cart) {
-        return userModel.updateCart(userId, cart._id);
+
+         userModel.updateCart(userId, cart._id);
+         return cart;
       });
 }
 

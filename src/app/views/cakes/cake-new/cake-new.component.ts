@@ -41,7 +41,7 @@ export class CakeNewComponent implements OnInit {
         (data: any) => {
           this.cake = data;
           console.log("get cake", this.cake);
-          this.router.navigate(['../:cid'], {relativeTo: this.activatedRoute});
+          this.router.navigate(['/cakes/top10'], {relativeTo: this.activatedRoute});
         });
     }
 }

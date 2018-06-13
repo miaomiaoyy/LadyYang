@@ -20,6 +20,8 @@ export class ShoppingCartService {
 
   baseUrl = environment.baseUrl;
 
+  total = 0;
+
   addToShoppingCart(userId, cakeId) {
     console.log('userid inside shoppingcard service client' + userId);
     if (userId != null) {
