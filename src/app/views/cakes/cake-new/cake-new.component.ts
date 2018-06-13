@@ -32,11 +32,11 @@ export class CakeNewComponent implements OnInit {
   }
 
   createCake() {
-      this.cakeId =  '_' + Math.random().toString(36).substr(2, 9);
+      // this.cakeId =  '_' + Math.random().toString(36).substr(2, 9);
       this.name = this.cakeForm.value.name;
       this.description = this.cakeForm.value.description;
       this.url = this.cakeForm.value.url;
-      this.cake = new Cake( this.cakeId, this.userId, this.name, this.description, this.url);
+      this.cake = new Cake( null, this.userId, this.name, this.description, this.url);
       this.cakeService.createCake(this.cake).subscribe(
         (data: any) => {
           this.cake = data;

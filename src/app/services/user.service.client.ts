@@ -64,8 +64,14 @@ export class UserService {
     return this.http.post(this.baseUrl + '/api/register', user, this.options)
       .map(
         (res: Response) => {
+          if(res.status == 400) {
+            alert("username is invalid");
+            return;
+          }
           const data = res.json();
+          console.log(data, "why bad ? comes here kitty");
           return data;
+
         }
       );
   }

@@ -12,40 +12,58 @@ shoppingcartModel.findShoppingCart = findShoppingCart;
 shoppingcartModel.createOneCake = createOneCake;
 shoppingcartModel.createCart = createCart;
 shoppingcartModel.findCakesInShoppingCart = findCakesInShoppingCart;
+shoppingcartModel.removeFromCart = removeFromCart;
 
 module.exports = shoppingcartModel;
 
 function addToShoppingCart(userId, cake) {
-    return shoppingcartModel.findShoppingCart(userId)
+  return shoppingcartModel.findShoppingCart(userId)
       .then(function (shoppingCart) {
-        if (!shoppingCart) {
-          // var id =  '_' + Math.random().toString(36).substr(2, 9);
-          // shoppingCart = new ShoppingCart(id, undefined, undefined);
-          shoppingCart = {
-            // 'cakes': {type: undefined}
-          };
-          // shoppingCart._id = id;
-          // var shoppingCart = new ShoppingCart(id, userId, cake._id);
+          if(!shoppingCart) {
+          shoppingCart = {};
+
           shoppingCart.uid = userId;
           // console.log(shoppingCart._id, 'is it empty?');
           return createCart(userId, shoppingCart)
-            .then(function(realCart){
+            .then(function (realCart) {
 
-              console.log(realCart._id,'is it empty2?');
+              console.log(realCart._id, 'is it empty2?');
               realCart.cakes = [];
+              cake.quantity = 1;
               realCart.cakes.push(cake);
               return realCart.save();
             });
-        } else {
+        }
+        else
+        {
           console.log(shoppingCart, 'spc');
-          var cakeList = shoppingcartModel.findCakesInShoppingCart(userId);
-          console.log(cakeList, 'found cakes la');
-          if(shoppingCart.cakes === undefined) {
+          // var cakeList = shoppingcartModel.findCakesInShoppingCart(userId);
+          // console.log(cakeList, 'found cakes la');
+          if (shoppingCart.cakes === undefined) {
             shoppingCart.cakes = [];
           }
-          shoppingCart.cakes = cakeList;
-          shoppingCart.cakes.push(cake);
-          cake.quantity = 1;
+
+          var hasCake = false;
+          for(var x = 0; x < shoppingCart.cakes.length; x++) {
+            var c = shoppingCart.cakes[x];
+            if (!c.quantity) {
+              c.quantity = 1;
+            }
+            if (c._id == cake._id) {
+              // found a cake
+              c.quantity += 1;
+              console.log(c, 'more cake');
+              hasCake = true;
+            }
+          }
+
+          if (!hasCake) {
+            console.log(cake, 'new cake');
+            shoppingCart.cakes.push(cake);
+            cake.quantity = 1;
+          }
+          // shoppingCart.cakes = cakeList;
+
           console.log("this is model server, add to cart ok2", shoppingCart);
 
           return shoppingCart.save();
@@ -56,12 +74,42 @@ function addToShoppingCart(userId, cake) {
       });
   }
 
+  function removeFromCart(userId, cakeId) {
+    return shoppingcartModel.findShoppingCart(userId)
+      .then(function (shoppingCart) {
+        if (!shoppingCart) { return; }
+
+        var i = findCakeIndexInCart(shoppingCart, cakeId);
+        if (i >= 0) {
+          var cake = shoppingCart.cakes[i];
+          if (cake.quantity > 1) {
+            cake.quantity--;
+          } else {
+            shoppingCart.cakes.splice(i, 1);
+          }
+
+          shoppingCart.save();
+        }
+        return shoppingCart;
+      });
+
+  }
 
 function findShoppingCart(userId) {
   return shoppingcartModel.findOne({uid: userId});
 	// return shoppingcartModel.findOne({'uid': new ObjectId(userId)});
 
 }
+
+function findCakeIndexInCart(shoppingCart, cakeId) {
+  for(var x = 0; x < shoppingCart.cakes.length; x++) {
+    var c = shoppingCart.cakes[x];
+    if (c._id == cakeId) {
+      return x;
+    }
+  }
+}
+
 function createOneCake(cake) {
   return shoppingcartModel.create(cake);
 }

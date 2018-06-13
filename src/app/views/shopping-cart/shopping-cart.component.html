@@ -25,9 +25,9 @@
   <div class="top-nav-collapse" *ngFor="let cake of cart.cakes">
     <td><h4>{{cake.quantity}}</h4></td>
     <td><h4>{{cake.name}}</h4></td>
-    <td><h4>{{cake._id}}</h4></td>
+    <!--<td><h4>{{cake._id}}</h4></td>-->
     <td><button (click)= "findUrl(cake._id)"></button></td>
-    <td><img src="{{cake.image}}" width="400" height="400"/></td>
+    <td><img src="{{cake.url}}" width="400" height="400"/></td>
     <td><button (click)="removeProduct(cake)" class="btn-3d purple">Remove Cake</button></td>
     <td><button (click)="getTotalPrice()">Get Total Price</button> </td>
   </div>

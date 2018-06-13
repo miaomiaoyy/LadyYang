@@ -16,7 +16,6 @@ export class PaypalComponent implements OnInit{
 
   public ngOnInit(): void {
     (window as any).paypal.Button.render({
-
       env: 'sandbox',
       client: {
         sandbox: 'AVw_d7EtuYzjJWi0KuwGmR8SZEEqHA6FsnSbLX05D2Yzu3YE3z--2r_HO1E3EcSU3LuTaflvdxYKZic3',

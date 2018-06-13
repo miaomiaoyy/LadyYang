@@ -10,8 +10,23 @@ module.exports = function (app) {
   app.get("/api/:uid/shoppingcart", showShoppingCart);
   app.get("/api/:uid/shoppingcart/:cid", findCakeInShoppingCart);
   app.get("/api/shoppingcart/:uid", findShoppingCartByUserId);
+  app.delete("/api/:uid/shoppingcart/:cid", removeCakeFromShoppingCart)
 
+  function removeCakeFromShoppingCart(req, res) {
+    var userId = req.params['uid'];
+    var cakeId = req.params['cid'];
 
+   console.log(userId, cakeId, 'what???');
+
+   shoppingCartModel.removeFromCart(userId, cakeId).then(function(cart) {
+     if (cart) {
+       res.json(cart);
+     } else {
+       res.sendStatus(400).send(error);
+     }
+   });
+
+  }
 
   function findShoppingCartByUserId(req, res) {
     // console.log('enter shoppingcart Service111', req);
@@ -88,9 +103,13 @@ module.exports = function (app) {
 
 
   function addToUserShoppingCart(req, res) {
-    var cake = req.body;
+    // console.log("please work111,", req.body);
+    // var cake = cakeModel.findCakeById(req.body.cakeId);
+    // console.log("please work222,", cake);
     var userId = req.params['uid'];
-    console.log("cake:", cake, "uid:", userId, "req1");
+    var cake = req.body;
+    console.log(userId, cake, 'whatt');
+    // console.log("cake:", cake, "uid:", userId, "req1");
     // shoppingCartModel.findShoppingCart(userId).then(function(cart) {
     //   if (cart) {
     //     console.log(cart, "cart is Yang test 1");
@@ -99,7 +118,7 @@ module.exports = function (app) {
             if (data) {
               console.log(data,'cart test Yang222');
               res.json(data);
-              res.sendStatus(200);
+              //res.sendStatus(200);
             } else {
               res.sendStatus(404);
             }

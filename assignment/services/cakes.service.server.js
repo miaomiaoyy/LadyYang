@@ -3,7 +3,7 @@ var shoppingCartModel = require('../model/shoppingcart/shoppingcart.model.server
 module.exports = function (app) {
   var cakeModel = require('../model/cake/cake.model.server');
 
-  app.post("/api/cakes/cake", createCake);
+  app.post("/api/cakes/new", createCake);
   app.get("/api/cakes", showCakes);
   app.get("/api/:uid/cakes",showCakes);
   app.post("/:uid/cakes/:cid",addCakeToUser);
@@ -121,15 +121,14 @@ module.exports = function (app) {
 
   function findCakeById(req, res) {
     var cakeId = req.params['cid'];
-    // console.log('step3, get cake Id', cakeId);
+    console.log('step3.1, get cake Id', cakeId);
     cakeModel.findCakeById(cakeId)
-      .then(
-        function (cake) {
-          console.log('step3, find cake', cake);
-            var copy = Object.assign({}, cake);
-          console.log(copy, 'step 3');
+      .then(function (cake) {
+          // console.log('step3, find cake', cake);
+          //   var copy = Object.assign({}, cake);
+          // console.log(copy, 'step 3');
          // res.send(copy);
-          res.json(copy);
+          res.json(cake);
         },
         function (error) {
           res.sendStatus(400).send(error);

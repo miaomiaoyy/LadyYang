@@ -40,7 +40,7 @@ function createCakeForUser(cake) {
 
 function findCakeById(cakeId) {
   console.log('4, cake is found in DB changed!!!!', cakeId);
-  return cakeModel.findOne({_id: cakeId});//changed this
+  return cakeModel.findById(cakeId);//changed this
 }
 
 

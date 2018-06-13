@@ -88,12 +88,12 @@ export class CakeListComponent implements OnInit {
     } else {
       console.log(this.userId, this.cakeId, 'ok');
       this.cakeService.findCakeById(this.cakeId).subscribe(
-        (cake: any) => {
+        (cake) => {
           console.log(cake, 'data is returned step1');
-          this.cake = cake;
-          console.log(this.cake, "cake step1");
-          console.log(this.cake, "transmit cake step1");
-          this.shoppingCartService.addItem(this.userId, this.cake).subscribe(
+          //this.cake = cake;
+          // console.log(this.cake, "cake step1");
+          // console.log(this.cake, "transmit cake step1");
+          this.shoppingCartService.addItem(this.userId, cake).subscribe(
             (data: any) => {
               console.log(data,"addtoSpcart Yangyang");
               alert('add success, keep shopping');

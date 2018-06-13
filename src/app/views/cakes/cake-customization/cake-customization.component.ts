@@ -13,7 +13,7 @@ export class CakeCustomizationComponent implements OnInit {
 
   constructor() {
     this.item = new CakeDesc();
-    this.item.setText("Yang");
+    this.item.setText("");
   }
 
   ngOnInit() {

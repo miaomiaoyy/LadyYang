@@ -42,7 +42,7 @@ export class CakeService {
 
   findPicForCake(cakeId: String) {
     return this.http.get(this.baseUrl + '/api/cake/pic/' + cakeId).map((response: Response) => {
-      return response.json();
+      return <string>response.json().url.toPromise();
     });
   }
 

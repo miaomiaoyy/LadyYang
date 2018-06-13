@@ -1,4 +1,5 @@
 import { SortableDirective } from './sortable.directive';
+import {Directive} from "@angular/core";
 
 describe('SortableDirective', () => {
   it('should create an instance', () => {

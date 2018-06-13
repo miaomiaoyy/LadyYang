@@ -63,9 +63,9 @@ export class ShoppingCartService {
   }
 
 
-  removeFromCart(cakeId) {
-    const url = this.baseUrl + '/api/page/' + cakeId;
-    return this.http.delete(url);
+  removeFromCart(userId: String, cakeId: String) {
+    const url = this.baseUrl + '/api/' + userId + '/shoppingcart/' + cakeId;
+    return this.http.delete(url).map(response => response.json());
   }
 
   // getAllProducts(): Observable <cakes[]> {
