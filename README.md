@@ -1,6 +1,16 @@
-# Webdev
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
+# Lady Yang Cake Website
+
+This project was generated with [Angular CLI] together with MEAN stack: MEAN is a free and open-source JavaScript software stack for building dynamic web sites and web applications. The MEAN stack is MongoDB, Express.js, AngularJS, and Node.js.
+
+
+**Functions:**
+
+
+User blog system: user website and post pic/twitters/youtubu using  MEAN stack    
+Cake website integrated with user blog   
+Security Authentification Auth2.0 Passport   
+User can realize cake customization using different modules    
 
 ## Development server
 
@@ -25,3 +35,5 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+:blush: Enjoy coding
