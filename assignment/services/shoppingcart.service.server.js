@@ -32,9 +32,6 @@ module.exports = function (app) {
     // console.log('enter shoppingcart Service111', req);
     //var userId1= req.param['uid'];
     var uid = req.params.uid;
-
-    console.log(uid, 'inside userid should not be undefined');
-
     shoppingCartModel.findShoppingCart(uid)
       .then(
         function (cart) {
@@ -47,12 +44,10 @@ module.exports = function (app) {
   }
 
   function showShoppingCart(req, res) {
-    console.log('enter shoppingcart Service');
+
     var userId = req.param['uid'];
-    console.log('find shooping cart for: ', userId);
     shoppingCartModel.findShoppingCart(userId).then(function(cart) {
       if (cart) {
-        console.log(cart, "find user's cart ");
         res.json(cart);
         res.send(200);
       } else {
@@ -66,7 +61,6 @@ module.exports = function (app) {
     shoppingCartModel.findCakeInShoppingCart(cake)
         .then(function (cake, err) {
           if(cake) {
-            console.log(cake, "find cake in cart");
             res.json(cake);
             res.sendStatus(200);
           } else {
@@ -116,7 +110,6 @@ module.exports = function (app) {
     shoppingCartModel.addToShoppingCart(userId, cake)
           .then(function (data, err) {
             if (data) {
-              console.log(data,'cart test Yang222');
               res.json(data);
               //res.sendStatus(200);
             } else {
@@ -140,7 +133,6 @@ module.exports = function (app) {
         }
       );
   }
-
 
 }
 

@@ -96,8 +96,8 @@ export class CakeListComponent implements OnInit {
           this.shoppingCartService.addItem(this.userId, cake).subscribe(
             (data: any) => {
               console.log(data,"addtoSpcart Yangyang");
-              alert('add success, keep shopping');
-              window.confirm('Item added!');
+              alert('Add cake successfully, keep shopping');
+              // window.confirm('Item added!');
             });
         });
     }

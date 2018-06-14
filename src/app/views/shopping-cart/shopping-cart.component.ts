@@ -102,7 +102,7 @@ export class ShoppingCartComponent implements OnInit {
               // });
 
             });
-            console.log(this.cart, "this cart changes?")
+
             // console.log(myCart, 'find cart!!!!!!!');
             return myCart;
           }

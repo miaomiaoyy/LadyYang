@@ -13,33 +13,38 @@
   <h3 class="text-center"> Oops! No Cakes in the Cart! </h3>
 </div>
 <table class="table table-striped table-hover">
+  <div class="show_cake" >
   <thead>
   <tr>
-    <th>Quantity Amount</th>
-    <th>Cake Name</th>
-    <th>Cake Price</th>
-    <th>Cake Image</th>
+    <th width="400">Cake Name</th>
+    <th width="300">Cake Image</th>
+    <th width="200">Quantity Amount</th>
+    <th width="300">Cake Price</th>
+
   </tr>
   </thead>
+  </div>
   <tbody>
-  <div class="top-nav-collapse" *ngFor="let cake of cart.cakes">
-    <td><h4>{{cake.quantity}}</h4></td>
-    <td><h4>{{cake.name}}</h4></td>
+  <div class="show_cake" *ngFor="let cake of cart.cakes">
+
+    <td width="200"><h4>{{cake.name}}</h4></td>
     <!--<td><h4>{{cake._id}}</h4></td>-->
-    <td><button (click)= "findUrl(cake._id)"></button></td>
+    <!--<td><button (click)= "findUrl(cake._id)"></button></td>-->
     <td><img src="{{cake.url}}" width="400" height="400"/></td>
+    <td><button>{{cake.quantity}}</button></td>
     <td><button (click)="removeProduct(cake)" class="btn-3d purple">Remove Cake</button></td>
     <td><button (click)="getTotalPrice()">Get Total Price</button> </td>
   </div>
-
+<div class="show_cake" >
   <tr class="warning">
-    <td><h4></h4></td>
-    <td><h4>Total Items: {{totalQuantity}}</h4></td>
-    <td><h4>Total: ${{totalPrice}}</h4></td>
+    <td width="100px"><h4></h4></td>
+    <td width="200px"><h4>Total Items: {{totalQuantity}}</h4></td>
+    <td width="300px"><h4>Total: ${{totalPrice}}</h4></td>
     <!--<script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>-->
     <!--<paypal-button [props]="{ payment: payment, onAuthorize: onAuthorize }"></paypal-button>-->
-    <button (click)="checkout()" class="btn-3d purple" routerLink="./payment">Checkout</button>
-    <app-paypal></app-paypal>
+    <td width="200px"><button (click)="checkout()" class="btn-3d purple" style="z-index:9999" routerLink="./payment">Checkout</button></td>
+    <td width="200px"><app-paypal></app-paypal></tr><td>
+</div>
       <!--<div id="paypal-checkout-btn"></div>-->
   </tbody>
 </table>

@@ -22,11 +22,9 @@ function addToShoppingCart(userId, cake) {
         if(!shoppingCart) {
           shoppingCart = {};
           shoppingCart.uid = userId;
-          console.log(shoppingCart, 'is it empty?');
           return createCart(userId, shoppingCart)
             .then(function (realCart) {
 
-              console.log(realCart._id, 'is it empty2?');
               realCart.cakes = [];
               cake.quantity = 1;
               realCart.cakes.push(cake);
@@ -35,7 +33,6 @@ function addToShoppingCart(userId, cake) {
         }
         else
         {
-          console.log(shoppingCart, 'spc');
           // var cakeList = shoppingcartModel.findCakesInShoppingCart(userId);
           // console.log(cakeList, 'found cakes la');
           if (shoppingCart.cakes === undefined) {
@@ -63,7 +60,7 @@ function addToShoppingCart(userId, cake) {
           }
           // shoppingCart.cakes = cakeList;
 
-          console.log("this is model server, add to cart ok2", shoppingCart);
+          // console.log("this is model server, add to cart ok2", shoppingCart);
 
           return shoppingCart.save();
         }

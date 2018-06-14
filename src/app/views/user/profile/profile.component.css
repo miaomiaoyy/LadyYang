@@ -1,4 +1,13 @@
 
+body {
+  background-image: url('../../../../assets/uploads/table.jpg');
+  background-position: top right 10px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  background-size: cover;
+  background-color: pink;
+}
 .navbar-brand {
   float: left;
   height: 50px;
