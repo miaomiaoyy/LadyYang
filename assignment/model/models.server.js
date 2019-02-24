@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
 
-var db = mongoose.connect('mongodb://localhost:27017/webdev');
+//var db = mongoose.connect('mongodb://localhost:27017/webdev');
 
-//var db = mongoose.connect('mongodb://yang:yy224@ds217349.mlab.com:17349/heroku_93x3fp0h');
+var db = mongoose.connect('mongodb://kathleen:yy19890224@ds061200.mlab.com:61200/ladyyang');
 
 module.exports = db;
 
