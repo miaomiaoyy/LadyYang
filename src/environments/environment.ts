@@ -6,5 +6,5 @@
 export const environment = {
   production: false,
   // baseUrl: 'http://localhost:3100'
-  baseUrl: 'https://ladyyang.herokuapp.com/'
+  baseUrl: 'https://ladyyang.herokuapp.com'
 };
